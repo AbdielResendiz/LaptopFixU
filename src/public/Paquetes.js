@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const SignUp = () => {
+const Paquetes = () => {
   return (
     <View
       style={{
@@ -13,4 +13,4 @@ const SignUp = () => {
     </View>
   )
 }
-export default SignUp;
+export default Paquetes;
