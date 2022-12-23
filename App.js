@@ -12,6 +12,7 @@ import Profile from "./src/private/Profile";
 import AddCard from "./src/private/AddCard";
 import CheckAdress from "./src/private/CheckAdress";
 import CheckCard from "./src/private/CheckCard";
+import Footer from "./src/components/Footer";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,14 +20,37 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login}
+        options={{title: 'Iniciar sesión',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+      }}/>
+        <Stack.Screen name="SignUp" component={SignUp}
+        options={{title: 'Registro',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+      }}/>
         <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{title: 'Welcome'}}
-        />
+            name="Home"
+            component={Home}
+            options={{title: 'Inicio',
+              headerTintColor:"white",
+              headerStyle: {
+                backgroundColor: "#236DB7",
+              },
+            }}
+          />
+        <Stack.Screen name="Footer" component={Footer}/>
+     
+        
+        
         <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Login" component={Login}/>
-        <Stack.Screen name="SignUp" component={SignUp}/>
+        
+        
         <Stack.Screen name="Servicios" component={Servicios}/>
         <Stack.Screen name="Promociones" component={Promociones}/>
         <Stack.Screen name="Paquetes" component={Paquetes}/>

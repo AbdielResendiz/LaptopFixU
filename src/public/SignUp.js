@@ -1,16 +1,60 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-
+import * as React from "react";
+import { Box, Text, Heading, VStack, FormControl, Input, Link, 
+  Button, HStack, Center, NativeBaseProvider } from "native-base";
 const SignUp = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-      }}>
-      <Text>Registro</Text>
-    </View>
-  )
-}
-export default SignUp;
+  return <Center w="100%">
+      <Box safeArea p="2" w="90%" maxW="290" py="8">
+        <Heading size="lg" color="coolGray.800" _dark={{
+        color: "warmGray.50"
+      }} fontWeight="semibold">
+          Bienvenido
+        </Heading>
+        <Heading mt="1" color="coolGray.600" _dark={{
+        color: "warmGray.200"
+      }} fontWeight="medium" size="xs">
+          Registrate para continuar
+        </Heading>
+        <VStack space={3} mt="5">
+          <FormControl>
+            <FormControl.Label>Correo electrónico</FormControl.Label>
+            <Input />
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Contraseña</FormControl.Label>
+            <Input type="password" />
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Confirma Contraseña</FormControl.Label>
+            <Input type="password" />
+          </FormControl>
+          <Button mt="2" color={"#236DB7"}>
+            Registrarse
+          </Button>
+          <HStack mt="6" justifyContent="center">
+            <Text fontSize="sm" color="coolGray.600" _dark={{
+            color: "warmGray.200"
+          }}>
+              ¿Ya tienes cuenta?{" "}
+            </Text>
+            <Link _text={{
+            color: "indigo.500",
+            fontWeight: "medium",
+            fontSize: "sm"
+          }} href="#">
+              Inicia sesión
+            </Link>
+          </HStack>
+        </VStack>
+      </Box>
+    </Center>;
+};
+
+    export default () => {
+        return (
+          <NativeBaseProvider>
+            <Center flex={1} px="3">
+                <SignUp />
+            </Center>
+          </NativeBaseProvider>
+        );
+    };
