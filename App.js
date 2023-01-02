@@ -12,7 +12,9 @@ import Profile from "./src/private/Profile";
 import AddCard from "./src/private/AddCard";
 import CheckAdress from "./src/private/CheckAdress";
 import CheckCard from "./src/private/CheckCard";
+import Carrito from "./src/private/Carrito";
 import Footer from "./src/components/Footer";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -20,21 +22,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login}
-        options={{title: 'Iniciar sesión',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#132039",
-        },
-      }}/>
-        <Stack.Screen name="SignUp" component={SignUp}
-        options={{title: 'Registro',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#132039",
-        },
-      }}/>
-        <Stack.Screen
+      <Stack.Screen
             name="Home"
             component={Home}
             options={{title: 'Inicio',
@@ -44,6 +32,35 @@ export default function App() {
               },
             }}
           />
+        <Stack.Screen name="Detalle" component={Detalle}
+        options={{title: 'Detalle',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+        }}/>
+        <Stack.Screen name="Servicios" component={Servicios}
+        options={{title: 'Servicios',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+        }}/>
+        <Stack.Screen name="Login" component={Login}
+        options={{title: 'Iniciar sesión',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+        }}/>
+        <Stack.Screen name="SignUp" component={SignUp}
+        options={{title: 'Registro',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+       }}/>
+        
         <Stack.Screen name="Footer" component={Footer}/>
      
         
@@ -51,13 +68,21 @@ export default function App() {
         <Stack.Screen name="Profile" component={Profile} />
         
         
-        <Stack.Screen name="Servicios" component={Servicios}/>
+        
         <Stack.Screen name="Promociones" component={Promociones}/>
         <Stack.Screen name="Paquetes" component={Paquetes}/>
-        <Stack.Screen name="Detalle" component={Detalle}/>
+        
         <Stack.Screen name="CheckCard" component={CheckCard}/>
         <Stack.Screen name="CheckAdress" component={CheckAdress}/>
         <Stack.Screen name="AddCard" component={AddCard}/>
+
+        <Stack.Screen name="Carrito" component={Carrito}
+         options={{title: 'Carrito',
+         headerTintColor:"white",
+         headerStyle: {
+           backgroundColor: "#132039",
+         },
+         }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

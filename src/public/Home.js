@@ -1,15 +1,15 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import {  TouchableOpacity, View } from 'react-native';
 import { FontAwesome, Ionicons, AntDesign } from '@expo/vector-icons'; 
 import { NativeBaseProvider, HStack, Center, Box, 
-  ScrollView , Stack, AspectRatio, Image, Heading} from 'native-base';
+  ScrollView , Stack, AspectRatio, Image, Heading, Text} from 'native-base';
 import Footer from "../components/Footer"
 import Card from "../components/Card"
 import CardServicio from "../components/CardServicio"
 import CardPaquete from "../components/CardPaquete"
 
 
-const Home = () => {
+const Home = (props) => {
   return (
     <NativeBaseProvider flex={1} px="3">
       {/**Row stack de bienvenida */}
@@ -28,10 +28,23 @@ const Home = () => {
         <ScrollView style={{paddingHorizontal:10}} horizontal={false}>
           <HStack style={{justifyContent: "flex-end"}}>
             <Center h="10" w="30%">OFERTAS</Center>
-            <Center h="10" w="30%">Ver todas</Center>
+            <Center h="10" w="30%">
+              <TouchableOpacity onPress={() => {
+                  props.navigation.navigate("Servicios");
+                }}>
+              <Text color= "#236DB7"
+              fontWeight= "bold"
+              fontSize= "md">Ver todas 
+              </Text>
+              </TouchableOpacity>
+            </Center>
           </HStack>
           <ScrollView horizontal={true}>
-            <Card/>
+            <TouchableOpacity onPress={() => {
+                  props.navigation.navigate("Detalle");
+                }}>
+              <Card />
+            </TouchableOpacity>
             <Card/>
             <Card/>
           </ScrollView>
@@ -41,7 +54,11 @@ const Home = () => {
             <Center h="10" w="30%">Ver todas</Center>
           </HStack>
           <ScrollView horizontal={true}>
-            <CardServicio/>
+            <TouchableOpacity onPress={() => {
+                  props.navigation.navigate("Detalle");
+                }}>
+              <CardServicio/>
+            </TouchableOpacity>
             <CardServicio/>
             <CardServicio/>
             <CardServicio/>
@@ -55,7 +72,11 @@ const Home = () => {
             <Center h="10" w="30%">Ver todas</Center>
           </HStack>
           <ScrollView horizontal={true}>
+          <TouchableOpacity onPress={() => {
+                  props.navigation.navigate("Detalle");
+                }}>
             <CardPaquete/>
+            </TouchableOpacity>
             <CardPaquete/>
             <CardPaquete/>
             <CardPaquete/>
@@ -65,7 +86,7 @@ const Home = () => {
           </ScrollView>
 
         </ScrollView>
-        <Footer/>
+        <Footer />
         
     </NativeBaseProvider>
   )

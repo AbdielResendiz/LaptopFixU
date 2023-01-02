@@ -11,12 +11,12 @@ import { NativeBaseProvider, HStack, Center, Box,
             <Box style={{borderRadius:10, marginHorizontal:10}} bg="white" >
                 
                 
-              <TouchableOpacity>
-                <ImageBackground source={require("../img/laptopfx.jpeg")} 
-                 style={{width: 100,
+              
+                <Image source={require("../img/laptopfx.jpeg") } 
+                 alt="image" style={{width: 100,
                  height: 80, resizeMode: "contain"}}/>
                 <Text style={{fontWeight:"bold", }}>Mantenimiento PC</Text>
-              </TouchableOpacity>
+              
               
             </Box>
         )

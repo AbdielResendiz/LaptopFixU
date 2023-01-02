@@ -11,12 +11,12 @@ import { NativeBaseProvider, HStack, Center, Box,
             <Box style={{borderRadius:10, marginHorizontal:10}} bg="white" >
                 
                 
-              <TouchableOpacity>
-                <ImageBackground source={require("../img/descarga.png")} 
-                 style={{width: 100,
+              
+                <Image source={require("../img/descarga.png")} 
+                 alt="image" style={{width: 100,
                  height: 80, resizeMode: "contain"}}/>
                 <Text style={{fontWeight:"bold", }}>Paquete ejemplo</Text>
-              </TouchableOpacity>
+              
               
             </Box>
         )

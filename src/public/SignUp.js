@@ -1,6 +1,8 @@
 import * as React from "react";
-import { Box, Text, Heading, VStack, FormControl, Input, Link, 
+import { Box, Text, Heading, VStack, FormControl, Input, 
   Button, HStack, Center, NativeBaseProvider } from "native-base";
+  import { TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 const SignUp = () => {
   return <Center w="100%">
       <Box safeArea p="2" w="90%" maxW="290" py="8">
@@ -36,13 +38,17 @@ const SignUp = () => {
           }}>
               ¿Ya tienes cuenta?{" "}
             </Text>
-            <Link _text={{
-            color: "indigo.500",
-            fontWeight: "medium",
-            fontSize: "sm"
-          }} href="#">
-              Inicia sesión
-            </Link>
+            <TouchableOpacity onPress={() => {
+                  navigation.navigate("Login");
+                }}>
+            <Text 
+            color= "#236DB7"
+            fontWeight= "medium"
+            fontSize= "sm"
+           >
+              Iniciar sesión
+            </Text>
+            </TouchableOpacity>
           </HStack>
         </VStack>
       </Box>

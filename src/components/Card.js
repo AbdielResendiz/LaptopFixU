@@ -7,6 +7,7 @@ import { NativeBaseProvider, HStack, Center, Box,
 const Card = (props) => {
 
     return(
+      
         <Box alignItems="center" >
         <Box maxW="80" rounded="md" overflow="hidden" 
         borderColor="coolGray.200" borderWidth="1" _dark={{
