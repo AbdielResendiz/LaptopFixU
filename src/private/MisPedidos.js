@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Paquetes = () => {
+const MisPedidos = () => {
   return (
     <View
       style={{
@@ -9,9 +9,8 @@ const Paquetes = () => {
         justifyContent: "center",
         alignItems: "center"
       }}>
-      <Text>Registro</Text>
-      
+      <Text>Perfil</Text>
     </View>
   )
 }
-export default Paquetes;
+export default MisPedidos;

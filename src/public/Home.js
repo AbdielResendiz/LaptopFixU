@@ -50,7 +50,7 @@ const Home = (props) => {
           </ScrollView>
 
           <HStack style={{justifyContent: "flex-end"}}>
-            <Center h="10" w="30%">SERVICIOS</Center>
+            <Center h="10" w="30%">TECNICOS</Center>
             <Center h="10" w="30%">Ver todas</Center>
           </HStack>
           <ScrollView horizontal={true}>

@@ -1,19 +1,43 @@
 import React from 'react';
 import {  View } from 'react-native';
 import { NativeBaseProvider, VStack, Center, Box, 
-    ScrollView , Stack, AspectRatio, Image, Heading, Divider, Text, Button, HStack} from 'native-base';
+    ScrollView ,  Image, Divider, Text, Button, HStack, Input} from 'native-base';
+import { useNavigation } from '@react-navigation/native';
+      
 
 const Carrito = () => {
+    const navigation =useNavigation();
+
   return (
     <NativeBaseProvider flex={1} px="3">
-        <Box bg="white" m={5} p={3} maxH="60%" >
+        <Box bg="#BDC5C8" m={5} p={3} maxH="60%" >
             <ScrollView style={{paddingHorizontal:10}} horizontal={false}>
                 <VStack>
-                    <Center h={130} marginBottom={2} bg="#12345678">Carrito</Center>
-                    <Center h={130} marginBottom={2} bg="#12345678">Carrito</Center>
-                    <Center h={130} marginBottom={2} bg="#12345678">Carrito</Center>
-                    <Center h={130} marginBottom={2} bg="#12345678">Carrito</Center>
-                    <Center h={130} marginBottom={2} bg="#12345678">Carrito</Center>
+                    <Center h={130} marginBottom={2} bg="white">
+                        <HStack>
+                            <Image 
+                             source={require( "../img/descarga.png")
+                            } alt="Alternate Text" 
+                            size="lg" rounded={"lg"}  marginRight={3}/>
+                            <VStack>
+                                <Text>Formateo de PC</Text>
+                                <Text>Servicio</Text>
+                                <HStack>
+                                    <Text ml={"40%"}>$300.00</Text>
+                                    
+                                </HStack>
+
+                            </VStack>
+                        
+
+                        </HStack>
+                   
+                    </Center>
+                    
+                    <Center h={130} marginBottom={2} bg="white">Carrito</Center>
+                    <Center h={130} marginBottom={2} bg="white">Carrito</Center>
+                    <Center h={130} marginBottom={2} bg="white">Carrito</Center>
+                    <Center h={130} marginBottom={2} bg="white">Carrito</Center>
                     
                     
 
@@ -23,16 +47,16 @@ const Carrito = () => {
 
         </Box>
 
-        <Text fontSize="lg" fontWeight="bold" ml={10}>
+        <Text fontSize="lg" fontWeight="bold" ml={10} mb={2} >
             Detalle de compra
         </Text>
-        <Box>
+        <Box >
         <HStack>
-            <VStack ml={5}>
+            <VStack ml={9}>
                 <Text>Total por ordenes</Text>
                 <Text>Envío</Text>
             </VStack>
-            <VStack ml={20}>
+            <VStack ml="30%">
                 <Text>$600.00</Text>
                 <Text>$50.00</Text>
             </VStack>
@@ -49,12 +73,12 @@ const Carrito = () => {
       }} />
       <HStack>
         <Text ml={9}>Total por ordenes</Text>
-        <Text ml={12}>$650.00</Text>
+        <Text ml="30%">$650.00</Text>
 
       </HStack>
       
 
-      <Button m={10}>
+      <Button m={10} onPress={ ()=> navigation.navigate("CheckAdress")} >
         Pagar
       </Button>
         

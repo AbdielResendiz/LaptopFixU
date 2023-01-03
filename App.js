@@ -10,7 +10,9 @@ import Servicios from "./src/public/Servicios";
 import Detalle from "./src/public/Detalle";
 import Profile from "./src/private/Profile";
 import AddCard from "./src/private/AddCard";
+import MisPedidos from "./src/private/MisPedidos";
 import CheckAdress from "./src/private/CheckAdress";
+import CheckPago from "./src/private/CheckPago";
 import CheckCard from "./src/private/CheckCard";
 import Carrito from "./src/private/Carrito";
 import Footer from "./src/components/Footer";
@@ -60,6 +62,13 @@ export default function App() {
           backgroundColor: "#132039",
         },
        }}/>
+        <Stack.Screen name="MisPedidos" component={MisPedidos}
+        options={{title: 'Mis pedidos',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+       }}/>
         
         <Stack.Screen name="Footer" component={Footer}/>
      
@@ -72,8 +81,30 @@ export default function App() {
         <Stack.Screen name="Promociones" component={Promociones}/>
         <Stack.Screen name="Paquetes" component={Paquetes}/>
         
-        <Stack.Screen name="CheckCard" component={CheckCard}/>
-        <Stack.Screen name="CheckAdress" component={CheckAdress}/>
+        <Stack.Screen name="CheckCard" component={CheckCard}
+        options={{title: 'Pasarela de pago',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+        }}/>
+
+        <Stack.Screen name="CheckAdress" component={CheckAdress}
+        options={{title: 'Confirma dirección',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+        }}/>
+
+        <Stack.Screen name="CheckPago" component={CheckPago}
+        options={{title: 'Confirma método de pago',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+        }}/>
+
         <Stack.Screen name="AddCard" component={AddCard}/>
 
         <Stack.Screen name="Carrito" component={Carrito}
