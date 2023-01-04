@@ -1,6 +1,6 @@
 import React from 'react';
 import {  TouchableOpacity, View } from 'react-native';
-import { FontAwesome, Ionicons, AntDesign } from '@expo/vector-icons'; 
+import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 import { NativeBaseProvider, HStack, Center, Box, 
   ScrollView , Stack, AspectRatio, Image, Heading, Text} from 'native-base';
 import Footer from "../components/Footer"
@@ -18,11 +18,17 @@ const Home = (props) => {
               <Text>Bienvenido</Text>
             </Center>
             <Center h="20" w="15%" bg="#BDC5C8"  >
-            <FontAwesome name="bell-o" size={24} color="black" />
+              <TouchableOpacity onPress={()=>props.navigation.navigate("MisPedidos")}>
+                <FontAwesome name="list-ul" size={24} color="black" />
+              </TouchableOpacity>
             </Center>
+            
             <Center h="20" w="25%" bg="#132039" >
+            <TouchableOpacity onPress={()=>props.navigation.navigate("InfoApps")}>
             <AntDesign name="infocirlce" size={34} color="white" />
+            </TouchableOpacity>
             </Center>
+            
         </HStack>
         {/** scrool vertical para contenido*/}
         <ScrollView style={{paddingHorizontal:10}} horizontal={false}>

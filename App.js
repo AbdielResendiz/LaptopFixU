@@ -4,11 +4,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from "./src/public/Home";
 import Login from "./src/public/Login";
 import SignUp from "./src/public/SignUp";
+import InfoApps from "./src/public/InfoApps";
 import Promociones from "./src/public/Promociones";
 import Paquetes from "./src/public/Paquetes";
 import Servicios from "./src/public/Servicios";
 import Detalle from "./src/public/Detalle";
 import Profile from "./src/private/Profile";
+import OpcionTecnico from "./src/private/OpcionTecnico";
 import AddCard from "./src/private/AddCard";
 import MisPedidos from "./src/private/MisPedidos";
 import CheckAdress from "./src/private/CheckAdress";
@@ -74,7 +76,13 @@ export default function App() {
      
         
         
-        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Profile" component={Profile} 
+        options={{title: 'Mi cuenta',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+        }}/>
         
         
         
@@ -106,8 +114,23 @@ export default function App() {
         }}/>
 
         <Stack.Screen name="AddCard" component={AddCard}/>
+        <Stack.Screen name="InfoApps" component={InfoApps}
+        options={{title: 'Sobre nosotros',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#132039",
+        },
+        }}/>
 
         <Stack.Screen name="Carrito" component={Carrito}
+         options={{title: 'Carrito',
+         headerTintColor:"white",
+         headerStyle: {
+           backgroundColor: "#132039",
+         },
+         }}/>
+
+        <Stack.Screen name="OpcionTecnico" component={OpcionTecnico}
          options={{title: 'Carrito',
          headerTintColor:"white",
          headerStyle: {

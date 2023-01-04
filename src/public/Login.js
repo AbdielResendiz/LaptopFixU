@@ -36,7 +36,8 @@ const Login = (props) => {
               ¿Olvidaste tu contraseña?
             </Link>
           </FormControl>
-          <Button mt="2" color="#236DB7">
+          <Button mt="2" color="#236DB7"
+          onPress={()=>{navigation.navigate("Profile")}}>
             Iniciar sesión
           </Button>
           <HStack mt="6" justifyContent="center">
