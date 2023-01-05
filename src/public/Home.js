@@ -24,7 +24,7 @@ const Home = (props) => {
             </Center>
             
             <Center h="20" w="25%" bg="#132039" >
-            <TouchableOpacity onPress={()=>props.navigation.navigate("InfoApps")}>
+            <TouchableOpacity onPress={()=>props.navigation.navigate("SobreNosotros")}>
             <AntDesign name="infocirlce" size={34} color="white" />
             </TouchableOpacity>
             </Center>

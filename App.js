@@ -18,6 +18,7 @@ import CheckPago from "./src/private/CheckPago";
 import CheckCard from "./src/private/CheckCard";
 import Carrito from "./src/private/Carrito";
 import Footer from "./src/components/Footer";
+import SobreNosotros from './src/public/SobreNosotros';
 
 
 const Stack = createNativeStackNavigator();
@@ -131,7 +132,14 @@ export default function App() {
          }}/>
 
         <Stack.Screen name="OpcionTecnico" component={OpcionTecnico}
-         options={{title: 'Carrito',
+         options={{title: 'Selecciona una opción',
+         headerTintColor:"white",
+         headerStyle: {
+           backgroundColor: "#132039",
+         },
+         }}/>
+         <Stack.Screen name="SobreNosotros" component={SobreNosotros}
+         options={{title: 'Sobre nosotros',
          headerTintColor:"white",
          headerStyle: {
            backgroundColor: "#132039",

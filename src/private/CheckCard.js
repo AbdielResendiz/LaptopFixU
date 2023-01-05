@@ -16,7 +16,7 @@ const CheckCard = () => {
         <Text fontSize={20}>Pasarela de pago</Text>
         <Text fontSize={30} >Pendiente</Text>
         <Button p={4} mx={20} mt={4}
-              onPress={()=> navigation.navigate("MisPedidos") } >
+              onPress={()=> navigation.navigate("OpcionTecnico") } >
                 SIGUIENTE
             </Button>
       </View>
