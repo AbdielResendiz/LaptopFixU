@@ -10,6 +10,7 @@ import Paquetes from "./src/public/Paquetes";
 import Servicios from "./src/public/Servicios";
 import Detalle from "./src/public/Detalle";
 import Profile from "./src/private/Profile";
+import Profile2 from "./src/private/Profile2";
 import OpcionTecnico from "./src/private/OpcionTecnico";
 import AddCard from "./src/private/AddCard";
 import MisPedidos from "./src/private/MisPedidos";
@@ -18,7 +19,10 @@ import CheckPago from "./src/private/CheckPago";
 import CheckCard from "./src/private/CheckCard";
 import Carrito from "./src/private/Carrito";
 import Footer from "./src/components/Footer";
+
 import SobreNosotros from './src/public/SobreNosotros';
+import AcercaID from './src/public/AcercaID';
+import Contacto from './src/public/Contacto';
 
 
 const Stack = createNativeStackNavigator();
@@ -58,6 +62,7 @@ export default function App() {
           backgroundColor: "#132039",
         },
         }}/>
+        
         <Stack.Screen name="SignUp" component={SignUp}
         options={{title: 'Registro',
         headerTintColor:"white",
@@ -74,10 +79,12 @@ export default function App() {
        }}/>
         
         <Stack.Screen name="Footer" component={Footer}/>
+        <Stack.Screen name="Contacto" component={Contacto}/>
      
         
         
-        <Stack.Screen name="Profile" component={Profile} 
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Profile2" component={Profile2} 
         options={{title: 'Mi cuenta',
         headerTintColor:"white",
         headerStyle: {
@@ -145,6 +152,8 @@ export default function App() {
            backgroundColor: "#132039",
          },
          }}/>
+
+        <Stack.Screen name="AcercaID" component={AcercaID}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

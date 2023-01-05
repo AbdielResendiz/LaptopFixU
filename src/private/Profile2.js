@@ -5,7 +5,8 @@ import Footer from '../components/Footer';
 import { TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const Profile = () => {
+const Profile2 = () => {
+  {/**COPIA DE PERFIL, CON COLORES ORIGINALES, EL OTRO ES COPIA PARA ESTILO RAPPI */}
   return (
     <NativeBaseProvider>
       {/** Inicia Fondo azul, icono perfil y circulo */}
@@ -91,4 +92,4 @@ const Profile = () => {
     </NativeBaseProvider>
   )
 }
-export default Profile;
+export default Profile2;
