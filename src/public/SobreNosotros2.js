@@ -7,7 +7,7 @@ import AcercaID from './AcercaID';
 import Contacto from './Contacto';
 import InfoApp from './InfoApps';
 
-const SobreNosotros = () => {
+const SobreNosotros2 = () => {
   const [menu, setMenu] = useState(0);
   console.log("menu:",menu);
 
@@ -95,4 +95,4 @@ const SobreNosotros = () => {
     </NativeBaseProvider>
   )
 }
-export default SobreNosotros;
+export default SobreNosotros2;

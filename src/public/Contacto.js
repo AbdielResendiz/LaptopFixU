@@ -1,30 +1,81 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { NativeBaseProvider, Image, Center, AspectRatio, Box, Link } from 'native-base';
+import {  TouchableOpacity, View } from 'react-native';
+import { FontAwesome5, MaterialCommunityIcons, Fontisto } from '@expo/vector-icons'; 
+import { Box, NativeBaseProvider, Center, HStack, VStack, Text, Divider } from 'native-base';
 
 const Contacto = () => {
   return (
     <NativeBaseProvider>
-
-        <Box bg="white" m={5} rounded={10} shadow={5}>
-        <AspectRatio ratio={1} mx="10%" my={2}>
-            
-            <Image source={require("../img/logoID.png")
-            } alt="Alternate Text"  />
-        
-        </AspectRatio>
-
-        </Box>
-        
-        
-        <Center>
-          <Link href="https://api.whatsapp.com/send?phone=5214422198567&text=Hola%20Impactos%20Digitales%2C%20quisiera%20saber%20m%C3%A1s%20sobre%20sus%20servicios.">
-          Click here to open documentation.
-          </Link>
-            <Text>Contacto</Text>
+      <Box mx={9} rounded={20} bg="white" shadow={4}>
+       <HStack my={3}>
+        <Center mx={3}>
+          <FontAwesome5 name="map-marker-alt" size={28} color="black" />
         </Center>
-    
-    
+        <VStack >
+          <Text fontWeight={"bold"}>Ubicación:</Text>
+          <Text>Av Paseo de la Constitución No. 100 </Text>
+          <Text>Col. Villas del Parque Querétaro, México.</Text>
+        </VStack>
+       </HStack>
+        <Divider/>
+
+       <HStack my={1}>
+        <Center mx={3}>
+          <MaterialCommunityIcons name="email-outline" size={24} color="black" />
+        </Center>
+        <VStack >
+          <Text fontWeight={"bold"}>Correo electrónico:</Text>
+          <VStack>
+            <Text>contacto@impactosdigitales.com</Text>
+            <Text>appsmoviles@impactosdigitales.com</Text>
+          </VStack>
+         
+        </VStack>
+       </HStack>
+      </Box>
+
+       <HStack  mx={7} my={3}>
+        <VStack>
+          <HStack mb={5}  rounded={10} m={3}>
+            <Center>
+              <Fontisto name="facebook" size={24} color="#0076ED" />
+            </Center>
+            <Text>Facebook</Text>
+          </HStack>
+          
+
+          
+          <HStack>
+            <Center>
+              <FontAwesome5 name="instagram" size={24} color="black" />
+            </Center>
+            <Text>Instagram</Text>
+          </HStack>
+          
+
+        </VStack>
+        
+
+        <VStack ml={10}>
+        <HStack mb={5} >
+            <Center >
+              <Fontisto name="whatsapp" size={24} color="#009D79" />
+            </Center>
+            <Text>WhatsApp</Text>
+          </HStack>
+          <HStack>
+            <Center>
+              <FontAwesome5 name="linkedin-in" size={24} color="black" />
+            </Center>
+            <Text>LinkedIn</Text>
+          </HStack>
+          
+        </VStack>
+       </HStack>
+      
+        
+       
+
     </NativeBaseProvider>
   )
 }
