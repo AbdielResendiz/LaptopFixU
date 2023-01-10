@@ -24,21 +24,21 @@ const Home = (props) => {
               </Center>
 
             </VStack>
-            
+            {/**Boton CARRITO DE COMPRAS */}
             <Center h="100%" w="20%"  >
               <Center bg="#EEEEEE"  p={2} rounded={100} mr={1}>
-              <TouchableOpacity onPress={()=>props.navigation.navigate("Carrito")}>
-              <AntDesign name="shoppingcart" size={34} color="#464646" />
-              </TouchableOpacity>
-
+                <TouchableOpacity onPress={()=>props.navigation.navigate("Carrito")}>
+                  <AntDesign name="shoppingcart" size={34} color="#464646" />
+                </TouchableOpacity>
               </Center>
-              
             </Center>
-            
+            {/**BOTON CARRITO */}
             <Center h="100%" w="20%" bg="#132039" >
-            <TouchableOpacity onPress={()=>props.navigation.navigate("SobreNosotros")}>
-            <AntDesign name="infocirlce" size={34} color="white" />
-            </TouchableOpacity>
+              <Center bg="#EEEEEE"  p={2} rounded={100} mr={1}>
+                <TouchableOpacity onPress={()=>props.navigation.navigate("SobreNosotros")}>
+                  <FontAwesome name="gears" size={24} color="#0f0f0f" />
+                </TouchableOpacity>
+              </Center>
             </Center>
             
         </HStack>

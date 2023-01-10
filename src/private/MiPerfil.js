@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { TouchableOpacity} from 'react-native';
-import { Box, NativeBaseProvider, ScrollView, Text, Center, FormControl, Input, VStack, HStack  } from 'native-base';
+import { Box, NativeBaseProvider, ScrollView, Text, Center, FormControl, Input, VStack, HStack, Icon  } from 'native-base';
+import { FontAwesome, FontAwesome5, Entypo } from '@expo/vector-icons'; 
 import Footer from '../components/Footer';
 
 
@@ -21,40 +22,47 @@ const MiPerfil = () => {
                     {/**NOMBRES */}
                     <FormControl>
                         <FormControl.Label ml={4}>Nombres</FormControl.Label>
-                        <Input placeholder='Nombres'/>
+                        <Input InputLeftElement={<Icon as={<FontAwesome5 name="user-alt" size={24}  />} size={5} ml="4" color="muted.400" />}
+                        placeholder='Nombres'/>
                     </FormControl>
                     {/**APELLIDOS */}
                     <FormControl>
                         <FormControl.Label ml={4}>Apellidos</FormControl.Label>
-                        <Input placeholder='Apellidos'/>
+                        <Input InputLeftElement={<Icon as={<FontAwesome5 name="user-alt" size={24}  />} size={5} ml="4" color="muted.400" />}
+                        placeholder='Apellidos'/>
                     </FormControl>
-                    {/**APELLIDOS */}
+                    {/**Numero IDENTIDAD */}
                     <FormControl>
                         <FormControl.Label ml={4}>Número de identidad</FormControl.Label>
-                        <Input placeholder='Número de identidad'/>
+                        <Input InputLeftElement={<Icon as={<FontAwesome name="id-card" size={24}  />} size={5} ml="3" color="muted.400" />}
+                        placeholder='Número de identidad'/>
                     </FormControl>
-                    {/**APELLIDOS */}
+                    {/**EMAIL */}
                     <FormControl>
                         <FormControl.Label ml={4}>Correo electrónico</FormControl.Label>
-                        <Input placeholder='Correo electrónico'/>
+                        <Input InputLeftElement={<Icon as={<Entypo name="email" size={24}  />} size={5} ml="4" color="muted.400" />}
+                        InputRightElement={<Icon as={<FontAwesome name="lock" size={24}  />} size={5} ml="4" color="#FF554E" />}
+                        placeholder='Correo electrónico'/>
                     </FormControl>
-                    {/**APELLIDOS */}
+                    {/**CELULAR */}
                     <FormControl>
                         <FormControl.Label ml={4}>Celular</FormControl.Label>
-                        <Input placeholder='Celular'/>
+                        <Input InputLeftElement={<Icon as={<FontAwesome5 name="phone-alt" size={24}  />} size={5} ml="4" color="muted.400" />}
+                        placeholder='Celular'/>
                     </FormControl>
-                    {/**APELLIDOS */}
+                    {/**FECHA NACIMIENTO */}
                     <FormControl>
                         <FormControl.Label ml={4}>Fecha de nacimiento</FormControl.Label>
-                        <Input placeholder='Fecha de nacimiento'/>
+                        <Input InputLeftElement={<Icon as={<FontAwesome name="birthday-cake" size={24}  />} size={5} ml="4" color="muted.400" />}
+                        placeholder='Fecha de nacimiento'/>
                     </FormControl>
-
+                        {/**SEXO */}
                     <FormControl.Label ml={4}>Sexo</FormControl.Label>
                     <HStack  rounded={20} bg="#efefef">
                         
                             <Center  w="50%" roundedLeft={10} p={2} bg={selected===0 ? '#132039' : '#efefef'} >
                                 <TouchableOpacity onPress={()=>{setSelected(0)}}>
-                                    <Text fontSize={18} color={selected === 0 ? "white" : "black"}>Hombre</Text>  
+                                    <Text fontSize={18} color={selected === 0 ? "white" : "black"}> Hombre </Text>  
                                 </TouchableOpacity>
                             </Center>
                         
@@ -62,7 +70,7 @@ const MiPerfil = () => {
                         
                             <Center  w="50%"  roundedRight={10} p={2} bg={selected===1 ? '#132039' : '#efefef'}>
                                 <TouchableOpacity onPress={()=>{setSelected(1)}}>
-                                    <Text fontSize={18} color={selected === 1 ? "white" : "black"} >Mujer</Text> 
+                                    <Text fontSize={18} color={selected === 1 ? "white" : "black"} > Mujer </Text> 
                                 </TouchableOpacity>
                             </Center>
                        

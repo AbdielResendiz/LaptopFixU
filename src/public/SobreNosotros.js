@@ -27,7 +27,7 @@ const SobreNosotros = () => {
           {/**COLUMNA IZQUIERDA */}
           <VStack mr={6}>
             {/**MI PERFIL */}
-            <TouchableOpacity onPress={()=>{navigation.navigate("Profile")}}>
+            <TouchableOpacity onPress={()=>{navigation.navigate("MiPerfil")}}>
               <VStack >
                 <Center>
                   <Image source={require("../img/MiPerfil.png")
@@ -45,7 +45,7 @@ const SobreNosotros = () => {
               </VStack>
             </TouchableOpacity>
             {/**MIS DIRECCIONES */}
-            <TouchableOpacity onPress={()=>{navigation.navigate("Contacto")}}>
+            <TouchableOpacity onPress={()=>{navigation.navigate("MisDirecciones")}}>
               <VStack>
                 <Center>
                   <Image source={require("../img/MisDirecciones.png")

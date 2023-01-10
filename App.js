@@ -163,7 +163,7 @@ export default function App() {
            backgroundColor: "#0081C1",
          },
          }}/>
-         <Stack.Screen name="Mis Direcciones" component={MisDirecciones}
+         <Stack.Screen name="MisDirecciones" component={MisDirecciones}
          options={{title: 'Mis Direcciones',
          headerTintColor:"white",
          headerStyle: {
