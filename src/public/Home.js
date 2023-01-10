@@ -1,8 +1,8 @@
 import React from 'react';
-import {  TouchableOpacity, View } from 'react-native';
+import {  TouchableOpacity} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 import { NativeBaseProvider, HStack, Center, Box, 
-  ScrollView , Stack, AspectRatio, Image, Heading, Text} from 'native-base';
+  ScrollView , Stack, AspectRatio, Image, Heading, Text, VStack, View} from 'native-base';
 import Footer from "../components/Footer"
 import Card from "../components/Card"
 import CardServicio from "../components/CardServicio"
@@ -11,19 +11,31 @@ import CardPaquete from "../components/CardPaquete"
 
 const Home = (props) => {
   return (
-    <NativeBaseProvider flex={1} px="3">
+    <NativeBaseProvider >
+      <View flex={1} bg="white">
       {/**Row stack de bienvenida */}
-        <HStack>
-            <Center h="20" w="60%" bg="#BDC5C8"  >
-              <Text>Bienvenido</Text>
-            </Center>
-            <Center h="20" w="15%" bg="#BDC5C8"  >
-              <TouchableOpacity onPress={()=>props.navigation.navigate("MisPedidos")}>
-                <FontAwesome name="list-ul" size={24} color="black" />
+        <HStack  h="15%">
+            <VStack h="100%" w="60%">
+              <Center   h="40%"  >
+                <Text italic fontSize={18}>Bienvenido</Text>
+              </Center>
+              <Center  h="60%" >
+                <Text bold fontSize={17} mx={1}>Carlos Abdiel Reséndiz Vargas</Text>
+              </Center>
+
+            </VStack>
+            
+            <Center h="100%" w="20%"  >
+              <Center bg="#EEEEEE"  p={2} rounded={100} mr={1}>
+              <TouchableOpacity onPress={()=>props.navigation.navigate("Carrito")}>
+              <AntDesign name="shoppingcart" size={34} color="#464646" />
               </TouchableOpacity>
+
+              </Center>
+              
             </Center>
             
-            <Center h="20" w="25%" bg="#132039" >
+            <Center h="100%" w="20%" bg="#132039" >
             <TouchableOpacity onPress={()=>props.navigation.navigate("SobreNosotros")}>
             <AntDesign name="infocirlce" size={34} color="white" />
             </TouchableOpacity>
@@ -31,9 +43,11 @@ const Home = (props) => {
             
         </HStack>
         {/** scrool vertical para contenido*/}
-        <ScrollView style={{paddingHorizontal:10}} horizontal={false}>
+        <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%">
           <HStack style={{justifyContent: "flex-end"}}>
-            <Center h="10" w="30%">OFERTAS</Center>
+            <Center h="10" w="30%" >
+              <Text bold fontSize={16} letterSpacing={0.8}>OFERTAS</Text>
+            </Center>
             <Center h="10" w="30%">
               <TouchableOpacity onPress={() => {
                   props.navigation.navigate("Servicios");
@@ -55,9 +69,20 @@ const Home = (props) => {
             <Card/>
           </ScrollView>
 
-          <HStack style={{justifyContent: "flex-end"}}>
-            <Center h="10" w="30%">TECNICOS</Center>
-            <Center h="10" w="30%">Ver todas</Center>
+          <HStack style={{justifyContent: "flex-end"}} mt={3}>
+            <Center h="10" w="30%" >
+              <Text bold fontSize={16} letterSpacing={0.8}>TÉCNICOS</Text>
+            </Center>
+            <Center h="10" w="30%">
+              <TouchableOpacity onPress={() => {
+                  props.navigation.navigate("Servicios");
+                }}>
+              <Text color= "#236DB7"
+              fontWeight= "bold"
+              fontSize= "md">Ver todas 
+              </Text>
+              </TouchableOpacity>
+            </Center>
           </HStack>
           <ScrollView horizontal={true}>
             <TouchableOpacity onPress={() => {
@@ -73,9 +98,20 @@ const Home = (props) => {
 
           </ScrollView>
 
-          <HStack style={{justifyContent: "flex-end"}}>
-            <Center h="10" w="30%">PAQUETES</Center>
-            <Center h="10" w="30%">Ver todas</Center>
+          <HStack style={{justifyContent: "flex-end"}} mt={3}>
+            <Center h="10" w="30%" >
+              <Text bold fontSize={16} letterSpacing={0.8}>PAQUETES</Text>
+            </Center>
+            <Center h="10" w="30%">
+              <TouchableOpacity onPress={() => {
+                  props.navigation.navigate("Servicios");
+                }}>
+              <Text color= "#236DB7"
+              fontWeight= "bold"
+              fontSize= "md">Ver todos 
+              </Text>
+              </TouchableOpacity>
+            </Center>
           </HStack>
           <ScrollView horizontal={true}>
           <TouchableOpacity onPress={() => {
@@ -93,6 +129,7 @@ const Home = (props) => {
 
         </ScrollView>
         <Footer />
+        </View>
         
     </NativeBaseProvider>
   )

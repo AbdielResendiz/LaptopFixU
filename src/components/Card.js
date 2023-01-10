@@ -20,7 +20,7 @@ const Card = (props) => {
                 backgroundColor: "gray.50"
                 }}>
         <Box>
-          <AspectRatio w="95%" ratio={16 / 9}>
+          <AspectRatio w="98%" ratio={16 / 9}>
             <Image source={{
             uri: "https://us.123rf.com/450wm/niroworld/niroworld1411/niroworld141100025/33653760-computer-repair-service-concept-with-work-tools-icons-and-symbol-on-a-green-laptop-computer-key-for-.jpg?ver=6"
           }} alt="image" />

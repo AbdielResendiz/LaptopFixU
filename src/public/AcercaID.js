@@ -1,12 +1,12 @@
 import React from 'react';
 import {  View } from 'react-native';
-import { NativeBaseProvider, Image, Center, AspectRatio, Box, VStack, Text, HStack } from 'native-base';
+import { NativeBaseProvider, Image, Center, AspectRatio, Box, VStack, Text, HStack, Divider } from 'native-base';
 
 const AcercaID = () => {
   return (
     <NativeBaseProvider>
 
-        <Box bg="white" m={5} rounded={10} shadow={5}>
+        <Box bg="white" flex={1}>
             <VStack>
                 {/**LOGO ID */}
                 <Center my={2}>
@@ -15,7 +15,7 @@ const AcercaID = () => {
                 </Center>
                 {/**DESCRIPCION ID */}
                 <Center mx={5} mb={1} >
-                    <Text textAlign={"justify"} lineHeight={18} fontSize={18}>
+                    <Text textAlign={"justify"} lineHeight={18} fontSize={16} mx={3}>
                         Logramos que las tecnologías de la información mejoren el desempeño y hagan crecer los negocios de nuestros clientes.
                     </Text>
                 </Center>
@@ -24,44 +24,128 @@ const AcercaID = () => {
                         Nos especializamos en:
                     </Text>
                 </Center>
+                <Center>
+                <Divider thickness={3} w="50%" bg="#236DB7" my={3}/>
+                </Center>
                 
-                <HStack >
+                 
+                <HStack w="100%" >
                     {/** PRIMERA COLUMNA */}
-                    <VStack mx={3}>
-                        <Text fontSize={17} mb={3}>
-                            Páginas Web
-                        </Text>
-                        <Text fontSize={17} mb={3}>
-                            Universe Ecommerce
-                        </Text>
-                        <Text fontSize={17} mb={3}>
-                            Software a la medida
-                        </Text>
-                        <Text fontSize={17} mb={3}>
-                            Hosting y dominios
-                        </Text>
+                    <VStack w="33%" >
+                        <Center>
+                            <Image 
+                            source={require( "../img/webID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center mb={7}>
+                            <Text fontSize={17} mb={3}>
+                                Páginas Web
+                            </Text>
+                        </Center>
+
+                        <Center>
+                            <Image 
+                            source={require( "../img/hostID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center>
+                            <Text fontSize={17} mb={3}>
+                                Hosting y Dominios
+                            </Text>
+                        </Center>
+
+                        <Center>
+                            <Image 
+                            source={require( "../img/seoID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center>
+                            <Text fontSize={17} mb={3}>
+                                SEO{"\n"}SEM
+                            </Text>
+                        </Center>
+
                     </VStack>
 
                     {/** SEGUNDA COLUMNA */}
-                    <VStack mx={3}>
-                            <Text fontSize={17} mb={3}>
-                                Apps Móviles
+                    <VStack w="33%" >
+                        <Center>
+                            <Image 
+                            source={require( "../img/ecommID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center>
+                            <Text fontSize={17} mb={3}>Universe{"\n"}Ecommerce
                             </Text>
+                        </Center>
+
+                        <Center>
+                            <Image 
+                            source={require( "../img/appsID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center>
                             <Text fontSize={17} mb={3}>
-                                Ciberseguridad
+                                Apps{"\n"}Móviles
                             </Text>
+                        </Center>
+
+                        <Center>
+                            <Image 
+                            source={require( "../img/bigID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center>
                             <Text fontSize={17} mb={3}>
-                             Big branding
+                                Big Branding
                             </Text>
-                            <VStack>
-                                <Text fontSize={17}>
-                                Inbound Marketing
-                                </Text>
-                                <Text fontSize={17} mb={3}>
-                                SEO / SEM
-                                </Text>
-                            </VStack>
-                        
+                        </Center>
+
+                    </VStack>
+                     {/** Tercera */}
+                     <VStack w="33%" >
+                        <Center>
+                            <Image 
+                            source={require( "../img/softID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center>
+                            <Text fontSize={17} mb={3}>
+                                Software{"\n"}a la medida
+                            </Text>
+                        </Center>
+
+                        <Center>
+                            <Image 
+                            source={require( "../img/ciberID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center>
+                            <Text fontSize={17} mb={3}>
+                                Ciber{"\n"}Seguridad
+                            </Text>
+                        </Center>
+
+                        <Center>
+                            <Image 
+                            source={require( "../img/inboundID.png")
+                            } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                        </Center>
+
+                        <Center>
+                            <Text fontSize={17} mb={3}>
+                                Inbound{"\n"}Marketing
+                            </Text>
+                        </Center>
+
                     </VStack>
                 </HStack>
                 

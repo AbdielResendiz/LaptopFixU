@@ -101,7 +101,7 @@ const Servicios = () => {
         </View>
       </ScrollView>
       
-      <Footer style={{}}/>
+      <Footer />
     </NativeBaseProvider>
     
   )

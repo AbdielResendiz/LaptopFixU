@@ -2,8 +2,10 @@ import React from 'react';
 import {  TouchableOpacity, Alert} from 'react-native';
 import { NativeBaseProvider, ScrollView, Text, Box, HStack, Center, VStack, View } from 'native-base';
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'; 
+import { useNavigation } from '@react-navigation/native';
 
-const MisPedidos = (props) => {
+const MisPedidos = () => {
+  const navigation =useNavigation();
 
   const Detalle = (id)=>{ 
     Alert.alert(
@@ -64,7 +66,7 @@ const MisPedidos = (props) => {
               <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
               <Text ml={10}>Completada</Text>
             </VStack>
-            <TouchableOpacity onPress={()=>Detalle()}>
+            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
               <Center ml={10} mt={5}>
               <Entypo name="popup" size={44} color="black" />
               </Center>
@@ -82,7 +84,7 @@ const MisPedidos = (props) => {
               <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
               <Text ml={10}>En proceso</Text>
             </VStack>
-            <TouchableOpacity onPress={()=>Detalle()}>
+            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
               <Center ml={10} mt={5}>
               <Entypo name="popup" size={44} color="black" />
               </Center>
@@ -100,7 +102,7 @@ const MisPedidos = (props) => {
               <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
               <Text ml={10}>Cancelada</Text>
             </VStack>
-            <TouchableOpacity onPress={()=>Detalle()}>
+            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
               <Center ml={10} mt={5}>
               <Entypo name="popup" size={44} color="black" />
               </Center>

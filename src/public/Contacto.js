@@ -1,80 +1,137 @@
 import React from 'react';
 import {  TouchableOpacity, View } from 'react-native';
 import { FontAwesome5, MaterialCommunityIcons, Fontisto } from '@expo/vector-icons'; 
-import { Box, NativeBaseProvider, Center, HStack, VStack, Text, Divider } from 'native-base';
+import { Box, NativeBaseProvider, Center, HStack, VStack, Text, Divider, ScrollView, Image} from 'native-base';
+import Footer from '../components/Footer';
 
 const Contacto = () => {
   return (
     <NativeBaseProvider>
-      <Box mx={9} rounded={20} bg="white" shadow={4}>
-       <HStack my={3}>
-        <Center mx={3}>
-          <FontAwesome5 name="map-marker-alt" size={28} color="black" />
-        </Center>
-        <VStack >
-          <Text fontWeight={"bold"}>Ubicación:</Text>
-          <Text>Av Paseo de la Constitución No. 100 </Text>
-          <Text>Col. Villas del Parque Querétaro, México.</Text>
-        </VStack>
-       </HStack>
-        <Divider/>
-
-       <HStack my={1}>
-        <Center mx={3}>
-          <MaterialCommunityIcons name="email-outline" size={24} color="black" />
-        </Center>
-        <VStack >
-          <Text fontWeight={"bold"}>Correo electrónico:</Text>
-          <VStack>
-            <Text>contacto@impactosdigitales.com</Text>
-            <Text>appsmoviles@impactosdigitales.com</Text>
-          </VStack>
-         
-        </VStack>
-       </HStack>
-      </Box>
-
-       <HStack  mx={7} my={3}>
-        <VStack>
-          <HStack mb={5}  rounded={10} m={3}>
-            <Center>
-              <Fontisto name="facebook" size={24} color="#0076ED" />
-            </Center>
-            <Text>Facebook</Text>
+      <ScrollView w="100%" h="82%" bg="white">
+        {/**UBICACIÓN */}
+        <Box ml={7} mt={7}>
+          <HStack>
+            <Image 
+                source={require( "../img/UbicacionIcon.png")
+                } alt="Alternate Text" size={"xs"} resizeMode="contain" />
+                <Text fontSize={32} fontWeight={800}>Ubicación</Text>
           </HStack>
-          
+          <Divider w={40} thickness="3"  bg="#236DB7"/>
+          <HStack ml={6} mt={5}>
+            <Box h={5} w={5} bg="#afafaf" shadow={7} rounded={100}/>
+            <Box ml={4}>
+              <VStack>
+                <Text fontSize={16}>Av Paseo la Constitución #100</Text>
+                <Text fontSize={16}>Col. Villas del Parque</Text>
+                <Text fontSize={16}>Querétaro, México.</Text>
+              </VStack>
+            </Box>
+          </HStack>
+        </Box>
 
-          
+
+        {/**EMAIL */}
+        <Box ml={7} mt={3}>
           <HStack>
             <Center>
-              <FontAwesome5 name="instagram" size={24} color="black" />
-            </Center>
-            <Text>Instagram</Text>
-          </HStack>
-          
+            <Image 
+                source={require( "../img/CorreoContacto.png")
+                } alt="Alternate Text" size={"xs"} resizeMode="contain" mt={7} mr={3}/>
 
-        </VStack>
-        
-
-        <VStack ml={10}>
-        <HStack mb={5} >
-            <Center >
-              <Fontisto name="whatsapp" size={24} color="#009D79" />
             </Center>
-            <Text>WhatsApp</Text>
+            <Center>
+           <Text fontSize={32} fontWeight={800} mb={-3}>Correo Electrónico</Text>
+            </Center>
+            
+                
+                 
+                  
+                
           </HStack>
+          <Divider w={40} thickness="3"  bg="#236DB7"/>
+          <HStack ml={6} mt={3}>
+            <Box h={5} w={5} bg="#afafaf" shadow={7} rounded={100}/>
+            <Box ml={4}>
+              <VStack>
+                <Text fontSize={16}>contacto@impactosdigitales.com</Text>
+                <Text fontSize={16}>appsmoviles@impactosdigitales.com</Text>
+              </VStack>
+            </Box>
+          </HStack>
+        </Box>
+
+
+           {/**REDES SOCIALES */}
+           
+           <Box ml={7} mt={3}>
           <HStack>
             <Center>
-              <FontAwesome5 name="linkedin-in" size={24} color="black" />
+              <Image 
+                source={require( "../img/redes.png")
+                } alt="Alternate Text" size={"xs"} resizeMode="contain" mt={7} mr={3}/>
             </Center>
-            <Text>LinkedIn</Text>
+            <Center>
+              <Text fontSize={32} fontWeight={800} mb={-3}>Redes Sociales</Text>
+            </Center>
+            
+                
+                 
+                  
+                
           </HStack>
-          
-        </VStack>
-       </HStack>
-      
+          <Divider w={40} thickness="3"  bg="#236DB7"/>
+          {/**FACEBOOK */}
+          <HStack ml={6} mt={5}>
+            <Image 
+                source={require( "../img/FB.png")
+                } alt="Alternate Text" size={"xs"} resizeMode="contain" />
+            
+            <Center>
+              <Text fontSize={16}>@impactosdigitales</Text>
+            </Center>
+          </HStack>
+
+           {/**INSTAGRAM */}
+           <HStack ml={6} mt={5}>
+            <Image 
+                source={require( "../img/IG.png")
+                } alt="Alternate Text" size={"xs"} resizeMode="contain" />
+            
+            <Center>
+              <Text fontSize={16}>@impactosdigitales</Text>
+            </Center>
+          </HStack>
+
+           {/**WHATSAPP */}
+           <HStack ml={6} mt={5}>
+            <Image 
+                source={require( "../img/WA.png")
+                } alt="Alternate Text" size={"xs"} resizeMode="contain" />
+            <Center>
+              <Text fontSize={16}>442 219 8567</Text>
+            </Center>
+            
+          </HStack>
+
+           {/**LINKEDIN */}
+           <HStack ml={6} mt={5}>
+            <Image 
+                source={require( "../img/IN.png")
+                } alt="Alternate Text" size={"xs"} resizeMode="contain" />
+            <Center>
+              <Text fontSize={16}>@impactosdigitales</Text>
+            </Center>
+              
+          </HStack>
+        </Box>
         
-       
+        
+
+
+
+      </ScrollView>
+
+       <Footer/>
 
     </NativeBaseProvider>
   )

@@ -23,6 +23,11 @@ import Footer from "./src/components/Footer";
 import SobreNosotros from './src/public/SobreNosotros';
 import AcercaID from './src/public/AcercaID';
 import Contacto from './src/public/Contacto';
+import MisDirecciones from './src/private/MisDirecciones';
+import DetalleOrden from './src/private/DetalleOrden';
+import Buscar from './src/public/Buscar';
+import Soporte from './src/public/Soporte';
+import MiPerfil from './src/private/MiPerfil';
 
 
 const Stack = createNativeStackNavigator();
@@ -71,15 +76,21 @@ export default function App() {
         },
        }}/>
         <Stack.Screen name="MisPedidos" component={MisPedidos}
-        options={{title: 'Mis pedidos',
+        options={{title: 'Mis ordenes',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#0081C1",
         },
        }}/>
         
         <Stack.Screen name="Footer" component={Footer}/>
-        <Stack.Screen name="Contacto" component={Contacto}/>
+        <Stack.Screen name="Contacto" component={Contacto}
+         options={{title: 'Contáctanos',
+         headerTintColor:"white",
+         headerStyle: {
+           backgroundColor: "#236DB7",
+         },
+         }}/>
      
         
         
@@ -88,7 +99,7 @@ export default function App() {
         options={{title: 'Mi cuenta',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
         }}/>
         
@@ -123,7 +134,7 @@ export default function App() {
 
         <Stack.Screen name="AddCard" component={AddCard}/>
         <Stack.Screen name="InfoApps" component={InfoApps}
-        options={{title: 'Sobre nosotros',
+        options={{title: 'Nuestras otras apps',
         headerTintColor:"white",
         headerStyle: {
           backgroundColor: "#132039",
@@ -149,11 +160,56 @@ export default function App() {
          options={{title: 'Sobre nosotros',
          headerTintColor:"white",
          headerStyle: {
-           backgroundColor: "#132039",
+           backgroundColor: "#0081C1",
+         },
+         }}/>
+         <Stack.Screen name="Mis Direcciones" component={MisDirecciones}
+         options={{title: 'Mis Direcciones',
+         headerTintColor:"white",
+         headerStyle: {
+           backgroundColor: "#0081C1",
          },
          }}/>
 
-        <Stack.Screen name="AcercaID" component={AcercaID}/>
+        <Stack.Screen name="AcercaID" component={AcercaID}
+        options={{title: 'Acerca de Impactos Digitales',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#0081C1",
+        },
+        }}/>
+
+        <Stack.Screen name="DetalleOrden" component={DetalleOrden}
+        options={{title: 'Detalle de orden',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#0081C1",
+        },
+        }}/>    
+
+        <Stack.Screen name="Buscar" component={Buscar}
+        options={{title: 'Buscar',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#0081C1",
+        },
+        }}/>    
+
+      <Stack.Screen name="Soporte" component={Soporte}
+        options={{title: 'Soporte Técnico',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#0081C1",
+        },
+        }}/> 
+
+        <Stack.Screen name="MiPerfil" component={MiPerfil}
+        options={{title: 'Mi Perfil',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#0081C1",
+        },
+        }}/> 
       </Stack.Navigator>
     </NavigationContainer>
   );
