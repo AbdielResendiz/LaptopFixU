@@ -9,8 +9,8 @@ import Promociones from "./src/public/Promociones";
 import Paquetes from "./src/public/Paquetes";
 import Servicios from "./src/public/Servicios";
 import Detalle from "./src/public/Detalle";
-import Profile from "./src/private/Profile";
-import Profile2 from "./src/private/Profile2";
+
+
 import OpcionTecnico from "./src/private/OpcionTecnico";
 import AddCard from "./src/private/AddCard";
 import MisPedidos from "./src/private/MisPedidos";
@@ -94,14 +94,8 @@ export default function App() {
      
         
         
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Profile2" component={Profile2} 
-        options={{title: 'Mi cuenta',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-        }}/>
+
+      
         
         
         

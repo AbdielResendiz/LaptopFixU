@@ -7,6 +7,12 @@ const SignUp = () => {
 
   const navigation =useNavigation();
 
+
+
+
+
+  
+
   return <Center w="100%">
       <Box safeArea p="2" w="90%" maxW="290" py="2">
         <Center>
