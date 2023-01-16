@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Box, Text, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, NativeBaseProvider, Image } from "native-base";
+  Button, HStack, Center, NativeBaseProvider, Image, Spinner } from "native-base";
 import { TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import URL from "../private/api/URL";
@@ -17,6 +17,8 @@ const Login = (props) => {
     const [correo, setCorreo] = useState("aa@aa.com");
     const [contrasenia, setContrasenia] = useState("12345");
 
+    const [loading, setLoading] = useState(false);
+
  
 
   
@@ -24,6 +26,7 @@ const Login = (props) => {
 
     const Login2 = async() => {
       {/**se mandan los datos al controlador */}
+      setLoading(true);
       const dataLogin = new FormData();
         dataLogin.append("correo", correo);
         dataLogin.append("contrasenia", contrasenia);
@@ -89,6 +92,7 @@ const Login = (props) => {
         } catch(e) {
           // error reading value
         }
+        setLoading(false)
 
       }
     }
@@ -154,7 +158,12 @@ const Login = (props) => {
                   <Center>
                     <TouchableOpacity onPress={Login2}>
                       <Box mt="2" bg="#236DB7" w="60%" rounded={30} p={3} shadow={7}>
-                        <Text color="white" fontSize={18} letterSpacing={0.9} fontWeight={700}> Iniciar sesión </Text>
+                        { loading==false ? (
+                          <Text color="white" fontSize={18} letterSpacing={0.9} fontWeight={700}> Iniciar sesión </Text>
+                        ) :
+                        (<Spinner size={"lg"} color="white"/>)
+                        }
+                        
                       </Box>
                     </TouchableOpacity>
                   </Center>

@@ -1,6 +1,6 @@
 import  React, {useState} from "react";
 import { Box, Text, Heading, VStack, FormControl, Input, 
-  Button, HStack, Center, NativeBaseProvider, Image, ScrollView } from "native-base";
+  Button, HStack, Center, NativeBaseProvider, Image, ScrollView, Spinner } from "native-base";
   import { TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import fetchPost from "../private/api/fetchPost";
@@ -10,10 +10,12 @@ const SignUp = () => {
 
   const [correo, setCorreo]= useState("aa@aa.com");
   const [contrasenia, setContrasenia] = useState("12345");
-  const [contrasenia2, setContrasenia2] = useState("123455");
+  const [contrasenia2, setContrasenia2] = useState("12345");
   const [nombreU, setNombreU] = useState("macaco")
   const [apellidos, setApellidos] = useState("aldair");
   const [telefono, setTelefono] = useState("4423334444");
+
+  const [loading, setLoading] = useState(false);
 
   const validacion = async() =>{
     if (contrasenia==contrasenia2){
@@ -32,6 +34,7 @@ const SignUp = () => {
   }
 
   const Registro = async() => {
+    setLoading(true);
     
     const dataLogin = new FormData();
     
@@ -73,11 +76,12 @@ const SignUp = () => {
           'Fallo en Registro',
           'El correo o teléfono ya están en uso',
           [
-            { text: 'OK',  onPress: () => {navigation.navigate("Login")}  },
+            { text: 'OK',  onPress: () => console.log("error en registro")  },
           ],
           { cancelable: false },
         );
       } 
+      setLoading(false);
     }
   
 
@@ -157,7 +161,12 @@ const SignUp = () => {
           <Center>
             <TouchableOpacity onPress={validacion}>
               <Box mt="2" bg="#236DB7" w="60%" rounded={30} p={3} shadow={7}>
-                <Text color="white" fontSize={18} letterSpacing={0.9} fontWeight={700}> Registarse </Text>
+                { loading == false ? (
+                  <Text color="white" fontSize={18} letterSpacing={0.9} fontWeight={700}> Registarse </Text>
+                ) : 
+                (<Spinner size={"lg"} color="white"/>)
+                }
+                
               </Box>
             </TouchableOpacity>
           </Center>
