@@ -2,10 +2,12 @@ import * as React from "react";
 import { useState } from "react";
 import { Box, Text, Heading, VStack, FormControl, Input, Link, 
   Button, HStack, Center, NativeBaseProvider, Image } from "native-base";
-import { TouchableOpacity, Alert, AsyncStorage } from "react-native";
+import { TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import URL from "../private/api/URL";
-import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import fetchPost from "../private/api/fetchPost";
 
 const Login = (props) => {
   const navigation =useNavigation();
@@ -13,72 +15,90 @@ const Login = (props) => {
     //datos usuario
 
     const [correo, setCorreo] = useState("aa@aa.com");
-    const [contrasenia, setContrasenia] = useState("12346");
+    const [contrasenia, setContrasenia] = useState("12345");
 
-    const Login2 = async() => {
-      try{
-      const dataLogin = new FormData();
-      
-        dataLogin.append("correo", correo);
-        dataLogin.append("contrasenia", contrasenia);
-    
-        console.log("data", dataLogin)
-        await fetch('https://laptopfix.com.mx/laptopfixrun/api/login/inicio_sesion',{
-          method:'POST',
-          body: dataLogin
-        })
-        .then((response) => response.json())
-        .then((resultados) => {
-        console.log('Data:', resultados.data);
-        //console.log('Nombre:', resultados.data.nombreU);
-        //console.log('apellido:', resultados.data.apellidos);
-        console.log('Mensaje:', resultados.mensaje);
-        if (resultados.data===null){
-          
-            Alert.alert(
-              'Inicio de sesión fallido',
-              'Correo o contraseña incorrectos. \nPor favor intenta de nuevo.',
-              [
-                { text: 'OK', onPress: () => console.log('OK Pressed') },
-              ],
-              { cancelable: false },  
-            );
-          
-        }
-        else{
-
-          
-          
-          Alert.alert(
-            'Inicio de sesion exitoso',
-            'BIENVENIDO',
-            [
-              { text: 'OK',  onPress: () => {navigation.navigate("Home")}  },
-            ],
-            { cancelable: false },
-          );
-
-        }
-        
-        
-        })
-        .catch((ex) => {
-          console.log('Error:', ex);
-          Alert.alert('ERROR', 'Ups... algo salio mal, intenta de nuevo');
-        });
-      
-      
-    }
-    catch{
-      console.log('hay error')
-    }
-    }
-    
-
-
-
+ 
 
   
+
+
+    const Login2 = async() => {
+      {/**se mandan los datos al controlador */}
+      const dataLogin = new FormData();
+        dataLogin.append("correo", correo);
+        dataLogin.append("contrasenia", contrasenia);
+        console.log("data", dataLogin)
+        {/**se envia al servidor */}
+        const url = "https://laptopfix.com.mx/laptopfixrun/api/login/inicio_sesion"
+        const options = {
+          method:'POST',
+          body: dataLogin
+        };
+        {/**respuesta */}
+        const res = await fetchPost(url, options);
+        console.log("res", res.data);
+
+        console.log("res", res.mensaje);
+        {/**LOGIN INVALIDO */}
+        if (res.data===null){
+
+       
+
+          Alert.alert(
+            'Inicio de sesión fallido',
+            'Correo o contraseña incorrectos. \nPor favor intenta de nuevo.',
+            [
+              { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ],
+            { cancelable: false },  
+          );
+
+
+       
+      }
+      
+      else{
+        {/**LOGIN CORRECTO */}
+
+        try {
+          {/**guardamos el nombre en local variables terminan AS (AsyncStorage) */}
+          await AsyncStorage.setItem('nombreAS', res.data.nombreU);
+          await AsyncStorage.setItem('apellidosAS', res.data.apellidos);
+          await AsyncStorage.setItem('correoAS', res.data.correo);
+          await AsyncStorage.setItem('idAS', res.data.idU);
+          
+        } catch (e) {
+          console.log("Error login:", e);
+        }
+
+        Alert.alert(
+          'Inicio de sesion exitoso',
+          'BIENVENIDO',
+          [
+            { text: 'OK',  onPress: () => {navigation.navigate("Home")}  },
+          ],
+          { cancelable: false },
+        );
+
+        try {
+          const value = await AsyncStorage.getItem('nombreAS')
+          if(value !== null) {
+            // value previously stored
+            console.log("value nombreAS: ", value)
+          }
+        } catch(e) {
+          // error reading value
+        }
+
+      }
+    }
+    
+    
+    
+
+
+
+
 
   
         return (
@@ -117,12 +137,8 @@ const Login = (props) => {
                   <FormControl>
                     <FormControl.Label>Contraseña</FormControl.Label>
                     <Input type="password" 
-                    
                     placeholder='Contraseña'
                     onChangeText={(val) => setContrasenia(val)}
-                    
-                   
-                    
                     value={contrasenia}
                      />
                     <Link _text={{

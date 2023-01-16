@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {  TouchableOpacity} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 import { NativeBaseProvider, HStack, Center, Box, 
@@ -7,9 +7,73 @@ import Footer from "../components/Footer"
 import Card from "../components/Card"
 import CardServicio from "../components/CardServicio"
 import CardPaquete from "../components/CardPaquete"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Home = (props) => {
+  const [ nombre, setNombre ] = useState("");
+  const [ apellidos, setApellidos ] = useState("");
+  const [ correo, setCorreo ] = useState("");
+  const [ id, setId ] = useState("");
+
+  const [ conectado, setConectado ] = useState(false);
+  {/**Funcion que escanea las variables almacenadas en local storage */}
+  const status = () => {
+    if (id!=="") {
+      setConectado(true)
+      console.log("conectado?", conectado)
+     }
+     else{
+      console.log("conectado?", conectado)
+     }
+
+  };
+  useEffect( ()=>{
+    status();
+  }
+  )
+  
+
+ 
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        await AsyncStorage.getItem("nombreAS").then(async (value) => {
+          setNombre(value);
+          console.log("Nombre effect: ", nombre);
+        });
+    
+        await AsyncStorage.getItem("apellidosAS").then(async (value) => {
+          setApellidos(value);
+          console.log("Apellidos effect: ", apellidos);
+        });
+    
+        await AsyncStorage.getItem("correoAS").then(async (value) => {
+        setCorreo(value);
+        console.log("Correo effect: ", correo);
+        });
+    
+        await AsyncStorage.getItem("idAS").then(async (value) => {
+          setId(value);
+          console.log("ID effect: ", id);
+         
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  });
+  
+
+
+
+
+  
+
+
   return (
     <NativeBaseProvider >
       <View flex={1} bg="white">
@@ -17,10 +81,10 @@ const Home = (props) => {
         <HStack  h="15%">
             <VStack h="100%" w="60%">
               <Center   h="40%"  >
-                <Text italic fontSize={18}>Bienvenido</Text>
+                <Text italic fontSize={18}>Bienvenido </Text>
               </Center>
               <Center  h="60%" >
-                <Text bold fontSize={17} mx={1}>Carlos Abdiel Reséndiz Vargas</Text>
+                <Text bold fontSize={17} mx={1}>{conectado===true ? (nombre + " " + apellidos): "Invitado"}</Text>
               </Center>
 
             </VStack>

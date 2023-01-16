@@ -46,7 +46,7 @@ import { useNavigation } from '@react-navigation/native';
                                 } alt="Alternate Text" 
                                 size="7" rounded={"lg"}  />
                     <Text  fontSize="12">
-                      Promociones
+                      Servicios
                     </Text>
                   </Center>
                 </Pressable>
