@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {  TouchableOpacity, Alert} from 'react-native';
-import { NativeBaseProvider, ScrollView, Text, Box, HStack, Center, VStack, View } from 'native-base';
+import { NativeBaseProvider, ScrollView, Text, Box, HStack, Center, VStack, View, Image, Divider} from 'native-base';
 import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
+import Footer from '../components/Footer';
 
 const MisPedidos = () => {
   const navigation =useNavigation();
@@ -17,101 +18,136 @@ const MisPedidos = () => {
     )
   }
 
+  const [ select, setSelect ] = useState(0);
+  /**
+   * select:
+   *  0 = todos
+   *  1 = completos
+   *  2 = en proceso
+   *  3 = cancelados
+   */
+
+console.log("Seleccionado", select);
+
   return (
    <NativeBaseProvider>
+    <View  h="91%" w="100%">
     
 
     
     {/**Menu de categorias pedidos */}
-    <HStack  bg={"#BDC5C8"} >
-      <TouchableOpacity>
-        <Center  bg="white" h={45}  mt={3} ml={3} roundedTop={15} px={1}>
-          <Text fontSize={18}>Todos</Text>
-          <Center bg={"#236DB7"} h={1} w={"100%"}></Center>
+    <HStack  bg={"#FFFFFF"}  w="100%">
+      <TouchableOpacity onPress={()=>setSelect(0)}>
+        <Center  bg="#236DB7"  py={3}  mr={1}  px={2}>
+          <Text fontSize={14} color="#FFFFFF" fontWeight={800} letterSpacing={0.5}>TODOS</Text>
+          
         </Center>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Center bg="white" h={45}  mt={3} ml={2} roundedTop={15} px={1}>
-          <Text fontSize={16}>Completados</Text>
-          <Center bg={"#00AF63"} h={1} w={"100%"}></Center>
+      <TouchableOpacity onPress={()=>setSelect(1)}>
+        <Center bg="#00AF63"   mr={1}  py={3} px={2}>
+          <Text fontSize={14} color="#FFFFFF" fontWeight={800} letterSpacing={0.5}>COMPLETOS</Text>
+          
         </Center>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Center bg="white" h={45}  mt={3} ml={2} roundedTop={15} px={1}>
-          <Text fontSize={16}>En proceso</Text>
-          <Center bg={"#FFAA32"} h={1} w={"100%"}></Center>
+      <TouchableOpacity onPress={()=>setSelect(2)}>
+        <Center bg="#FFAA32"    py={3}  mr={1} px={2}>
+          <Text fontSize={14} color="#ffffff" fontWeight={800}>EN PROCESO</Text>
+            
         </Center>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Center bg="white" h={45}  mt={3} ml={2} roundedTop={15} px={1}>
-          <Text fontSize={16}>Cancelados</Text>
-          <Center bg={"#FF2832"} h={1} w={"100%"}></Center>
+      <TouchableOpacity onPress={()=>setSelect(3)}>
+        <Center bg="#FF2832" py={3}  px={2}>
+          <Text fontSize={14} color="#ffffff" fontWeight={800}>CANCELADOS</Text>
+          
         </Center>
       </TouchableOpacity>
       
       </HStack>
+      {/**DIVISOR COLOR RESPONSIVO */}
+      <Divider thickness={10} bg={(select==0) ? "#236DB7" : 
+      ((select==1) ? "#00AF63" 
+      : (select==2) ? "#FFAA32" : "#FF2832")
+      }/>
 
       {/**SCROLL de pedidos */}
-      <ScrollView bg="#BDC5C8">
-        <Box  bg={"white"} h={104} w="94%" mx={"3%"} mt={3} rounded={10}>
-             {/**CARD COMPLETADO */}
-          <HStack>
-            <Center w={100} m={2} bg="#00AF63" p={3} rounded={30}>
-              <MaterialCommunityIcons name="run-fast" size={65} color="white" />
-            </Center>
-            <VStack>
-              <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
-              <Text ml={10}>Completada</Text>
-            </VStack>
-            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
-              <Center ml={10} mt={5}>
-              <Entypo name="popup" size={44} color="black" />
+      <ScrollView bg="#FFFFFF">
+        <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
+          <Box  bg={"white"} h={120} w="94%" mx={"3%"} mt={3} mb={4} rounded={1}>
+              {/**CARD COMPLETADO */}
+            <HStack>
+              <Center w={120} m={2}  p={3} rounded={30}>
+              <Image source={require("../img/MisOrdenes/completoIcon.png")} 
+                  alt="image"  size={"xl"}style={{ resizeMode: "contain"}}/>
               </Center>
-            </TouchableOpacity>
-          </HStack>
-        </Box>
+              <VStack>
+                <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
+                <Text ml={10}>Completada</Text>
+              </VStack>
+              
+                
+              
+            </HStack>
+          </Box>
+        </TouchableOpacity>
+        {/**DIVISOR */}
+        <Center>
+          <Divider thickness={2} bg={"#236DB7"} w="80%"/>
+        </Center>
+        
 
            {/**CARD en proceso */}
-        <Box  bg={"white"} h={104} w="94%" mx={"3%"} mt={3} rounded={10}>
-          <HStack>
-            <Center w={100} m={2} bg="#FFEECE" p={3} rounded={30}>
-              <MaterialCommunityIcons name="run-fast" size={65} color="#FFAA32" />
-            </Center>
-            <VStack>
-              <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
-              <Text ml={10}>En proceso</Text>
-            </VStack>
-            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
-              <Center ml={10} mt={5}>
-              <Entypo name="popup" size={44} color="black" />
-              </Center>
-            </TouchableOpacity>
-          </HStack>
-        </Box>
+          <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
+            <Box  bg={"white"} h={120} w="94%" mx={"3%"} mt={3} mb={4} rounded={10}>
+              <HStack>
+                <Center w={120} m={2}  p={3} rounded={30}>
+                <Image source={require("../img/MisOrdenes/EnprocesoIcon.png")} 
+                    alt="image" size="xl" style={{ resizeMode: "contain"}}/>
+                </Center>
+                <VStack>
+                  <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
+                  <Text ml={10}>En proceso</Text>
+                </VStack>
+                
+                 
+                
+              </HStack>
+            </Box>
+          </TouchableOpacity>
+        {/**DIVISOR */}
+        <Center>
+          <Divider thickness={2} bg={"#236DB7"} w="80%"/>
+        </Center>
+        
 
         {/**CARD cancelado */}
-        <Box  bg={"white"} h={104} w="94%" mx={"3%"} mt={3} rounded={10} >
-          <HStack>
-            <Center w={100} m={2} bg="#FF2832" p={3} rounded={30}>
-              <MaterialCommunityIcons name="run-fast" size={65} color="white" />
-            </Center>
-            <VStack>
-              <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
-              <Text ml={10}>Cancelada</Text>
-            </VStack>
-            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
-              <Center ml={10} mt={5}>
-              <Entypo name="popup" size={44} color="black" />
+        <TouchableOpacity onPress={()=>{navigation.navigate("DetalleOrden")}}>
+          <Box  bg={"white"} h={120} w="94%" mx={"3%"} mt={3} mb={4} rounded={10} >
+            <HStack>
+              <Center w={120} m={2} p={3} rounded={30}>
+              <Image source={require("../img/MisOrdenes/canceladosIcon.png")} 
+                  alt="image"  size="xl" style={{ resizeMode: "contain"}}/>
               </Center>
-            </TouchableOpacity>
-          </HStack>
-        </Box>
+              <VStack>
+                <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
+                <Text ml={10}>Cancelada</Text>
+              </VStack>
+            </HStack>
+          </Box>
+        </TouchableOpacity>
+        {/**DIVISOR */}
+        <Center>
+          <Divider thickness={2} bg={"#236DB7"} w="80%"/>
+        </Center>
         
       
       </ScrollView>
+
+      </View>
+
+      <Footer/>
     
       
     
