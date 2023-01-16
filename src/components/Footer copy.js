@@ -25,61 +25,68 @@ import { useNavigation } from '@react-navigation/native';
             <Box  bg="black" safeAreaTop width="100%"  alignSelf="center">
         
               <HStack bg="#ffffff" alignItems="center" safeAreaBottom shadow={6}>
-                <Pressable cursor="pointer"  py="1" flex={1} 
+                <Pressable cursor="pointer"  py="3" flex={1} 
                   onPress={() => {setSelected(0); IrInicio();}}>
                   <Center>
                     <Image 
-                                source={require( "../img/footer/home.png")
+                                source={require( "../img/InicioF.png")
                                 } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                  
+                                size="7" rounded={"lg"}  />
+                    <Text fontSize="12">
+                      Inicio
+                    </Text>
                   </Center>
                 </Pressable>
-                
-                  <Divider orientation='vertical' h={7} my={1} thickness={2} bg="black"/>
-               
-                
+                <Divider orientation='vertical' h={5} mb={5} thickness={2} bg="black"/>
               
                 <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {setSelected(2); navigation.navigate('Servicios')}}>
                   <Center>
                   <Image 
-                                source={require( "../img/footer/servicios.png")
+                                source={require( "../img/PromoF.png")
                                 } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                  
+                                size="7" rounded={"lg"}  />
+                    <Text  fontSize="12">
+                      Servicios
+                    </Text>
                   </Center>
                 </Pressable>
-                <Divider orientation='vertical'h={7} my={1} thickness={2} bg="black"/>
+                <Divider orientation='vertical' h={5} mb={5} thickness={2} bg="black"/>
 
                 <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {setSelected(3); navigation.navigate('Buscar')}} >
                   <Center>
                     <Image 
-                                source={require( "../img/footer/buscar.png")
+                                source={require( "../img/BuscarF.png")
                                 } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                    
+                                size="7" rounded={"lg"}  />
+                    <Text  fontSize="12">
+                      Buscar
+                    </Text>
                   </Center>
                 </Pressable>
-                <Divider orientation='vertical' h={7} my={1} thickness={2} bg="black"/>
+                <Divider orientation='vertical' h={5} mb={5} thickness={2} bg="black"/>
 
                 <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {setSelected(4); navigation.navigate('Soporte')}}>
                   <Center>
                     <Image 
-                                source={require( "../img/footer/tecnico.png")
+                                source={require( "../img/SoporteF.png")
                                 } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                    
+                                size="7" rounded={"lg"}  />
+                    <Text  fontSize="12">
+                      Soporte
+                    </Text>
                   </Center>
                 </Pressable>
-                <Divider orientation='vertical' h={7} my={1} thickness={2} bg="black"/>
+                <Divider orientation='vertical' h={5} mb={5} thickness={2} bg="black"/>
 
                 <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {setSelected(5); IrCuenta();}}>
                   <Center>
                     <Image 
-                                source={require( "../img/footer/perfil.png")
+                                source={require( "../img/PerfilF.png")
                                 } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                   
+                                size="7" rounded={"lg"}  />
+                    <Text  fontSize="12">
+                      Mi Perfil
+                    </Text>
                   </Center>
                 </Pressable>
               </HStack>

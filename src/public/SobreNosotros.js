@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import { Center, Divider, HStack, NativeBaseProvider, Text, VStack, Image, Box} from 'native-base';
@@ -8,17 +8,25 @@ import Footer from '../components/Footer';
 const SobreNosotros = () => {
   const navigation =useNavigation();
 
+  const [nombre, setNombre] = useState("")
+
+
   return (
     <NativeBaseProvider>
       {/**Saludo inicial con nombre */}
-      <Box bg="white"  w="100%" h="90%">
+      <Box bg="white"  w="100%" h="91%">
+        <Center>
+        <Image source={require("../img/SobreNos/user.png")
+                      } alt="Alternate Text"  size="xl" />
+
+        </Center>
       <Center>
-        <Text m={3} fontSize={20} italic>Bienvenido </Text>
+        <Text  fontSize={20} italic>Bienvenido </Text>
       </Center>
       <Center>
         <Text ml={3} fontWeight={900} letterSpacing={.8} fontSize={26}>Carlos Abdiel Reséndiz</Text>
       </Center>
-      <Center w="50%" mt={3} mb={5}>
+      <Center w="50%" mt={1} mb={1}>
         <Divider bg="#0081C1" thickness={2} ml="100%"/>
       </Center>
       {/**inicia MENU CON 4 OPCIONES */}
@@ -30,8 +38,8 @@ const SobreNosotros = () => {
             <TouchableOpacity onPress={()=>{navigation.navigate("MiPerfil")}}>
               <VStack >
                 <Center>
-                  <Image source={require("../img/MiPerfil.png")
-                      } alt="Alternate Text"  size="xl" />
+                  <Image source={require("../img/SobreNos/perfil.png")
+                      } m={-3} mt={-5} alt="Alternate Text"  size="xl" />
                 </Center>
               </VStack>
             </TouchableOpacity>
@@ -39,7 +47,7 @@ const SobreNosotros = () => {
             <TouchableOpacity onPress={()=>{navigation.navigate("Contacto")}}>
               <VStack >
                 <Center>
-                  <Image source={require("../img/Contacto.png")
+                  <Image m={-3} mt={-5} source={require("../img/SobreNos/contacto.png")
                       } alt="Alternate Text"  size="xl" />
                 </Center>
               </VStack>
@@ -48,7 +56,7 @@ const SobreNosotros = () => {
             <TouchableOpacity onPress={()=>{navigation.navigate("MisDirecciones")}}>
               <VStack>
                 <Center>
-                  <Image source={require("../img/MisDirecciones.png")
+                  <Image m={-1} source={require("../img/SobreNos/direcciones.png")
                       } alt="Alternate Text"  size="xl" />
                 </Center>
               </VStack>
@@ -62,7 +70,7 @@ const SobreNosotros = () => {
             <TouchableOpacity onPress={()=>{navigation.navigate("AcercaID")}}>
               <VStack >
                 <Center>
-                  <Image source={require("../img/AcecaDe.png")
+                  <Image m={-5} source={require("../img/SobreNos/id.png")
                       } alt="Alternate Text"  size="xl"/>
                 </Center> 
                 
@@ -72,7 +80,7 @@ const SobreNosotros = () => {
             <TouchableOpacity onPress={()=>{navigation.navigate("MisPedidos")}}>
               <VStack >
                 <Center>
-                  <Image source={require("../img/MisOrdenes.png")
+                  <Image m={-3} source={require("../img/SobreNos/ordenes.png")
                       } alt="Alternate Text"  size="xl" />
                 </Center>
               </VStack>
@@ -82,7 +90,7 @@ const SobreNosotros = () => {
              <TouchableOpacity onPress={()=>{navigation.navigate("InfoApps")}}>
                 <VStack>
                   <Center>
-                    <Image source={require("../img/MasApps.png")
+                    <Image  source={require("../img/MasApps.png")
                         } alt="Alternate Text"  size="xl" />
                   </Center>
                 </VStack>
@@ -94,7 +102,7 @@ const SobreNosotros = () => {
           <VStack >
             <Center>
               <Image source={require("../img/Salir.png")
-                  } alt="Alternate Text"  size="xl" shadow={7}/>
+                  } alt="Alternate Text" mt={-5} size="xl" shadow={7}/>
             </Center>
           </VStack>
         </TouchableOpacity>

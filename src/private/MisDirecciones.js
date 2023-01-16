@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 const MisDirecciones = () => {
   return (
     <NativeBaseProvider>
-      <View w="100%" h="90%" bg="white">
+      <View w="100%" h="91%" bg="white">
         <Center>
           {/**TITULO  */}
           <Text fontWeight={800} fontSize={30} mt={2}>

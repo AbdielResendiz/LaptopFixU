@@ -10,12 +10,15 @@ const Contacto = () => {
       <ScrollView w="100%" h="82%" bg="white">
         {/**UBICACIÓN */}
         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://goo.gl/maps/DjsMWzsKZ7CcTE1o6')}} >
-          <Box ml={7} mt={7}>
+          <Box ml={7} mt={2}>
             <HStack>
               <Image 
-                  source={require( "../img/UbicacionIcon.png")
-                  } alt="Alternate Text" size={"xs"} resizeMode="contain" />
-                  <Text fontSize={32} fontWeight={800}>Ubicación</Text>
+                  source={require( "../img/contacto/mapa.png")
+                  } alt="Alternate Text" size={"md"} resizeMode="contain" />
+                  <Center>
+                    <Text fontSize={32} fontWeight={800}>Ubicación</Text>
+                  </Center>
+                  
             </HStack>
             <Divider w={40} thickness="3"  bg="#236DB7"/>
             <HStack ml={6} mt={5}>
@@ -36,15 +39,15 @@ const Contacto = () => {
         {/**EMAIL */}
         <TouchableOpacity onPress={() => Linking.openURL('mailto:contacto@impactosdigitales.com') }
          title="contacto@impactosdigitales.com">
-          <Box ml={7} mt={3}>
+          <Box ml={7} >
             <HStack>
               <Center>
                 <Image 
-                  source={require( "../img/CorreoContacto.png")
-                  } alt="Alternate Text" size={"xs"} resizeMode="contain" mt={7} mr={3}/>
+                  source={require( "../img/contacto/correo.png")
+                  } alt="Alternate Text" size={"md"} resizeMode="contain"  mr={3}/>
               </Center>
               <Center>
-                <Text fontSize={32} fontWeight={800} mb={-3}>Correo Electrónico</Text>
+                <Text fontSize={32} fontWeight={800} mb={1} lineHeight={30}>Correo {"\n"}Electrónico</Text>
               </Center>
             </HStack>
             <Divider w={40} thickness="3"  bg="#236DB7"/>
@@ -64,12 +67,12 @@ const Contacto = () => {
 
            {/**REDES SOCIALES */}
            
-          <Box ml={7} mt={3}>
+          <Box ml={7} >
           <HStack>
             <Center>
               <Image 
-                source={require( "../img/redes.png")
-                } alt="Alternate Text" size={"xs"} resizeMode="contain" mt={7} mr={3}/>
+                source={require( "../img/contacto/redes.png")
+                } alt="Alternate Text" size={"md"} resizeMode="contain"  mr={3}/>
             </Center>
             <Center>
               <Text fontSize={32} fontWeight={800} mb={-3}>Redes Sociales</Text>
@@ -78,7 +81,7 @@ const Contacto = () => {
           <Divider w={40} thickness="3"  bg="#236DB7"/>
           {/**FACEBOOK */}
           <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://www.facebook.com/@impactosdigitales')}}>
-            <HStack ml={6} mt={5}>
+            <HStack ml={6} mt={2}>
               <Image 
                   source={require( "../img/FB.png")
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
@@ -92,7 +95,7 @@ const Contacto = () => {
 
            {/**INSTAGRAM */}
            <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://www.instagram.com/@impactosdigitales')}}>
-              <HStack ml={6} mt={5}>
+              <HStack ml={6} mt={3}>
                 <Image 
                     source={require( "../img/IG.png")
                     } alt="Alternate Text" size={"xs"} resizeMode="contain" />
@@ -106,7 +109,7 @@ const Contacto = () => {
 
            {/**WHATSAPP */}
            <TouchableOpacity onPress={ ()=>{ Linking.openURL('whatsapp://send?text=Buen día, me gustaría recibir información de sus servicios&phone=4422198567')}}>
-            <HStack ml={6} mt={5}>
+            <HStack ml={6} mt={3}>
               <Image 
                   source={require( "../img/WA.png")
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
@@ -120,7 +123,7 @@ const Contacto = () => {
 
            {/**LINKEDIN */}
            <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://www.linkedin.com/company/impactos-digitales/about/')}}>
-            <HStack ml={6} mt={5}>
+            <HStack ml={6} mt={3}>
               <Image 
                   source={require( "../img/IN.png")
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
