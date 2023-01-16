@@ -139,7 +139,7 @@ export default function App() {
          options={{title: 'Carrito',
          headerTintColor:"white",
          headerStyle: {
-           backgroundColor: "#132039",
+           backgroundColor: "#0081C1",
          },
          }}/>
 

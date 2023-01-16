@@ -1,6 +1,6 @@
 import React from 'react';
 import {  TouchableOpacity, Linking } from 'react-native';
-import { NativeBaseProvider, Image, Center, AspectRatio, Box, VStack, Text, HStack, Divider } from 'native-base';
+import { NativeBaseProvider, Image, Center, Box, VStack, Text, HStack, Divider } from 'native-base';
 
 const AcercaID = () => {
   return (
@@ -39,43 +39,31 @@ const AcercaID = () => {
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/creacion-de-paginas-web-en-queretaro-2/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/webID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/Web.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
 
-                            <Center mb={7}>
-                                <Text fontSize={17} mb={3}>
-                                    Páginas Web
-                                </Text>
-                            </Center>
+                            
                         </TouchableOpacity>
                         {/**hosting y dominios */}
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/compra-de-dominio-y-hosting-en-queretaro/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/hostID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/Hosting.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
 
-                            <Center>
-                                <Text fontSize={17} mb={3}>
-                                    Hosting y Dominios
-                                </Text>
-                            </Center>
+                            
                         </TouchableOpacity>
                        
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/inbound-marketing-agencia-en-queretaro/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/seoID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/SEO.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
 
-                            <Center>
-                                <Text fontSize={17} mb={3}>
-                                    SEO{"\n"}SEM
-                                </Text>
-                            </Center>
+                            
                         </TouchableOpacity>
                         
 
@@ -87,43 +75,32 @@ const AcercaID = () => {
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/universe-ecommerce/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/ecommID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/Ecommerce.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
 
-                            <Center>
-                                <Text fontSize={17} mb={3}>Universe{"\n"}Ecommerce
-                                </Text>
-                            </Center>
+                            
                         </TouchableOpacity>
                         
                         {/**APPS MOVILES */}
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/desarrolladores-de-app-en-queretaro/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/appsID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/Apps.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
 
-                            <Center>
-                                <Text fontSize={17} mb={3}>
-                                    Apps{"\n"}Móviles
-                                </Text>
-                            </Center>
+                           
                         </TouchableOpacity>
                         
                         {/**BIG BRANDING */}
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/agencias-de-marketing-digital-queretaro-2/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/bigID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/Branding.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
-                            <Center>
-                                <Text fontSize={17} mb={3}>
-                                    Big Branding
-                                </Text>
-                            </Center>
+                           
                         </TouchableOpacity>
                         
 
@@ -133,42 +110,30 @@ const AcercaID = () => {
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/software-a-la-medida-queretaro/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/softID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/Software.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
-                            <Center>
-                                <Text fontSize={17} mb={3}>
-                                    Software{"\n"}a la medida
-                                </Text>
-                            </Center>
+                           
                         </TouchableOpacity>
                       
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/especialista-en-ciberseguridad-en-queretaro/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/ciberID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/Seguridad.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
-                            <Center>
-                                <Text fontSize={17} mb={3}>
-                                    Ciber{"\n"}Seguridad
-                                </Text>
-                            </Center>
+                            
                         </TouchableOpacity>
                        
                         {/**INBOUND MARKETING */}
                         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/inbound-marketing-agencia-en-queretaro/')}}>
                             <Center>
                                 <Image 
-                                source={require( "../img/inboundID.png")
-                                } alt="Alternate Text" size={"sm"} resizeMode="contain" />
+                                source={require( "../img/AcercaID/Marketing.png")
+                                } alt="Alternate Text" size={"xl"} resizeMode="contain" />
                             </Center>
 
-                            <Center>
-                                <Text fontSize={17} mb={3}>
-                                    Inbound{"\n"}Marketing
-                                </Text>
-                            </Center>
+                           
                         </TouchableOpacity>
                         
 
