@@ -84,7 +84,7 @@ const Home = (props) => {
                 <Text italic fontSize={18}>Bienvenido </Text>
               </Center>
               <Center  h="60%" >
-                <Text bold fontSize={17} mx={1}>{conectado===true ? (nombre + " " + apellidos): "Invitado"}</Text>
+                <Text bold fontSize={17} mx={1}>{nombre!==null ? (nombre + " " + apellidos): "Invitado"}</Text>
               </Center>
 
             </VStack>
@@ -139,7 +139,7 @@ const Home = (props) => {
             </Center>
             <Center h="10" w="30%">
               <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Servicios");
+                  props.navigation.navigate("Tecnicos");
                 }}>
               <Text color= "#236DB7"
               fontWeight= "bold"
@@ -164,7 +164,7 @@ const Home = (props) => {
 
           <HStack style={{justifyContent: "flex-end"}} mt={3}>
             <Center h="10" w="30%" >
-              <Text bold fontSize={16} letterSpacing={0.8}>PAQUETES</Text>
+              <Text bold fontSize={16} letterSpacing={0.8}>SERVICIOS</Text>
             </Center>
             <Center h="10" w="30%">
               <TouchableOpacity onPress={() => {

@@ -28,6 +28,7 @@ import DetalleOrden from './src/private/DetalleOrden';
 import Buscar from './src/public/Buscar';
 import Soporte from './src/public/Soporte';
 import MiPerfil from './src/private/MiPerfil';
+import Tecnicos from './src/public/Tecnicos';
 
 
 const Stack = createNativeStackNavigator();
@@ -199,6 +200,14 @@ export default function App() {
 
         <Stack.Screen name="MiPerfil" component={MiPerfil}
         options={{title: 'Mi Perfil',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#0081C1",
+        },
+        }}/> 
+
+        <Stack.Screen name="Tecnicos" component={Tecnicos}
+        options={{title: 'Técnicos',
         headerTintColor:"white",
         headerStyle: {
           backgroundColor: "#0081C1",

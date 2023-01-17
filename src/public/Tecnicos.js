@@ -6,18 +6,18 @@ import { Box, Heading, VStack, FormControl, Input, Link,
 import Footer from "../components/Footer"
 import fetchPost from '../private/api/fetchPost';
 import { TouchableOpacity } from 'react-native';
-const Servicios = (props) => {
+const Tecnicos = (props) => {
 
-    const [ servicios, setServicios ] = useState([]);
+    const [ tecnicos, setTecnicos ] = useState([]);
 
     const getDatos = async() => {
-        const url = "https://laptopfix.com.mx/laptopfixrun/api/servicios/ver_servicios"
+        const url = "https://laptopfix.com.mx/laptopfixrun/api/tecnicos/ver_tecnicos"
         const options = {
           method:'POST',
         };
         const res = await fetchPost(url, options);
-        setServicios(res.data);
-        console.log("res", res.data);
+        setTecnicos(res.tecnicos);
+        console.log("res", res.tecnicos);
     }
 
     useEffect(() => {
@@ -32,18 +32,18 @@ const Servicios = (props) => {
       <ScrollView backgroundColor={"#BDC5C8"}  maxH={"100%"} h={"83%"} >
         <View mb={2}>
 
-            {servicios.map( (servicio, index) => {
+            {tecnicos.map( (tecnico, index) => {
                 return(
                 <Box key={index} backgroundColor={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={5}>
                     <TouchableOpacity>
                         <HStack>
                             <Image 
                                 source={{
-                                uri: servicio.image_url
+                                uri: tecnico.image_url
                                 }}alt="Alternate Text" size="xl" roundedLeft={"lg"}  />
                             <Center>
-                                <Text fontSize={20} marginLeft={4} mr={3}>{servicio.nombreS}</Text>
-                                <Text fontSize={18} marginLeft={4} mr={3}>{servicio.desS}</Text>
+                                <Text fontSize={20} marginLeft={4} mr={3}>{tecnico.nombreU}</Text>
+                                <Text fontSize={20} marginLeft={4} mr={3}>{tecnico.apellidos}</Text>
                             </Center>
                         </HStack>
                     </TouchableOpacity>
@@ -65,4 +65,4 @@ const Servicios = (props) => {
     
   )
 }
-export default Servicios;
+export default Tecnicos;
