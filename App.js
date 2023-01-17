@@ -29,6 +29,7 @@ import Buscar from './src/public/Buscar';
 import Soporte from './src/public/Soporte';
 import MiPerfil from './src/private/MiPerfil';
 import Tecnicos from './src/public/Tecnicos';
+import AgregarTarjeta from './src/private/AgregarTarjeta';
 
 
 const Stack = createNativeStackNavigator();
@@ -208,6 +209,14 @@ export default function App() {
 
         <Stack.Screen name="Tecnicos" component={Tecnicos}
         options={{title: 'Técnicos',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#0081C1",
+        },
+        }}/> 
+
+        <Stack.Screen name="AgregarTarjeta" component={AgregarTarjeta}
+        options={{title: 'Agregar tarjeta',
         headerTintColor:"white",
         headerStyle: {
           backgroundColor: "#0081C1",
