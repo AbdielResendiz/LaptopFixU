@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import {  TouchableOpacity} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 import { NativeBaseProvider, HStack, Center, Box, 
-  ScrollView , Stack, AspectRatio, Image, Heading, Text, VStack, View} from 'native-base';
+  ScrollView , Stack, AspectRatio, Image, Heading, Text, VStack, View, ZStack} from 'native-base';
 import Footer from "../components/Footer"
 import Card from "../components/Card"
 import CardServicio from "../components/CardServicio"
 import CardPaquete from "../components/CardPaquete"
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Home = (props) => {
   const [ nombre, setNombre ] = useState("");
@@ -32,6 +32,11 @@ const Home = (props) => {
     status();
   }
   )
+  const config = {
+    dependencies: {
+      'linear-gradient': LinearGradient
+    }
+  };
   
 
  
@@ -75,54 +80,41 @@ const Home = (props) => {
 
 
   return (
-    <NativeBaseProvider >
-      <View flex={1} bg="white">
-      {/**Row stack de bienvenida */}
-        <HStack  h="15%">
-            <VStack h="100%" w="60%">
-              <Center   h="40%"  >
-                <Text italic fontSize={18}>Bienvenido </Text>
-              </Center>
-              <Center  h="60%" >
-                <Text bold fontSize={17} mx={1}>{nombre!==null ? (nombre + " " + apellidos): "Invitado"}</Text>
-              </Center>
+    <NativeBaseProvider config={config} >
+    
 
+      <Box  bg="white" h="91%">
+       
+      <ZStack>
+        <Box h="320"  w="100%" bg={{
+          linearGradient: {
+            colors: [ "#236DB7", '#ffffff'],
+            start: [0, 0],
+            end: [0, 1]
+          }
+        }}>
+          
+        </Box>
+      </ZStack>
+      {/**Row stack de bienvenida */}
+      <Center h="10%">
+        <HStack  >
+            <VStack h="100%" w="60%">
+              <Center     >
+                <Text bold fontSize={24} color="#FFFFFF" >Bienvenido </Text>
+              </Center>
+              <Center   >
+                <Text  fontSize={24} mx={1} color="#FFFFFF">{nombre!==null ? (nombre + " " + apellidos): "Invitado"}</Text>
+              </Center>
             </VStack>
-            {/**Boton CARRITO DE COMPRAS */}
-            <Center h="100%" w="20%"  >
-              <Center bg="#EEEEEE"  p={2} rounded={100} mr={1}>
-                <TouchableOpacity onPress={()=>props.navigation.navigate("Carrito")}>
-                  <AntDesign name="shoppingcart" size={34} color="#464646" />
-                </TouchableOpacity>
-              </Center>
-            </Center>
-            {/**BOTON CARRITO */}
-            <Center h="100%" w="20%" bg="#132039" >
-              <Center bg="#EEEEEE"  p={2} rounded={100} mr={1}>
-                <TouchableOpacity onPress={()=>props.navigation.navigate("SobreNosotros")}>
-                  <FontAwesome name="gears" size={24} color="#0f0f0f" />
-                </TouchableOpacity>
-              </Center>
-            </Center>
-            
         </HStack>
+
+      </Center>
+        
+
         {/** scrool vertical para contenido*/}
-        <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%">
-          <HStack style={{justifyContent: "flex-end"}}>
-            <Center h="10" w="30%" >
-              <Text bold fontSize={16} letterSpacing={0.8}>OFERTAS</Text>
-            </Center>
-            <Center h="10" w="30%">
-              <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Servicios");
-                }}>
-              <Text color= "#236DB7"
-              fontWeight= "bold"
-              fontSize= "md">Ver todas 
-              </Text>
-              </TouchableOpacity>
-            </Center>
-          </HStack>
+        <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" mt={3}>
+          {/**SCROOL HORIZONTAL PROMOCIONES */}
           <ScrollView horizontal={true}>
             <TouchableOpacity onPress={() => {
                   props.navigation.navigate("Detalle");
@@ -132,47 +124,18 @@ const Home = (props) => {
             <Card/>
             <Card/>
           </ScrollView>
-
-          <HStack style={{justifyContent: "flex-end"}} mt={3}>
-            <Center h="10" w="30%" >
-              <Text bold fontSize={16} letterSpacing={0.8}>TÉCNICOS</Text>
+               {/**BOTON SERVICIOS Y VER TODOS */} 
+          <HStack  mt={3}>
+            <Center h="10" w="30%"   bg="#236DB7"  rounded={10} ml={3}>
+              <Text bold fontSize={16} letterSpacing={0.8} color="white">SERVICIOS</Text>
             </Center>
-            <Center h="10" w="30%">
-              <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Tecnicos");
-                }}>
-              <Text color= "#236DB7"
-              fontWeight= "bold"
-              fontSize= "md">Ver todas 
-              </Text>
-              </TouchableOpacity>
-            </Center>
-          </HStack>
-          <ScrollView horizontal={true}>
-            <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Detalle");
-                }}>
-              <CardServicio/>
-            </TouchableOpacity>
-            <CardServicio/>
-            <CardServicio/>
-            <CardServicio/>
-            <CardServicio/>
-            
-
-          </ScrollView>
-
-          <HStack style={{justifyContent: "flex-end"}} mt={3}>
-            <Center h="10" w="30%" >
-              <Text bold fontSize={16} letterSpacing={0.8}>SERVICIOS</Text>
-            </Center>
-            <Center h="10" w="30%">
+            <Center h="10" w="30%" ml="30%">
               <TouchableOpacity onPress={() => {
                   props.navigation.navigate("Servicios");
                 }}>
               <Text color= "#236DB7"
               fontWeight= "bold"
-              fontSize= "md">Ver todos 
+              fontSize= "lg">Ver todos 
               </Text>
               </TouchableOpacity>
             </Center>
@@ -191,9 +154,42 @@ const Home = (props) => {
 
           </ScrollView>
 
+          {/**botones TECNICOS Y VER TODOS */}
+          <HStack  my={3}>
+            <Center h="10" w="30%" bg="#236DB7"  rounded={10} ml={3} >
+              <Text bold fontSize={16} letterSpacing={0.8} color="white">TÉCNICOS</Text>
+            </Center>
+            <Center h="10" w="30%" ml="30%" >
+              <TouchableOpacity onPress={() => {
+                  props.navigation.navigate("Tecnicos");
+                }}>
+              <Text color= "#236DB7"
+              fontWeight= "bold"
+              fontSize= "lg">Ver todos 
+              </Text>
+              </TouchableOpacity>
+            </Center>
+          </HStack>
+            {/**SCROLL HORIZONTAL CON TECNICOS */}
+          <ScrollView horizontal={true}>
+            <TouchableOpacity onPress={() => {
+                  props.navigation.navigate("Detalle");
+                }}>
+              <CardServicio/>
+            </TouchableOpacity>
+            <CardServicio/>
+            <CardServicio/>
+            <CardServicio/>
+            <CardServicio/>
+            
+
+          </ScrollView>
+
+
         </ScrollView>
+        
+        </Box>
         <Footer />
-        </View>
         
     </NativeBaseProvider>
   )

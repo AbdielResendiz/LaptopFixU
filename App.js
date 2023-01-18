@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { View, TouchableOpacity, Button} from 'react-native';
+import { navigationRef } from './RootNavigation';
+import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
+
 import Home from "./src/public/Home";
 import Login from "./src/public/Login";
 import SignUp from "./src/public/SignUp";
@@ -32,11 +36,17 @@ import Tecnicos from './src/public/Tecnicos';
 import AgregarTarjeta from './src/private/AgregarTarjeta';
 
 
+
+
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+
+export default function App(props) {
+
+
   return (
-    <NavigationContainer>
+    
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
       <Stack.Screen
             name="Home"
@@ -46,6 +56,21 @@ export default function App() {
               headerStyle: {
                 backgroundColor: "#236DB7",
               },
+              headerShadowVisible: false,
+              headerRight: () => (
+                <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity onPress={()=>props.navigation.navigate("Carrito")} style={{marginRight:20}}>
+                  <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={()=>props.navigation.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+                  <FontAwesome name="gears" size={24} color="#FFFFFF" />
+                </TouchableOpacity>
+              </View>
+                
+              ),
+             
+              
             }}
           />
         <Stack.Screen name="Detalle" component={Detalle}

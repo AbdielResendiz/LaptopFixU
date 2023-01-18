@@ -35,7 +35,6 @@ const AgregarTarjeta = () => {
                         <Input type="number"  placeholder="Nombre" />
                     </Stack>
                     </FormControl>
-
                 </VStack>
 
                 <VStack w="48%" ml={-5}>
