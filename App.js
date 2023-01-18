@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigationContainerRef} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { View, TouchableOpacity, Button} from 'react-native';
 import { navigationRef } from './RootNavigation';
@@ -38,11 +38,13 @@ import AgregarTarjeta from './src/private/AgregarTarjeta';
 
 
 
+
 const Stack = createNativeStackNavigator();
 
 
-export default function App(props) {
-
+export default function App() {
+  
+  const navigationRef = useNavigationContainerRef();
 
   return (
     
@@ -59,11 +61,11 @@ export default function App(props) {
               headerShadowVisible: false,
               headerRight: () => (
                 <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity onPress={()=>props.navigation.navigate("Carrito")} style={{marginRight:20}}>
+                <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
                   <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={()=>props.navigation.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+                <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
                   <FontAwesome name="gears" size={24} color="#FFFFFF" />
                 </TouchableOpacity>
               </View>

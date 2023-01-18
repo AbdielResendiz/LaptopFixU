@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {  TouchableOpacity} from 'react-native';
+import {  TouchableOpacity, Dimensions} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 import { NativeBaseProvider, HStack, Center, Box, 
   ScrollView , Stack, AspectRatio, Image, Heading, Text, VStack, View, ZStack} from 'native-base';
@@ -9,12 +9,15 @@ import CardServicio from "../components/CardServicio"
 import CardPaquete from "../components/CardPaquete"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
+import { SwiperFlatList } from 'react-native-swiper-flatlist';
 
 const Home = (props) => {
   const [ nombre, setNombre ] = useState("");
   const [ apellidos, setApellidos ] = useState("");
   const [ correo, setCorreo ] = useState("");
   const [ id, setId ] = useState("");
+
+  const colors = ['tomato', 'thistle', 'skyblue', '#00ff00'];
 
   const [ conectado, setConectado ] = useState(false);
   {/**Funcion que escanea las variables almacenadas en local storage */}
@@ -115,15 +118,22 @@ const Home = (props) => {
         {/** scrool vertical para contenido*/}
         <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" mt={3}>
           {/**SCROOL HORIZONTAL PROMOCIONES */}
-          <ScrollView horizontal={true}>
-            <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Detalle");
-                }}>
-              <Card />
-            </TouchableOpacity>
-            <Card/>
-            <Card/>
-          </ScrollView>
+          <Box w="100%" h={200} bg="white">
+          <SwiperFlatList
+              autoplay
+              autoplayDelay={4}
+              autoplayLoop
+              index={2}
+              showPagination
+              data={colors}
+              
+              renderItem={({ item }) => (
+                <Box bg={item} w={Dimensions.get('window').width} > 
+                  <Text >{item}</Text>
+                </Box>
+              )}
+            />
+          </Box>
                {/**BOTON SERVICIOS Y VER TODOS */} 
           <HStack  mt={3}>
             <Center h="10" w="30%"   bg="#236DB7"  rounded={10} ml={3}>
