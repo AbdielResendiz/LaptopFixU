@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-//import {   } from 'react-native';
-//import {   } from 'react-native';
-import { Box, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, ZStack } from "native-base";
-import Footer from "../components/Footer"
-import { LinearGradient } from 'expo-linear-gradient';
-import fetchPost from '../private/api/fetchPost';
+import { Box,  HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Divider } from "native-base";
+  import { FontAwesome } from '@expo/vector-icons'; 
+
 import { TouchableOpacity } from 'react-native';
+/**componentes y opciones */
+import Footer from "../components/Footer"
+import fetchPost from '../private/api/fetchPost';
+import config from '../private/api/config';
+import Carrusel from '../components/Carrusel';
+import Gradiente from '../components/Gradiente';
+
 const Tecnicos = (props) => {
 
     const [ tecnicos, setTecnicos ] = useState([]);
@@ -24,70 +27,49 @@ const Tecnicos = (props) => {
     useEffect(() => {
         getDatos();
       }, []);
-
-        /**GRADIENTE LINEAR FUNCION PARA NATIVE BASE */
-  const config = {
-    dependencies: {
-      'linear-gradient': LinearGradient
-    }
-  };
   
 
 
 
   return (
     <NativeBaseProvider config={config} >
-      <Box>
-      <ZStack>
-          <Box h="320"  w="100%" bg={{
-            linearGradient: {
-              colors: [ "#236DB7", '#ffffff'],
-              start: [0, 0],
-              end: [0, 1]
-            }
-          }}>
-            
-          </Box>
-        </ZStack>
+      <Box h="91%" bg="white">
+        <Gradiente/>
+        <Center mx={3} >
+         <Carrusel/>
+        </Center>
+        <ScrollView >
+              {tecnicos.map( (tecnico, index) => {
+                  return(
+                  <Box key={index} backgroundColor={"white"} rounded="lg" ml={4} mr={5} mt={2}>
+                      <TouchableOpacity>
+                          <HStack>
+                              
+                                   <Image source={{uri:tecnico.image_url} } 
+                                     alt={tecnico.nombreU} size="lg" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
+                              <Box w="60%" mt={5} ml={4}>
+                                  <Text bold fontSize={20}  color="#236DB7">{tecnico.nombreU + " " + tecnico.apellidos}</Text>
+                                  <Text>Técnico</Text>
+                              </Box>
+                              <Center >
+                               <FontAwesome name="angle-right" size={24} color="black" />
+                              </Center>
+                          </HStack>
+                      </TouchableOpacity>
+                      <Center>
+                        <Divider mt={1} w="20%" ml="20%" thickness={2} bg="black"/>
 
-
-      <ScrollView   maxH={"100%"} h={"83%"} >
-        
-
-            {tecnicos.map( (tecnico, index) => {
-                return(
-                <Box key={index} backgroundColor={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={5}>
-                    <TouchableOpacity>
-                        <HStack>
-                            <Image 
-                                source={{
-                                uri: tecnico.image_url
-                                }}alt="Alternate Text" size="xl" roundedLeft={"lg"}  />
-                            <Center>
-                                <Text fontSize={20} marginLeft={4} mr={3}>{tecnico.nombreU}</Text>
-                                <Text fontSize={20} marginLeft={4} mr={3}>{tecnico.apellidos}</Text>
-                            </Center>
-                        </HStack>
-                    </TouchableOpacity>
-                </Box>
-                );
-            } )}
-          {/**Box de producto */}
-          
-
-           
-            
-
-
-       
-      </ScrollView>
-
+                      </Center>
+                      
+                  </Box>
+                    
+                  );
+              } )}
+            {/**Box de producto */}
+        </ScrollView>
       </Box>
-      
-      
       <Footer />
     </NativeBaseProvider>
-    
   )
 }
 export default Tecnicos;

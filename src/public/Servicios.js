@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-//import {   } from 'react-native';
-//import {   } from 'react-native';
 import { Box, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image } from "native-base";
+  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, Divider } from "native-base";
+import { TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons'; 
+/**Componentes */
 import Footer from "../components/Footer"
 import fetchPost from '../private/api/fetchPost';
-import { TouchableOpacity } from 'react-native';
+import config from '../private/api/config';
+import Gradiente from '../components/Gradiente';
+import Carrusel from '../components/Carrusel';
+
 const Servicios = (props) => {
 
     const [ servicios, setServicios ] = useState([]);
@@ -27,38 +31,54 @@ const Servicios = (props) => {
 
 
   return (
-    <NativeBaseProvider >
+    <NativeBaseProvider config={config} >
+
+      <Box h="91%" w="100%" bg="#ffffff"  >
+        <Gradiente/>
+        <Center mx={3}>
+        <Carrusel/>
+
+        </Center>
+        
+
+
+        {/**Scrool con SERVICIOS */}
+        <ScrollView   >
+          <View mb={2}>
+
+              {servicios.map( (servicio, index) => {
+                  return(
+                  <Box key={index} backgroundColor={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
+                      <TouchableOpacity>
+                          <HStack>
+                              <Image 
+                                  source={{
+                                  uri: servicio.image_url
+                                  }}alt="Alternate Text" size="lg" roundedLeft={"lg"}  />
+                              <Box w="60%" mt={5} ml={4}>
+                                  <Text bold fontSize={20} color="#236DB7" >{servicio.nombreS}</Text>
+                                  <Text >{servicio.desS}</Text>
+                              </Box>
+                              <Center >
+                               <FontAwesome name="angle-right" size={24} color="black" />
+                              </Center>
+                          </HStack>
+                      </TouchableOpacity>
+                      <Center>
+                        <Divider mt={1} w="20%" mx="10%" thickness={2} bg="black"/>
+
+                      </Center>
+                  </Box>
+                  );
+              } )}
+            {/**Box de producto */}
+
+          </View>
+        </ScrollView>
+
+      </Box>
       
-      <ScrollView backgroundColor={"#BDC5C8"}  maxH={"100%"} h={"83%"} >
-        <View mb={2}>
-
-            {servicios.map( (servicio, index) => {
-                return(
-                <Box key={index} backgroundColor={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={5}>
-                    <TouchableOpacity>
-                        <HStack>
-                            <Image 
-                                source={{
-                                uri: servicio.image_url
-                                }}alt="Alternate Text" size="xl" roundedLeft={"lg"}  />
-                            <Center>
-                                <Text fontSize={20} marginLeft={4} mr={3}>{servicio.nombreS}</Text>
-                                <Text fontSize={18} marginLeft={4} mr={3}>{servicio.desS}</Text>
-                            </Center>
-                        </HStack>
-                    </TouchableOpacity>
-                </Box>
-                );
-            } )}
-          {/**Box de producto */}
-          
-
-           
-            
-
-
-        </View>
-      </ScrollView>
+      
       
       <Footer />
     </NativeBaseProvider>

@@ -51,7 +51,7 @@ const Login = (props) => {
             'Inicio de sesión fallido',
             'Correo o contraseña incorrectos. \nPor favor intenta de nuevo.',
             [
-              { text: 'OK', onPress: () => console.log('OK Pressed') },
+              { text: 'OK', onPress: () => setLoading(false) },
             ],
             { cancelable: false },  
           );

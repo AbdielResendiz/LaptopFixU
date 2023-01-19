@@ -7,7 +7,7 @@ const Carrusel = ()=> {
     return(
         <SwiperFlatList
               autoplay
-              autoplayDelay={4}
+              autoplayDelay={3}
               autoplayLoop
               index={2}
               showPagination

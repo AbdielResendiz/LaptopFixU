@@ -84,11 +84,24 @@ export default function App() {
         }}/>
         <Stack.Screen name="Servicios" component={Servicios}
         options={{title: 'Servicios',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-        }}/>
+          headerTintColor:"white",
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        />
         <Stack.Screen name="Login" component={Login}
         options={{title: 'Iniciar sesión',
         headerTintColor:"white",
@@ -110,16 +123,42 @@ export default function App() {
         headerStyle: {
           backgroundColor: "#236DB7",
         },
-       }}/>
+        headerShadowVisible: false,
+        headerRight: () => (
+          <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+            <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+            <FontAwesome name="gears" size={24} color="#FFFFFF" />
+          </TouchableOpacity>
+        </View>
+        ),
+      }}
+      />
         
         <Stack.Screen name="Footer" component={Footer}/>
         <Stack.Screen name="Contacto" component={Contacto}
          options={{title: 'Contáctanos',
          headerTintColor:"white",
-         headerStyle: {
-           backgroundColor: "#236DB7",
-         },
-         }}/>
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        />
      
         
         
@@ -170,7 +209,16 @@ export default function App() {
          headerStyle: {
            backgroundColor: "#236DB7",
          },
-         }}/>
+         headerShadowVisible: false,
+         headerRight: () => (
+           <View style={{flexDirection: 'row'}}>
+           <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+             <FontAwesome name="gears" size={24} color="#FFFFFF" />
+           </TouchableOpacity>
+         </View>
+         ),
+       }}
+       />
 
         <Stack.Screen name="OpcionTecnico" component={OpcionTecnico}
          options={{title: 'Selecciona una opción',
@@ -180,27 +228,62 @@ export default function App() {
          },
          }}/>
          <Stack.Screen name="SobreNosotros" component={SobreNosotros}
-         options={{title: 'Sobre nosotros',
+         options={{title: 'Opciones',
          headerTintColor:"white",
-         headerStyle: {
-           backgroundColor: "#236DB7",
-         },
-         }}/>
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        />
          <Stack.Screen name="MisDirecciones" component={MisDirecciones}
          options={{title: 'Mis Direcciones',
          headerTintColor:"white",
-         headerStyle: {
-           backgroundColor: "#236DB7",
-         },
-         }}/>
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        />
 
         <Stack.Screen name="AcercaID" component={AcercaID}
         options={{title: 'Acerca de Impactos Digitales',
         headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-        }}/>
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        />
 
         <Stack.Screen name="DetalleOrden" component={DetalleOrden}
         options={{title: 'Detalle de orden',
@@ -213,34 +296,86 @@ export default function App() {
         <Stack.Screen name="Buscar" component={Buscar}
         options={{title: 'Buscar',
         headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-        }}/>    
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        />   
 
       <Stack.Screen name="Soporte" component={Soporte}
         options={{title: 'Soporte Técnico',
         headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-        }}/> 
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        />
 
         <Stack.Screen name="MiPerfil" component={MiPerfil}
         options={{title: 'Mi Perfil',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-        }}/> 
+          headerTintColor:"white",
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        /> 
 
         <Stack.Screen name="Tecnicos" component={Tecnicos}
         options={{title: 'Técnicos',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-        }}/> 
+          headerTintColor:"white",
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+          ),
+        }}
+        />
 
         <Stack.Screen name="AgregarTarjeta" component={AgregarTarjeta}
         options={{title: 'Agregar tarjeta',

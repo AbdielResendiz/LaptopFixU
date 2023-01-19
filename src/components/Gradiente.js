@@ -8,9 +8,9 @@ const Gradiente = () => {
 
     return(
         <ZStack>
-        <Box h="320"  w="100%" bg={{
+        <Box h="210"  w="100%" bg={{
           linearGradient: {
-            colors: [ "#236DB7", '#ffffff'],
+            colors: [ "#236DB7", "#236DB7",'#ffffff'],
             start: [0, 0],
             end: [0, 1]
           }
