@@ -10,13 +10,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 /**componentes */
 import config from '../private/api/config';
 import Footer from "../components/Footer";
+import fetchPost from '../private/api/fetchPost';
 import Card from "../components/Card";
 import CardServicio from "../components/CardServicio";
 import CardPaquete from "../components/CardPaquete";
 import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
+import DetalleTecnico from './DetalleTecnico';
 
 const Home = (props) => {
+
+
   const [ nombre, setNombre ] = useState("");
   const [ apellidos, setApellidos ] = useState("");
   const [ correo, setCorreo ] = useState("");
@@ -41,6 +45,17 @@ const Home = (props) => {
   }
   )
 
+  const detalleServicio= (item) => {
+    props.navigation.navigate("DetalleServicio", {
+      idServicio: item,
+    });
+  };
+
+  const detalleTecnico= (item) => {
+    props.navigation.navigate("DetalleTecnico", {
+      idTecnico: item,
+    });
+  };
 
   
 
@@ -76,6 +91,44 @@ const Home = (props) => {
 
     fetchData();
   });
+
+  //INICIA Ver TECNICOS
+  const [ servicios, setServicios ] = useState([]);
+
+  const getDatos1 = async() => {
+      const url = "https://laptopfix.com.mx/laptopfixrun/api/servicios/ver_servicios"
+      const options = {
+        method:'POST',
+      };
+      const res = await fetchPost(url, options);
+      setServicios(res.data);
+      console.log("res", res.data);
+  }
+
+  useEffect(() => {
+      getDatos1();
+    }, []);
+
+  //FIN VER TECNICOS
+
+  //INICIA VER SERVICIOS
+  const [ tecnicos, setTecnicos ] = useState([]);
+
+  const getDatos = async() => {
+      const url = "https://laptopfix.com.mx/laptopfixrun/api/tecnicos/ver_tecnicos"
+      const options = {
+        method:'POST',
+      };
+      const res = await fetchPost(url, options);
+      setTecnicos(res.tecnicos);
+      console.log("res", res.tecnicos);
+  }
+
+  useEffect(() => {
+      getDatos();
+    }, []);
+
+  //TERMINA VER SERVICIOS
   
 
   return (
@@ -122,15 +175,29 @@ const Home = (props) => {
             </HStack>
             {/**SERVICIOS SCROLL HORIZONTAL */}
             <ScrollView horizontal={true} mt={1}>
-            <TouchableOpacity onPress={() => {
-                    props.navigation.navigate("Detalle");
-                  }}>
-              <CardPaquete/>
-              </TouchableOpacity>
-              <CardPaquete/>
-              <CardPaquete/>
-              <CardPaquete/>
-              <CardPaquete/>
+            
+             
+              
+              
+              {servicios.map( (servicio, index) => {
+                  return(
+                    <TouchableOpacity key={index} onPress={() => detalleServicio(servicio.idS)
+                    }>
+                    <Box   bg="white" >
+                      <Image source={{uri:servicio.image_url} } 
+                      alt="image" style={{width: 100,
+                      height: 80, resizeMode: "contain"}}/>
+                      <Center mt={2}>
+                          <Text bold >{servicio.nombreS}</Text>
+                          <Text >{servicio.desS}</Text>
+                      </Center>
+                    </Box>
+                    </TouchableOpacity>
+                  );})}
+              
+
+
+
             </ScrollView>
 
             {/**botones TECNICOS Y VER TODOS */}
@@ -151,15 +218,28 @@ const Home = (props) => {
             </HStack>
               {/**SCROLL HORIZONTAL CON TECNICOS */}
             <ScrollView horizontal={true}>
-              <TouchableOpacity onPress={() => {
-                    props.navigation.navigate("Detalle");
-                  }}>
-                <CardServicio/>
-              </TouchableOpacity>
-              <CardServicio/>
-              <CardServicio/>
-              <CardServicio/>
-              <CardServicio/>
+            
+
+                {tecnicos.map( (tecnico, index) => {
+                  return(
+                    <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
+                      <Box >
+                      <Center>
+                        <Image source={{uri:tecnico.image_url} } 
+                          alt="image" style={{width: 80,
+                          height: 80, resizeMode: "contain"}} borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
+                      </Center>
+                        <Center>
+                          <Text bold>{tecnico.nombreU}</Text>
+                          <Text >Técnico</Text>
+                        </Center>
+                    </Box>
+                  </TouchableOpacity>
+                  );} )}
+             
+
+
+              
             </ScrollView>
           </ScrollView>
         </Box>

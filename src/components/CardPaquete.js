@@ -13,10 +13,10 @@ import { NativeBaseProvider, HStack, Center, Box,
                 
               
                 <Image source={require("../img/descarga.png")} 
-                 alt="image" style={{width: 100,
-                 height: 80, resizeMode: "contain"}}/>
+                 alt="image" size="md" resizeMode='content' />
                  <Center mt={2}>
-                    <Text >Servicio</Text>
+                    <Text bold>Servicio</Text>
+                    <Text>Descripción</Text>
                  </Center>
                 
               
