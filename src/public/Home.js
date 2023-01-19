@@ -3,13 +3,18 @@ import {  TouchableOpacity, Dimensions} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 import { NativeBaseProvider, HStack, Center, Box, 
   ScrollView , Stack, AspectRatio, Image, Heading, Text, VStack, View, ZStack} from 'native-base';
-import Footer from "../components/Footer"
-import Card from "../components/Card"
-import CardServicio from "../components/CardServicio"
-import CardPaquete from "../components/CardPaquete"
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LinearGradient } from 'expo-linear-gradient';
-import { SwiperFlatList } from 'react-native-swiper-flatlist';
+
+
+/**componentes */
+import config from '../private/api/config';
+import Footer from "../components/Footer";
+import Card from "../components/Card";
+import CardServicio from "../components/CardServicio";
+import CardPaquete from "../components/CardPaquete";
+import Carrusel from '../components/Carrusel';
+import Gradiente from '../components/Gradiente';
 
 const Home = (props) => {
   const [ nombre, setNombre ] = useState("");
@@ -17,7 +22,7 @@ const Home = (props) => {
   const [ correo, setCorreo ] = useState("");
   const [ id, setId ] = useState("");
 
-  const colors = ['tomato', 'thistle', 'skyblue', '#00ff00'];
+
 
   const [ conectado, setConectado ] = useState(false);
   {/**Funcion que escanea las variables almacenadas en local storage */}
@@ -35,11 +40,8 @@ const Home = (props) => {
     status();
   }
   )
-  const config = {
-    dependencies: {
-      'linear-gradient': LinearGradient
-    }
-  };
+
+
   
 
  
@@ -81,17 +83,7 @@ const Home = (props) => {
       {/**Box que contiene toda la vista */}
       <Box  bg="white" h="91%">
         {/**Fondo gradiante */}
-        <ZStack>
-          <Box h="320"  w="100%" bg={{
-            linearGradient: {
-              colors: [ "#236DB7", '#ffffff'],
-              start: [0, 0],
-              end: [0, 1]
-            }
-          }}>
-            
-          </Box>
-        </ZStack>
+      <Gradiente/>
       {/**Row stack de bienvenida */}
       <Center h="10%">
         <HStack  >
@@ -104,94 +96,72 @@ const Home = (props) => {
               </Center>
             </VStack>
         </HStack>
-
       </Center>
         
         {/** scrool vertical para contenido*/}
-        <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" mt={3}>
-          {/**SCROOL HORIZONTAL PROMOCIONES */}
-          <Box w="100%" h={200} bg="white">
-          <SwiperFlatList
-              autoplay
-              autoplayDelay={4}
-              autoplayLoop
-              index={2}
-              showPagination
-              data={colors}
-              
-              renderItem={({ item }) => (
-                <Box bg={item} w={Dimensions.get('window').width} > 
-                   <Image source={require("../img/banner1.png")} 
-                     alt={item} h={200} w={(Dimensions.get('window').width)-20} resizeMode="stretch" />
-                </Box>
-              )}
-            />
-          </Box>
-               {/**BOTON SERVICIOS Y VER TODOS */} 
-          <HStack  mt={3}>
-            <Center h="10" w="30%"   bg="#236DB7"  rounded={10} ml={3}>
-              <Text bold fontSize={16} letterSpacing={0.8} color="white">SERVICIOS</Text>
-            </Center>
-            <Center h="10" w="30%" ml="30%">
-              <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Servicios");
-                }}>
-              <Text color= "#236DB7"
-              fontWeight= "bold"
-              fontSize= "lg">Ver todos 
-              </Text>
-              </TouchableOpacity>
-            </Center>
-          </HStack>
-          {/**SERVICIOS SCROLL HORIZONTAL */}
-          <ScrollView horizontal={true} mt={1}>
-          <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Detalle");
-                }}>
-            <CardPaquete/>
-            </TouchableOpacity>
-            <CardPaquete/>
-            <CardPaquete/>
-            <CardPaquete/>
-            <CardPaquete/>
-            
-
-          </ScrollView>
-
-          {/**botones TECNICOS Y VER TODOS */}
-          <HStack  my={3}>
-            <Center h="10" w="30%" bg="#236DB7"  rounded={10} ml={3} >
-              <Text bold fontSize={16} letterSpacing={0.8} color="white">TÉCNICOS</Text>
-            </Center>
-            <Center h="10" w="30%" ml="30%" >
-              <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Tecnicos");
-                }}>
-              <Text color= "#236DB7"
-              fontWeight= "bold"
-              fontSize= "lg">Ver todos 
-              </Text>
-              </TouchableOpacity>
-            </Center>
-          </HStack>
-            {/**SCROLL HORIZONTAL CON TECNICOS */}
-          <ScrollView horizontal={true}>
+          <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" mt={3}>
+            {/**SCROOL HORIZONTAL PROMOCIONES */}
+            <Box w="100%" h={200} bg="white">
+            <Carrusel/>
+            </Box>
+                {/**BOTON SERVICIOS Y VER TODOS */} 
+            <HStack  mt={3}>
+              <Center h="10" w="30%"   bg="#236DB7"  rounded={10} ml={3}>
+                <Text bold fontSize={16} letterSpacing={0.8} color="white">SERVICIOS</Text>
+              </Center>
+              <Center h="10" w="30%" ml="30%">
+                <TouchableOpacity onPress={() => {
+                    props.navigation.navigate("Servicios");
+                  }}>
+                <Text color= "#236DB7"
+                fontWeight= "bold"
+                fontSize= "lg">Ver todos 
+                </Text>
+                </TouchableOpacity>
+              </Center>
+            </HStack>
+            {/**SERVICIOS SCROLL HORIZONTAL */}
+            <ScrollView horizontal={true} mt={1}>
             <TouchableOpacity onPress={() => {
-                  props.navigation.navigate("Detalle");
-                }}>
+                    props.navigation.navigate("Detalle");
+                  }}>
+              <CardPaquete/>
+              </TouchableOpacity>
+              <CardPaquete/>
+              <CardPaquete/>
+              <CardPaquete/>
+              <CardPaquete/>
+            </ScrollView>
+
+            {/**botones TECNICOS Y VER TODOS */}
+            <HStack  my={3}>
+              <Center h="10" w="30%" bg="#236DB7"  rounded={10} ml={3} >
+                <Text bold fontSize={16} letterSpacing={0.8} color="white">TÉCNICOS</Text>
+              </Center>
+              <Center h="10" w="30%" ml="30%" >
+                <TouchableOpacity onPress={() => {
+                    props.navigation.navigate("Tecnicos");
+                  }}>
+                <Text color= "#236DB7"
+                fontWeight= "bold"
+                fontSize= "lg">Ver todos 
+                </Text>
+                </TouchableOpacity>
+              </Center>
+            </HStack>
+              {/**SCROLL HORIZONTAL CON TECNICOS */}
+            <ScrollView horizontal={true}>
+              <TouchableOpacity onPress={() => {
+                    props.navigation.navigate("Detalle");
+                  }}>
+                <CardServicio/>
+              </TouchableOpacity>
               <CardServicio/>
-            </TouchableOpacity>
-            <CardServicio/>
-            <CardServicio/>
-            <CardServicio/>
-            <CardServicio/>
-            
-
+              <CardServicio/>
+              <CardServicio/>
+              <CardServicio/>
+            </ScrollView>
           </ScrollView>
-
-
-        </ScrollView>
-        
         </Box>
         <Footer />
         

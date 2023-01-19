@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 //import {   } from 'react-native';
 //import {   } from 'react-native';
 import { Box, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image } from "native-base";
+  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, ZStack } from "native-base";
 import Footer from "../components/Footer"
+import { LinearGradient } from 'expo-linear-gradient';
 import fetchPost from '../private/api/fetchPost';
 import { TouchableOpacity } from 'react-native';
 const Tecnicos = (props) => {
@@ -24,13 +25,34 @@ const Tecnicos = (props) => {
         getDatos();
       }, []);
 
+        /**GRADIENTE LINEAR FUNCION PARA NATIVE BASE */
+  const config = {
+    dependencies: {
+      'linear-gradient': LinearGradient
+    }
+  };
+  
+
 
 
   return (
-    <NativeBaseProvider >
-      
-      <ScrollView backgroundColor={"#BDC5C8"}  maxH={"100%"} h={"83%"} >
-        <View mb={2}>
+    <NativeBaseProvider config={config} >
+      <Box>
+      <ZStack>
+          <Box h="320"  w="100%" bg={{
+            linearGradient: {
+              colors: [ "#236DB7", '#ffffff'],
+              start: [0, 0],
+              end: [0, 1]
+            }
+          }}>
+            
+          </Box>
+        </ZStack>
+
+
+      <ScrollView   maxH={"100%"} h={"83%"} >
+        
 
             {tecnicos.map( (tecnico, index) => {
                 return(
@@ -57,8 +79,11 @@ const Tecnicos = (props) => {
             
 
 
-        </View>
+       
       </ScrollView>
+
+      </Box>
+      
       
       <Footer />
     </NativeBaseProvider>
