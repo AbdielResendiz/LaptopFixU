@@ -79,21 +79,21 @@ export default function App() {
         options={{title: 'Detalle',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
         }}/>
         <Stack.Screen name="Servicios" component={Servicios}
         options={{title: 'Servicios',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
         }}/>
         <Stack.Screen name="Login" component={Login}
         options={{title: 'Iniciar sesión',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
         }}/>
         
@@ -101,14 +101,14 @@ export default function App() {
         options={{title: 'Registro',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
        }}/>
         <Stack.Screen name="MisPedidos" component={MisPedidos}
         options={{title: 'Mis ordenes',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#0081C1",
+          backgroundColor: "#236DB7",
         },
        }}/>
         
@@ -135,7 +135,7 @@ export default function App() {
         options={{title: 'Pasarela de pago',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
         }}/>
 
@@ -143,7 +143,7 @@ export default function App() {
         options={{title: 'Confirma dirección',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
         }}/>
 
@@ -151,7 +151,7 @@ export default function App() {
         options={{title: 'Confirma método de pago',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
         }}/>
 
@@ -160,7 +160,7 @@ export default function App() {
         options={{title: 'Nuestras otras apps',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#132039",
+          backgroundColor: "#236DB7",
         },
         }}/>
 
@@ -168,7 +168,7 @@ export default function App() {
          options={{title: 'Carrito',
          headerTintColor:"white",
          headerStyle: {
-           backgroundColor: "#0081C1",
+           backgroundColor: "#236DB7",
          },
          }}/>
 
@@ -176,21 +176,21 @@ export default function App() {
          options={{title: 'Selecciona una opción',
          headerTintColor:"white",
          headerStyle: {
-           backgroundColor: "#132039",
+           backgroundColor: "#236DB7",
          },
          }}/>
          <Stack.Screen name="SobreNosotros" component={SobreNosotros}
          options={{title: 'Sobre nosotros',
          headerTintColor:"white",
          headerStyle: {
-           backgroundColor: "#0081C1",
+           backgroundColor: "#236DB7",
          },
          }}/>
          <Stack.Screen name="MisDirecciones" component={MisDirecciones}
          options={{title: 'Mis Direcciones',
          headerTintColor:"white",
          headerStyle: {
-           backgroundColor: "#0081C1",
+           backgroundColor: "#236DB7",
          },
          }}/>
 
@@ -198,7 +198,7 @@ export default function App() {
         options={{title: 'Acerca de Impactos Digitales',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#0081C1",
+          backgroundColor: "#236DB7",
         },
         }}/>
 
@@ -206,7 +206,7 @@ export default function App() {
         options={{title: 'Detalle de orden',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#0081C1",
+          backgroundColor: "#236DB7",
         },
         }}/>    
 
@@ -214,7 +214,7 @@ export default function App() {
         options={{title: 'Buscar',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#0081C1",
+          backgroundColor: "#236DB7",
         },
         }}/>    
 
@@ -222,7 +222,7 @@ export default function App() {
         options={{title: 'Soporte Técnico',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#0081C1",
+          backgroundColor: "#236DB7",
         },
         }}/> 
 
@@ -230,7 +230,7 @@ export default function App() {
         options={{title: 'Mi Perfil',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#0081C1",
+          backgroundColor: "#236DB7",
         },
         }}/> 
 
@@ -238,7 +238,7 @@ export default function App() {
         options={{title: 'Técnicos',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#0081C1",
+          backgroundColor: "#236DB7",
         },
         }}/> 
 
@@ -246,7 +246,7 @@ export default function App() {
         options={{title: 'Agregar tarjeta',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#0081C1",
+          backgroundColor: "#236DB7",
         },
         }}/> 
       </Stack.Navigator>

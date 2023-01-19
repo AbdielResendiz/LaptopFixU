@@ -76,29 +76,22 @@ const Home = (props) => {
   });
   
 
-
-
-
-  
-
-
   return (
     <NativeBaseProvider config={config} >
-    
-
+      {/**Box que contiene toda la vista */}
       <Box  bg="white" h="91%">
-       
-      <ZStack>
-        <Box h="320"  w="100%" bg={{
-          linearGradient: {
-            colors: [ "#236DB7", '#ffffff'],
-            start: [0, 0],
-            end: [0, 1]
-          }
-        }}>
-          
-        </Box>
-      </ZStack>
+        {/**Fondo gradiante */}
+        <ZStack>
+          <Box h="320"  w="100%" bg={{
+            linearGradient: {
+              colors: [ "#236DB7", '#ffffff'],
+              start: [0, 0],
+              end: [0, 1]
+            }
+          }}>
+            
+          </Box>
+        </ZStack>
       {/**Row stack de bienvenida */}
       <Center h="10%">
         <HStack  >
@@ -114,7 +107,6 @@ const Home = (props) => {
 
       </Center>
         
-
         {/** scrool vertical para contenido*/}
         <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" mt={3}>
           {/**SCROOL HORIZONTAL PROMOCIONES */}
@@ -129,7 +121,8 @@ const Home = (props) => {
               
               renderItem={({ item }) => (
                 <Box bg={item} w={Dimensions.get('window').width} > 
-                  <Text >{item}</Text>
+                   <Image source={require("../img/banner1.png")} 
+                     alt={item} h={200} w={(Dimensions.get('window').width)-20} resizeMode="stretch" />
                 </Box>
               )}
             />
@@ -150,7 +143,8 @@ const Home = (props) => {
               </TouchableOpacity>
             </Center>
           </HStack>
-          <ScrollView horizontal={true}>
+          {/**SERVICIOS SCROLL HORIZONTAL */}
+          <ScrollView horizontal={true} mt={1}>
           <TouchableOpacity onPress={() => {
                   props.navigation.navigate("Detalle");
                 }}>

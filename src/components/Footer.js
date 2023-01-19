@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
     const Footer = () => {
-        const [selected, setSelected] = React.useState(0);
+      
         const navigation =useNavigation();
         const IrInicio = () => {
           
@@ -26,7 +26,7 @@ import { useNavigation } from '@react-navigation/native';
         
               <HStack bg="#ffffff" alignItems="center" safeAreaBottom shadow={6}>
                 <Pressable cursor="pointer"  py="1" flex={1} 
-                  onPress={() => {setSelected(0); IrInicio();}}>
+                  onPress={() => { IrInicio();}}>
                   <Center>
                     <Image 
                                 source={require( "../img/footer/home.png")
@@ -40,7 +40,7 @@ import { useNavigation } from '@react-navigation/native';
                
                 
               
-                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {setSelected(2); navigation.navigate('Servicios')}}>
+                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => { navigation.navigate('Servicios')}}>
                   <Center>
                   <Image 
                                 source={require( "../img/footer/servicios.png")
@@ -51,7 +51,7 @@ import { useNavigation } from '@react-navigation/native';
                 </Pressable>
                 <Divider orientation='vertical'h={7} my={1} thickness={2} bg="black"/>
 
-                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {setSelected(3); navigation.navigate('Buscar')}} >
+                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => { navigation.navigate('Buscar')}} >
                   <Center>
                     <Image 
                                 source={require( "../img/footer/buscar.png")
@@ -62,7 +62,7 @@ import { useNavigation } from '@react-navigation/native';
                 </Pressable>
                 <Divider orientation='vertical' h={7} my={1} thickness={2} bg="black"/>
 
-                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {setSelected(4); navigation.navigate('Soporte')}}>
+                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {navigation.navigate('Soporte')}}>
                   <Center>
                     <Image 
                                 source={require( "../img/footer/tecnico.png")
@@ -73,7 +73,7 @@ import { useNavigation } from '@react-navigation/native';
                 </Pressable>
                 <Divider orientation='vertical' h={7} my={1} thickness={2} bg="black"/>
 
-                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {setSelected(5); IrCuenta();}}>
+                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => { IrCuenta();}}>
                   <Center>
                     <Image 
                                 source={require( "../img/footer/perfil.png")

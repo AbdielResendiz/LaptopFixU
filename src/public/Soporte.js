@@ -1,12 +1,15 @@
 import React from 'react';
-import { NativeBaseProvider, Text, View, Box } from 'native-base';
+import { NativeBaseProvider, Text, View, Box, Center } from 'native-base';
 import Footer from '../components/Footer';
 
 const Soporte = () => {
   return (
     <NativeBaseProvider>
-        <Box h="91%" bg="#00ffff" w="100%">
-            <Text>agregar tarjetaaaa</Text>
+        <Box h="91%" bg="#FFFFFF" w="100%">
+          <Center my={60} >
+            <Text bold fontSize={"4xl"}>SOPORTE TÉCNICO</Text>
+          </Center>
+            
 
         </Box>
         <Footer/>

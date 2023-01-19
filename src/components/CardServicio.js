@@ -1,21 +1,30 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, ImageBackground} from 'react-native';
+import { TouchableOpacity, ImageBackground} from 'react-native';
 import { NativeBaseProvider, HStack, Center, Box, 
-    ScrollView , Stack, AspectRatio, Image, Heading} from 'native-base';
+    ScrollView , Stack, AspectRatio, Image, Text} from 'native-base';
+
 
 
 
     const CardServicio = (props) => {
 
         return(
-            <Box style={{borderRadius:10, marginHorizontal:10}} bg="white" >
+            <Box>
                 
                 
-              
-                <Image source={require("../img/laptopfx.jpeg") } 
-                 alt="image" style={{width: 100,
-                 height: 80, resizeMode: "contain"}}/>
-                <Text style={{fontWeight:"bold", }}>Mantenimiento PC</Text>
+              <Center>
+              <Image source={require("../img/footer/perfil.png") } 
+                 alt="image" style={{width: 80,
+                 height: 80, resizeMode: "contain"}} borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
+
+              </Center>
+                
+                 <Center>
+                 <Text bold>Nombre</Text>
+                 <Text >Tecnico</Text>
+
+                 </Center>
+                
               
               
             </Box>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, ImageBackground} from 'react-native';
+import { View, TouchableOpacity, ImageBackground} from 'react-native';
 import { NativeBaseProvider, HStack, Center, Box, 
-    ScrollView , Stack, AspectRatio, Image, Heading} from 'native-base';
+    ScrollView , Stack, AspectRatio, Image, Text} from 'native-base';
 
 
 
@@ -15,7 +15,10 @@ import { NativeBaseProvider, HStack, Center, Box,
                 <Image source={require("../img/descarga.png")} 
                  alt="image" style={{width: 100,
                  height: 80, resizeMode: "contain"}}/>
-                <Text style={{fontWeight:"bold", }}>Paquete ejemplo</Text>
+                 <Center mt={2}>
+                    <Text >Servicio</Text>
+                 </Center>
+                
               
               
             </Box>
