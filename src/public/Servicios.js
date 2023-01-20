@@ -9,13 +9,15 @@ import fetchPost from '../private/api/fetchPost';
 import config from '../private/api/config';
 import Gradiente from '../components/Gradiente';
 import Carrusel from '../components/Carrusel';
+import URL from '../private/api/URL';
 
 const Servicios = (props) => {
 
     const [ servicios, setServicios ] = useState([]);
+    const BASE_URL = URL.BASE_URL;
 
     const getDatos = async() => {
-        const url = "https://laptopfix.com.mx/laptopfixrun/api/servicios/ver_servicios"
+        const url = `${BASE_URL}api/servicios/ver_servicios`
         const options = {
           method:'POST',
         };

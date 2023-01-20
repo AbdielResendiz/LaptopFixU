@@ -1,123 +1,150 @@
-import React from 'react';
-//import {  View } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { TouchableOpacity } from 'react-native';
 import { Box, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image } from "native-base";
+  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, ZStack } from "native-base";
   import { FontAwesome5, MaterialIcons } from '@expo/vector-icons'; 
-
+  import { useNavigation } from '@react-navigation/native';
+//import de componentes y  configuraciones
 import Footer from "../components/Footer"
+import fetchPost from '../private/api/fetchPost';
+import config from '../private/api/config';
+import Gradiente from '../components/Gradiente';
+import URL from '../private/api/URL';
 
 const DetalleTecnico = (props) => {
+  const navigation =useNavigation();
+  const BASE_URL = URL.BASE_URL;
+
+  const [ tecnico, setTecnico ] = useState([]);
 
   const idTecnico = props.route.params.idTecnico;
   console.log("id Tecnico UWU: ", idTecnico);
+  const dataTecnico = new FormData();
+        dataTecnico.append("idU", idTecnico);
+
+  const getDatos = async() => {
+    const url = `${BASE_URL}api/tecnicos/detalle_tecnico`
+    const options = {
+      method:'POST',
+      body: dataTecnico
+    };
+    const res = await fetchPost(url, options);
+    setTecnico(res.data[0]);
+    console.log("res", tecnico.nombreU);
+}
+
+useEffect(() => {
+    getDatos();
+  }, []);
+
+  
   
   return (
-    <NativeBaseProvider>
-      <ScrollView backgroundColor={"#BDC5C8"} h={"83%"}>
-        <ScrollView horizontal={true} margin={3}  >
-          <Image 
-            source={require( "../img/descarga.png")
-            } alt="Alternate Text" 
-            size="2xl" rounded={"lg"}  marginRight={3}/>
-            <Image 
-            source={require( "../img/win10.png")
-            } alt="Alternate Text" 
-            size="2xl" rounded={"lg"}  marginRight={3}/>
-            <Image 
-            source={require( "../img/descarga.png")
-            } alt="Alternate Text" 
-            size="2xl" rounded={"lg"}  marginRight={3}/>
-            
-        </ScrollView>
-
-        <Box background={"white"} margin={3} rounded={10} paddingLeft={5}>
-          <HStack>
-            <Box w={"70%"}>
-              <Text fontSize={18} fontWeight={"bold"} color={"#236DB7"}>Servicio</Text>
-              <Text fontSize={20} fontWeight={"bold"}>Formateo de PC</Text>
-              <Text fontSize={20} fontWeight={"bold"}>$300.00</Text>
-              <Text>ID: {idTecnico} </Text>
-            </Box>
-            <Center backgroundColor={"#236DB7"} w={"30%"} roundedRight={10}>
-              <FontAwesome5 name="cart-plus" size={44} color="white" />
-            </Center>
-          </HStack>
+    <NativeBaseProvider config={config}>
+      <Box bg="#FFFFFF" h="91%" >
+        <ZStack mb={10}>
+          <Gradiente/>
           
-        </Box>
-        <Center background={"white"} margin={5} padding={3} rounded={10}>
-          <Text fontSize={16}>
-          <Text fontWeight={"bold"}>Descripción: </Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </Text>
+          <Image source={{
+           uri: "https://www.ccsipro.com/wp-content/uploads/2021/01/iStock-1144570833.jpg"
+            }} alt="Alternate Text" w="80%" h={200} mx="10%" rounded={20} />
+         
+          
+          
+        </ZStack>
+
+        <Center>
+          <Box w={151} h={151}  rounded={100} mt={20} >
+          <Image source={{
+           uri: tecnico.image_url
+            }} alt="Alternate Text" w={150} h={150}  rounded={100} resizeMode="contain" />
+          </Box>
+          
+
         </Center>
-
-        <Box  marginLeft={5} padding={1} rounded={10}>
-          <HStack>
-            <Text fontWeight={"bold"}>Servicios{"\n"}relacionados</Text>
-            <Center marginLeft={"45%"}>
-              <HStack>
-                <Text bold italic color={"#236DB7"}>Mostrar todos</Text>
-                <MaterialIcons name="play-arrow" size={24} color="#236DB7"  />
-              </HStack>
-            </Center>
-          </HStack>
-        </Box>
-
-        <ScrollView horizontal={true} margin={3}  >
-          <VStack>
-          <Image 
-            source={require( "../img/descarga.png")
-            } alt="Alternate Text" 
-            size="xl" rounded={"lg"}  marginRight={3}/>
-            <Center>
-              <Text>Mantenimiento</Text>
-            </Center>
-            <Center>
-              <Text>$400.00</Text>
-            </Center>
-          </VStack>
-          <VStack>
-          <Image 
-            source={require( "../img/win10.png")
-            } alt="Alternate Text" 
-            size="xl" rounded={"lg"}  marginRight={3}/>
-            <Center>
-              <Text>Mantenimiento</Text>
-            </Center>
-            <Center>
-              <Text>$400.00</Text>
-            </Center>
-          </VStack>
-          <VStack>
-          <Image 
-            source={require( "../img/descarga.png")
-            } alt="Alternate Text" 
-            size="xl" rounded={"lg"}  marginRight={3}/>
-            <Center>
-              <Text>Mantenimiento</Text>
-            </Center>
-            <Center>
-              <Text>$400.00</Text>
-            </Center>
-          </VStack>
-          <VStack>
-          <Image 
-            source={require( "../img/descarga.png")
-            } alt="Alternate Text" 
-            size="xl" rounded={"lg"}  marginRight={3}/>
-            <Center>
-              <Text>Mantenimiento</Text>
-            </Center>
-            <Center>
-              <Text>$400.00</Text>
-            </Center>
-          </VStack>
+        <Center mt={5}>
+          <Text bold color="#236DB7" fontSize={26}>{tecnico.nombreU + " " + tecnico.apellidos}</Text>
+        </Center>
+        <Center>
+          <Text fontSize={20}>Técnico</Text>
+        </Center>
+       
+       <ScrollView  >
+        {/**inicia MENU CON 4 OPCIONES */}
+      <Center>
+        <HStack mx={4}    >
+          {/**COLUMNA IZQUIERDA */}
+          <VStack mr={6}>
+            {/**MI PERFIL */}
+            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleTecnico")}}>
+              <VStack >
+                <Center>
+                  <Image source={require("../img/detalleTecnico/info.png")
+                      }   alt="Alternate Text"  size="lg" resizeMode='contain' />
+                </Center>
+                <Center>
+                  <Text>Información Personal</Text>
+                </Center>
+              </VStack>
+            </TouchableOpacity>
+            {/**CONTACTANOS */}
+            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleTecnico")}}>
+              <VStack >
+                <Center>
+                  <Image source={require("../img/detalleTecnico/contacto.png")
+                      } alt="Alternate Text"  size="lg" resizeMode='contain'/>
+                </Center>
+                <Center>
+                  <Text>Contactame</Text>
+                </Center>
+              </VStack>
+            </TouchableOpacity>
           
+            {/**MAS APPS */}
+          </VStack>
+          {/**FIN COLUMNA IZQUIERDA */}
+          {/**COLUMNA DERECHA */}
+          <VStack >
+            {/**ACERCA DE*/}
+            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleTecnico")}}>
+              <VStack >
+                <Center>
+                  <Image  source={require("../img/detalleTecnico/costos.png")
+                      } alt="Alternate Text"  size="lg" resizeMode='contain'  />
+                </Center> 
+                <Center>
+                  <Text>Costos de Servicios</Text>
+                </Center>
+                
+              </VStack>
+            </TouchableOpacity>
+            {/**MIS ORDENES */}
+            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleTecnico")}}>
+              <VStack >
+                <Center>
+                  <Image  source={require("../img/detalleTecnico/credenciales.png")
+                      } alt="Alternate Text"  size="lg" resizeMode='contain'/>
+                </Center>
+                <Center>
+                  <Text>Credenciales</Text>
+                </Center>
+              </VStack>
+            </TouchableOpacity>
             
             
-        </ScrollView>
+          </VStack>
+        </HStack>
+        
+      </Center>
+      {/**FIN DE MENU */}
 
-      </ScrollView>
+        
+       
+
+       </ScrollView>
+
+      </Box>
+      
 
       <Footer/>
     </NativeBaseProvider>

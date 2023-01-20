@@ -9,13 +9,15 @@ import fetchPost from '../private/api/fetchPost';
 import config from '../private/api/config';
 import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
+import URL from '../private/api/URL';
 
 const Tecnicos = (props) => {
+    const BASE_URL = URL.BASE_URL;
 
     const [ tecnicos, setTecnicos ] = useState([]);
 
     const getDatos = async() => {
-        const url = "https://laptopfix.com.mx/laptopfixrun/api/tecnicos/ver_tecnicos"
+        const url = `${BASE_URL}api/tecnicos/ver_tecnicos`
         const options = {
           method:'POST',
         };

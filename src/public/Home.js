@@ -17,6 +17,7 @@ import CardPaquete from "../components/CardPaquete";
 import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
 import DetalleTecnico from './DetalleTecnico';
+import URL from '../private/api/URL';
 
 const Home = (props) => {
 
@@ -25,6 +26,8 @@ const Home = (props) => {
   const [ apellidos, setApellidos ] = useState("");
   const [ correo, setCorreo ] = useState("");
   const [ id, setId ] = useState("");
+
+  const BASE_URL = URL.BASE_URL;
 
 
 
@@ -96,7 +99,7 @@ const Home = (props) => {
   const [ servicios, setServicios ] = useState([]);
 
   const getDatos1 = async() => {
-      const url = "https://laptopfix.com.mx/laptopfixrun/api/servicios/ver_servicios"
+      const url = `${BASE_URL}api/servicios/ver_servicios`
       const options = {
         method:'POST',
       };
