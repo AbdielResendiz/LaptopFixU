@@ -18,6 +18,7 @@ import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
 import DetalleTecnico from './DetalleTecnico';
 import URL from '../private/api/URL';
+import Skeletor from '../components/Skeletor';
 
 const Home = (props) => {
 
@@ -85,6 +86,8 @@ const Home = (props) => {
         await AsyncStorage.getItem("idAS").then(async (value) => {
           setId(value);
           console.log("ID effect: ", id);
+
+         
          
         });
       } catch (error) {
@@ -106,6 +109,7 @@ const Home = (props) => {
       const res = await fetchPost(url, options);
       setServicios(res.data);
       console.log("res", res.data);
+      setLoading1(false);
   }
 
   useEffect(() => {
@@ -125,6 +129,7 @@ const Home = (props) => {
       const res = await fetchPost(url, options);
       setTecnicos(res.tecnicos);
       console.log("res", res.tecnicos);
+      setLoading2(false);
   }
 
   useEffect(() => {
@@ -132,7 +137,12 @@ const Home = (props) => {
     }, []);
 
   //TERMINA VER SERVICIOS
-  
+
+  const [loading1, setLoading1] = useState(true);
+
+  const [loading2, setLoading2] = useState(true);
+
+
 
   return (
     <NativeBaseProvider config={config} >
@@ -143,12 +153,12 @@ const Home = (props) => {
       {/**Row stack de bienvenida */}
       <Center h="10%">
         <HStack  >
-            <VStack h="100%" w="60%">
+            <VStack h="100%" w="90%">
               <Center     >
                 <Text bold fontSize={24} color="#FFFFFF" >Bienvenido </Text>
               </Center>
               <Center   >
-                <Text  fontSize={24} mx={1} color="#FFFFFF">{nombre!==null ? (nombre + " " + apellidos): "Invitado"}</Text>
+                <Text  fontSize={24} mx={1} color="#FFFFFF" lineHeight={29}>{conectado!==false ? (nombre+" "+apellidos): "Invitado"}</Text>
               </Center>
             </VStack>
         </HStack>
@@ -176,32 +186,38 @@ const Home = (props) => {
                 </TouchableOpacity>
               </Center>
             </HStack>
-            {/**SERVICIOS SCROLL HORIZONTAL */}
-            <ScrollView horizontal={true} mt={1}>
-            
-             
-              
-              
+
+            {/**CONDICIONAL VISTA, CARGANDO */}
+
+            {
+              (loading1===true) ? (<Skeletor/>) 
+              :
+              (
+
+              <ScrollView horizontal={true} mt={1} mx={2}>
               {servicios.map( (servicio, index) => {
                   return(
                     <TouchableOpacity key={index} onPress={() => detalleServicio(servicio.idS)
                     }>
                     <Box   bg="white" >
                       <Image source={{uri:servicio.image_url} } 
-                      alt="image" style={{width: 100,
-                      height: 80, resizeMode: "contain"}}/>
+                      alt="image" style={{width: 90,
+                      height: 90, resizeMode: "contain"}}/>
                       <Center mt={2}>
                           <Text bold >{servicio.nombreS}</Text>
-                          <Text >{servicio.desS}</Text>
+                          
                       </Center>
                     </Box>
                     </TouchableOpacity>
                   );})}
-              
+              </ScrollView>
+              )
+            }
+            
+            
 
 
-
-            </ScrollView>
+            
 
             {/**botones TECNICOS Y VER TODOS */}
             <HStack  my={3}>
@@ -220,31 +236,43 @@ const Home = (props) => {
               </Center>
             </HStack>
               {/**SCROLL HORIZONTAL CON TECNICOS */}
-            <ScrollView horizontal={true}>
+              {
+                (loading2===true) ?
+                (<Skeletor/>) :
+                (
+                  <ScrollView horizontal={true}>
+                    {tecnicos.map( (tecnico, index) => {
+                      return(
+                        <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
+                          <Box >
+                          <Center>
+                            <Image source={{uri:tecnico.image_url} } 
+                              alt="image" style={{width: 80,
+                              height: 80, resizeMode: "contain"}} borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
+                          </Center>
+                            <Center>
+                              <Text bold>{tecnico.nombreU}</Text>
+                              <Text >Técnico</Text>
+                            </Center>
+                        </Box>
+                      </TouchableOpacity>
+                      );} )}
+                </ScrollView>
+                )
+              }
             
 
-                {tecnicos.map( (tecnico, index) => {
-                  return(
-                    <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
-                      <Box >
-                      <Center>
-                        <Image source={{uri:tecnico.image_url} } 
-                          alt="image" style={{width: 80,
-                          height: 80, resizeMode: "contain"}} borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
-                      </Center>
-                        <Center>
-                          <Text bold>{tecnico.nombreU}</Text>
-                          <Text >Técnico</Text>
-                        </Center>
-                    </Box>
-                  </TouchableOpacity>
-                  );} )}
-             
-
-
-              
-            </ScrollView>
           </ScrollView>
+          
+           {/* <TouchableOpacity onPress={() => {
+                    props.navigation.navigate("SkeletonServicio")}}>
+            <Box bg="#00ff00" h={30}>
+              TEST
+            </Box>
+          </TouchableOpacity>
+           */}
+           
+          
         </Box>
         <Footer />
         

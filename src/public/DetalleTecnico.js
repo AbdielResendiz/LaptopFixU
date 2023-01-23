@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Box, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, ZStack } from "native-base";
+  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, ZStack, Skeleton } from "native-base";
   import { FontAwesome5, MaterialIcons } from '@expo/vector-icons'; 
   import { useNavigation } from '@react-navigation/native';
 //import de componentes y  configuraciones
@@ -16,6 +16,7 @@ const DetalleTecnico = (props) => {
   const BASE_URL = URL.BASE_URL;
 
   const [ tecnico, setTecnico ] = useState([]);
+  const [ loading, setLoading ] = useState(true);
 
   const idTecnico = props.route.params.idTecnico;
   console.log("id Tecnico UWU: ", idTecnico);
@@ -31,6 +32,7 @@ const DetalleTecnico = (props) => {
     const res = await fetchPost(url, options);
     setTecnico(res.data[0]);
     console.log("res", tecnico.nombreU);
+    setLoading(false);
 }
 
 useEffect(() => {
@@ -44,6 +46,7 @@ useEffect(() => {
       <Box bg="#FFFFFF" h="91%" >
         <ZStack mb={10}>
           <Gradiente/>
+
           
           <Image source={{
            uri: "https://www.ccsipro.com/wp-content/uploads/2021/01/iStock-1144570833.jpg"
@@ -54,16 +57,33 @@ useEffect(() => {
         </ZStack>
 
         <Center>
-          <Box w={151} h={151}  rounded={100} mt={20} >
-          <Image source={{
-           uri: tecnico.image_url
-            }} alt="Alternate Text" w={150} h={150}  rounded={100} resizeMode="contain" />
-          </Box>
-          
 
-        </Center>
+        {
+            (loading===true) ?
+            (<Skeleton  mt={20} w={150} h={150} mx="10%" rounded={100}/>) :
+            (
+              <Box w={151} h={151}  rounded={100} mt={20} >
+              <Image source={{
+               uri: tecnico.image_url
+                }} alt="Alternate Text" w={150} h={150}  rounded={100} resizeMode="contain" />
+              </Box>
+              
+    
+            
+            )
+          }
+          </Center>
+         
         <Center mt={5}>
-          <Text bold color="#236DB7" fontSize={26}>{tecnico.nombreU + " " + tecnico.apellidos}</Text>
+
+          {
+            (loading===true) ?
+            (<Skeleton h={9} w="75%" rounded={10}/>) :
+            (
+              <Text bold color="#236DB7" fontSize={26}>{tecnico.nombreU + " " + tecnico.apellidos}</Text>
+            )
+          }
+          
         </Center>
         <Center>
           <Text fontSize={20}>Técnico</Text>

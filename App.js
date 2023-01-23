@@ -36,6 +36,8 @@ import Tecnicos from './src/public/Tecnicos';
 import AgregarTarjeta from './src/private/AgregarTarjeta';
 import DetalleServicio from './src/public/DetalleServicio';
 import DetalleTecnico from './src/public/DetalleTecnico';
+import Skeletor from './src/components/Skeletor';
+import SkeletonServicio from './src/components/SkeletonServicio';
 
 
 
@@ -423,6 +425,22 @@ export default function App() {
 
         <Stack.Screen name="AgregarTarjeta" component={AgregarTarjeta}
         options={{title: 'Agregar tarjeta',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#236DB7",
+        },
+        }}/> 
+
+
+        <Stack.Screen name="Skeletor" component={Skeletor}
+        options={{title: 'skeletor',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#236DB7",
+        },
+        }}/> 
+        <Stack.Screen name="SkeletonServicio" component={SkeletonServicio}
+        options={{title: 'skeleton servicio',
         headerTintColor:"white",
         headerStyle: {
           backgroundColor: "#236DB7",

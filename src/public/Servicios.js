@@ -10,10 +10,13 @@ import config from '../private/api/config';
 import Gradiente from '../components/Gradiente';
 import Carrusel from '../components/Carrusel';
 import URL from '../private/api/URL';
+import SkeletonServicio from '../components/SkeletonServicio';
 
 const Servicios = (props) => {
 
     const [ servicios, setServicios ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
+  
     const BASE_URL = URL.BASE_URL;
 
     const getDatos = async() => {
@@ -24,6 +27,7 @@ const Servicios = (props) => {
         const res = await fetchPost(url, options);
         setServicios(res.data);
         console.log("res", res.data);
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -45,38 +49,46 @@ const Servicios = (props) => {
 
 
         {/**Scrool con SERVICIOS */}
-        <ScrollView   >
-          <View mb={2}>
+        {
+          (loading===true) ?
+          (<SkeletonServicio/>) :
+          (
+            <ScrollView   >
+              <View mb={2}>
 
-              {servicios.map( (servicio, index) => {
-                  return(
-                  <Box key={index} backgroundColor={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
-                      <TouchableOpacity>
-                          <HStack>
-                              <Image 
-                                  source={{
-                                  uri: servicio.image_url
-                                  }}alt="Alternate Text" size="lg" roundedLeft={"lg"}  />
-                              <Box w="60%" mt={5} ml={4}>
-                                  <Text bold fontSize={20} color="#236DB7" >{servicio.nombreS}</Text>
-                                  <Text >{servicio.desS}</Text>
-                              </Box>
-                              <Center >
-                               <FontAwesome name="angle-right" size={24} color="black" />
-                              </Center>
-                          </HStack>
-                      </TouchableOpacity>
-                      <Center>
-                        <Divider mt={1} w="20%" mx="10%" thickness={2} bg="black"/>
+                  {servicios.map( (servicio, index) => {
+                      return(
+                      <Box key={index} backgroundColor={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
+                          <TouchableOpacity>
+                              <HStack>
+                                  <Image 
+                                      source={{
+                                      uri: servicio.image_url
+                                      }}alt="Alternate Text" size="lg" roundedLeft={"lg"}  />
+                                  <Box w="60%" mt={5} ml={4}>
+                                      <Text bold fontSize={20} color="#236DB7" >{servicio.nombreS}</Text>
+                                      <Text >{servicio.desS}</Text>
+                                  </Box>
+                                  <Center >
+                                  <FontAwesome name="angle-right" size={24} color="black" />
+                                  </Center>
+                              </HStack>
+                          </TouchableOpacity>
+                          <Center>
+                            <Divider mt={1} w="20%" mx="10%" thickness={2} bg="black"/>
 
-                      </Center>
-                  </Box>
-                  );
-              } )}
-            {/**Box de producto */}
+                          </Center>
+                      </Box>
+                      );
+                  } )}
+                {/**Box de producto */}
 
-          </View>
-        </ScrollView>
+              </View>
+            </ScrollView>
+          )
+        }
+
+        
 
       </Box>
       

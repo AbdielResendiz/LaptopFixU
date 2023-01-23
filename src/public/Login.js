@@ -15,7 +15,7 @@ const Login = (props) => {
     //datos usuario
 
     const [correo, setCorreo] = useState("aa@aa.com");
-    const [contrasenia, setContrasenia] = useState("12345");
+    const [contrasenia, setContrasenia] = useState("123456");
 
     const [loading, setLoading] = useState(false);
 
@@ -69,6 +69,7 @@ const Login = (props) => {
           await AsyncStorage.setItem('apellidosAS', res.data.apellidos);
           await AsyncStorage.setItem('correoAS', res.data.correo);
           await AsyncStorage.setItem('idAS', res.data.idU);
+          await AsyncStorage.setItem('conectado', "conectado");
           
         } catch (e) {
           console.log("Error login:", e);

@@ -11,8 +11,8 @@ const SignUp = () => {
   const [correo, setCorreo]= useState("aa@aa.com");
   const [contrasenia, setContrasenia] = useState("12345");
   const [contrasenia2, setContrasenia2] = useState("12345");
-  const [nombreU, setNombreU] = useState("macaco")
-  const [apellidos, setApellidos] = useState("aldair");
+  const [nombreU, setNombreU] = useState("Carlos Abdiel")
+  const [apellidos, setApellidos] = useState("Reséndiz Vargas");
   const [telefono, setTelefono] = useState("4423334444");
 
   const [loading, setLoading] = useState(false);
@@ -130,7 +130,7 @@ const SignUp = () => {
             <Input type="password" 
                     placeholder='Confirma contraseña'
                     onChangeText={(val) => setContrasenia2(val)}
-                    value={contrasenia} />
+                    value={contrasenia2} />
           </FormControl>
 
           <FormControl>
