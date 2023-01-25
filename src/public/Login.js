@@ -80,7 +80,11 @@ const Login = (props) => {
           'Inicio de sesion exitoso',
           'BIENVENIDO',
           [
-            { text: 'OK',  onPress: () => {navigation.navigate("Home")}  },
+            { text: 'OK',  onPress: () => {navigation.reset({
+              index:0,
+              routes:[{name: 'Home'}],
+            })
+          }  },
           ],
           { cancelable: false },
         );

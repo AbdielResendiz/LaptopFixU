@@ -57,7 +57,20 @@ const SobreNosotros = (props) => {
 
       
     };
+    
+    const logOut = async() =>{
+      
+      try{
+        await AsyncStorage.clear();
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Home' }],
+      });
 
+      }catch(error){
+        console.log(error);
+      }
+    }
 
 
 
@@ -171,7 +184,7 @@ const SobreNosotros = (props) => {
 
           { 
           (nombre!==null) ?
-          (<TouchableOpacity onPress={()=>{navigation.navigate("Login")}}>
+          (<TouchableOpacity onPress={()=>{logOut()}}>
           <VStack >
             <Center>
               <Image source={require("../img/Salir.png")

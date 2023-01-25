@@ -84,10 +84,11 @@ const Home = (props) => {
         body: dataUser
       };
       const res = await fetchPost(url, options);
+       console.log("responseeee", res);
+     
       setApellidos(res.data.apellidos);
       setNombre(res.data.nombreU);
-      console.log("responseeee", res.data.nombreU);
-      console.log("responseeee22", res.data.apellidos);
+     
       
     }
     getNombre();
