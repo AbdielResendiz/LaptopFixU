@@ -38,6 +38,7 @@ import DetalleServicio from './src/public/DetalleServicio';
 import DetalleTecnico from './src/public/DetalleTecnico';
 import Skeletor from './src/components/Skeletor';
 import SkeletonServicio from './src/components/SkeletonServicio';
+import SkeletonPerfil from './src/components/SkeletonPerfil';
 
 
 
@@ -441,6 +442,13 @@ export default function App() {
         }}/> 
         <Stack.Screen name="SkeletonServicio" component={SkeletonServicio}
         options={{title: 'skeleton servicio',
+        headerTintColor:"white",
+        headerStyle: {
+          backgroundColor: "#236DB7",
+        },
+        }}/> 
+         <Stack.Screen name="SkeletonPerfil" component={SkeletonPerfil}
+        options={{title: 'skeleton perfil',
         headerTintColor:"white",
         headerStyle: {
           backgroundColor: "#236DB7",

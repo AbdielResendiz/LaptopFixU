@@ -11,12 +11,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import config from '../private/api/config';
 import Footer from "../components/Footer";
 import fetchPost from '../private/api/fetchPost';
-import Card from "../components/Card";
-import CardServicio from "../components/CardServicio";
-import CardPaquete from "../components/CardPaquete";
 import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
-import DetalleTecnico from './DetalleTecnico';
 import URL from '../private/api/URL';
 import Skeletor from '../components/Skeletor';
 
@@ -25,7 +21,6 @@ const Home = (props) => {
 
   const [ nombre, setNombre ] = useState("");
   const [ apellidos, setApellidos ] = useState("");
-  const [ correo, setCorreo ] = useState("");
   const [ id, setId ] = useState("");
 
   const BASE_URL = URL.BASE_URL;
@@ -34,20 +29,7 @@ const Home = (props) => {
 
   const [ conectado, setConectado ] = useState(false);
   {/**Funcion que escanea las variables almacenadas en local storage */}
-  const status = () => {
-    if (id!=="") {
-      setConectado(true)
-      console.log("conectado?", conectado)
-     }
-     else{
-      console.log("conectado?", conectado)
-     }
 
-  };
-  useEffect( ()=>{
-    status();
-  }
-  )
 
   const detalleServicio= (item) => {
     props.navigation.navigate("DetalleServicio", {
@@ -77,26 +59,17 @@ const Home = (props) => {
           setApellidos(value);
           console.log("Apellidos effect: ", apellidos);
         });
-    
-        await AsyncStorage.getItem("correoAS").then(async (value) => {
-        setCorreo(value);
-        console.log("Correo effect: ", correo);
-        });
-    
         await AsyncStorage.getItem("idAS").then(async (value) => {
           setId(value);
-          console.log("ID effect: ", id);
-
-         
-         
-        });
+          console.log("id uwu: ", id);
+        })
       } catch (error) {
         console.log(error);
       }
     }
 
     fetchData();
-  });
+  }, []);
 
   //INICIA Ver TECNICOS
   const [ servicios, setServicios ] = useState([]);
@@ -158,7 +131,7 @@ const Home = (props) => {
                 <Text bold fontSize={24} color="#FFFFFF" >Bienvenido </Text>
               </Center>
               <Center   >
-                <Text  fontSize={24} mx={1} color="#FFFFFF" lineHeight={29}>{conectado!==false ? (nombre+" "+apellidos): "Invitado"}</Text>
+                <Text  fontSize={24} mx={1} color="#FFFFFF" lineHeight={29}>{nombre!==null  ? (nombre+" "+apellidos): "Invitado"}</Text>
               </Center>
             </VStack>
         </HStack>

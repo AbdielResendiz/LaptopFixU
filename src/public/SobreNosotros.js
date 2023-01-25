@@ -5,12 +5,13 @@ import { Center, Divider, HStack, NativeBaseProvider, Text, VStack, Image, Box, 
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
 
-const SobreNosotros = () => {
+const SobreNosotros = (props) => {
   const navigation =useNavigation();
 
   const [nombre, setNombre] = useState("");
   const [apellidos, setApellidos] = useState("");
-  const [ conectado, setConectado] = useState(false);
+  const [ id, setId] = useState("");
+
 
     useEffect(() => {
       async function fetchData() {
@@ -24,9 +25,9 @@ const SobreNosotros = () => {
             setApellidos(value);
             console.log("Apellidos effect: ", apellidos);
           });
-          await AsyncStorage.getItem("conectado").then(async (value) => {
-            setConectado(value);
-            console.log("conectado effect: ", conectado);
+          await AsyncStorage.getItem("idAS").then(async (value) => {
+            setId(value);
+            console.log("id uwu: ", id);
           })
         } catch (error) {
           console.log(error);
@@ -34,7 +35,28 @@ const SobreNosotros = () => {
       }
   
       fetchData();
-    });
+    }, []);
+
+    const MiPerfil= (item) => {
+
+      if (item!=="") {
+        console.log("if");
+        props.navigation.navigate("MiPerfil", {
+          idU: item,
+        })
+      } else {
+        Alert.alert(   
+          'Debes iniciar sesión para acceder',
+          'Favor de iniciar sesión o registrarse para continuar',
+          [
+            { text: 'OK', onPress: () => props.navigation.navigate("Login") },
+          ],
+          { cancelable: false },  
+        );
+      }
+
+      
+    };
 
 
 
@@ -54,7 +76,7 @@ const SobreNosotros = () => {
       <Center>
         <Text  fontWeight={900} letterSpacing={.8} fontSize={26}> 
         {
-          (nombre==="") ?
+          (nombre===null) ?
           (<Text  fontWeight={900} letterSpacing={.8} fontSize={26}> Invitado </Text>) :
           (<VStack>
             <Center>
@@ -73,7 +95,7 @@ const SobreNosotros = () => {
         
         </Text>
       </Center>
-      <Center w="50%" mt={1} mb={1}>
+      <Center w="50%" mb={1}>
         <Divider bg="#0081C1" thickness={2} ml="100%"/>
       </Center>
       <ScrollView>
@@ -83,7 +105,7 @@ const SobreNosotros = () => {
             {/**COLUMNA IZQUIERDA */}
             <VStack mr={6}>
               {/**MI PERFIL */}
-              <TouchableOpacity onPress={()=>{navigation.navigate("MiPerfil")}}>
+              <TouchableOpacity onPress={()=>MiPerfil(id)}>
                 <VStack >
                   <Center>
                     <Image source={require("../img/SobreNos/perfil.png")
@@ -148,7 +170,7 @@ const SobreNosotros = () => {
           {/**Cerrar */}
 
           { 
-          (nombre!=="") ?
+          (nombre!==null) ?
           (<TouchableOpacity onPress={()=>{navigation.navigate("Login")}}>
           <VStack >
             <Center>
@@ -161,7 +183,7 @@ const SobreNosotros = () => {
           }
           
         </Center>
-        {/**FIN DE MENU */}
+        {/**FIN DE MENU  karladailyn19*/}
 
       </ScrollView>
       
@@ -173,3 +195,5 @@ const SobreNosotros = () => {
   )
 }
 export default SobreNosotros;
+
+// 552 718 6815
