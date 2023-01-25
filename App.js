@@ -108,20 +108,14 @@ export default function App() {
         }}
         />
         <Stack.Screen name="Login" component={Login}
-        options={{title: 'Iniciar sesión',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
+        options={{headerShown:false
+        
         }}/>
         
         <Stack.Screen name="SignUp" component={SignUp}
-        options={{title: 'Registro',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-       }}/>
+        options={{headerShown:false
+        }}/>
+        
         <Stack.Screen name="MisPedidos" component={MisPedidos}
         options={{title: 'Mis ordenes',
         headerTintColor:"white",

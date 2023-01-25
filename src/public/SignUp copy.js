@@ -1,6 +1,6 @@
 import  React, {useState} from "react";
 import { Box, Text, Heading, VStack, FormControl, Input, 
-  Button, HStack, Center, NativeBaseProvider, Image, ScrollView, Spinner, ZStack } from "native-base";
+  Button, HStack, Center, NativeBaseProvider, Image, ScrollView, Spinner } from "native-base";
   import { TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import fetchPost from "../private/api/fetchPost";
@@ -8,12 +8,12 @@ const SignUp = () => {
 
   const navigation =useNavigation();
 
-  const [correo, setCorreo]= useState("");
-  const [contrasenia, setContrasenia] = useState("");
-  const [contrasenia2, setContrasenia2] = useState("");
-  const [nombreU, setNombreU] = useState("")
-  const [apellidos, setApellidos] = useState("");
-  const [telefono, setTelefono] = useState("");
+  const [correo, setCorreo]= useState("aa@aa.com");
+  const [contrasenia, setContrasenia] = useState("12345");
+  const [contrasenia2, setContrasenia2] = useState("12345");
+  const [nombreU, setNombreU] = useState("Carlos Abdiel")
+  const [apellidos, setApellidos] = useState("Reséndiz Vargas");
+  const [telefono, setTelefono] = useState("4423334444");
 
   const [loading, setLoading] = useState(false);
 
@@ -93,61 +93,56 @@ const SignUp = () => {
 
 
 
- 
-
-    
-        return (
-          <NativeBaseProvider>
-            <ZStack h="100%" w="100%">
-              <Image source={require('../img/fondo-min.png')} 
-              alt={"fondo"}  w="100%" h="100%" resizeMode="stretch"  />
-
-              <Box  h="85%" w="80%" mx="10%" mt="15%" rounded={10} 
-              opacity={0.7} bg="black"></Box>
-
-              {/**INICIA LOGIN */}
-              <Center w="100%">
-                <Image 
-                  source={require( "../img/Logo1Run.png")
-                  } alt="Alternate Text" size="md" mt={20} />
-      <Box  p="2" w="90%" maxW="290" py="2" >
+  return <Center w="100%">
+      <Box safeArea p="2" w="90%" maxW="290" py="2">
         <Center>
-          <Heading size="md" color="#bfbfbf"  fontWeight="semibold">
-          Registro de nuevo usuario
+          <Heading size="lg" color="coolGray.800" _dark={{
+          color: "warmGray.50"
+          }} fontWeight="semibold">
+          Bienvenido
         </Heading>
 
         </Center>
         
-     
+        <Heading mt="1" color="coolGray.600" _dark={{
+        color: "warmGray.200"
+      }} fontWeight="medium" size="xs">
+          Registrate para continuar
+        </Heading>
         <VStack space={3} mt="3">
-          <FormControl bg="white">
+          <FormControl>
+            <FormControl.Label>Correo electrónico</FormControl.Label>
             <Input placeholder='Correo electrónico'
                     keyboardType='email-address'
                     onChangeText={(val) => setCorreo(val)}
                     autoCapitalize='none'
                     value={correo}/>
           </FormControl>
-          <FormControl bg="white">
+          <FormControl>
+            <FormControl.Label>Contraseña</FormControl.Label>
             <Input type="password" 
                     placeholder='Contraseña'
                     onChangeText={(val) => setContrasenia(val)}
                     value={contrasenia} />
           </FormControl>
-          <FormControl bg="white">
+          <FormControl>
+            <FormControl.Label>Confirma Contraseña</FormControl.Label>
             <Input type="password" 
                     placeholder='Confirma contraseña'
                     onChangeText={(val) => setContrasenia2(val)}
                     value={contrasenia2} />
           </FormControl>
 
-          <FormControl bg="white">
+          <FormControl>
+            <FormControl.Label>Nombre</FormControl.Label>
             <Input type="text" 
                     placeholder='Nombre'
                     onChangeText={(val) => setNombreU(val)}
                     value={nombreU}/>
           </FormControl>
 
-          <FormControl bg="white">
+          <FormControl>
+            <FormControl.Label>Apellidos</FormControl.Label>
             <Input type="default" 
                     placeholder='Apellidos'
                     onChangeText={(val) => setApellidos(val)}
@@ -155,7 +150,8 @@ const SignUp = () => {
             />
           </FormControl>
 
-          <FormControl bg="white">
+          <FormControl>
+            <FormControl.Label>Telefono</FormControl.Label>
             <Input type="phone-pad" 
                     placeholder='Teléfono'
                     onChangeText={(val) => setTelefono(val)}
@@ -175,16 +171,17 @@ const SignUp = () => {
             </TouchableOpacity>
           </Center>
           <HStack mt="2" justifyContent="center">
-            <Text fontSize="lg" color="#bfbfbf" mr={2} >
-              ¿Ya tienes cuenta?
+            <Text fontSize="lg" color="coolGray.600" _dark={{
+            color: "warmGray.200"
+          }}>
+              ¿Ya tienes cuenta?{" "}
             </Text>
             <TouchableOpacity onPress={() => {
                   navigation.navigate("Login");
                 }}>
             <Text 
-            color= "#bfbfbf"
-            underline
-            fontWeight= {700}
+            color= "#236DB7"
+            fontWeight= "medium"
             fontSize= "lg"
            >
               Iniciar sesión
@@ -193,14 +190,23 @@ const SignUp = () => {
           </HStack>
         </VStack>
       </Box>
-              </Center>
+    </Center>;
+};
 
-            </ZStack>
-              
-            
+    export default () => {
+        return (
+          <NativeBaseProvider>
+            <ScrollView>
+            <Center flex={1} px="3">
+              <Image 
+                source={require( "../img/Logo1Run.png")
+                } alt="Alternate Text" size="40" mt={4} />
+                <SignUp />
+            </Center>
+
+            </ScrollView>
 
            
           </NativeBaseProvider>
         );
     };
-    export default SignUp;

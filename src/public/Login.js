@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
 import { Box, Text, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, NativeBaseProvider, Image, Spinner } from "native-base";
-import { TouchableOpacity, Alert } from "react-native";
+  Button, HStack, Center, NativeBaseProvider, Image, Spinner, ZStack } from "native-base";
+import { TouchableOpacity, Alert, ImageBackground } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import URL from "../private/api/URL";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,12 +15,12 @@ const Login = (props) => {
 
     //datos usuario
 
-    const [correo, setCorreo] = useState("aa@aa.com");
-    const [contrasenia, setContrasenia] = useState("123456");
+    const [correo, setCorreo] = useState("");
+    const [contrasenia, setContrasenia] = useState("");
 
     const [loading, setLoading] = useState(false);
-
- 
+//Imagen de fondo
+ const image= {require:('../img/fondo-min.png')}
 
   
 
@@ -109,92 +109,86 @@ const Login = (props) => {
   
         return (
           <NativeBaseProvider>
-            <Center flex={1} px="3">
-              <Image 
-                source={require( "../img/Logo1Run.png")
-                } alt="Alternate Text" size="40" mt={-16} />
+            
+
+            
+            <ZStack h="100%" w="100%">
+              <Image source={require('../img/fondo-min.png')} alt={"fondo"}  w="100%" h="100%" resizeMode="stretch"  />
+              
+              <Box  h="75%" w="80%" mx="10%" mt="30%" rounded={10} opacity={0.7} bg="black"></Box>
+              
+              <Center  h="100%" w="80%" mx="10%" >
+                <Text fontWeight={900} color="#bfbfbf" fontSize={25} mx={6}>SERVICIO TÉCNICO </Text>
+                <Text fontWeight={900} color="#bfbfbf" fontSize={25} mx={6}>Y</Text>
+                <Text fontWeight={900} color="#bfbfbf" fontSize={25} mx={6}>MANTENIMIENTO</Text>
+                <Text fontWeight={400} color="#bfbfbf" fontSize={15} letterSpacing={0.9}>DE COMPUTADORAS A</Text>
+                <Text fontWeight={400} color="#bfbfbf" fontSize={15} letterSpacing={0.9}>DOMICILIO</Text>
+                <Image 
+                  source={require( "../img/Logo1Run.png")
+                  } alt="Alternate Text" size="lg" my={4} />
               <Center w="100%">
-              <Box safeArea p="2" py="1" w="90%" maxW="290">
-                <Center>
-                  <Heading size="lg" fontWeight="600" color="coolGray.800" _dark={{
-                  color: "warmGray.50"
-                  }}>
-                    Bienvenido
-                  </Heading>
-                  
-                </Center>
-                
-                <Heading mt="1" _dark={{
-                color: "warmGray.200"
-              }} color="coolGray.600" fontWeight="medium" size="xs">
-                  ¡Ingresa tus datos para continuar!
-                </Heading>
-
-                <VStack space={3} mt={3} >
-                  <FormControl >
-                    <FormControl.Label>Correo electrónico</FormControl.Label>
-                    <Input placeholder='Correo electrónico'
-                    keyboardType='email-address'
-                    onChangeText={(val) => setCorreo(val)}
-                    autoCapitalize='none'
-                    value={correo}
-                     />
-                  </FormControl>
-                  <FormControl>
-                    <FormControl.Label>Contraseña</FormControl.Label>
-                    <Input type="password" 
-                    placeholder='Contraseña'
-                    onChangeText={(val) => setContrasenia(val)}
-                    value={contrasenia}
-                     />
-                    <Link _text={{
-                    fontSize: "xs",
-                    fontWeight: "500",
-                    color: "indigo.500"
-                  }} alignSelf="flex-end" mt="1">
-                      ¿Olvidaste tu contraseña?
-                    </Link>
-                  </FormControl>
-
-                  {/**Botón INICIAR SESIÓN */}
-                  <Center>
-                    <TouchableOpacity onPress={Login2}>
-                      <Box mt="2" bg="#236DB7" w="60%" rounded={30} p={3} shadow={7}>
-                        { loading==false ? (
-                          <Text color="white" fontSize={18} letterSpacing={0.9} fontWeight={700}> Iniciar sesión </Text>
-                        ) :
-                        (<Spinner size={"lg"} color="white"/>)
-                        }
+                  <Box  w="90%" maxW="290">
+                    <VStack space={3}  >
+                      <FormControl bg="white" mb={3}>
                         
-                      </Box>
-                    </TouchableOpacity>
-                  </Center>
-                  
-                  
+                        <Input placeholder='CORREO ELECTRÓNICO'
+                        keyboardType='email-address'
+                        onChangeText={(val) => setCorreo(val)}
+                        autoCapitalize='none'
+                        value={correo}
+                        />
+                      </FormControl>
+                      <FormControl bg="white" >
+                        <Input type="password" 
+                        placeholder='CONTRASEÑA'
+                        onChangeText={(val) => setContrasenia(val)}
+                        value={contrasenia}
+                        />
+                       
+                      </FormControl>
+
+                      {/**Botón INICIAR SESIÓN */}
+                      <Center>
+                        <TouchableOpacity onPress={Login2}>
+                          <Box mt="2" bg="#236DB7" w="60%" rounded={10} p={3} shadow={7}>
+                            { loading==false ? (
+                              <Text color="white" fontSize={18} letterSpacing={0.9} fontWeight={400}> Continuar </Text>
+                            ) :
+                            (<Spinner size={"lg"} color="white"/>)
+                            }
+                            
+                          </Box>
+                        </TouchableOpacity>
+                      </Center>
+                      
+                      
 
 
-                  <HStack mt="3" justifyContent="center">
-                    <Text fontSize="lg" color="coolGray.600"  _dark={{
-                    color: "warmGray.200"
-                  }}>
-                      ¿Nuevo usuario?{" "}
-                    </Text>
-                    <TouchableOpacity onPress={() => {
-                          navigation.navigate("SignUp");
-                        }}>
-                    <Text 
-                    color= "#236DB7"
-                    fontWeight= "medium"
-                    fontSize= "lg"
-                  >
-                      Registrarse
-                    </Text>
-                    </TouchableOpacity>
-                  </HStack>
-                </VStack>
-              </Box>
-            </Center>
-            </Center>
+                      <HStack mt="3" justifyContent="center">
+                        <Text fontSize="md" color="white"  >
+                          ¿Nuevo usuario?{" "}
+                        </Text>
+                        <TouchableOpacity onPress={() => {
+                              navigation.navigate("SignUp");
+                            }}>
+                        <Text 
+                        color= "white"
+                        fontWeight= "medium"
+                        fontSize= "md"
+                        underline
+                      >
+                          Registrarse
+                        </Text>
+                        </TouchableOpacity>
+                      </HStack>
+                    </VStack>
+                  </Box>
+                </Center>
+              </Center>
+            </ZStack>
+            
+            
+            
           </NativeBaseProvider>
         )
     }

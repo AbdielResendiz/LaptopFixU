@@ -83,7 +83,7 @@ const Contacto = () => {
           <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://www.facebook.com/@impactosdigitales')}}>
             <HStack ml={6} mt={2}>
               <Image 
-                  source={require( "../img/FB.png")
+                  source={require( "../img/contacto/fb.png")
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
               
               <Center>
@@ -97,7 +97,7 @@ const Contacto = () => {
            <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://www.instagram.com/@impactosdigitales')}}>
               <HStack ml={6} mt={3}>
                 <Image 
-                    source={require( "../img/IG.png")
+                    source={require( "../img/contacto/ig.png")
                     } alt="Alternate Text" size={"xs"} resizeMode="contain" />
                 
                 <Center>
@@ -111,7 +111,7 @@ const Contacto = () => {
            <TouchableOpacity onPress={ ()=>{ Linking.openURL('whatsapp://send?text=Buen día, me gustaría recibir información de sus servicios&phone=4422198567')}}>
             <HStack ml={6} mt={3}>
               <Image 
-                  source={require( "../img/WA.png")
+                  source={require( "../img/contacto/wa.png")
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
               <Center>
                 <Text fontSize={16}>442 219 8567</Text>
@@ -125,7 +125,7 @@ const Contacto = () => {
            <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://www.linkedin.com/company/impactos-digitales/about/')}}>
             <HStack ml={6} mt={3}>
               <Image 
-                  source={require( "../img/IN.png")
+                  source={require( "../img/contacto/in.png")
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
               <Center>
                 <Text fontSize={16}>@impactosdigitales</Text>
