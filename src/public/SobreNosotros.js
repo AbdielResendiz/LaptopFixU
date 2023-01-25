@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Center, Divider, HStack, NativeBaseProvider, Text, VStack, Image, Box, ScrollView} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
@@ -57,6 +57,24 @@ const SobreNosotros = (props) => {
 
       
     };
+
+    const salirAviso = () =>{
+      Alert.alert(
+        '¿Seguro que deseas cerrar sesión?',
+        "",
+        
+        [
+          {
+            text: 'Volver',
+        onPress: () => console.log('Cancel Pressed'),
+          },
+
+          { text: 'Salir',  onPress: () => {logOut()
+        }  },
+        ],
+        { cancelable: false },
+      );
+    }
     
     const logOut = async() =>{
       
@@ -184,7 +202,7 @@ const SobreNosotros = (props) => {
 
           { 
           (nombre!==null) ?
-          (<TouchableOpacity onPress={()=>{logOut()}}>
+          (<TouchableOpacity onPress={()=>{salirAviso()}}>
           <VStack >
             <Center>
               <Image source={require("../img/Salir.png")
