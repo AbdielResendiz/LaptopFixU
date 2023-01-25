@@ -1,8 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Text, Heading, VStack, FormControl, Input, Link, 
+import { Box, Text, Heading, VStack, FormControl, Input,  
   Button, HStack, Center, NativeBaseProvider, Image, Spinner, ZStack } from "native-base";
-import { TouchableOpacity, Alert, ImageBackground } from "react-native";
+import { TouchableOpacity, Alert } from "react-native";
+import md5 from "md5";
 import { useNavigation } from '@react-navigation/native';
 import URL from "../private/api/URL";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,8 +20,7 @@ const Login = (props) => {
     const [contrasenia, setContrasenia] = useState("");
 
     const [loading, setLoading] = useState(false);
-//Imagen de fondo
- const image= {require:('../img/fondo-min.png')}
+
 
   
 
@@ -30,7 +30,7 @@ const Login = (props) => {
       setLoading(true);
       const dataLogin = new FormData();
         dataLogin.append("correo", correo);
-        dataLogin.append("contrasenia", contrasenia);
+        dataLogin.append("contrasenia", md5(contrasenia));
         console.log("data", dataLogin)
         {/**se envia al servidor */}
         const url = `${BASE_URL}api/login/inicio_sesion`

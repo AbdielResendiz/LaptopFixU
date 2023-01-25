@@ -71,6 +71,30 @@ const Home = (props) => {
     fetchData();
   }, []);
 
+  //OBTIENE DATOS DE LA BD. el nombre y apellido
+ 
+  useEffect( () => {
+    const getNombre = async() => {
+  
+      const dataUser = new FormData();
+      dataUser.append("idU",id)
+      const url = `${BASE_URL}api/login/get_info`
+      const options = {
+        method:'POST',
+        body: dataUser
+      };
+      const res = await fetchPost(url, options);
+      setApellidos(res.data.apellidos);
+      setNombre(res.data.nombreU);
+      console.log("responseeee", res.data.nombreU);
+      console.log("responseeee22", res.data.apellidos);
+      
+    }
+    getNombre();
+  }, [])
+
+
+
   //INICIA Ver TECNICOS
   const [ servicios, setServicios ] = useState([]);
 
@@ -81,7 +105,7 @@ const Home = (props) => {
       };
       const res = await fetchPost(url, options);
       setServicios(res.data);
-      console.log("res", res.data);
+     // console.log("res", res.data);
       setLoading1(false);
   }
 
@@ -101,7 +125,7 @@ const Home = (props) => {
       };
       const res = await fetchPost(url, options);
       setTecnicos(res.tecnicos);
-      console.log("res", res.tecnicos);
+      //console.log("res", res.tecnicos);
       setLoading2(false);
   }
 

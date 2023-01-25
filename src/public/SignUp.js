@@ -1,7 +1,8 @@
 import  React, {useState} from "react";
 import { Box, Text, Heading, VStack, FormControl, Input, 
-  Button, HStack, Center, NativeBaseProvider, Image, ScrollView, Spinner, ZStack } from "native-base";
+  Button, HStack, Center, NativeBaseProvider, Image, Spinner, ZStack } from "native-base";
   import { TouchableOpacity, Alert } from "react-native";
+  import md5 from "md5";
 import { useNavigation } from '@react-navigation/native';
 import fetchPost from "../private/api/fetchPost";
 const SignUp = () => {
@@ -16,6 +17,7 @@ const SignUp = () => {
   const [telefono, setTelefono] = useState("");
 
   const [loading, setLoading] = useState(false);
+
 
   const validacion = async() =>{
     if (contrasenia==contrasenia2){
@@ -35,11 +37,12 @@ const SignUp = () => {
 
   const Registro = async() => {
     setLoading(true);
+
     
     const dataLogin = new FormData();
     
       dataLogin.append("correo", correo);
-      dataLogin.append("contrasenia", contrasenia);
+      dataLogin.append("contrasenia", md5(contrasenia));
       dataLogin.append("nombreU", nombreU);
       dataLogin.append("apellidos", apellidos);
       dataLogin.append("telefono", telefono);
