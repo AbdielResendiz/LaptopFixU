@@ -39,6 +39,7 @@ import DetalleTecnico from './src/public/DetalleTecnico';
 import Skeletor from './src/components/Skeletor';
 import SkeletonServicio from './src/components/SkeletonServicio';
 import SkeletonPerfil from './src/components/SkeletonPerfil';
+import AgregarDireccion from './src/private/AgregarDireccion';
 
 
 
@@ -448,6 +449,28 @@ export default function App() {
           backgroundColor: "#236DB7",
         },
         }}/> 
+        <Stack.Screen name="AgregarDireccion" component={AgregarDireccion}
+        options={{title: 'Agregar Dirección',
+          headerTintColor:"white",
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+            ),
+          }}
+          />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

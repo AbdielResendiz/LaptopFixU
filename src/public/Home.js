@@ -195,8 +195,8 @@ const Home = (props) => {
               <ScrollView horizontal={true} mt={1} mx={2}>
               {servicios.map( (servicio, index) => {
                   return(
-                    <TouchableOpacity key={index} onPress={() => detalleServicio(servicio.idS)
-                    }>
+                    <TouchableOpacity 
+                      key={index} onPress={() => detalleServicio(servicio.idS)}>
                     <Box   bg="white" >
                       <Image source={{uri:servicio.image_url} } 
                       alt="image" style={{width: 90,

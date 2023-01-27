@@ -35,6 +35,14 @@ const Servicios = (props) => {
       }, []);
 
 
+  const detalleServicio= (item) => {
+    props.navigation.navigate("DetalleServicio", {
+      idServicio: item,
+    });
+  };
+
+
+
 
   return (
     <NativeBaseProvider config={config} >
@@ -59,7 +67,8 @@ const Servicios = (props) => {
                   {servicios.map( (servicio, index) => {
                       return(
                       <Box key={index} backgroundColor={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
-                          <TouchableOpacity>
+                          <TouchableOpacity
+                            key={index} onPress={() => detalleServicio(servicio.idS)}>
                               <HStack>
                                   <Image 
                                       source={{

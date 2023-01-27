@@ -34,6 +34,12 @@ const Tecnicos = (props) => {
       }, []);
   
 
+      const detalleTecnico= (item) => {
+        props.navigation.navigate("DetalleTecnico", {
+          idTecnico: item,
+        });
+      };
+
 
 
   return (
@@ -52,7 +58,7 @@ const Tecnicos = (props) => {
                 {tecnicos.map( (tecnico, index) => {
                     return(
                     <Box key={index} backgroundColor={"white"} rounded="lg" ml={4} mr={5} mt={2}>
-                        <TouchableOpacity>
+                        <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
                             <HStack>
                                     <Image source={{uri:tecnico.image_url} } 
                                       alt={tecnico.nombreU} size="lg" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>

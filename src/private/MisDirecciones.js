@@ -2,17 +2,35 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { NativeBaseProvider, Text, View, Center, Divider, HStack } from 'native-base';
 import { FontAwesome5, Entypo } from '@expo/vector-icons'; 
-
+import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
+import fetchPost from './api/fetchPost';
 
-const MisDirecciones = () => {
+const MisDirecciones = (props) => {
+
+  const navigation =useNavigation();
+  //obtenemos ID de usuario
+  const id = props.route.params.idU;
+  const idU = parseInt(id);
+  console.log("idUU: ", id);
+
+//navegacion
+  const AgregarDireccionNav= (item) => {
+    navigation.navigate("AgregarDireccion", {
+      idU: item,
+    });
+  };
+
+
+
+
   return (
     <NativeBaseProvider>
       <View w="100%" h="91%" bg="white">
         <Center>
           {/**TITULO  */}
           <Text fontWeight={800} fontSize={30} mt={2}>
-            Agrega o escoge una dirección
+            Agrega o escoge una dirección {idU}
           </Text>
         </Center>
         {/**DIVIDER */}
@@ -22,7 +40,7 @@ const MisDirecciones = () => {
 
         {/**BOTÓN AGREGAR DIRECCIÓN */}
         <Center >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => AgregarDireccionNav(idU)}>
             <HStack bg="muted.300" p={4} rounded={20}>
               <FontAwesome5 name="map-marker-alt" size={28} color="black"  />
               <Text ml={5} fontSize={18}>Nueva dirección</Text>

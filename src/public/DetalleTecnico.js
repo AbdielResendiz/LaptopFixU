@@ -96,7 +96,7 @@ useEffect(() => {
           {/**COLUMNA IZQUIERDA */}
           <VStack mr={6}>
             {/**MI PERFIL */}
-            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleTecnico")}}>
+            <TouchableOpacity onPress={()=>{console.log("uwu")}}>
               <VStack >
                 <Center>
                   <Image source={require("../img/detalleTecnico/info.png")

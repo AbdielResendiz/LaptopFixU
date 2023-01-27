@@ -11,7 +11,7 @@ const SobreNosotros = (props) => {
   const [nombre, setNombre] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [ id, setId] = useState("");
-
+console.log("ID SOBRE NOS : ", id)
 
     useEffect(() => {
       async function fetchData() {
@@ -36,10 +36,9 @@ const SobreNosotros = (props) => {
   
       fetchData();
     }, []);
-
+//Funcion condicional del boton mi perfil, si no esta loggeado, te invita a hacerlo o registrarte
     const MiPerfil= (item) => {
-
-      if (item!=="") {
+      if (item!==null) {
         console.log("if");
         props.navigation.navigate("MiPerfil", {
           idU: item,
@@ -49,13 +48,52 @@ const SobreNosotros = (props) => {
           'Debes iniciar sesión para acceder',
           'Favor de iniciar sesión o registrarse para continuar',
           [
-            { text: 'OK', onPress: () => props.navigation.navigate("Login") },
+            { text: 'Registrarme', onPress: () => props.navigation.navigate("SignUp") },
+            { text: 'Iniciar sesión', onPress: () => props.navigation.navigate("Login") },
           ],
-          { cancelable: false },  
+          { cancelable: true },  
         );
       }
+    };
 
-      
+    //Funcion condicional del boton mi mis ordene, si no esta loggeado, te invita a hacerlo o registrarte
+    const MisOrdenes= (item) => {
+      if (item!==null) {
+        console.log("if");
+        props.navigation.navigate("MisPedidos", {
+          idU: item,
+        })
+      } else {
+        Alert.alert(   
+          'Debes iniciar sesión para acceder',
+          'Favor de iniciar sesión o registrarse para continuar',
+          [
+            { text: 'Registrarme', onPress: () => props.navigation.navigate("SignUp") },
+            { text: 'Iniciar sesión', onPress: () => props.navigation.navigate("Login") },
+          ],
+          { cancelable: true },  
+        );
+      }
+    };
+
+    //Funcion condicional del boton mi direcciones, si no esta loggeado, te invita a hacerlo o registrarte
+    const MisDirecciones= (item) => {
+      if (item!==null) {
+        console.log("if");
+        props.navigation.navigate("MisDirecciones", {
+          idU: item,
+        })
+      } else {
+        Alert.alert(   
+          'Debes iniciar sesión para acceder',
+          'Favor de iniciar sesión o registrarse para continuar',
+          [
+            { text: 'Registrarme', onPress: () => props.navigation.navigate("SignUp") },
+            { text: 'Iniciar sesión', onPress: () => props.navigation.navigate("Login") },
+          ],
+          { cancelable: true },  
+        );
+      }
     };
 
     const salirAviso = () =>{
@@ -154,7 +192,7 @@ const SobreNosotros = (props) => {
                 </VStack>
               </TouchableOpacity>
               {/**MIS DIRECCIONES */}
-              <TouchableOpacity onPress={()=>{navigation.navigate("MisDirecciones")}}>
+              <TouchableOpacity onPress={()=>MisDirecciones(id)}>
                 <VStack>
                   <Center>
                     <Image m={-1} source={require("../img/SobreNos/direcciones.png")
@@ -178,7 +216,7 @@ const SobreNosotros = (props) => {
                 </VStack>
               </TouchableOpacity>
               {/**MIS ORDENES */}
-              <TouchableOpacity onPress={()=>{navigation.navigate("MisPedidos")}}>
+              <TouchableOpacity onPress={()=>MisOrdenes(id)}>
                 <VStack >
                   <Center>
                     <Image m={-3} source={require("../img/SobreNos/ordenes.png")
