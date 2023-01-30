@@ -3,6 +3,7 @@ import { TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Center, Divider, HStack, NativeBaseProvider, Text, VStack, Image, Box, ScrollView} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+
 import Footer from '../components/Footer';
 
 const SobreNosotros = (props) => {

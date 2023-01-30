@@ -7,15 +7,16 @@ import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
 import fetchPost from './api/fetchPost';
 
-const AgregarDireccion = (props) => {
+const EditarDireccion = (props) => {
 
     const BASE_URL = URL.BASE_URL;
     const navigation =useNavigation();
  
   //obtenemos ID de usuario
-  const id = props.route.params.idU;
-  const idU = parseInt(id);
-  console.log("idU usuario: ", id);
+ 
+  const idDom = props.route.params.idD;
+  const idD = parseInt(idDom);
+
 
   const [calle, setCalle] = useState("");
   const [colonia, setColonia] = useState("");
@@ -26,43 +27,101 @@ const AgregarDireccion = (props) => {
   const [estado, setEstado] = useState("");
   const [descripcion, setDescripcion] = useState("");
 
+  const [ loading, setLoading] = useState(false);
+
 
 //OBTIENE DATOS DE LA BD. 
- const newAddress = async() => {
+ const getAddress = async() => {
     
     const dataAddress = new FormData();
-    dataAddress.append("idU",idU);
-    dataAddress.append("calle",calle);
-    dataAddress.append("colonia",colonia);
-    dataAddress.append("numeroExterior",numeroExterior);
-    dataAddress.append("numeroInterior",numeroInterior);
-    dataAddress.append("codigoPostal",codigoPostal);
-    dataAddress.append("municipio",municipio);
-    dataAddress.append("estado",estado);
-    dataAddress.append("descripcion",descripcion);
+    dataAddress.append("idD",idD);
 
 
-    const url = `${BASE_URL}api/pedidos/nueva_direccion`
+
+    const url = `${BASE_URL}api/pedidos/get_direccion`
     const options = {
       method:'POST',
       body: dataAddress
     };
     const res = await fetchPost(url, options);
     
+    console.log("res", res[0]);
+    try{
+      setCalle(res[0].calle);
+      setColonia(res[0].colonia);
+      setNumeroExterior(res[0].numeroExterior);
+      setNumeroInterior(res[0].numeroInterior);
+      setCodigoPostal(res[0].codigoPostal);
+      setEstado(res[0].estado);
+      setMunicipio(res[0].municipio);
+      setDescripcion(res[0].descripcion);
+    }catch(e){
+      console.log(e)
+    }
+    
+    
+}
+useEffect(() => {
+  getAddress();
+}, []);
+
+
+//editar y guardar cambios en la bd
+const editAddress = async() => {
+  setLoading(true);
+
+  
+  const dataEdit = new FormData();
+    dataEdit.append("idD", idD);
+    dataEdit.append("calle", calle);
+    dataEdit.append("colonia", colonia);
+    dataEdit.append("numeroExterior", numeroExterior);
+    dataEdit.append("numeorInterior", numeroInterior);
+    dataEdit.append("codigoPostal", codigoPostal);
+    dataEdit.append("municipio", municipio);
+    dataEdit.append("estado", estado);
+    dataEdit.append("descripcion", descripcion);
+   
+
+    
+    const url ='https://laptopfix.com.mx/laptopfixrun/api/pedidos/update_direccion'
+    const options ={
+      method:'POST',
+      body: dataEdit
+    };
+    {/**respuesta */}
+    const res = await fetchPost(url, options);
     console.log("res", res);
 
+    if (res===true){
+      {/**REGISTRO CORRECTO */}
 
-    Alert.alert(
-        'Dirección guardada',
-        'Tus cambios se reflejarán pronto',
+      
+
+      Alert.alert(
+        'Edición completa',
+        'Se guardaron tus cambios con éxito',
         [
           { text: 'OK',  onPress: () => {navigation.navigate("SobreNosotros")}  },
         ],
         { cancelable: false },
       );
-    
-}
 
+      
+    }
+    else{
+      {/**Registro FALLIDO */}
+      Alert.alert(
+        'Fallo en edición',
+        'Intentalo más tarde',
+        [
+          { text: 'OK',  onPress: () => {navigation.navigate("SobreNosotros")} },
+        ],
+        { cancelable: false },
+      );
+    } 
+    setLoading(false);
+  }
 
 
 
@@ -79,7 +138,7 @@ const AgregarDireccion = (props) => {
                   } alt="Alternate Text" size={"md"} resizeMode="contain" />
             </Center>
             <Center>
-                <Text bold fontSize="2xl" my={2} shadow={4}>Ingresa tu nueva dirección</Text>
+                <Text bold fontSize="xl" my={2} shadow={4}>Ingresa tu nueva dirección id:{idD}</Text>
             </Center>
         </HStack>
         
@@ -189,7 +248,7 @@ const AgregarDireccion = (props) => {
 
            
             <Center>
-                <TouchableOpacity onPress={newAddress}>
+                <TouchableOpacity onPress={editAddress}>
                     <HStack bg="#236DB7" p={5} mt={8} rounded={10} >
                         <FontAwesome name="save" size={24} color="white" />
                             <Text bold color={"#ffffff"} ml={3} fontSize={18} >Guardar</Text>
@@ -209,4 +268,4 @@ const AgregarDireccion = (props) => {
     </NativeBaseProvider>
   )
 }
-export default AgregarDireccion;
+export default EditarDireccion;

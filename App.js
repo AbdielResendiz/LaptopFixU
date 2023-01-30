@@ -40,6 +40,7 @@ import Skeletor from './src/components/Skeletor';
 import SkeletonServicio from './src/components/SkeletonServicio';
 import SkeletonPerfil from './src/components/SkeletonPerfil';
 import AgregarDireccion from './src/private/AgregarDireccion';
+import EditarDireccion from './src/private/EditarDireccion';
 
 
 
@@ -451,6 +452,27 @@ export default function App() {
         }}/> 
         <Stack.Screen name="AgregarDireccion" component={AgregarDireccion}
         options={{title: 'Agregar Dirección',
+          headerTintColor:"white",
+          headerStyle: {
+            backgroundColor: "#236DB7",
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
+              <AntDesign name="shoppingcart" size={34} color="#FFFFFF" />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+              <FontAwesome name="gears" size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
+            ),
+          }}
+          />
+
+        <Stack.Screen name="EditarDireccion" component={EditarDireccion}
+        options={{title: 'Editar dirección',
           headerTintColor:"white",
           headerStyle: {
             backgroundColor: "#236DB7",
