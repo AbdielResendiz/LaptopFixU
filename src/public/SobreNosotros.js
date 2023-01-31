@@ -137,33 +137,29 @@ console.log("ID SOBRE NOS : ", id)
       <Box bg="white"  w="100%" h="91%">
         <Center>
         <Image source={require("../img/SobreNos/user.png")
-                      } alt="Alternate Text"  size="xl" />
+                      } alt="Alternate Text"  size="lg" />
 
         </Center>
       <Center>
-        <Text  fontSize={20} italic>Bienvenido </Text>
+        <Text  fontSize={18} italic>Bienvenido </Text>
       </Center>
-      <Center>
-        <Text  fontWeight={900} letterSpacing={.8} fontSize={26}> 
+      <Center  h={10} maxH={60}>
+        
         {
           (nombre===null) ?
-          (<Text  fontWeight={900} letterSpacing={.8} fontSize={26}> Invitado </Text>) :
+          (<Text  fontWeight={800} letterSpacing={.8} fontSize={26}> Invitado </Text>) :
           (<VStack>
             <Center>
-              <Text  fontWeight={900} letterSpacing={.8} fontSize={26}> {nombre} </Text>
+              <Text  fontWeight={800} letterSpacing={.8} fontSize={20}> {nombre + " " + apellidos} </Text>
             </Center>
             
-            <Center>
-              <Text  fontWeight={900} letterSpacing={.8} fontSize={26}> {apellidos} </Text>
-            </Center>
-
           </VStack>
           )
           
         }
         
         
-        </Text>
+       
       </Center>
       <Center w="50%" mb={1}>
         <Divider bg="#0081C1" thickness={2} ml="100%"/>

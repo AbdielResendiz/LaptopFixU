@@ -1,46 +1,76 @@
-import { NativeBaseProvider, View, Center, Box, VStack, Text, ScrollView, Heading, Input, Icon, HStack, Skeleton} from 'native-base';
-import React from 'react';
+import React, { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { NativeBaseProvider, Input, Box, Text, FlatList , HStack, Image, Center, Divider, Icon} from 'native-base';
 import Footer from '../components/Footer';
-import { MaterialCommunityIcons, MaterialIcons, Fontisto } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons'; 
+const Buscar = (props) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState([]);
 
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(`https://laptopfix.com.mx/laptopfixrun/api/servicios/buscar?q=${searchTerm}`);
+      const data = await response.json();
+      setResults(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-const Buscar = () => {
+  const detalleServicio= (item) => {
+    props.navigation.navigate("DetalleServicio", {
+      idServicio: item,
+    });
+  };
+
   return (
     <NativeBaseProvider>
-         <VStack w="90%" space={5} alignSelf="center" bg="white" my={4}>
-       
-        <Input placeholder="Busca lo que necesitas" width="100%" borderRadius="4" py="3" px="1" fontSize="14" 
-            InputLeftElement={<Icon m="2" ml="3" size="6" color="gray.400" as={<MaterialIcons name="search" />} />}  />
-        </VStack>
-        
-    
-        <ScrollView h="70%" >
-        <Center w="100%">
-            <HStack w="90%" maxW="400" borderWidth="1" space={8} rounded="md" bg="white" _dark={{
-            borderColor: "coolGray.500"
-            }} _light={{
-            borderColor: "coolGray.200"
-            }} p="4">
-                <Skeleton flex="1" h="150" rounded="md" startColor="coolGray.100" />
-                <VStack flex="3" space="4">
-                    <Skeleton startColor="amber.300" />
-                    <Skeleton.Text />
-                    <HStack space="2" alignItems="center">
-                        <Skeleton size="5" rounded="full" />
-                        <Skeleton h="3" flex="2" rounded="full" />
-                        <Skeleton h="3" flex="1" rounded="full" startColor="indigo.300" />
+        <Box bg="white" w="100%" h="91%">
+        <Input variant="rounded" placeholder="Round" my={4} mx={7}
+         value={searchTerm}
+         onChangeText={setSearchTerm}
+         onSubmitEditing={handleSearch} 
+         InputLeftElement={<Icon as={<FontAwesome name="search" />} size={5} ml="2" color="muted.400" />}/>
+           
+      
+        <FlatList
+            data={results}
+            keyExtractor={(item) => item.idS}
+            bg="#ffffff"
+            renderItem={({ item }) => (
+            
+                <Box bg={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
+                <TouchableOpacity
+                  onPress={() => detalleServicio(item.idS)}>
+                    <HStack>
+                        <Image 
+                            source={{
+                            uri: item.image_url
+                            }}alt="Alternate Text" size="lg" roundedLeft={"lg"}  />
+                        <Box w="60%" mt={5} ml={4}>
+                            <Text bold fontSize={20} color="#236DB7" >{item.nombreS}</Text>
+                            <Text >{item.desS}</Text>
+                        </Box>
+                        <Center >
+                        <FontAwesome name="angle-right" size={24} color="black" />
+                        </Center>
                     </HStack>
-                </VStack>
-            </HStack>
-        </Center>
-        </ScrollView>
-        
-        
+                </TouchableOpacity>
+                <Center>
+                  <Divider mt={1} w="20%" mx="10%" thickness={2} bg="black"/>
+
+                </Center>
+            </Box>
+            )}
+        />
+        </Box>
         <Footer/>
-      
-      
-      
+
+
+
+    
     </NativeBaseProvider>
-  )
-}
+  );
+};
+
 export default Buscar;

@@ -32,7 +32,7 @@ const EditarDireccion = (props) => {
 
 //OBTIENE DATOS DE LA BD. 
  const getAddress = async() => {
-    
+    setLoading(true);
     const dataAddress = new FormData();
     dataAddress.append("idD",idD);
 
@@ -58,6 +58,7 @@ const EditarDireccion = (props) => {
     }catch(e){
       console.log(e)
     }
+    setLoading(false);
     
     
 }
@@ -138,7 +139,7 @@ const editAddress = async() => {
                   } alt="Alternate Text" size={"md"} resizeMode="contain" />
             </Center>
             <Center>
-                <Text bold fontSize="xl" my={2} shadow={4}>Ingresa tu nueva dirección id:{idD}</Text>
+                <Text bold fontSize="xl" my={2} shadow={4}>Edita tu dirección</Text>
             </Center>
         </HStack>
         

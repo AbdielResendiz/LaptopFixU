@@ -85,9 +85,13 @@ const Home = (props) => {
       };
       const res = await fetchPost(url, options);
        console.log("responseeee", res);
-     
+     try{
       setApellidos(res.data.apellidos);
       setNombre(res.data.nombreU);
+     }catch(e){
+      console.log("error getNombre", e);
+     }
+      
      
       
     }
@@ -151,33 +155,33 @@ const Home = (props) => {
       {/**Row stack de bienvenida */}
       <Center h="10%">
         <HStack  >
-            <VStack h="100%" w="90%">
+            <VStack h="100%" w="95%">
               <Center     >
                 <Text bold fontSize={24} color="#FFFFFF" >Bienvenido </Text>
               </Center>
               <Center   >
-                <Text  fontSize={24} mx={1} color="#FFFFFF" lineHeight={29}>{nombre!==null  ? (nombre+" "+apellidos): "Invitado"}</Text>
+                <Text  fontSize={18} mx={1} color="#FFFFFF" lineHeight={20}>{nombre!==null  ? (nombre+" "+apellidos): "Invitado"}</Text>
               </Center>
             </VStack>
         </HStack>
       </Center>
         
         {/** scrool vertical para contenido*/}
-          <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" mt={3}>
+          <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" >
             {/**SCROOL HORIZONTAL PROMOCIONES */}
             <Box w="100%" h={200} bg="white">
             <Carrusel/>
             </Box>
                 {/**BOTON SERVICIOS Y VER TODOS */} 
             <HStack  mt={3}>
-              <Center h="10" w="30%"   bg="#236DB7"  rounded={10} ml={3}>
-                <Text bold fontSize={16} letterSpacing={0.8} color="white">SERVICIOS</Text>
+              <Center h="10" w="30%"     rounded={10} ml={3}>
+                <Text bold fontSize={16} letterSpacing={0.8} color="#236DB7">SERVICIOS</Text>
               </Center>
-              <Center h="10" w="30%" ml="30%">
+              <Center h="10" w="30%"  bg="#236DB7" ml="30%">
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Servicios");
                   }}>
-                <Text color= "#236DB7"
+                <Text color= "#ffffff"
                 fontWeight= "bold"
                 fontSize= "lg">Ver todos 
                 </Text>
