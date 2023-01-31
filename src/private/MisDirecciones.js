@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
-import { NativeBaseProvider, Text, View, Center, Divider, HStack, VStack , Box, ScrollView} from 'native-base';
+import { NativeBaseProvider, Text, View, Center, Divider, HStack, VStack , Box, Heading, Spinner ,ScrollView} from 'native-base';
 import { FontAwesome5, Entypo } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
@@ -16,6 +16,9 @@ const MisDirecciones = (props) => {
   const id = props.route.params.idU;
   const idU = parseInt(id);
   console.log("id usuario: ", id);
+
+  //loader
+  const [loading, setLoading] = useState(true);
 
 //navegacion
   const AgregarDireccionNav= (item) => {
@@ -40,6 +43,7 @@ const MisDirecciones = (props) => {
         const res = await fetchPost(url, options);
         setDirecciones(res);
        console.log("address", res)
+       setLoading(false);
         
     }
   
@@ -173,7 +177,21 @@ const MisDirecciones = (props) => {
         
 
                 {/**DIRECCION NO SELECCIONADA */}
-       <ScrollView>
+
+
+      {(loading===true) ? 
+        ( <HStack space={2} justifyContent="center" my={10}>
+        <Spinner accessibilityLabel="Cargando direcciones" size={80} color="#236DB7"/>
+        <Center mt={4}>
+          <Heading color="#236DB7" fontSize="xl">
+            Cargando direcciones
+          </Heading>
+        </Center>
+        
+      </HStack>) 
+        :
+        ( 
+        <ScrollView>
         {direcciones.map( ( direccion, index ) =>{
           return(
             <Center key={index} mt={6}>
@@ -195,9 +213,14 @@ const MisDirecciones = (props) => {
               </HStack>
             </Center>
           )
-        })}
+          })}
+        </ScrollView> 
+        )  
+    }
+       
 
-</ScrollView>
+
+
         <Center>
           <Divider thickness={1} w="70%" mt={4} bg="#236DB7" />
         </Center>

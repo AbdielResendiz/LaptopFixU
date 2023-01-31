@@ -1,4 +1,4 @@
-import { Center, FormControl, HStack, Input, NativeBaseProvider, Image,  ScrollView, Text, View, VStack, Box, Divider } from 'native-base';
+import { Center, FormControl, HStack, Input, NativeBaseProvider, Image, Spinner, Heading, ScrollView, Text, View, VStack, Box, Divider } from 'native-base';
 import React , {useState, useEffect} from 'react';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { TouchableOpacity, TextInput, Alert } from 'react-native';
@@ -11,9 +11,8 @@ const EditarDireccion = (props) => {
 
     const BASE_URL = URL.BASE_URL;
     const navigation =useNavigation();
- 
+
   //obtenemos ID de usuario
- 
   const idDom = props.route.params.idD;
   const idD = parseInt(idDom);
 
@@ -27,7 +26,7 @@ const EditarDireccion = (props) => {
   const [estado, setEstado] = useState("");
   const [descripcion, setDescripcion] = useState("");
 
-  const [ loading, setLoading] = useState(false);
+  const [ loading, setLoading] = useState(true);
 
 
 //OBTIENE DATOS DE LA BD. 
@@ -148,7 +147,24 @@ const editAddress = async() => {
         </Center>
         
 
-        <ScrollView >
+
+        {/**LOADER CONDICIONAL Y EDICION DE DIRECVCION */}
+        { ( loading===true ) ? 
+          (  
+          <HStack space={2} justifyContent="center" my={10}>
+            <Spinner accessibilityLabel="Cargando direcciones" 
+            size={80} color="#236DB7"/>
+            <Center mt={4}>
+              <Heading color="#236DB7" fontSize="xl">
+                Cargando direcciones
+              </Heading>
+            </Center>
+            
+          </HStack>
+          )  
+            :
+          ( 
+            <ScrollView >
             <FormControl mt={3} mx={4}>
                 <HStack>
                     <Center w="20%"  >
@@ -258,7 +274,12 @@ const editAddress = async() => {
             </Center>
    
 
-        </ScrollView>
+            </ScrollView>
+          )       
+      }
+
+
+        
         
        
        

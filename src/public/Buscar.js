@@ -26,7 +26,7 @@ const Buscar = (props) => {
   return (
     <NativeBaseProvider>
         <Box bg="white" w="100%" h="91%">
-        <Input variant="rounded" placeholder="Round" my={4} mx={7}
+        <Input variant="rounded" placeholder="Buscar" my={4} mx={7}
          value={searchTerm}
          onChangeText={setSearchTerm}
          onSubmitEditing={handleSearch} 
