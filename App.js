@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {NavigationContainer, useNavigationContainerRef} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { View, TouchableOpacity, Button} from 'react-native';
-import { navigationRef } from './RootNavigation';
+import { View, TouchableOpacity} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 
 import Home from "./src/public/Home";
@@ -60,7 +59,7 @@ export default function App() {
       <Stack.Screen
             name="Home"
             component={Home}
-            options={{title: 'Inicio',
+            options={{title: '',
               headerTintColor:"white",
               headerStyle: {
                 backgroundColor: "#236DB7",
@@ -110,12 +109,19 @@ export default function App() {
         }}
         />
         <Stack.Screen name="Login" component={Login}
-        options={{headerShown:false
+        options={{headerShown:true,
+          headerTransparent:true, 
+          headerTintColor:"white",
+          title:"Inicio de sesión"
         
         }}/>
         
         <Stack.Screen name="SignUp" component={SignUp}
-        options={{headerShown:false
+        options={{headerShown:true,
+          headerTransparent:true, 
+          headerTintColor:"white",
+          title:"Registro"
+        
         }}/>
         
         <Stack.Screen name="MisPedidos" component={MisPedidos}

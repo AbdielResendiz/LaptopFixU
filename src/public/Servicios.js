@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, Divider } from "native-base";
+import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, Divider } from "native-base";
 import { TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; 
 /**Componentes */
@@ -61,7 +60,7 @@ const Servicios = (props) => {
           (loading===true) ?
           (<SkeletonServicio/>) :
           (
-            <ScrollView   >
+            <ScrollView  bg="white" >
               <View mb={2}>
 
                   {servicios.map( (servicio, index) => {
@@ -73,13 +72,13 @@ const Servicios = (props) => {
                                   <Image 
                                       source={{
                                       uri: servicio.image_url
-                                      }}alt="Alternate Text" size="lg" roundedLeft={"lg"}  />
+                                      }}alt="Imagen" size="md" roundedLeft={"lg"} resizeMode="contain" />
                                   <Box w="60%" mt={5} ml={4}>
                                       <Text bold fontSize={20} color="#236DB7" >{servicio.nombreS}</Text>
-                                      <Text >{servicio.desS}</Text>
+                                      <Text color="#4d4d4d"> + Ver más información</Text>
                                   </Box>
                                   <Center >
-                                  <FontAwesome name="angle-right" size={24} color="black" />
+                                  <FontAwesome name="angle-right" size={28} color="black" />
                                   </Center>
                               </HStack>
                           </TouchableOpacity>

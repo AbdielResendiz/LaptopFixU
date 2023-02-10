@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { TouchableOpacity, Alert} from 'react-native';
-import { Box, NativeBaseProvider, ScrollView, Text, Center, FormControl, Input, VStack, HStack, Icon , Spinner } from 'native-base';
+import { Box, NativeBaseProvider, ScrollView, Text, Center, 
+  FormControl, Input, VStack, HStack, Icon , Spinner } from 'native-base';
 import { FontAwesome, FontAwesome5, Entypo } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NativeBaseProvider, Center, Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+
 
 const OpcionTecnico = () => {
   return (

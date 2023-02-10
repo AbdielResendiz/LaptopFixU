@@ -1,5 +1,5 @@
 import React from 'react';
-import { NativeBaseProvider, Text, View, Box, Center } from 'native-base';
+import { NativeBaseProvider, Text, Box, Center } from 'native-base';
 import Footer from '../components/Footer';
 
 const Soporte = () => {

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Box, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, ZStack, Skeleton } from "native-base";
-  import { FontAwesome5, MaterialIcons } from '@expo/vector-icons'; 
+import { TouchableOpacity, Alert } from 'react-native';
+import { Box,  VStack,  HStack, Center, Text, NativeBaseProvider, 
+  ScrollView,  Image, ZStack, Skeleton } from "native-base";
+
   import { useNavigation } from '@react-navigation/native';
 //import de componentes y  configuraciones
 import Footer from "../components/Footer"
@@ -17,6 +17,7 @@ const DetalleTecnico = (props) => {
 
   const [ tecnico, setTecnico ] = useState([]);
   const [ loading, setLoading ] = useState(true);
+  const [ idUser, setIdUser ] = useState()
 
   const idTecnico = props.route.params.idTecnico;
   console.log("id Tecnico UWU: ", idTecnico);
@@ -39,6 +40,32 @@ useEffect(() => {
     getDatos();
   }, []);
 
+  const onClickAddTec = (idSer) =>{
+    Alert.alert('Técnico seleccionado', `Seleccionaste el técnico con id: ${idSer}`, [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+
+   }
+
+   async function fetchData() {
+    try {
+      
+      await AsyncStorage.getItem("idAS").then(async (value) => {
+        setId(parseInt(value));
+        //console.log("id getItem: ", id);
+      })
+    } catch (error) {
+      console.log(error);
+    }
+    
+  }
+  fetchData();
+  console.log("idUser", id);
   
   
   return (
@@ -96,7 +123,7 @@ useEffect(() => {
           {/**COLUMNA IZQUIERDA */}
           <VStack mr={6}>
             {/**MI PERFIL */}
-            <TouchableOpacity onPress={()=>{console.log("uwu")}}>
+            <TouchableOpacity onPress={()=>onClickAddTec(tecnico.idU)}>
               <VStack >
                 <Center>
                   <Image source={require("../img/detalleTecnico/info.png")
@@ -108,7 +135,7 @@ useEffect(() => {
               </VStack>
             </TouchableOpacity>
             {/**CONTACTANOS */}
-            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleTecnico")}}>
+            <TouchableOpacity onPress={()=>onClickAddTec(tecnico.idU)}>
               <VStack >
                 <Center>
                   <Image source={require("../img/detalleTecnico/contacto.png")
@@ -126,7 +153,7 @@ useEffect(() => {
           {/**COLUMNA DERECHA */}
           <VStack >
             {/**ACERCA DE*/}
-            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleTecnico")}}>
+            <TouchableOpacity onPress={()=>onClickAddTec(tecnico.idU)}>
               <VStack >
                 <Center>
                   <Image  source={require("../img/detalleTecnico/costos.png")
@@ -139,7 +166,7 @@ useEffect(() => {
               </VStack>
             </TouchableOpacity>
             {/**MIS ORDENES */}
-            <TouchableOpacity onPress={()=>{navigation.navigate("DetalleTecnico")}}>
+            <TouchableOpacity onPress={()=>onClickAddTec(tecnico.idU)}>
               <VStack >
                 <Center>
                   <Image  source={require("../img/detalleTecnico/credenciales.png")

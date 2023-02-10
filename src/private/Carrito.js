@@ -9,6 +9,10 @@ import Footer from '../components/Footer';
 const Carrito = () => {
     const navigation =useNavigation();
 
+    async function loadCarrito(){
+
+    }
+
   return (
     <NativeBaseProvider  >
         <View  h="91%" >

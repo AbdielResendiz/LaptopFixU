@@ -1,7 +1,5 @@
 import React from 'react';
-import { NativeBaseProvider, Box, Text, Icon, HStack, Center, Pressable, Image, Divider } from 'native-base';
-import { ToucheableOpacity } from 'react-native';
-import { MaterialCommunityIcons, MaterialIcons, Fontisto } from '@expo/vector-icons';
+import { NativeBaseProvider, Box, HStack, Center, Pressable, Image, Divider } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 
 

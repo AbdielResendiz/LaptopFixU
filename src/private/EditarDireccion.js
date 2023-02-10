@@ -1,4 +1,5 @@
-import { Center, FormControl, HStack, Input, NativeBaseProvider, Image, Spinner, Heading, ScrollView, Text, View, VStack, Box, Divider } from 'native-base';
+import { Center, FormControl, HStack, Input, NativeBaseProvider, 
+  Image, Spinner, Heading, ScrollView, Text, View, Box, Divider } from 'native-base';
 import React , {useState, useEffect} from 'react';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { TouchableOpacity, TextInput, Alert } from 'react-native';

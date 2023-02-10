@@ -1,6 +1,7 @@
 import React from 'react';
-import {  TouchableOpacity, View } from 'react-native';
-import { Box, NativeBaseProvider, Center, HStack, VStack, Text, ScrollView } from 'native-base';
+import {  TouchableOpacity} from 'react-native';
+import {  NativeBaseProvider, Center, 
+    HStack, VStack, Text, ScrollView } from 'native-base';
 
 const InfoApp = () => {
   return (

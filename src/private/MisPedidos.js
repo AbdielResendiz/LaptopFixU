@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {  TouchableOpacity, Alert} from 'react-native';
 import { NativeBaseProvider, ScrollView, Text, Box, HStack, Center, VStack, View, Image, Divider} from 'native-base';
-import { MaterialCommunityIcons, Entypo } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
 

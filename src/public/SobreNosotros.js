@@ -3,10 +3,12 @@ import { TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Center, Divider, HStack, NativeBaseProvider, Text, VStack, Image, Box, ScrollView} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
-
+import URL from '../private/api/URL';
 import Footer from '../components/Footer';
+import fetchPost from '../private/api/fetchPost';
 
 const SobreNosotros = (props) => {
+  const BASE_URL = URL.BASE_URL;
   const navigation =useNavigation();
 
   const [nombre, setNombre] = useState("");
@@ -17,16 +19,8 @@ console.log("ID SOBRE NOS : ", id)
     useEffect(() => {
       async function fetchData() {
         try {
-          await AsyncStorage.getItem("nombreAS").then(async (value) => {
-            setNombre(value);
-            console.log("Nombre effect: ", nombre);
-          });
-      
-          await AsyncStorage.getItem("apellidosAS").then(async (value) => {
-            setApellidos(value);
-            console.log("Apellidos effect: ", apellidos);
-          });
-          await AsyncStorage.getItem("idAS").then(async (value) => {
+         
+          await AsyncStorage.getItem("idUser").then(async (value) => {
             setId(value);
             console.log("id uwu: ", id);
           })
@@ -56,6 +50,34 @@ console.log("ID SOBRE NOS : ", id)
         );
       }
     };
+
+    const getNombre = async() => {
+      const dataUser = new FormData();
+      dataUser.append("idU",id)
+      const url = `${BASE_URL}api/login/get_info`
+      const options = {
+        method:'POST',
+        body: dataUser
+      };
+      const res = await fetchPost(url, options);
+       console.log("response fetch get nombre:", res.data);
+       if (res.data != null){
+         
+        try{
+          setApellidos(res.data.apellidos);
+          setNombre(res.data.nombreU);
+         
+         }catch(e){
+          console.log("error getNombre", e);
+         }
+        
+       }else{
+        
+        console.log("No se ha iniciado sesión", res.data)
+       }
+    
+    }
+    getNombre();
 
     //Funcion condicional del boton mi mis ordene, si no esta loggeado, te invita a hacerlo o registrarte
     const MisOrdenes= (item) => {

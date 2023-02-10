@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Box, Text, Heading, VStack, FormControl, Input,  
-  Button, HStack, Center, NativeBaseProvider, Image, Spinner, ZStack } from "native-base";
+ HStack, Center, NativeBaseProvider, Image, Spinner, ZStack } from "native-base";
 import { TouchableOpacity, Alert } from "react-native";
 import md5 from "md5";
 import { useNavigation } from '@react-navigation/native';
@@ -20,7 +20,7 @@ const Login = (props) => {
     const [contrasenia, setContrasenia] = useState("");
 
     const [loading, setLoading] = useState(false);
-
+  
 
   
 
@@ -31,7 +31,7 @@ const Login = (props) => {
       const dataLogin = new FormData();
         dataLogin.append("correo", correo);
         dataLogin.append("contrasenia", md5(contrasenia));
-        console.log("data", dataLogin)
+        
         {/**se envia al servidor */}
         const url = `${BASE_URL}api/login/inicio_sesion`
         const options = {
@@ -66,15 +66,23 @@ const Login = (props) => {
 
         try {
           {/**guardamos el nombre en local variables terminan AS (AsyncStorage) */}
-          await AsyncStorage.setItem('nombreAS', res.data.nombreU);
-          await AsyncStorage.setItem('apellidosAS', res.data.apellidos);
-          await AsyncStorage.setItem('correoAS', res.data.correo);
-          await AsyncStorage.setItem('idAS', res.data.idU);
-          await AsyncStorage.setItem('conectado', "conectado");
+          
+          await AsyncStorage.setItem('idUser', res.data.idU);
+          await AsyncStorage.setItem('idCarrito', res.data.id);
+          
+          
           
         } catch (e) {
           console.log("Error login:", e);
         }
+       
+
+
+
+
+
+
+
 
         Alert.alert(
           'Inicio de sesion exitoso',
@@ -102,10 +110,9 @@ const Login = (props) => {
 
       }
     }
-    
-    
-    
+  
 
+   
 
 
 
@@ -169,7 +176,7 @@ const Login = (props) => {
 
 
                       <HStack mt="3" justifyContent="center">
-                        <Text fontSize="md" color="white"  >
+                        <Text fontSize="lg" color="white"  >
                           ¿Nuevo usuario?{" "}
                         </Text>
                         <TouchableOpacity onPress={() => {
@@ -177,8 +184,8 @@ const Login = (props) => {
                             }}>
                         <Text 
                         color= "white"
-                        fontWeight= "medium"
-                        fontSize= "md"
+                        fontWeight= {700}
+                        fontSize= "lg"
                         underline
                       >
                           Registrarse

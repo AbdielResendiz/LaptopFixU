@@ -1,7 +1,7 @@
 import React from 'react';
 //import {  View } from 'react-native';
-import { Box, Heading, VStack, FormControl, Input, Link, 
-  Button, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image } from "native-base";
+import { Box, VStack, HStack, Center, Text,
+   NativeBaseProvider, ScrollView, Image } from "native-base";
   import { FontAwesome5, MaterialIcons } from '@expo/vector-icons'; 
 
 import Footer from "../components/Footer"

@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {  TouchableOpacity, Dimensions} from 'react-native';
-import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
+import {  TouchableOpacity} from 'react-native';
 import { NativeBaseProvider, HStack, Center, Box, 
-  ScrollView , Stack, AspectRatio, Image, Heading, Text, VStack, View, ZStack} from 'native-base';
-
+  ScrollView  , Image, Text, VStack} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
 /**componentes */
 import config from '../private/api/config';
 import Footer from "../components/Footer";
@@ -18,19 +14,15 @@ import Skeletor from '../components/Skeletor';
 
 const Home = (props) => {
 
-
-  const [ nombre, setNombre ] = useState("");
+  const [ nombre, setNombre ] = useState(null);
   const [ apellidos, setApellidos ] = useState("");
-  const [ id, setId ] = useState("");
+  const [ id, setId ] = useState(null);
+  const [ idC, setIdC ] = useState(null);
+
+  
 
   const BASE_URL = URL.BASE_URL;
-
-
-
-  const [ conectado, setConectado ] = useState(false);
   {/**Funcion que escanea las variables almacenadas en local storage */}
-
-
   const detalleServicio= (item) => {
     props.navigation.navigate("DetalleServicio", {
       idServicio: item,
@@ -43,39 +35,25 @@ const Home = (props) => {
     });
   };
  
-  
-
- 
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        await AsyncStorage.getItem("nombreAS").then(async (value) => {
-          setNombre(value);
-          console.log("Nombre effect: ", nombre);
-        });
-    
-        await AsyncStorage.getItem("apellidosAS").then(async (value) => {
-          setApellidos(value);
-          console.log("Apellidos effect: ", apellidos);
-        });
-        await AsyncStorage.getItem("idAS").then(async (value) => {
-          setId(value);
-          console.log("id uwu: ", id);
-        })
-      } catch (error) {
-        console.log(error);
-      }
+  async function fetchData() {
+    try {
+      
+      await AsyncStorage.getItem("idUser").then(async (value) => {
+        setId(parseInt(value)); })
+      await AsyncStorage.getItem("idCarrito").then(async (value) => {
+          setIdC(parseInt(value)); })
+    } catch (error) {
+      console.log(error);
     }
-
-    fetchData();
-  }, []);
+    
+  }
+  fetchData();
+  
+  console.log("idUser", id);
+  console.log("idCarrito", idC)
 
   //OBTIENE DATOS DE LA BD. el nombre y apellido
- 
-  useEffect( () => {
     const getNombre = async() => {
-  
       const dataUser = new FormData();
       dataUser.append("idU",id)
       const url = `${BASE_URL}api/login/get_info`
@@ -84,21 +62,24 @@ const Home = (props) => {
         body: dataUser
       };
       const res = await fetchPost(url, options);
-       console.log("responseeee", res);
-     try{
-      setApellidos(res.data.apellidos);
-      setNombre(res.data.nombreU);
-     }catch(e){
-      console.log("error getNombre", e);
-     }
-      
-     
-      
+       console.log("response fetch get nombre:", res.data);
+       if (res.data != null){
+         
+        try{
+          setApellidos(res.data.apellidos);
+          setNombre(res.data.nombreU);
+         
+         }catch(e){
+          console.log("error getNombre", e);
+         }
+        
+       }else{
+        
+        console.log("No se ha iniciado sesión", res.data)
+       }
+    
     }
     getNombre();
-  }, [])
-
-
 
   //INICIA Ver TECNICOS
   const [ servicios, setServicios ] = useState([]);
@@ -114,9 +95,7 @@ const Home = (props) => {
       setLoading1(false);
   }
 
-  useEffect(() => {
-      getDatos1();
-    }, []);
+ 
 
   //FIN VER TECNICOS
 
@@ -134,15 +113,36 @@ const Home = (props) => {
       setLoading2(false);
   }
 
-  useEffect(() => {
-      getDatos();
-    }, []);
+
 
   //TERMINA VER SERVICIOS
 
   const [loading1, setLoading1] = useState(true);
-
   const [loading2, setLoading2] = useState(true);
+ //console.log("id user", id);
+
+
+ 
+
+
+
+
+
+  // useEffect(() => {
+  //   const intervalId = setInterval( async() => {
+  //      fetchData();
+  //      getNombre();
+    
+     
+  //   }, 3000);
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
+  useEffect( () =>{
+    getDatos();
+    getDatos1();
+  }, [])
+
 
 
 
@@ -160,7 +160,7 @@ const Home = (props) => {
                 <Text bold fontSize={24} color="#FFFFFF" >Bienvenido </Text>
               </Center>
               <Center   >
-                <Text  fontSize={18} mx={1} color="#FFFFFF" lineHeight={20}>{nombre!==null  ? (nombre+" "+apellidos): "Invitado"}</Text>
+                <Text  fontSize={18} mx={1} my={1}color="#FFFFFF" lineHeight={20}>{nombre!==null  ? (nombre+" "+apellidos): "Invitado"}</Text>
               </Center>
             </VStack>
         </HStack>
@@ -169,15 +169,15 @@ const Home = (props) => {
         {/** scrool vertical para contenido*/}
           <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" >
             {/**SCROOL HORIZONTAL PROMOCIONES */}
-            <Box w="100%" h={200} bg="white">
+            <Box w="100%"  bg="white" mt={1}>
             <Carrusel/>
             </Box>
                 {/**BOTON SERVICIOS Y VER TODOS */} 
             <HStack  mt={3}>
               <Center h="10" w="30%"     rounded={10} ml={3}>
-                <Text bold fontSize={16} letterSpacing={0.8} color="#236DB7">SERVICIOS</Text>
+                <Text bold fontSize={"md"} letterSpacing={0.8} color="#236DB7">SERVICIOS</Text>
               </Center>
-              <Center h="10" w="30%"  bg="#236DB7" ml="30%">
+              <Center h="10" w="30%"  bg="#236DB7" ml="30%" rounded={20} shadow={7}>
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Servicios");
                   }}>
@@ -190,23 +190,20 @@ const Home = (props) => {
             </HStack>
 
             {/**CONDICIONAL VISTA, CARGANDO */}
-
             {
               (loading1===true) ? (<Skeletor/>) 
               :
               (
-
               <ScrollView horizontal={true} mt={1} mx={2}>
               {servicios.map( (servicio, index) => {
                   return(
                     <TouchableOpacity 
                       key={index} onPress={() => detalleServicio(servicio.idS)}>
-                    <Box   bg="white" >
+                    <Box    >
                       <Image source={{uri:servicio.image_url} } 
-                      alt="image" style={{width: 90,
-                      height: 90, resizeMode: "contain"}}/>
-                      <Center mt={2}>
-                          <Text bold >{servicio.nombreS}</Text>
+                      alt="image" size="md" resizeMode="contain"/>
+                      <Center mt={2} mr={2}>
+                          <Text  fontSize={12} maxW={97} lineHeight={18}>{servicio.nombreS}</Text>
                           
                       </Center>
                     </Box>
@@ -215,22 +212,17 @@ const Home = (props) => {
               </ScrollView>
               )
             }
-            
-            
-
-
-            
 
             {/**botones TECNICOS Y VER TODOS */}
             <HStack  my={3}>
-              <Center h="10" w="30%" bg="#236DB7"  rounded={10} ml={3} >
-                <Text bold fontSize={16} letterSpacing={0.8} color="white">TÉCNICOS</Text>
+              <Center h="10" w="30%" bg="#ffffff"  rounded={10} ml={3} >
+                <Text  bold fontSize="md" letterSpacing={0.8} color="#236DB7">TÉCNICOS</Text>
               </Center>
-              <Center h="10" w="30%" ml="30%" >
+              <Center h="10" w="30%"  bg="#236DB7" ml="30%" rounded={20} shadow={7}>
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Tecnicos");
                   }}>
-                <Text color= "#236DB7"
+                <Text color= "#ffffff"
                 fontWeight= "bold"
                 fontSize= "lg">Ver todos 
                 </Text>
@@ -249,8 +241,7 @@ const Home = (props) => {
                           <Box >
                           <Center>
                             <Image source={{uri:tecnico.image_url} } 
-                              alt="image" style={{width: 80,
-                              height: 80, resizeMode: "contain"}} borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
+                              alt="image" size="md" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
                           </Center>
                             <Center>
                               <Text bold>{tecnico.nombreU}</Text>
@@ -262,22 +253,9 @@ const Home = (props) => {
                 </ScrollView>
                 )
               }
-            
-
           </ScrollView>
-          
-           {/* <TouchableOpacity onPress={() => {
-                    props.navigation.navigate("SkeletonServicio")}}>
-            <Box bg="#00ff00" h={30}>
-              TEST
-            </Box>
-          </TouchableOpacity>
-           */}
-           
-          
         </Box>
-        <Footer />
-        
+      <Footer />
     </NativeBaseProvider>
   )
 }

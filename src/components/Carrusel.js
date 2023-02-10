@@ -11,11 +11,12 @@ const Carrusel = ()=> {
               autoplayLoop
               index={2}
               showPagination
+
               data={colors}
               renderItem={({ item }) => (
                 <Box bg={item} w={Dimensions.get('window').width} > 
                    <Image source={require("../img/banner1.png")} 
-                     alt={item} h={200} w={(Dimensions.get('window').width)-20} resizeMode="stretch" />
+                     alt={item}  w={(Dimensions.get('window').width)} resizeMode="stretch" />
                 </Box>
               )}
             />
