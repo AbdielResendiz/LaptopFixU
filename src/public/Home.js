@@ -19,8 +19,6 @@ const Home = (props) => {
   const [ id, setId ] = useState(null);
   const [ idC, setIdC ] = useState(null);
 
-  
-
   const BASE_URL = URL.BASE_URL;
   {/**Funcion que escanea las variables almacenadas en local storage */}
   const detalleServicio= (item) => {
@@ -95,8 +93,6 @@ const Home = (props) => {
       setLoading1(false);
   }
 
- 
-
   //FIN VER TECNICOS
 
   //INICIA VER SERVICIOS
@@ -113,38 +109,16 @@ const Home = (props) => {
       setLoading2(false);
   }
 
-
-
   //TERMINA VER SERVICIOS
 
   const [loading1, setLoading1] = useState(true);
   const [loading2, setLoading2] = useState(true);
  //console.log("id user", id);
 
-
- 
-
-
-
-
-
-  // useEffect(() => {
-  //   const intervalId = setInterval( async() => {
-  //      fetchData();
-  //      getNombre();
-    
-     
-  //   }, 3000);
-  //   return () => clearInterval(intervalId);
-  // }, []);
-
   useEffect( () =>{
     getDatos();
     getDatos1();
   }, [])
-
-
-
 
   return (
     <NativeBaseProvider config={config} >
