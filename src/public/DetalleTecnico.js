@@ -65,7 +65,7 @@ useEffect(() => {
     
   }
   fetchData();
-  console.log("idUser", id);
+  console.log("idUser", idUser);
   
   
   return (

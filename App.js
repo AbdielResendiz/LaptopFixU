@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {NavigationContainer, useNavigationContainerRef} from '@react-navigation/native';
+import {Image, NativeBaseProvider} from 'native-base';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { View, TouchableOpacity} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
@@ -75,8 +76,15 @@ export default function App() {
                   <FontAwesome name="gears" size={24} color="#FFFFFF" />
                 </TouchableOpacity>
               </View>
-                
               ),
+              headerLeft: ()=>(
+                <NativeBaseProvider>
+                 <Image source={require("./assets/icon.png")} 
+                     alt={"logo"}  size={"sm"}  />
+
+                  
+                </NativeBaseProvider>
+              )
              
               
             }}

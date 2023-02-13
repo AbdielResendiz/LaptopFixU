@@ -1,4 +1,4 @@
-azul #236DB7
+azul #308dcb
 gris #BDC5C8
 blanco #FFFFFF
 negro #132039

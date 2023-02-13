@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "LaptopFix",
-    "slug": "LaptopFix",
+    "name": "Laptop FIX RUN",
+    "slug": "LaptopFIXRUN",
     "owner": "impactosdigitales2",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2F8DCB"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

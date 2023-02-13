@@ -15,7 +15,7 @@ const Carrito = () => {
   const [ IdU, setIdU ] = useState(null);
   const [ IdC, setIdC ] = useState(null);
   const [ carrito, setCarrito ] = useState([]);
- 
+  console.log("Carrito0", carrito);
 
   const BASE_URL = URL.BASE_URL;
   
@@ -33,8 +33,8 @@ const Carrito = () => {
     
   }
   
-  //console.log("IdU", IdU);
-  //console.log("IdCarrito", IdC)
+  console.log("IdU", IdU);
+  console.log("IdCarrito", IdC)
 
   //OBTIENE DATOS DE LA BD. el nombre y apellido
   const getCarrito = async() => {
@@ -67,13 +67,8 @@ const Carrito = () => {
  
  useEffect(() => {
      fetchData();
-     console.log("IdU", IdU);
-     console.log("IdCarrito", IdC);
-     
-     getCarrito();
-  
+    getCarrito();
   }, [IdC]);
- 
  
 
 
@@ -81,8 +76,8 @@ const Carrito = () => {
   return (
     <NativeBaseProvider  >
         <View  h="91%" >
-            <Center bg="#FFFFFF" mx={4} mt={5} mb={3} p={2} h={255} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
-                <ScrollView style={{paddingHorizontal:10}}  horizontal={false} w="100%" persistentScrollbar={true} >
+            <Center bg="#FFFFFF" mx={8} mt={5} mb={3} p={2} h={380} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
+                <ScrollView style={{paddingHorizontal:10}}  horizontal={false} w="100%">
                     {/**Item carrito ejemplo */}
                    
 
@@ -93,19 +88,17 @@ const Carrito = () => {
                             <Box>
                         {carrito.map( (item, index) =>{
                             return(
-                                <Center key={index} h={100} marginBottom={1} bg="white">
+                                <Center key={index} h={110} marginBottom={2} bg="white">
                                     <HStack>
-                                        <Center w="40%">
                                         <Image 
-                                        source={{uri:item.image_url}}
-                                        alt={"imagen de servicio:"+item.servicio}
-                                        size="md"   marginRight={3} resizeMode="contain" />
-                                        </Center>
-                                        <VStack w="60%">
-                                            <Text bold fontSize="lg" >{item.nombreS}</Text>
-                                            
+                                        source={require( "../img/descarga.png")
+                                        } alt="Alternate Text" 
+                                        size="lg" rounded={"lg"}  marginRight={3}/>
+                                        <VStack>
+                                            <Text>{item.nombreS}</Text>
+                                            <Text>Servicio</Text>
                                             <HStack>
-                                                <Text ml={"40%"}>{"$"+item.precioS}</Text>
+                                                <Text ml={"40%"}>$300.00</Text>
                                             </HStack>
                                         </VStack>
                                     </HStack>
@@ -142,7 +135,7 @@ const Carrito = () => {
                         Total de ordenes
                     </Text>
                     <Text  fontSize="md" >
-                        $9999.00
+                        $200.00
                     </Text>
                 </Stack>
             </Center>
@@ -157,7 +150,7 @@ const Carrito = () => {
                         Envío
                     </Text>
                     <Text  fontSize="md">
-                        $0.00
+                        $600.00
                     </Text>
                 </HStack>
             </Center>                  
@@ -169,7 +162,7 @@ const Carrito = () => {
            <Center>
             <HStack>
                     <Text mr={10} ml={12} fontSize="md">Total por ordenes</Text>
-                    <Text mr={12} ml={20} fontSize="md">$9999.00</Text>
+                    <Text mr={12} ml={20} fontSize="md">$650.00</Text>
 
                 </HStack>
            </Center>

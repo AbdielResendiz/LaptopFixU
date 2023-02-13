@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react';
 //import {  View } from 'react-native';
 import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Divider, VStack } from "native-base";
-  import { AntDesign } from '@expo/vector-icons'; 
+  import { FontAwesome5 } from '@expo/vector-icons'; 
   //componentes y config
 import Footer from "../components/Footer";
 import URL from "../private/api/URL";
 import config from "../private/api/config";
 import fetchPost from "../private/api/fetchPost";
-
+import Gradiente from '../components/Gradiente';
 import { TouchableOpacity, Alert } from 'react-native';
+
 
 const DetalleServicio = (props) => {
   const idServicio = props.route.params.idServicio;
@@ -17,6 +18,7 @@ const DetalleServicio = (props) => {
   const idUser = props.route.params
 
   const BASE_URL = URL.BASE_URL;
+
 
    //INICIA Ver TECNICOS
    const [ servicio, setServicio ] = useState([]);
@@ -52,58 +54,76 @@ const DetalleServicio = (props) => {
 
      }
 
+
+
+
+
+
   return (
     <NativeBaseProvider config={config}>
       <Box h="91%"  bg="#fff" w="100%">
-        
-        <ScrollView >
+        <Gradiente/>
       
         {/**IMAGEN DE SERVICIO */}
-        <Center horizontal={true} margin={3} mt={3}  >
+        <Center horizontal={true} margin={3}  >
           <Image 
             source={{uri:servicio.image_url}}
               alt="Alternate Text" 
-            size="xl"  resizeMode="contain" marginRight={3}/>
+            size="2xl" rounded={"md"} resizeMode="contain" marginRight={3} mb={-5} mt={-5}/>
         </Center>
           {/**DETALLE DE SERVICIO */}
           
-            <Box  mx={3}  pl={5}>
-              
-            <Center>
-                  <HStack w="98%">
-                    <Text fontSize={18} bold>{servicio.nombreS}</Text>
-                    <Text fontSize={18} bold ml={5}> Precio: </Text>
+            <Box background={"white"} mx={3}  pl={5}>
+              <VStack w="70%" maxW="90%" >
+                <Text fontSize={18} > Nombre del servicio: </Text>
+                <Text fontSize={18} fontWeight={"bold"} color={"#236DB7"}>{servicio.nombreS}</Text>
+              </VStack>
+              <HStack>
+                <Center>
+                  <HStack>
+                    <Text fontSize={18} > Precio: </Text>
                     <Text fontSize={18} fontWeight={"bold"} color={"#236DB7"}>${servicio.PrecioS}</Text>
                   </HStack>
 
-              </Center>
-            </Box>
-
-            <Text ml={4} bold my={3} underline color="#236DB7" >Descripción</Text>
-            {/**DESCRIPCION DE SERVICIO */}
-            <Center borderColor={"#000000"} borderWidth={1} mx={3}>
-              <Text  fontSize={14} mx={3} px={3} py={2} textAlign="justify" color={"#888888"}> {servicio.desS}</Text>
-            </Center>
-           
-                  {/**BOTON CARRITO */}
-                  <Center mx={10} mt={3} >
-                  <Box  bg="#236DB7" rounded={10} shadow={4} w={210}>
+                </Center>
+                
+                 {/**BOTON CARRITO */}
+                <Center mx={10} mt={3} >
+                  <Box  bg="#236DB7" rounded={50} shadow={4}>
                     <TouchableOpacity onPress={()=>onClickAddCart(servicio.idS)}>
                       <Center py={2} px={2}>
                         <HStack>
                           <Center>
-                          <AntDesign name="shoppingcart" size={24} color="white" />
+                            <FontAwesome5 name="cart-plus" size={24} color="white" />
                           </Center>
                           <Center>
-                            <Text color="#fff"  bold fontSize={"md"} mx={2} maxW={150} lineHeight={20}> Añadir al carrito</Text>
+                            <Text color="#fff"  bold fontSize={"md"} ml={2} maxW={90} lineHeight={20}> Agregar al carrito</Text>
                           </Center>
                         </HStack>
                       </Center>
                     </TouchableOpacity>
                   </Box>
                 </Center>
+                
+                
+              </HStack>
+             
+              
+            </Box>
+            <Center >   <Divider thickness={1} bg="#000" w="50%"/> </Center>
+            <ScrollView mt={-4}>
+            {/**DESCRIPCION DE SERVICIO */}
+           
+          
+              <Text bold fontSize={18} mx={3} pl={4} textAlign="justify" > Descripción: <Text  fontWeight={400}  >{servicio.desS}</Text></Text>
+              <Center >   <Divider thickness={2} bg="#000" w="50%"/> </Center>
+           
+
         </ScrollView>
+
       </Box>
+
+      
 
       <Footer/>
     </NativeBaseProvider>
