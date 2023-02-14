@@ -24,6 +24,8 @@ const Home = (props) => {
   const detalleServicio= (item) => {
     props.navigation.navigate("DetalleServicio", {
       idServicio: item,
+      idUser: id,
+      idC: idC
     });
   };
 

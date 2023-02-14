@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {  Alert } from 'react-native';
 import { NativeBaseProvider, VStack, Center, Box, 
     ScrollView ,  Image, Divider, Text, Button, HStack, View, Stack} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
 import fetchPost from './api/fetchPost';
 import URL from './api/URL';
+import { Feather } from '@expo/vector-icons'; 
 import SkeletonServicio from '../components/SkeletonServicio';
       
 
@@ -70,12 +72,68 @@ const Carrito = () => {
      console.log("IdU", IdU);
      console.log("IdCarrito", IdC);
      
-     getCarrito();
+ 
   
   }, [IdC]);
- 
- 
 
+
+ const borrarBtn = (id, carrito, nombre)=>{
+    
+        Alert.alert(`¿Seguro que deseas eliminar el servicio `, `${nombre}?`, [
+          { 
+            text: 'Cancelar',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+            
+          },
+          {text: 'Eliminar', onPress: () =>borrarConfirm(id)},
+        ]);
+      
+    
+ }
+
+ const borrarConfirm= async(id)=>{
+    console.log("id borrar", id)
+    const dataD = new FormData();
+    dataD.append("idC",IdC);
+    dataD.append("id",id);
+    const url = `${BASE_URL}api/carrito/delete_item`
+    const options = {
+      method:'POST',
+      body: dataD
+    };
+    const res = await fetchPost(url, options);
+     console.log("response fetch delete carrito:", res);
+     if (res===true){
+        Alert.alert(`Se elimino con éxito`, `Si cambias de opinion, puedes agregarlo de nuevo más tarde`, [
+            { 
+              text: 'Entendido',
+              onPress: () => console.log('entendido boton'),
+              
+              
+            }
+          ]);
+     }else{
+        Alert.alert(`Ocurrió un error`, `Intentalo de nuevo más tarde`, [
+            { 
+              text: 'Entendido',
+              onPress: () => console.log('entendido boton'),
+              
+              
+            }
+          ]);
+     }
+     await getCarrito();
+     
+    
+ }
+ 
+ useEffect(() => {
+ 
+    
+    getCarrito();
+ 
+ }, []);
 
 
   return (
@@ -105,8 +163,16 @@ const Carrito = () => {
                                             <Text bold fontSize="lg" >{item.nombreS}</Text>
                                             
                                             <HStack>
-                                                <Text ml={"40%"}>{"$"+item.precioS}</Text>
+                                                <VStack w="65%">
+                                                    <Text >{"Precio: $"+item.precioS}</Text>
+                                                    <Text >{"Cantidad: "+item.cantidad}</Text>
+                                                </VStack>
+                                                <Button onPress={()=>borrarBtn(item.id, IdC, item.nombreS)}
+                                                 p={2} borderRadius={10} m={2}  justifyContent={"flex-end"} bg="#dc3545">
+                                                    <Feather name="trash-2" size={20} color="white" />
+                                                </Button>
                                             </HStack>
+                                           
                                         </VStack>
                                     </HStack>
                                     <Divider thickness={3} bg="#0081C1"/>

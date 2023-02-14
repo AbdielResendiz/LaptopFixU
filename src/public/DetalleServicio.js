@@ -1,20 +1,40 @@
 import React, {useState, useEffect} from 'react';
 //import {  View } from 'react-native';
-import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Divider, VStack } from "native-base";
+import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Button} from "native-base";
   import { AntDesign } from '@expo/vector-icons'; 
   //componentes y config
 import Footer from "../components/Footer";
 import URL from "../private/api/URL";
 import config from "../private/api/config";
 import fetchPost from "../private/api/fetchPost";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TouchableOpacity, Alert } from 'react-native';
 
 const DetalleServicio = (props) => {
   const idServicio = props.route.params.idServicio;
   console.log("id Servicio UWU: ", idServicio);
-  const idCarrito = props.route.params;
-  const idUser = props.route.params
+  const idCarrito = props.route.params.idC;
+  const idUser = props.route.params.idUser;
+  console.log("idUser detalle", idUser);
+  console.log("idServicio detalle", idServicio);
+  console.log("idCarrito detalle", idCarrito);
+
+//inicia funciones para contar
+  const [ count, setCount ] = useState(1);
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  const decrementCount = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+  //fin funciones conteo
+
+
+  
+
 
   const BASE_URL = URL.BASE_URL;
 
@@ -33,7 +53,7 @@ const DetalleServicio = (props) => {
        const res = await fetchPost(url, options);
        setServicio(res.data[0]);
      
-       console.log("detalleServicio", servicio.nombreS)
+       
    }
  
    useEffect(() => {
@@ -49,6 +69,35 @@ const DetalleServicio = (props) => {
         },
         {text: 'OK', onPress: () => console.log('OK Pressed')},
       ]);
+
+     }
+
+     const botonCarrito = () =>{
+      if (isNaN(idCarrito)){
+        Alert.alert('Favor de iniciar sesión', `Para agregar a tu carrito, primero inicia sesión`, [
+          { 
+            text: 'Cancelar',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+            cancelable: true
+          },
+          {text: 'Iniciar Sesión', onPress: () =>props.navigation.navigate("Login")},
+        ]);
+      }else{
+        Alert.alert(`Servicio seleccionado: ${servicio.nombreS}`, 
+         `¿Deseas agregar ${count} servicio de ${servicio.nombreS} al carrito?`, [
+          {
+            text: 'Cancelar',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {text: 'Agregar', onPress: () => console.log('OK Pressed')},
+        ]);
+        console.log("si hay carrito")
+      }
+
+
+
 
      }
 
@@ -78,17 +127,37 @@ const DetalleServicio = (props) => {
 
               </Center>
             </Box>
+            {/**Cantidad para carrito */}
+            <Center mt={4}>
+              <HStack>
+              <Button onPress={decrementCount} bg="#236DB7" borderRadius={100} py={1} px={2}>
+              <AntDesign name="minus" size={18} color="white" />
+              </Button>
+              <Center>
+                <Text fontSize={20} mx={3}>{count}</Text>
+              </Center>
+              
+              <Button onPress={incrementCount} bg="#236DB7" borderRadius={100} py={1} px={2}>
+              <AntDesign name="plus" size={18} color="white"  />
+              </Button>
+
+              </HStack>
+
+            </Center>
 
             <Text ml={4} bold my={3} underline color="#236DB7" >Descripción</Text>
             {/**DESCRIPCION DE SERVICIO */}
-            <Center borderColor={"#000000"} borderWidth={1} mx={3}>
-              <Text  fontSize={14} mx={3} px={3} py={2} textAlign="justify" color={"#888888"}> {servicio.desS}</Text>
+            <Center borderColor={"#000000"} borderWidth={1} mx={3} h="40%">
+              <ScrollView>
+                <Text  fontSize={14} mx={3} px={3} py={2} textAlign="justify" color={"#888888"}> {servicio.desS}</Text>
+              </ScrollView>
+              
             </Center>
            
                   {/**BOTON CARRITO */}
                   <Center mx={10} mt={3} >
                   <Box  bg="#236DB7" rounded={10} shadow={4} w={210}>
-                    <TouchableOpacity onPress={()=>onClickAddCart(servicio.idS)}>
+                    <TouchableOpacity onPress={()=>botonCarrito()}>
                       <Center py={2} px={2}>
                         <HStack>
                           <Center>

@@ -10,6 +10,7 @@ import fetchPost from '../private/api/fetchPost';
 import config from '../private/api/config';
 import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DetalleTecnico = (props) => {
   const navigation =useNavigation();
@@ -17,7 +18,7 @@ const DetalleTecnico = (props) => {
 
   const [ tecnico, setTecnico ] = useState([]);
   const [ loading, setLoading ] = useState(true);
-  const [ idUser, setIdUser ] = useState()
+  const [ idUser, setIdUser ] = useState(null)
 
   const idTecnico = props.route.params.idTecnico;
   console.log("id Tecnico UWU: ", idTecnico);
@@ -55,8 +56,8 @@ useEffect(() => {
    async function fetchData() {
     try {
       
-      await AsyncStorage.getItem("idAS").then(async (value) => {
-        setId(parseInt(value));
+      await AsyncStorage.getItem("idUser").then(async (value) => {
+        setIdUser(parseInt(value));
         //console.log("id getItem: ", id);
       })
     } catch (error) {
