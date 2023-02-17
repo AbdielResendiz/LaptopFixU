@@ -3,6 +3,7 @@ import {  TouchableOpacity, Alert} from 'react-native';
 import { NativeBaseProvider, ScrollView, Text, Box, HStack, Center, VStack, View, Image, Divider} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
+import styles from '../styles/styles';
 
 const MisPedidos = () => {
   const navigation =useNavigation();
@@ -38,28 +39,28 @@ console.log("Seleccionado", select);
     <HStack  bg={"#FFFFFF"}  w="100%">
       <TouchableOpacity onPress={()=>setSelect(0)}>
         <Center  bg="#236DB7"  py={3}  mr={1}  px={2}>
-          <Text fontSize={14} color="#FFFFFF" fontWeight={800} letterSpacing={0.5}>TODOS</Text>
+          <Text fontSize={14} color="#FFFFFF" style={styles.Texts} letterSpacing={0.5}>TODOS</Text>
           
         </Center>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={()=>setSelect(1)}>
         <Center bg="#00AF63"   mr={1}  py={3} px={2}>
-          <Text fontSize={14} color="#FFFFFF" fontWeight={800} letterSpacing={0.5}>COMPLETOS</Text>
+          <Text fontSize={14} color="#FFFFFF" style={styles.Texts} letterSpacing={0.5}>COMPLETOS</Text>
           
         </Center>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={()=>setSelect(2)}>
         <Center bg="#FFAA32"    py={3}  mr={1} px={2}>
-          <Text fontSize={14} color="#ffffff" fontWeight={800}>EN PROCESO</Text>
+          <Text fontSize={14} color="#ffffff" style={styles.Texts}>EN PROCESO</Text>
             
         </Center>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={()=>setSelect(3)}>
         <Center bg="#FF2832" py={3}  px={2}>
-          <Text fontSize={14} color="#ffffff" fontWeight={800}>CANCELADOS</Text>
+          <Text fontSize={14} color="#ffffff" style={styles.Texts}>CANCELADOS</Text>
           
         </Center>
       </TouchableOpacity>
@@ -82,8 +83,8 @@ console.log("Seleccionado", select);
                   alt="image"  size={"xl"}style={{ resizeMode: "contain"}}/>
               </Center>
               <VStack>
-                <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
-                <Text ml={10}>Completada</Text>
+                <Text  ml={1} style={styles.Texts} fontSize={18} mt={2}>Orden ID #000986 </Text>
+                <Text ml={10} style={styles.Texts}>Completada</Text>
               </VStack>
               
                 
@@ -106,8 +107,8 @@ console.log("Seleccionado", select);
                     alt="image" size="xl" style={{ resizeMode: "contain"}}/>
                 </Center>
                 <VStack>
-                  <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
-                  <Text ml={10}>En proceso</Text>
+                  <Text  ml={1} style={styles.Texts} fontSize={18} mt={2}>Orden ID #000986 </Text>
+                  <Text ml={10} style={styles.Texts}>En proceso</Text>
                 </VStack>
                 
                  
@@ -130,8 +131,8 @@ console.log("Seleccionado", select);
                   alt="image"  size="xl" style={{ resizeMode: "contain"}}/>
               </Center>
               <VStack>
-                <Text  ml={1} fontWeight="bold" fontSize={18} mt={2}>Orden ID #000986 </Text>
-                <Text ml={10}>Cancelada</Text>
+                <Text  ml={1} style={styles.Texts} fontSize={18} mt={2}>Orden ID #000986 </Text>
+                <Text ml={10} style={styles.Texts}>Cancelada</Text>
               </VStack>
             </HStack>
           </Box>

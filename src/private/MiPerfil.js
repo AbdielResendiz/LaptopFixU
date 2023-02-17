@@ -9,7 +9,7 @@ import fetchPost from './api/fetchPost';
 import URL from './api/URL';
 import SkeletonPerfil from '../components/SkeletonPerfil';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import styles from '../styles/styles';
 
 const MiPerfil = (props) => {
     const BASE_URL =   URL.BASE_URL;
@@ -197,7 +197,7 @@ useEffect(() => {
                         
                             <Center  w="50%" roundedLeft={10} p={2} bg={selected===0 ? '#132039' : '#efefef'} >
                                 <TouchableOpacity onPress={()=>{setSelected(0)}}>
-                                    <Text fontSize={18} color={selected === 0 ? "white" : "black"}> Hombre </Text>  
+                                    <Text fontSize={18}style={styles.Texts}  color={selected === 0 ? "white" : "black"}> Hombre </Text>  
                                 </TouchableOpacity>
                             </Center>
                         
@@ -205,7 +205,7 @@ useEffect(() => {
                         
                             <Center  w="50%"  roundedRight={10} p={2} bg={selected===1 ? '#132039' : '#efefef'}>
                                 <TouchableOpacity onPress={()=>{setSelected(1)}}>
-                                    <Text fontSize={18} color={selected === 1 ? "white" : "black"} > Mujer </Text> 
+                                    <Text fontSize={18} style={styles.Texts} color={selected === 1 ? "white" : "black"} > Mujer </Text> 
                                 </TouchableOpacity>
                             </Center>
                        
@@ -220,7 +220,7 @@ useEffect(() => {
 
                                 }
                             
-                            <Text bold color="white" ml={3} fontSize="lg">Guardar</Text> 
+                            <Text bold color="white" ml={3} fontSize="lg" style={styles.Texts}>Guardar</Text> 
 
                             </HStack>
                         </Center>

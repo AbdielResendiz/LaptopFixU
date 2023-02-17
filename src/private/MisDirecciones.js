@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
 import fetchPost from './api/fetchPost';
 import URL from './api/URL';
+import styles from '../styles/styles';
 
 const MisDirecciones = (props) => {
 
@@ -128,7 +129,7 @@ const MisDirecciones = (props) => {
       <View w="100%" h="91%" bg="white">
         <Center>
           {/**TITULO  */}
-          <Text fontWeight={800} fontSize={30} mt={2}>
+          <Text style={styles.Texts} fontSize={30} mt={2}>
             Agrega o escoge una dirección 
           </Text>
         </Center>
@@ -142,7 +143,7 @@ const MisDirecciones = (props) => {
           <TouchableOpacity onPress={() => AgregarDireccionNav(idU)}>
             <HStack bg="muted.300" p={4} rounded={20}>
               <FontAwesome5 name="map-marker-alt" size={28} color="black"  />
-              <Text ml={5} fontSize={18}>Nueva dirección</Text>
+              <Text ml={5} style={styles.Texts} fontSize={18}>Nueva dirección</Text>
             </HStack>
           </TouchableOpacity>
         </Center>
@@ -184,7 +185,7 @@ const MisDirecciones = (props) => {
         ( <HStack space={2} justifyContent="center" my={10}>
         <Spinner accessibilityLabel="Cargando direcciones" size={80} color="#236DB7"/>
         <Center mt={4}>
-          <Heading color="#236DB7" fontSize="xl">
+          <Heading color="#236DB7" fontSize="xl" style={styles.Texts}>
             Cargando direcciones
           </Heading>
         </Center>

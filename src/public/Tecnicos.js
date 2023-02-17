@@ -11,6 +11,7 @@ import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import SkeletonServicio from '../components/SkeletonServicio';
+import styles from '../styles/styles';
 
 const Tecnicos = (props) => {
     const BASE_URL = URL.BASE_URL;
@@ -63,10 +64,10 @@ const Tecnicos = (props) => {
                                     <Image source={{uri:tecnico.image_url} } 
                                       alt={tecnico.nombreU} size="lg" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
                                 <Box w="60%" mt={5} ml={4}>
-                                    <Text style={{fontFamily: 'CircularApp'}} fontSize={20}  color="#236DB7">
+                                    <Text style={styles.Texts} fontSize={20}  color="#236DB7">
                                       {tecnico.nombreU + " " + tecnico.apellidos}
                                     </Text>
-                                    <Text style={{fontFamily: 'CircularApp'}}>
+                                    <Text style={styles.Texts}>
                                       Técnico
                                     </Text>
                                 </Box>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 import { NativeBaseProvider, VStack, Center, Box, 
-  ScrollView ,  Image, Checkbox, Text, Button, HStack, Input, AspectRatio} from 'native-base';
+  ScrollView ,  Image, Checkbox, Text, Button, HStack, Input} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import styles from '../styles/styles';
 
 const CheckAdress = () => {
   const navigation =useNavigation();
@@ -15,21 +16,21 @@ const CheckAdress = () => {
                              rounded={"lg"}  marginRight={3}/>
         <Box ml={4}>
         
-          <Text>Nombre completo</Text>
+          <Text style={styles.Texts}>Nombre completo</Text>
           <Input mx="3" placeholder="Nombre" w="90%" />
-          <Text>Correo electrónico</Text>
+          <Text style={styles.Texts}>Correo electrónico</Text>
           <Input mx="3" placeholder="Email" w="90%" />
-          <Text>Teléfono</Text>
+          <Text style={styles.Texts}>Teléfono</Text>
           <Input mx="3" placeholder="Teléfono" w="90%" />
-          <Text>Dirección</Text>
+          <Text style={styles.Texts}>Dirección</Text>
           <Input mx="3" placeholder="Calle y numero" w="90%" />
           <HStack w="90%">
             <VStack>
-              <Text>Código Postal</Text>
+              <Text style={styles.Texts}>Código Postal</Text>
               <Input mx="3" placeholder="C.P" w="100%" />
             </VStack>
             <VStack ml={10}>
-              <Text>Ciudad</Text>
+              <Text style={styles.Texts}>Ciudad</Text>
               <Input mx="3" placeholder="Ciudad" w="430%" />
             </VStack>
 
@@ -39,7 +40,7 @@ const CheckAdress = () => {
           <HStack>
             <Checkbox mr={4} size="lg" value="test" 
             accessibilityLabel="This is a dummy checkbox" defaultIsChecked />
-            <Text fontSize={16}>Guardar dirección</Text>
+            <Text fontSize={16} style={styles.Texts}>Guardar dirección</Text>
           </HStack>
          
          

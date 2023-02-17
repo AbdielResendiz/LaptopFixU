@@ -5,6 +5,7 @@ import { Box, Text, Heading, VStack, FormControl, Input,
   import md5 from "md5";
 import { useNavigation } from '@react-navigation/native';
 import fetchPost from "../private/api/fetchPost";
+import styles from "../styles/styles";
 const SignUp = () => {
 
   const navigation =useNavigation();
@@ -90,7 +91,7 @@ const SignUp = () => {
           } alt="Alternate Text" size="md" mt={20} />
         <Box  p="2" w="90%" maxW="290" py="2" >
         <Center>
-          <Heading size="md" color="#bfbfbf"  style={{fontFamily: 'CircularApp'}}>
+          <Heading size="md" color="#bfbfbf"  style={styles.Texts}>
             Nuevo usuario
           </Heading>
         </Center>
@@ -142,7 +143,7 @@ const SignUp = () => {
           <TouchableOpacity onPress={validacion}>
             <Box mt="2" bg="#236DB7" w="60%" rounded={30} p={3} shadow={7}>
               { loading == false ? (
-                <Text color="white" fontSize={18} letterSpacing={0.9} style={{fontFamily: 'CircularApp'}}> Registarse </Text>
+                <Text color="white" fontSize={18} letterSpacing={0.9} style={styles.Texts}> Registarse </Text>
               ) : 
               (<Spinner size={"lg"} color="white"/>)
               }
@@ -151,13 +152,13 @@ const SignUp = () => {
           </TouchableOpacity>
         </Center>
         <HStack mt="2" justifyContent="center">
-          <Text fontSize="lg" color="#bfbfbf" mr={2} style={{fontFamily: 'CircularApp'}} >
+          <Text fontSize="lg" color="#bfbfbf" mr={2} style={styles.Texts} >
             ¿Ya tienes cuenta?
           </Text>
           <TouchableOpacity onPress={() => {
                 navigation.navigate("Login");
               }}>
-            <Text color= "#efefef" underline style={{fontFamily: 'CircularApp'}} fontSize= "lg">
+            <Text color= "#efefef" underline style={styles.Texts} fontSize= "lg">
               Iniciar sesión
             </Text>
           </TouchableOpacity>

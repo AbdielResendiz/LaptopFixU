@@ -10,6 +10,7 @@ import Gradiente from '../components/Gradiente';
 import Carrusel from '../components/Carrusel';
 import URL from '../private/api/URL';
 import SkeletonServicio from '../components/SkeletonServicio';
+import styles from '../styles/styles';
 
 const Servicios = (props) => {
 
@@ -74,10 +75,10 @@ const Servicios = (props) => {
                                       uri: servicio.image_url
                                       }}alt="Imagen" size="md" roundedLeft={"lg"} resizeMode="contain" />
                                   <Box w="60%" mt={5} ml={4}>
-                                      <Text style={{fontFamily: 'CircularApp'}} fontSize={20} color="#236DB7" >
+                                      <Text style={styles.Texts} fontSize={20} color="#236DB7" >
                                         {servicio.nombreS}
                                       </Text>
-                                      <Text color="#4d4d4d" style={{fontFamily: 'CircularApp'}}>
+                                      <Text color="#4d4d4d" style={styles.Texts}>
                                          + Ver más información
                                       </Text>
                                   </Box>

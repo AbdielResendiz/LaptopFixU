@@ -1,6 +1,6 @@
 import React from 'react';
 import {  TouchableOpacity, Linking } from 'react-native';
-import { FontAwesome5, MaterialCommunityIcons, Fontisto } from '@expo/vector-icons'; 
+import styles from '../styles/styles';
 import { Box, NativeBaseProvider, Center, HStack, VStack, Text, Divider, ScrollView, Image} from 'native-base';
 import Footer from '../components/Footer';
 
@@ -16,7 +16,7 @@ const Contacto = () => {
                   source={require( "../img/contacto/mapa.png")
                   } alt="Alternate Text" size={"md"} resizeMode="contain" />
                   <Center>
-                    <Text fontSize={32} style={{fontFamily: 'CircularApp'}}>Ubicación</Text>
+                    <Text fontSize={32} style={styles.Texts}>Ubicación</Text>
                   </Center>
                   
             </HStack>
@@ -25,9 +25,9 @@ const Contacto = () => {
               <Box h={5} w={5} bg="#afafaf" shadow={7} rounded={100}/>
               <Box ml={4}>
                 <VStack>
-                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}} >Av Paseo la Constitución #100</Text>
-                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}} >Col. Villas del Parque</Text>
-                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}}>Querétaro, México.</Text>
+                  <Text fontSize={16} style={styles.Texts} >Av Paseo la Constitución #100</Text>
+                  <Text fontSize={16} style={styles.Texts} >Col. Villas del Parque</Text>
+                  <Text fontSize={16} style={styles.Texts}>Querétaro, México.</Text>
                 </VStack>
               </Box>
             </HStack>
@@ -47,7 +47,7 @@ const Contacto = () => {
                   } alt="Alternate Text" size={"md"} resizeMode="contain"  mr={3}/>
               </Center>
               <Center>
-                <Text fontSize={32} style={{fontFamily: 'CircularApp'}} mb={1} lineHeight={30}>Correo {"\n"}Electrónico</Text>
+                <Text fontSize={32} style={styles.Texts} mb={1} lineHeight={30}>Correo {"\n"}Electrónico</Text>
               </Center>
             </HStack>
             <Divider w={40} thickness="3"  bg="#236DB7"/>
@@ -55,8 +55,8 @@ const Contacto = () => {
               <Box h={5} w={5} bg="#afafaf" shadow={7} rounded={100}/>
               <Box ml={4}>
                 <VStack>
-                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}} >contacto@impactosdigitales.com</Text>
-                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}} >appsmoviles@impactosdigitales.com</Text>
+                  <Text fontSize={16} style={styles.Texts} >contacto@impactosdigitales.com</Text>
+                  <Text fontSize={16} style={styles.Texts} >appsmoviles@impactosdigitales.com</Text>
                 </VStack>
               </Box>
             </HStack>
@@ -75,7 +75,7 @@ const Contacto = () => {
                 } alt="Alternate Text" size={"md"} resizeMode="contain"  mr={3}/>
             </Center>
             <Center>
-              <Text fontSize={32} style={{fontFamily: 'CircularApp'}} mb={-3}>Redes Sociales</Text>
+              <Text fontSize={32} style={styles.Texts} mb={-3}>Redes Sociales</Text>
             </Center>
           </HStack>
           <Divider w={40} thickness="3"  bg="#236DB7"/>
@@ -87,7 +87,7 @@ const Contacto = () => {
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
               
               <Center>
-                <Text fontSize={16} style={{fontFamily: 'CircularApp'}}>@impactosdigitales</Text>
+                <Text fontSize={16} style={styles.Texts}>@impactosdigitales</Text>
               </Center>
             </HStack>
           </TouchableOpacity>
@@ -101,7 +101,7 @@ const Contacto = () => {
                     } alt="Alternate Text" size={"xs"} resizeMode="contain" />
                 
                 <Center>
-                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}}>@impactosdigitales</Text>
+                  <Text fontSize={16} style={styles.Texts}>@impactosdigitales</Text>
                 </Center>
               </HStack>
            </TouchableOpacity>
@@ -114,7 +114,7 @@ const Contacto = () => {
                   source={require( "../img/contacto/wa.png")
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
               <Center>
-                <Text fontSize={16} style={{fontFamily: 'CircularApp'}}>442 219 8567</Text>
+                <Text fontSize={16} style={styles.Texts}>442 219 8567</Text>
               </Center>
               
             </HStack>
@@ -128,7 +128,7 @@ const Contacto = () => {
                   source={require( "../img/contacto/in.png")
                   } alt="Alternate Text" size={"xs"} resizeMode="contain" />
               <Center>
-                <Text fontSize={16} style={{fontFamily: 'CircularApp'}}>@impactosdigitales</Text>
+                <Text fontSize={16} style={styles.Texts}>@impactosdigitales</Text>
               </Center>
                 
             </HStack>

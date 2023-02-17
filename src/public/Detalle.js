@@ -3,6 +3,7 @@ import React from 'react';
 import { Box, VStack, HStack, Center, Text,
    NativeBaseProvider, ScrollView, Image } from "native-base";
   import { FontAwesome5, MaterialIcons } from '@expo/vector-icons'; 
+  import styles from '../styles/styles';
 
 import Footer from "../components/Footer"
 

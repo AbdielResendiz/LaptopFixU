@@ -1,13 +1,14 @@
 import { Box, Button, Center, FormControl, HStack, Image, Input, NativeBaseProvider, Stack, Text, VStack } from 'native-base';
 import React from 'react';
 import Footer from '../components/Footer';
+import styles from '../styles/styles';
 
 const AgregarTarjeta = () => {
   return (
     <NativeBaseProvider>
         <Box h="91%" w="100%" bg="#FFFFFF" >
                 {/**TITULO */}
-            <Text fontSize={28} mx={6} my={4} fontWeight={800}>
+            <Text fontSize={28} mx={6} my={4} style={styles.Texts}>
                 Agregar tarjeta
             </Text>
             {/**IMAGEN TARJETA */}
@@ -74,7 +75,7 @@ const AgregarTarjeta = () => {
             </HStack>
             <Center >
                 <Button  w="40%" rounded={50} mt={7}>
-                    <Text fontSize={24} color="#FFFFFF">Guardar</Text>
+                    <Text fontSize={24} color="#FFFFFF" style={styles.Texts}>Guardar</Text>
                 </Button>
             </Center>
             

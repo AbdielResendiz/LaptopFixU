@@ -9,6 +9,7 @@ import fetchPost from './api/fetchPost';
 import URL from './api/URL';
 import { Feather } from '@expo/vector-icons'; 
 import SkeletonServicio from '../components/SkeletonServicio';
+import styles from '../styles/styles';
       
 
 const Carrito = () => {
@@ -158,14 +159,14 @@ const Carrito = () => {
                                         size="md"   marginRight={3} resizeMode="contain" />
                                         </Center>
                                         <VStack w="60%">
-                                            <Text style={{fontFamily: 'CircularApp'}} fontSize="lg" >
+                                            <Text style={styles.Texts} fontSize="lg" >
                                               {item.nombreS}
                                             </Text>
                                             
                                             <HStack>
                                                 <VStack w="65%">
-                                                    <Text style={{fontFamily: 'CircularApp'}} >{"Precio: $"+item.precioS}</Text>
-                                                    <Text style={{fontFamily: 'CircularApp'}} >{"Cantidad: "+item.cantidad}</Text>
+                                                    <Text style={styles.Texts} >{"Precio: $"+item.precioS}</Text>
+                                                    <Text style={styles.Texts} >{"Cantidad: "+item.cantidad}</Text>
                                                 </VStack>
                                                 <Button onPress={()=>borrarBtn(item.id, IdC, item.nombreS)}
                                                  p={2} borderRadius={10} m={2}  justifyContent={"flex-end"} bg="#dc3545">
@@ -188,22 +189,22 @@ const Carrito = () => {
                 </ScrollView>
             </Center>
             <Center>
-                <Text fontSize="28" style={{fontFamily: 'CircularApp'}} mb={2} >
+                <Text fontSize="28" style={styles.Texts} mb={2} >
                             Detalle de Compra
                 </Text>
 
             </Center>
             <HStack   ml={10}>
               <VStack>
-                <Text    fontSize="md" style={{fontFamily: 'CircularApp'}}>
+                <Text    fontSize="md" style={styles.Texts}>
                   SubTotal de ordenes
                 </Text>
                 <Divider/>
-                <Text  fontSize="md" style={{fontFamily: 'CircularApp'}}>
+                <Text  fontSize="md" style={styles.Texts}>
                   Envío
                 </Text>
                 <Divider/>
-                <Text  fontSize="md" style={{fontFamily: 'CircularApp'}}>
+                <Text  fontSize="md" style={styles.Texts}>
                       Total a pagar
                 </Text>
                 <Divider/>
@@ -211,15 +212,15 @@ const Carrito = () => {
               </VStack>
 
               <VStack>
-                <Text  fontSize="md"  ml={20} style={{fontFamily: 'CircularApp'}} >
+                <Text  fontSize="md"  ml={20} style={styles.Texts} >
                   $9999.00
                 </Text>
                 <Divider/>
-                <Text  fontSize="md"   ml={20}style={{fontFamily: 'CircularApp'}}>
+                <Text  fontSize="md"   ml={20}style={styles.Texts}>
                   $0.00
                 </Text>
                 <Divider/>
-                <Text  ml={20} fontSize="md" style={{fontFamily: 'CircularApp'}}>
+                <Text  ml={20} fontSize="md" style={styles.Texts}>
                   $9999.00
                 </Text>
                 <Divider/>
@@ -234,7 +235,7 @@ const Carrito = () => {
             
           <Center>
             <Button m={5} w="50%" onPress={ ()=> navigation.navigate("CheckAdress")} shadow={5} borderRadius={10}>
-                    <Text color={"#FFFFFF"} fontSize="lg" style={{fontFamily: 'CircularApp'}}
+                    <Text color={"#FFFFFF"} fontSize="lg" style={styles.Texts}
                       letterSpacing={0.8}>
                       PAGAR
                     </Text>

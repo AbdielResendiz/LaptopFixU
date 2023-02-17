@@ -6,7 +6,7 @@ import URL from './api/URL';
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
 import fetchPost from './api/fetchPost';
-
+import styles from '../styles/styles';
 const AgregarDireccion = (props) => {
 
     const BASE_URL = URL.BASE_URL;
@@ -79,7 +79,7 @@ const AgregarDireccion = (props) => {
                   } alt="Alternate Text" size={"md"} resizeMode="contain" />
             </Center>
             <Center>
-                <Text bold fontSize="2xl" my={2} shadow={4}>Ingresa tu nueva dirección</Text>
+                <Text style={styles.Texts} fontSize="2xl" my={2} shadow={4}>Ingresa tu nueva dirección</Text>
             </Center>
         </HStack>
         

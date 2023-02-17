@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import styles from '../styles/styles';
 
 const Promociones = () => {
   return (
@@ -9,7 +10,7 @@ const Promociones = () => {
         justifyContent: "center",
         alignItems: "center"
       }}>
-      <Text>Registro</Text>
+      <Text style={styles.Texts} >Registro</Text>
     </View>
   )
 }

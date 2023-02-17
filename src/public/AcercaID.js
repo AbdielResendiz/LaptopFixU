@@ -1,6 +1,7 @@
 import React from 'react';
 import {  TouchableOpacity, Linking } from 'react-native';
 import { NativeBaseProvider, Image, Center, Box, VStack, Text, HStack, Divider } from 'native-base';
+import styles from '../styles/styles';
 
 const AcercaID = () => {
   return (
@@ -18,12 +19,12 @@ const AcercaID = () => {
                 
                 {/**DESCRIPCION ID */}
                 <Center mx={5} mb={1} >
-                    <Text textAlign={"justify"} lineHeight={18} fontSize={16} mx={3} style={{fontFamily: 'CircularApp'}}>
+                    <Text textAlign={"justify"} lineHeight={18} fontSize={16} mx={3} style={styles.Texts}>
                         Logramos que las tecnologías de la información mejoren el desempeño y hagan crecer los negocios de nuestros clientes.
                     </Text>
                 </Center>
                 <Center mx={5} my={2} >
-                    <Text textAlign={"justify"} lineHeight={20} fontSize={22} style={{fontFamily: 'CircularApp'}}>
+                    <Text textAlign={"justify"} lineHeight={20} fontSize={22} style={styles.Texts}>
                         Nos especializamos en:
                     </Text>
                 </Center>

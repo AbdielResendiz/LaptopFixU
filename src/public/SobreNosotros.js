@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import URL from '../private/api/URL';
 import Footer from '../components/Footer';
 import fetchPost from '../private/api/fetchPost';
+import styles from '../styles/styles';
 
 const SobreNosotros = (props) => {
   const BASE_URL = URL.BASE_URL;
@@ -163,19 +164,19 @@ console.log("ID SOBRE NOS : ", id)
 
         </Center>
       <Center>
-        <Text  fontSize={18} style={{fontFamily: 'CircularApp'}}>Bienvenido </Text>
+        <Text  fontSize={18} style={styles.Texts}>Bienvenido </Text>
       </Center>
       <Center  h={10} maxH={60}>
         
         {
           (id===null) ?
-          (<Text  fontWeight={800} letterSpacing={.8} fontSize={26} style={{fontFamily: 'CircularApp'}}> 
+          (<Text  fontWeight={800} letterSpacing={.8} fontSize={26} style={styles.Texts}> 
             Invitado 
             </Text>) 
             :
           (<VStack>
             <Center>
-              <Text  fontWeight={800} letterSpacing={.8} fontSize={20} style={{fontFamily: 'CircularApp'}}> 
+              <Text  fontWeight={800} letterSpacing={.8} fontSize={20} style={styles.Texts}> 
                {nombre + " " + apellidos} 
               </Text>
             </Center>

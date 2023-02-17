@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import styles from '../styles/styles';
 
 const AddCard = () => {
   return (
@@ -9,7 +10,7 @@ const AddCard = () => {
         justifyContent: "center",
         alignItems: "center"
       }}>
-      <Text>agregar tarjeta</Text>
+      <Text style={styles.Texts}>agregar tarjeta</Text>
     </View>
   )
 }

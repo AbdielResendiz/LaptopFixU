@@ -2,7 +2,7 @@ import React from 'react';
 import {  TouchableOpacity} from 'react-native';
 import {  NativeBaseProvider, Center, 
     HStack, VStack, Text, ScrollView } from 'native-base';
-
+import styles from '../styles/styles';
 const InfoApp = () => {
   return (
     <NativeBaseProvider>

@@ -11,6 +11,7 @@ import config from '../private/api/config';
 import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import styles from '../styles/styles';
 
 const DetalleTecnico = (props) => {
   const navigation =useNavigation();
@@ -108,7 +109,7 @@ useEffect(() => {
             (loading===true) ?
             (<Skeleton h={9} w="75%" rounded={10}/>) :
             (
-              <Text style={{fontFamily: 'CircularApp'}} color="#236DB7" fontSize={26}>
+              <Text style={styles.Texts} color="#236DB7" fontSize={26}>
                 {tecnico.nombreU + " " + tecnico.apellidos}
               </Text>
             )
@@ -116,7 +117,7 @@ useEffect(() => {
           
         </Center>
         <Center>
-          <Text fontSize={20} style={{fontFamily: 'CircularApp'}}>Técnico</Text>
+          <Text fontSize={20} style={styles.Texts}>Técnico</Text>
         </Center>
        
        <ScrollView  >
@@ -133,7 +134,7 @@ useEffect(() => {
                       }   alt="Alternate Text"  size="lg" resizeMode='contain' />
                 </Center>
                 <Center>
-                  <Text style={{fontFamily: 'CircularApp'}}>Información Personal</Text>
+                  <Text style={styles.Texts}>Información Personal</Text>
                 </Center>
               </VStack>
             </TouchableOpacity>
@@ -145,7 +146,7 @@ useEffect(() => {
                       } alt="Alternate Text"  size="lg" resizeMode='contain'/>
                 </Center>
                 <Center>
-                  <Text style={{fontFamily: 'CircularApp'}}>Contactame</Text>
+                  <Text style={styles.Texts}>Contactame</Text>
                 </Center>
               </VStack>
             </TouchableOpacity>
@@ -163,7 +164,7 @@ useEffect(() => {
                       } alt="Alternate Text"  size="lg" resizeMode='contain'  />
                 </Center> 
                 <Center>
-                  <Text style={{fontFamily: 'CircularApp'}}>Costos de Servicios</Text>
+                  <Text style={styles.Texts}>Costos de Servicios</Text>
                 </Center>
                 
               </VStack>
@@ -176,7 +177,7 @@ useEffect(() => {
                       } alt="Alternate Text"  size="lg" resizeMode='contain'/>
                 </Center>
                 <Center>
-                  <Text style={{fontFamily: 'CircularApp'}}>Credenciales</Text>
+                  <Text style={styles.Texts}>Credenciales</Text>
                 </Center>
               </VStack>
             </TouchableOpacity>

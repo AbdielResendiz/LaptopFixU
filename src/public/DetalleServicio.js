@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import URL from "../private/api/URL";
 import config from "../private/api/config";
 import fetchPost from "../private/api/fetchPost";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import styles from '../styles/styles';
 import { TouchableOpacity, Alert } from 'react-native';
 
 
@@ -128,9 +128,9 @@ const DetalleServicio = (props) => {
             
           <Center ml={"2%"} >
                 <HStack w="98%">
-                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}} >{servicio.nombreS}</Text>
+                  <Text fontSize={16} style={styles.Texts} >{servicio.nombreS}</Text>
                   <Text fontSize={16}  ml={"30%"} style={{fontFamily: "CircularApp"}}> Precio: </Text>
-                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}} color={"#236DB7"}>${servicio.PrecioS}</Text>
+                  <Text fontSize={16} style={styles.Texts} color={"#236DB7"}>${servicio.PrecioS}</Text>
                 </HStack>
 
             </Center>
@@ -151,7 +151,7 @@ const DetalleServicio = (props) => {
             </HStack>
           
 
-          <Text ml={"10%"} style={{fontFamily: 'CircularApp'}} my={3} underline color="#236DB7" fontSize={12} >Descripción</Text>
+          <Text ml={"10%"} style={styles.Texts} my={3} underline color="#236DB7" fontSize={12} >Descripción</Text>
           {/**DESCRIPCION DE SERVICIO */}
           <Center borderColor={"#555555"} borderWidth={1} mx={"10%"} h="20%" borderRadius={10}>
             <ScrollView>

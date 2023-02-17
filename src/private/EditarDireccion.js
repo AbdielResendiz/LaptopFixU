@@ -7,7 +7,7 @@ import URL from './api/URL';
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
 import fetchPost from './api/fetchPost';
-
+import styles from '../styles/styles';
 const EditarDireccion = (props) => {
 
     const BASE_URL = URL.BASE_URL;
@@ -139,7 +139,7 @@ const editAddress = async() => {
                   } alt="Alternate Text" size={"md"} resizeMode="contain" />
             </Center>
             <Center>
-                <Text bold fontSize="xl" my={2} shadow={4}>Edita tu dirección</Text>
+                <Text style={styles.Texts} fontSize="xl" my={2} shadow={4}>Edita tu dirección</Text>
             </Center>
         </HStack>
         
@@ -156,7 +156,7 @@ const editAddress = async() => {
             <Spinner accessibilityLabel="Cargando direcciones" 
             size={80} color="#236DB7"/>
             <Center mt={4}>
-              <Heading color="#236DB7" fontSize="xl">
+              <Heading color="#236DB7" fontSize="xl" style={styles.Texts}>
                 Cargando direcciones
               </Heading>
             </Center>

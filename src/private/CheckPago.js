@@ -1,7 +1,7 @@
 import React from 'react';
-
+import styles from '../styles/styles';
 import { NativeBaseProvider, Center, Box, 
-  ScrollView ,  Image, Checkbox, Text, Button, HStack, Input, AspectRatio, View, Divider} from 'native-base';
+   Text, Button, HStack} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons'; 
 import Footer from '../components/Footer';
@@ -14,7 +14,7 @@ const CheckPago = () => {
       <Box bg={"white"} h="91%" w="100%">
 
         
-          <Text  fontSize={38}  m={6} fontWeight={900}>
+          <Text  fontSize={38}  m={6} style={styles.Texts}>
             Agregar método de pago
           </Text>
 
@@ -28,7 +28,7 @@ const CheckPago = () => {
                     <MaterialCommunityIcons name="credit-card-plus" size={34} color="black"  />
                   </Center>
                   <Center mr={20}>
-                    <Text >
+                    <Text style={styles.Texts} >
                       Tarjeta de Crédito/Débito
                     </Text>
                   </Center>
@@ -47,7 +47,7 @@ const CheckPago = () => {
                     <MaterialCommunityIcons name="cash-fast" size={34} color="#2a593f" />
                   </Center>
                   <Center >
-                    <Text>
+                    <Text style={styles.Texts}>
                       Pago en efectivo
                     </Text>
                   </Center>
@@ -66,7 +66,7 @@ const CheckPago = () => {
                     <FontAwesome name="cc-paypal" size={34} color="#0096DC" />
                   </Center>
                   <Center>
-                    <Text>
+                    <Text style={styles.Texts}>
                       Paypal
                     </Text>
                   </Center>
