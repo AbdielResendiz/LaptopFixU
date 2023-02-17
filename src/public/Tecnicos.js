@@ -63,8 +63,12 @@ const Tecnicos = (props) => {
                                     <Image source={{uri:tecnico.image_url} } 
                                       alt={tecnico.nombreU} size="lg" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
                                 <Box w="60%" mt={5} ml={4}>
-                                    <Text bold fontSize={20}  color="#236DB7">{tecnico.nombreU + " " + tecnico.apellidos}</Text>
-                                    <Text>Técnico</Text>
+                                    <Text style={{fontFamily: 'CircularApp'}} fontSize={20}  color="#236DB7">
+                                      {tecnico.nombreU + " " + tecnico.apellidos}
+                                    </Text>
+                                    <Text style={{fontFamily: 'CircularApp'}}>
+                                      Técnico
+                                    </Text>
                                 </Box>
                                 <Center >
                                 <FontAwesome name="angle-right" size={24} color="black" />

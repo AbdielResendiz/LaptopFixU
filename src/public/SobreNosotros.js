@@ -163,16 +163,21 @@ console.log("ID SOBRE NOS : ", id)
 
         </Center>
       <Center>
-        <Text  fontSize={18} italic>Bienvenido </Text>
+        <Text  fontSize={18} style={{fontFamily: 'CircularApp'}}>Bienvenido </Text>
       </Center>
       <Center  h={10} maxH={60}>
         
         {
-          (nombre===null) ?
-          (<Text  fontWeight={800} letterSpacing={.8} fontSize={26}> Invitado </Text>) :
+          (id===null) ?
+          (<Text  fontWeight={800} letterSpacing={.8} fontSize={26} style={{fontFamily: 'CircularApp'}}> 
+            Invitado 
+            </Text>) 
+            :
           (<VStack>
             <Center>
-              <Text  fontWeight={800} letterSpacing={.8} fontSize={20}> {nombre + " " + apellidos} </Text>
+              <Text  fontWeight={800} letterSpacing={.8} fontSize={20} style={{fontFamily: 'CircularApp'}}> 
+               {nombre + " " + apellidos} 
+              </Text>
             </Center>
             
           </VStack>
@@ -258,7 +263,7 @@ console.log("ID SOBRE NOS : ", id)
           {/**Cerrar */}
 
           { 
-          (nombre!==null) ?
+          (id!==null) ?
           (<TouchableOpacity onPress={()=>{salirAviso()}}>
           <VStack >
             <Center>

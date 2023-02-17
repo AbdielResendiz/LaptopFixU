@@ -11,13 +11,19 @@ import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import Skeletor from '../components/Skeletor';
+import styles from '../styles/styles';
 
 const Home = (props) => {
+
+
+ 
 
   const [ nombre, setNombre ] = useState(null);
   const [ apellidos, setApellidos ] = useState("");
   const [ id, setId ] = useState(null);
   const [ idC, setIdC ] = useState(null);
+
+  
 
   const BASE_URL = URL.BASE_URL;
   {/**Funcion que escanea las variables almacenadas en local storage */}
@@ -129,14 +135,21 @@ const Home = (props) => {
         {/**Fondo gradiante */}
       <Gradiente/>
       {/**Row stack de bienvenida */}
-      <Center h="10%">
+      <Center h="12%">
         <HStack  >
             <VStack h="100%" w="95%">
               <Center     >
-                <Text bold fontSize={24} color="#FFFFFF" >Bienvenido </Text>
+                <Text  fontSize={24} color="#FFFFFF" style={styles.Texts} >Bienvenido </Text>
               </Center>
+              <TouchableOpacity onPress={() => {
+                    props.navigation.navigate("Test");
+                  }}>
+                <Text borderWidth={1} mx={3} px={2} w={60} bg="#ffffff">TEST</Text>
+              </TouchableOpacity>
               <Center   >
-                <Text  fontSize={18} mx={1} my={1}color="#FFFFFF" lineHeight={20}>{nombre!==null  ? (nombre+" "+apellidos): "Invitado"}</Text>
+                <Text  fontSize={18} mx={1} my={1}color="#FFFFFF" lineHeight={20} style={styles.Texts}>
+                  {nombre!==null  ? (nombre+" "+apellidos): "Invitado"}
+                </Text>
               </Center>
             </VStack>
         </HStack>
@@ -151,14 +164,16 @@ const Home = (props) => {
                 {/**BOTON SERVICIOS Y VER TODOS */} 
             <HStack  mt={3}>
               <Center h="10" w="30%"     rounded={10} ml={3}>
-                <Text bold fontSize={"md"} letterSpacing={0.8} color="#236DB7">SERVICIOS</Text>
+                <Text  fontSize={"md"} letterSpacing={0.8} color="#236DB7" style={styles.Texts}>
+                  SERVICIOS
+                </Text>
               </Center>
               <Center h="10" w="30%"  bg="#236DB7" ml="30%" rounded={20} shadow={7}>
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Servicios");
                   }}>
                 <Text color= "#ffffff"
-                fontWeight= "bold"
+                style={styles.Texts}
                 fontSize= "lg">Ver todos 
                 </Text>
                 </TouchableOpacity>
@@ -179,7 +194,9 @@ const Home = (props) => {
                       <Image source={{uri:servicio.image_url} } 
                       alt="image" size="md" resizeMode="contain"/>
                       <Center mt={2} mr={2}>
-                          <Text  fontSize={12} maxW={97} lineHeight={18}>{servicio.nombreS}</Text>
+                          <Text  fontSize={12} maxW={97} lineHeight={18} style={styles.Texts}>
+                            {servicio.nombreS}
+                          </Text>
                           
                       </Center>
                     </Box>
@@ -192,15 +209,16 @@ const Home = (props) => {
             {/**botones TECNICOS Y VER TODOS */}
             <HStack  my={3}>
               <Center h="10" w="30%" bg="#ffffff"  rounded={10} ml={3} >
-                <Text  bold fontSize="md" letterSpacing={0.8} color="#236DB7">TÉCNICOS</Text>
+                <Text  style={styles.Texts} fontSize="md" letterSpacing={0.8} color="#236DB7">
+                  TÉCNICOS
+                </Text>
               </Center>
               <Center h="10" w="30%"  bg="#236DB7" ml="30%" rounded={20} shadow={7}>
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Tecnicos");
                   }}>
-                <Text color= "#ffffff"
-                fontWeight= "bold"
-                fontSize= "lg">Ver todos 
+                <Text color= "#ffffff" fontSize= "lg" style={styles.Texts}>
+                  Ver todos 
                 </Text>
                 </TouchableOpacity>
               </Center>
@@ -220,8 +238,9 @@ const Home = (props) => {
                               alt="image" size="md" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
                           </Center>
                             <Center>
-                              <Text bold>{tecnico.nombreU}</Text>
-                              <Text >Técnico</Text>
+                              <Text style={styles.Texts}>
+                                {tecnico.nombreU}
+                              </Text>
                             </Center>
                         </Box>
                       </TouchableOpacity>

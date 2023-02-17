@@ -142,8 +142,6 @@ const Carrito = () => {
             <Center bg="#FFFFFF" mx={4} mt={5} mb={3} p={2} h={255} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
                 <ScrollView style={{paddingHorizontal:10}}  horizontal={false} w="100%" persistentScrollbar={true} >
                     {/**Item carrito ejemplo */}
-                   
-
                     {
                         (carrito===[]) ? 
                         (<SkeletonServicio/>) :
@@ -151,7 +149,7 @@ const Carrito = () => {
                             <Box>
                         {carrito.map( (item, index) =>{
                             return(
-                                <Center key={index} h={100} marginBottom={1} bg="white">
+                                <Center key={index} h={100} marginBottom={1} bg="white" >
                                     <HStack>
                                         <Center w="40%">
                                         <Image 
@@ -160,12 +158,14 @@ const Carrito = () => {
                                         size="md"   marginRight={3} resizeMode="contain" />
                                         </Center>
                                         <VStack w="60%">
-                                            <Text bold fontSize="lg" >{item.nombreS}</Text>
+                                            <Text style={{fontFamily: 'CircularApp'}} fontSize="lg" >
+                                              {item.nombreS}
+                                            </Text>
                                             
                                             <HStack>
                                                 <VStack w="65%">
-                                                    <Text >{"Precio: $"+item.precioS}</Text>
-                                                    <Text >{"Cantidad: "+item.cantidad}</Text>
+                                                    <Text style={{fontFamily: 'CircularApp'}} >{"Precio: $"+item.precioS}</Text>
+                                                    <Text style={{fontFamily: 'CircularApp'}} >{"Cantidad: "+item.cantidad}</Text>
                                                 </VStack>
                                                 <Button onPress={()=>borrarBtn(item.id, IdC, item.nombreS)}
                                                  p={2} borderRadius={10} m={2}  justifyContent={"flex-end"} bg="#dc3545">
@@ -177,82 +177,72 @@ const Carrito = () => {
                                     </HStack>
                                     <Divider thickness={3} bg="#0081C1"/>
                                 </Center>
-                        
                          )
                         }
                     )}
                             </Box>
-
-                            
                         )
                     }
                      {/** fin Item carrito ejemplo */}
                     
-                    
-                      
-                  
-
                 </ScrollView>
             </Center>
             <Center>
-                <Text fontSize="28" fontWeight="800" mb={2} >
+                <Text fontSize="28" style={{fontFamily: 'CircularApp'}} mb={2} >
                             Detalle de Compra
                 </Text>
 
             </Center>
-            
+            <HStack   ml={10}>
+              <VStack>
+                <Text    fontSize="md" style={{fontFamily: 'CircularApp'}}>
+                  SubTotal de ordenes
+                </Text>
+                <Divider/>
+                <Text  fontSize="md" style={{fontFamily: 'CircularApp'}}>
+                  Envío
+                </Text>
+                <Divider/>
+                <Text  fontSize="md" style={{fontFamily: 'CircularApp'}}>
+                      Total a pagar
+                </Text>
+                <Divider/>
 
-            <Center>
-                <Stack direction="row" space={10}>
-                    <Text   mr={20} fontSize="md">
-                        Total de ordenes
-                    </Text>
-                    <Text  fontSize="md" >
-                        $9999.00
-                    </Text>
-                </Stack>
-            </Center>
+              </VStack>
+
+              <VStack>
+                <Text  fontSize="md"  ml={20} style={{fontFamily: 'CircularApp'}} >
+                  $9999.00
+                </Text>
+                <Divider/>
+                <Text  fontSize="md"   ml={20}style={{fontFamily: 'CircularApp'}}>
+                  $0.00
+                </Text>
+                <Divider/>
+                <Text  ml={20} fontSize="md" style={{fontFamily: 'CircularApp'}}>
+                  $9999.00
+                </Text>
+                <Divider/>
+               
+
+              </VStack>
+            </HStack>
+
+            
            
 
-            <Center >
-                <Divider thickness={2}  my={1} w="82%"/>
-           </Center>
-           <Center>
-                <HStack space={10}>
-                    <Text mr={40} fontSize="md">
-                        Envío
-                    </Text>
-                    <Text  fontSize="md">
-                        $0.00
-                    </Text>
-                </HStack>
-            </Center>                  
-        
-        
-           <Center >
-                <Divider thickness={2} my={1} w="82%"/>
-           </Center>
-           <Center>
-            <HStack>
-                    <Text mr={10} ml={12} fontSize="md">Total por ordenes</Text>
-                    <Text mr={12} ml={20} fontSize="md">$9999.00</Text>
-
-                </HStack>
-           </Center>
-           
-      <Center>
-        <Button m={5} w="60%" onPress={ ()=> navigation.navigate("CheckAdress")} >
-                <Text color={"#FFFFFF"} fontSize="lg" fontWeight={800} letterSpacing={0.8}>PAGAR</Text>
-                    
-            </Button>
-
-      </Center>
-
             
+          <Center>
+            <Button m={5} w="50%" onPress={ ()=> navigation.navigate("CheckAdress")} shadow={5} borderRadius={10}>
+                    <Text color={"#FFFFFF"} fontSize="lg" style={{fontFamily: 'CircularApp'}}
+                      letterSpacing={0.8}>
+                      PAGAR
+                    </Text>
+                        
+                </Button>
 
-            
-        
-        
+          </Center>
+
         </View>
         <Footer />
         

@@ -18,12 +18,12 @@ const AcercaID = () => {
                 
                 {/**DESCRIPCION ID */}
                 <Center mx={5} mb={1} >
-                    <Text textAlign={"justify"} lineHeight={18} fontSize={16} mx={3}>
+                    <Text textAlign={"justify"} lineHeight={18} fontSize={16} mx={3} style={{fontFamily: 'CircularApp'}}>
                         Logramos que las tecnologías de la información mejoren el desempeño y hagan crecer los negocios de nuestros clientes.
                     </Text>
                 </Center>
                 <Center mx={5} my={2} >
-                    <Text textAlign={"justify"} lineHeight={18} fontWeight="bold" fontSize={18}>
+                    <Text textAlign={"justify"} lineHeight={20} fontSize={22} style={{fontFamily: 'CircularApp'}}>
                         Nos especializamos en:
                     </Text>
                 </Center>

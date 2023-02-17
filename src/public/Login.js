@@ -129,11 +129,11 @@ const Login = (props) => {
               <Box  h="75%" w="80%" mx="10%" mt="30%" rounded={10} opacity={0.7} bg="black"></Box>
               
               <Center  h="100%" w="80%" mx="10%" >
-                <Text fontWeight={900} color="#bfbfbf" fontSize={25} mx={6}>SERVICIO TÉCNICO </Text>
-                <Text fontWeight={900} color="#bfbfbf" fontSize={25} mx={6}>Y</Text>
-                <Text fontWeight={900} color="#bfbfbf" fontSize={25} mx={6}>MANTENIMIENTO</Text>
-                <Text fontWeight={400} color="#bfbfbf" fontSize={15} letterSpacing={0.9}>DE COMPUTADORAS A</Text>
-                <Text fontWeight={400} color="#bfbfbf" fontSize={15} letterSpacing={0.9}>DOMICILIO</Text>
+                <Text style={{fontFamily: 'CircularApp'}} color="#bfbfbf" fontSize={25} mx={6}>SERVICIO TÉCNICO </Text>
+                <Text style={{fontFamily: 'CircularApp'}}color="#bfbfbf" fontSize={25} mx={6}>Y</Text>
+                <Text style={{fontFamily: 'CircularApp'}} color="#bfbfbf" fontSize={25} mx={6}>MANTENIMIENTO</Text>
+                <Text style={{fontFamily: 'CircularApp'}} color="#bfbfbf" fontSize={15} letterSpacing={0.9}>DE COMPUTADORAS A</Text>
+                <Text style={{fontFamily: 'CircularApp'}} color="#bfbfbf" fontSize={15} letterSpacing={0.9}>DOMICILIO</Text>
                 <Image 
                   source={require( "../img/Logo1Run.png")
                   } alt="Alternate Text" size="lg" my={4} />
@@ -163,7 +163,7 @@ const Login = (props) => {
                         <TouchableOpacity onPress={Login2}>
                           <Box mt="2" bg="#236DB7" w="60%" rounded={10} p={3} shadow={7}>
                             { loading==false ? (
-                              <Text color="white" fontSize={18} letterSpacing={0.9} fontWeight={400}> Continuar </Text>
+                              <Text color="white" fontSize={18} letterSpacing={0.9} style={{fontFamily: 'CircularApp'}}> Iniciar Sesión </Text>
                             ) :
                             (<Spinner size={"lg"} color="white"/>)
                             }
@@ -176,17 +176,14 @@ const Login = (props) => {
 
 
                       <HStack mt="3" justifyContent="center">
-                        <Text fontSize="lg" color="white"  >
+                        <Text fontSize="lg" color="white"  style={{fontFamily: 'CircularApp'}} >
                           ¿Nuevo usuario?{" "}
                         </Text>
                         <TouchableOpacity onPress={() => {
                               navigation.navigate("SignUp");
                             }}>
-                        <Text 
-                        color= "white"
-                        fontWeight= {700}
-                        fontSize= "lg"
-                        underline
+                        <Text color= "white" style={{fontFamily: 'CircularApp'}}
+                        fontSize= "lg" underline
                       >
                           Registrarse
                         </Text>

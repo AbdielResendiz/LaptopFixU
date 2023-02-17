@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 //import {  View } from 'react-native';
 import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Button} from "native-base";
-  import { AntDesign } from '@expo/vector-icons'; 
+  import { Entypo, AntDesign } from '@expo/vector-icons'; 
   //componentes y config
 import Footer from "../components/Footer";
 import URL from "../private/api/URL";
@@ -10,7 +10,14 @@ import fetchPost from "../private/api/fetchPost";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TouchableOpacity, Alert } from 'react-native';
 
+
 const DetalleServicio = (props) => {
+
+
+
+
+
+
   const idServicio = props.route.params.idServicio;
   console.log("id Servicio UWU: ", idServicio);
   const idCarrito = props.route.params.idC;
@@ -104,74 +111,92 @@ const DetalleServicio = (props) => {
   return (
     <NativeBaseProvider config={config}>
       <Box h="91%"  bg="#fff" w="100%">
-        
-        <ScrollView >
-      
-        {/**IMAGEN DE SERVICIO */}
-        <Center horizontal={true} margin={3} mt={3}  >
-          <Image 
-            source={{uri:servicio.image_url}}
-              alt="Alternate Text" 
-            size="xl"  resizeMode="contain" marginRight={3}/>
-        </Center>
-          {/**DETALLE DE SERVICIO */}
-          
-            <Box  mx={3}  pl={5}>
-              
-            <Center>
-                  <HStack w="98%">
-                    <Text fontSize={18} bold>{servicio.nombreS}</Text>
-                    <Text fontSize={18} bold ml={5}> Precio: </Text>
-                    <Text fontSize={18} fontWeight={"bold"} color={"#236DB7"}>${servicio.PrecioS}</Text>
-                  </HStack>
 
-              </Center>
-            </Box>
-            {/**Cantidad para carrito */}
-            <Center mt={4}>
-              <HStack>
-              <Button onPress={decrementCount} bg="#236DB7" borderRadius={100} py={1} px={2}>
-              <AntDesign name="minus" size={18} color="white" />
+    
+          <ScrollView >
+      
+      {/**IMAGEN DE SERVICIO */}
+      <Center horizontal={true} margin={3}   >
+        <Image 
+          source={{uri:servicio.image_url}}
+            alt="Alternate Text" 
+          size={40}  resizeMode="contain" marginRight={3}/>
+      </Center>
+        {/**DETALLE DE SERVICIO */}
+        
+          <Box  mx={3}  pl={5} mt={8}>
+            
+          <Center ml={"2%"} >
+                <HStack w="98%">
+                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}} >{servicio.nombreS}</Text>
+                  <Text fontSize={16}  ml={"30%"} style={{fontFamily: "CircularApp"}}> Precio: </Text>
+                  <Text fontSize={16} style={{fontFamily: 'CircularApp'}} color={"#236DB7"}>${servicio.PrecioS}</Text>
+                </HStack>
+
+            </Center>
+          </Box>
+          {/**Cantidad para carrito */}
+          
+            <HStack ml={"10%"} my={5}>
+              <Button onPress={decrementCount} bg="#E6E6E6" borderRadius={100} py={1} px={1}>
+                <Entypo name="minus" size={12} color="#B4B4B4" />
               </Button>
               <Center>
-                <Text fontSize={20} mx={3}>{count}</Text>
+                <Text fontSize={12} mx={3} bold>{count}</Text>
               </Center>
-              
-              <Button onPress={incrementCount} bg="#236DB7" borderRadius={100} py={1} px={2}>
-              <AntDesign name="plus" size={18} color="white"  />
+            
+              <Button onPress={incrementCount} bg="#236DB7" borderRadius={100} py={1} px={1}>
+                <Entypo name="plus" size={12} color="white"  />
               </Button>
+            </HStack>
+          
 
-              </HStack>
+          <Text ml={"10%"} style={{fontFamily: 'CircularApp'}} my={3} underline color="#236DB7" fontSize={12} >Descripción</Text>
+          {/**DESCRIPCION DE SERVICIO */}
+          <Center borderColor={"#555555"} borderWidth={1} mx={"10%"} h="20%" borderRadius={10}>
+            <ScrollView>
+              <Text  fontSize={12} mx={3} px={3} py={2} textAlign="justify" color={"#888888"} style={{fontFamily: "CircularApp"}}> {servicio.desS}</Text>
+            </ScrollView>
+            
+          </Center>
+         
+                {/**BOTON CARRITO */}
+                <Center mx={10} mt={3} >
+                <Box  bg="#236DB7" rounded={10} shadow={4} w={210}>
+                  <TouchableOpacity onPress={()=>botonCarrito()}>
+                    <Center py={2} px={2}>
+                      <HStack>
+                        <Center>
+                        <AntDesign name="shoppingcart" size={16} color="white" />
+                        </Center>
+                        <Center>
+                          <Text color="#fff"  fontSize={"sm"} mx={2} maxW={150} lineHeight={20} style={{fontFamily: "CircularApp"}}> Añadir a Carrito</Text>
+                        </Center>
+                      </HStack>
+                    </Center>
+                  </TouchableOpacity>
+                </Box>
+              </Center>
 
-            </Center>
+                {/**BOTON contratacion */}
+                <Center mx={10} mt={1} >
+                <Box  bg="#000" rounded={10} shadow={4} w={210}>
+                  <TouchableOpacity onPress={()=>botonCarrito()}>
+                    <Center py={2} px={2}>
+                      <HStack>
+                        <Center>
+                          <Text color="#fff"   fontSize={"sm"} mx={2} maxW={150} lineHeight={20} style={{fontFamily: "CircularApp"}}> Contratación</Text>
+                        </Center>
+                      </HStack>
+                    </Center>
+                  </TouchableOpacity>
+                </Box>
+              </Center>
 
-            <Text ml={4} bold my={3} underline color="#236DB7" >Descripción</Text>
-            {/**DESCRIPCION DE SERVICIO */}
-            <Center borderColor={"#000000"} borderWidth={1} mx={3} h="40%">
-              <ScrollView>
-                <Text  fontSize={14} mx={3} px={3} py={2} textAlign="justify" color={"#888888"}> {servicio.desS}</Text>
-              </ScrollView>
-              
-            </Center>
-           
-                  {/**BOTON CARRITO */}
-                  <Center mx={10} mt={3} >
-                  <Box  bg="#236DB7" rounded={10} shadow={4} w={210}>
-                    <TouchableOpacity onPress={()=>botonCarrito()}>
-                      <Center py={2} px={2}>
-                        <HStack>
-                          <Center>
-                          <AntDesign name="shoppingcart" size={24} color="white" />
-                          </Center>
-                          <Center>
-                            <Text color="#fff"  bold fontSize={"md"} mx={2} maxW={150} lineHeight={20}> Añadir al carrito</Text>
-                          </Center>
-                        </HStack>
-                      </Center>
-                    </TouchableOpacity>
-                  </Box>
-                </Center>
-        </ScrollView>
+      </ScrollView>
+        
+        
+       
       </Box>
 
       <Footer/>

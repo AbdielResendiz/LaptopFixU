@@ -1,8 +1,9 @@
 import * as React from 'react';
+
 import {NavigationContainer, useNavigationContainerRef} from '@react-navigation/native';
 import {Image, NativeBaseProvider} from 'native-base';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { View, TouchableOpacity} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Text,} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 
 import Home from "./src/public/Home";
@@ -41,13 +42,22 @@ import SkeletonServicio from './src/components/SkeletonServicio';
 import SkeletonPerfil from './src/components/SkeletonPerfil';
 import AgregarDireccion from './src/private/AgregarDireccion';
 import EditarDireccion from './src/private/EditarDireccion';
-import Test from './src/public/Test'
 
 
-import * as Font from 'expo-font';
-import  { useState, useEffect } from 'react';
-import { Text } from 'react-native';
-//font
+///pa cambiar letra
+import { StatusBar } from "expo-status-bar";
+import  { useState } from "react";
+
+import * as Font from "expo-font";
+import Apploading from "expo-app-loading";
+
+
+const getFonts = () =>
+  Font.loadAsync({
+    circular: require("./assets/fonts/Circular/CircularStd-Book.otf"),
+    
+  });
+
 
 
 
@@ -58,25 +68,11 @@ const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+
+  const [fontsloaded, setFontsLoaded] = useState(false);
+
   
   const navigationRef = useNavigationContainerRef();
-
-  const [fontLoaded, setFontLoaded] = useState(false);
-//CARGAR FUENTE, EDITAR SI QUIERE INSTALAR OTRA FUENTE
-  useEffect(() => {
-    async function loadFont() {
-      await Font.loadAsync({
-        'CircularApp': require('./assets/fonts/Circular/Circular.ttf'),
-      });
-      setFontLoaded(true);
-    }
-    loadFont();
-  }, []);
-  if (!fontLoaded) {
-    return null;
-  }
-
-
 
   return (
     
@@ -530,14 +526,6 @@ export default function App() {
             ),
           }}
           />
-
-<Stack.Screen name="Test" component={Test}
-        options={{title: 'skeleton perfil',
-        headerTintColor:"white",
-        headerStyle: {
-          backgroundColor: "#236DB7",
-        },
-        }}/> 
 
 
       </Stack.Navigator>

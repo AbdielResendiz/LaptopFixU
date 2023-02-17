@@ -108,13 +108,15 @@ useEffect(() => {
             (loading===true) ?
             (<Skeleton h={9} w="75%" rounded={10}/>) :
             (
-              <Text bold color="#236DB7" fontSize={26}>{tecnico.nombreU + " " + tecnico.apellidos}</Text>
+              <Text style={{fontFamily: 'CircularApp'}} color="#236DB7" fontSize={26}>
+                {tecnico.nombreU + " " + tecnico.apellidos}
+              </Text>
             )
           }
           
         </Center>
         <Center>
-          <Text fontSize={20}>Técnico</Text>
+          <Text fontSize={20} style={{fontFamily: 'CircularApp'}}>Técnico</Text>
         </Center>
        
        <ScrollView  >
@@ -131,7 +133,7 @@ useEffect(() => {
                       }   alt="Alternate Text"  size="lg" resizeMode='contain' />
                 </Center>
                 <Center>
-                  <Text>Información Personal</Text>
+                  <Text style={{fontFamily: 'CircularApp'}}>Información Personal</Text>
                 </Center>
               </VStack>
             </TouchableOpacity>
@@ -143,7 +145,7 @@ useEffect(() => {
                       } alt="Alternate Text"  size="lg" resizeMode='contain'/>
                 </Center>
                 <Center>
-                  <Text>Contactame</Text>
+                  <Text style={{fontFamily: 'CircularApp'}}>Contactame</Text>
                 </Center>
               </VStack>
             </TouchableOpacity>
@@ -161,7 +163,7 @@ useEffect(() => {
                       } alt="Alternate Text"  size="lg" resizeMode='contain'  />
                 </Center> 
                 <Center>
-                  <Text>Costos de Servicios</Text>
+                  <Text style={{fontFamily: 'CircularApp'}}>Costos de Servicios</Text>
                 </Center>
                 
               </VStack>
@@ -174,7 +176,7 @@ useEffect(() => {
                       } alt="Alternate Text"  size="lg" resizeMode='contain'/>
                 </Center>
                 <Center>
-                  <Text>Credenciales</Text>
+                  <Text style={{fontFamily: 'CircularApp'}}>Credenciales</Text>
                 </Center>
               </VStack>
             </TouchableOpacity>

@@ -74,8 +74,12 @@ const Servicios = (props) => {
                                       uri: servicio.image_url
                                       }}alt="Imagen" size="md" roundedLeft={"lg"} resizeMode="contain" />
                                   <Box w="60%" mt={5} ml={4}>
-                                      <Text bold fontSize={20} color="#236DB7" >{servicio.nombreS}</Text>
-                                      <Text color="#4d4d4d"> + Ver más información</Text>
+                                      <Text style={{fontFamily: 'CircularApp'}} fontSize={20} color="#236DB7" >
+                                        {servicio.nombreS}
+                                      </Text>
+                                      <Text color="#4d4d4d" style={{fontFamily: 'CircularApp'}}>
+                                         + Ver más información
+                                      </Text>
                                   </Box>
                                   <Center >
                                   <FontAwesome name="angle-right" size={28} color="black" />

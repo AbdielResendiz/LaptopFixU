@@ -90,7 +90,7 @@ const SignUp = () => {
           } alt="Alternate Text" size="md" mt={20} />
         <Box  p="2" w="90%" maxW="290" py="2" >
         <Center>
-          <Heading size="md" color="#bfbfbf"  fontWeight="semibold">
+          <Heading size="md" color="#bfbfbf"  style={{fontFamily: 'CircularApp'}}>
             Nuevo usuario
           </Heading>
         </Center>
@@ -142,7 +142,7 @@ const SignUp = () => {
           <TouchableOpacity onPress={validacion}>
             <Box mt="2" bg="#236DB7" w="60%" rounded={30} p={3} shadow={7}>
               { loading == false ? (
-                <Text color="white" fontSize={18} letterSpacing={0.9} fontWeight={700}> Registarse </Text>
+                <Text color="white" fontSize={18} letterSpacing={0.9} style={{fontFamily: 'CircularApp'}}> Registarse </Text>
               ) : 
               (<Spinner size={"lg"} color="white"/>)
               }
@@ -151,13 +151,13 @@ const SignUp = () => {
           </TouchableOpacity>
         </Center>
         <HStack mt="2" justifyContent="center">
-          <Text fontSize="lg" color="#bfbfbf" mr={2} >
+          <Text fontSize="lg" color="#bfbfbf" mr={2} style={{fontFamily: 'CircularApp'}} >
             ¿Ya tienes cuenta?
           </Text>
           <TouchableOpacity onPress={() => {
                 navigation.navigate("Login");
               }}>
-            <Text color= "#efefef" underline fontWeight= {700} fontSize= "lg">
+            <Text color= "#efefef" underline style={{fontFamily: 'CircularApp'}} fontSize= "lg">
               Iniciar sesión
             </Text>
           </TouchableOpacity>
