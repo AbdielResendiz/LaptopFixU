@@ -47,6 +47,7 @@ import Test from './src/public/Test'
 import * as Font from 'expo-font';
 import  { useState, useEffect } from 'react';
 import { Text } from 'react-native';
+import baseColor from './src/private/api/baseColor';
 //font
 
 
@@ -60,6 +61,9 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   
   const navigationRef = useNavigationContainerRef();
+  //variable para cambiar COLOR
+  const color = baseColor.color;
+  //const color = "#FF0000";
 
   const [fontLoaded, setFontLoaded] = useState(false);
 //CARGAR FUENTE, EDITAR SI QUIERE INSTALAR OTRA FUENTE
@@ -88,7 +92,7 @@ export default function App() {
             options={{title: '',
               headerTintColor:"white",
               headerStyle: {
-                backgroundColor: "#236DB7",
+                backgroundColor: color,
               },
               headerShadowVisible: false,
               headerRight: () => (
@@ -118,14 +122,14 @@ export default function App() {
         options={{title: 'Detalle',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/>
         <Stack.Screen name="Servicios" component={Servicios}
         options={{title: 'Servicios',
           headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -161,7 +165,7 @@ export default function App() {
         options={{title: 'Mis ordenes',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         headerShadowVisible: false,
         headerRight: () => (
@@ -183,7 +187,7 @@ export default function App() {
          options={{title: 'Contáctanos',
          headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -214,7 +218,7 @@ export default function App() {
         options={{title: 'Pasarela de pago',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/>
 
@@ -222,7 +226,7 @@ export default function App() {
         options={{title: 'Confirma dirección',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/>
 
@@ -230,7 +234,7 @@ export default function App() {
         options={{title: 'Confirma método de pago',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/>
 
@@ -239,7 +243,7 @@ export default function App() {
         options={{title: 'Nuestras otras apps',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/>
 
@@ -247,7 +251,7 @@ export default function App() {
          options={{title: 'Carrito',
          headerTintColor:"white",
          headerStyle: {
-           backgroundColor: "#236DB7",
+           backgroundColor: color,
          },
          headerShadowVisible: false,
          headerRight: () => (
@@ -264,14 +268,14 @@ export default function App() {
          options={{title: 'Selecciona una opción',
          headerTintColor:"white",
          headerStyle: {
-           backgroundColor: "#236DB7",
+           backgroundColor: color,
          },
          }}/>
          <Stack.Screen name="SobreNosotros" component={SobreNosotros}
          options={{title: 'Opciones',
          headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -287,7 +291,7 @@ export default function App() {
          options={{title: 'Mis Direcciones',
          headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -308,7 +312,7 @@ export default function App() {
         options={{title: 'Acerca de Impactos Digitales',
         headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -329,7 +333,7 @@ export default function App() {
         options={{title: 'Detalle de orden',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/>    
 
@@ -337,7 +341,7 @@ export default function App() {
         options={{title: 'Buscar',
         headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -358,7 +362,7 @@ export default function App() {
         options={{title: 'Soporte Técnico',
         headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -379,7 +383,7 @@ export default function App() {
         options={{title: 'Mi Perfil',
           headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -400,7 +404,7 @@ export default function App() {
         options={{title: 'Técnicos',
           headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -421,7 +425,7 @@ export default function App() {
         options={{title: 'Detalle del servicio',
           headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -442,7 +446,7 @@ export default function App() {
         options={{title: 'Detalle del técnico',
           headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -463,7 +467,7 @@ export default function App() {
         options={{title: 'Agregar tarjeta',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/> 
 
@@ -472,28 +476,28 @@ export default function App() {
         options={{title: 'skeletor',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/> 
         <Stack.Screen name="SkeletonServicio" component={SkeletonServicio}
         options={{title: 'skeleton servicio',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/> 
          <Stack.Screen name="SkeletonPerfil" component={SkeletonPerfil}
         options={{title: 'skeleton perfil',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/> 
         <Stack.Screen name="AgregarDireccion" component={AgregarDireccion}
         options={{title: 'Agregar Dirección',
           headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -514,7 +518,7 @@ export default function App() {
         options={{title: 'Editar dirección',
           headerTintColor:"white",
           headerStyle: {
-            backgroundColor: "#236DB7",
+            backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
@@ -535,7 +539,7 @@ export default function App() {
         options={{title: 'skeleton perfil',
         headerTintColor:"white",
         headerStyle: {
-          backgroundColor: "#236DB7",
+          backgroundColor: color,
         },
         }}/> 
 

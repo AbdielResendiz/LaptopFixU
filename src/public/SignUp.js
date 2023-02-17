@@ -141,7 +141,7 @@ const SignUp = () => {
         {/**Botón REGISTRARSE */}
         <Center>
           <TouchableOpacity onPress={validacion}>
-            <Box mt="2" bg="#236DB7" w="60%" rounded={30} p={3} shadow={7}>
+            <Box mt="2" style={styles.Color} w="60%" rounded={30} p={3} shadow={7}>
               { loading == false ? (
                 <Text color="white" fontSize={18} letterSpacing={0.9} style={styles.Texts}> Registarse </Text>
               ) : 

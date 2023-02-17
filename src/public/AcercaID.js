@@ -29,7 +29,7 @@ const AcercaID = () => {
                     </Text>
                 </Center>
                 <Center>
-                <Divider thickness={3} w="50%" bg="#236DB7" my={3}/>
+                <Divider thickness={3} w="50%" style={styles.Color} my={3}/>
                 </Center>
                 
                  

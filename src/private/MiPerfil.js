@@ -213,7 +213,7 @@ useEffect(() => {
 
                     <TouchableOpacity onPress={Actualizar}>
                         <Center mt={5} >
-                            <HStack bg="#236DB7" py={3} px={6} rounded={30} >
+                            <HStack style={styles.Color} py={3} px={6} rounded={30} >
                                 { (actualizando===true) ?
                                 (<Spinner size={"lg"} color="white"/>) :
                                 (<FontAwesome name="save" size={24} color="white" />)

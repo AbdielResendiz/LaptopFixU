@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import baseColor from "../private/api/baseColor";
 
 
 export default StyleSheet.create({
@@ -8,7 +9,8 @@ export default StyleSheet.create({
       },
     
     Color: {
-      backgroundColor: "#236DB7",
+      //backgroundColor: "#236DB7",
+      backgroundColor: baseColor.color,
     },
 
     textColor: {

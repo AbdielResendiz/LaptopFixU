@@ -38,7 +38,7 @@ console.log("Seleccionado", select);
     {/**Menu de categorias pedidos */}
     <HStack  bg={"#FFFFFF"}  w="100%">
       <TouchableOpacity onPress={()=>setSelect(0)}>
-        <Center  bg="#236DB7"  py={3}  mr={1}  px={2}>
+        <Center  style={styles.Color}  py={3}  mr={1}  px={2}>
           <Text fontSize={14} color="#FFFFFF" style={styles.Texts} letterSpacing={0.5}>TODOS</Text>
           
         </Center>

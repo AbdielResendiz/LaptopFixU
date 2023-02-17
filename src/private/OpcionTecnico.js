@@ -11,7 +11,7 @@ const OpcionTecnico = () => {
             <Text mt={10} fontSize={26} mb={5} style={styles.Texts}>¿Quién atenderá tu orden?</Text>
         </Center>
         <TouchableOpacity>
-            <Center  bg="#236DB7" h={200} w="85%" alignSelf="center" rounded={30}>
+            <Center  style={styles.Color} h={200} w="85%" alignSelf="center" rounded={30}>
                 <Text fontSize={40} fontWeight="bold" color="white" style={styles.Texts} >Primer técnico disponible</Text>
             </Center>
         </TouchableOpacity>

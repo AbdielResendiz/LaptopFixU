@@ -147,7 +147,7 @@ const Home = (props) => {
                 <Text borderWidth={1} mx={3} px={2} w={60} bg="#ffffff">TEST</Text>
               </TouchableOpacity>
               <Center   >
-                <Text  fontSize={18} mx={1} my={1}color="#FFFFFF" lineHeight={20} style={styles.Texts}>
+                <Text  fontSize={18} mx={1} my={1} color="#FFFFFF" lineHeight={20} style={styles.Texts}>
                   {nombre!==null  ? (nombre+" "+apellidos): "Invitado"}
                 </Text>
               </Center>
@@ -168,7 +168,7 @@ const Home = (props) => {
                   SERVICIOS
                 </Text>
               </Center>
-              <Center h="10" w="30%"  bg="#236DB7" ml="30%" rounded={20} shadow={7}>
+              <Center h="10" w="30%"  style={styles.Color} ml="30%" rounded={20} shadow={7}>
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Servicios");
                   }}>
@@ -213,7 +213,7 @@ const Home = (props) => {
                   TÉCNICOS
                 </Text>
               </Center>
-              <Center h="10" w="30%"  bg="#236DB7" ml="30%" rounded={20} shadow={7}>
+              <Center h="10" w="30%"  style={styles.Color} ml="30%" rounded={20} shadow={7}>
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Tecnicos");
                   }}>

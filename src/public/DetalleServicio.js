@@ -145,7 +145,7 @@ const DetalleServicio = (props) => {
                 <Text fontSize={12} mx={3} bold>{count}</Text>
               </Center>
             
-              <Button onPress={incrementCount} bg="#236DB7" borderRadius={100} py={1} px={1}>
+              <Button onPress={incrementCount} style={styles.Color} borderRadius={100} py={1} px={1}>
                 <Entypo name="plus" size={12} color="white"  />
               </Button>
             </HStack>
@@ -162,7 +162,7 @@ const DetalleServicio = (props) => {
          
                 {/**BOTON CARRITO */}
                 <Center mx={10} mt={3} >
-                <Box  bg="#236DB7" rounded={10} shadow={4} w={210}>
+                <Box  style={styles.Color} rounded={10} shadow={4} w={210}>
                   <TouchableOpacity onPress={()=>botonCarrito()}>
                     <Center py={2} px={2}>
                       <HStack>

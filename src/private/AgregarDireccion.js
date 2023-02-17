@@ -190,7 +190,7 @@ const AgregarDireccion = (props) => {
            
             <Center>
                 <TouchableOpacity onPress={newAddress}>
-                    <HStack bg="#236DB7" p={5} mt={8} rounded={10} >
+                    <HStack style={styles.Color} p={5} mt={8} rounded={10} >
                         <FontAwesome name="save" size={24} color="white" />
                             <Text bold color={"#ffffff"} ml={3} fontSize={18} >Guardar</Text>
                     </HStack>

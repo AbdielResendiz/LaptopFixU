@@ -20,7 +20,7 @@ const Contacto = () => {
                   </Center>
                   
             </HStack>
-            <Divider w={40} thickness="3"  bg="#236DB7"/>
+            <Divider w={40} thickness="3"  style={styles.Color}/>
             <HStack ml={6} mt={5}>
               <Box h={5} w={5} bg="#afafaf" shadow={7} rounded={100}/>
               <Box ml={4}>
@@ -50,7 +50,7 @@ const Contacto = () => {
                 <Text fontSize={32} style={styles.Texts} mb={1} lineHeight={30}>Correo {"\n"}Electrónico</Text>
               </Center>
             </HStack>
-            <Divider w={40} thickness="3"  bg="#236DB7"/>
+            <Divider w={40} thickness="3"  style={styles.Color}/>
             <HStack ml={6} mt={3}>
               <Box h={5} w={5} bg="#afafaf" shadow={7} rounded={100}/>
               <Box ml={4}>
@@ -78,7 +78,7 @@ const Contacto = () => {
               <Text fontSize={32} style={styles.Texts} mb={-3}>Redes Sociales</Text>
             </Center>
           </HStack>
-          <Divider w={40} thickness="3"  bg="#236DB7"/>
+          <Divider w={40} thickness="3"  style={styles.Color}/>
           {/**FACEBOOK */}
           <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://www.facebook.com/@impactosdigitales')}}>
             <HStack ml={6} mt={2}>

@@ -135,7 +135,7 @@ const MisDirecciones = (props) => {
         </Center>
         {/**DIVIDER */}
         <Center>
-          <Divider thickness={1} w="70%" my={4} bg="#236DB7" />
+          <Divider thickness={1} w="70%" my={4} style={styles.Color} />
         </Center>
 
         {/**BOTÓN AGREGAR DIRECCIÓN */}
@@ -149,7 +149,7 @@ const MisDirecciones = (props) => {
         </Center>
         {/**DIVIDER */}
         <Center>
-          <Divider thickness={1} w="70%" mt={4} bg="#236DB7" />
+          <Divider thickness={1} w="70%" mt={4} style={styles.Color} />
         </Center>
         {/**DIRECCION SELECCIONADA */}
 
@@ -173,7 +173,7 @@ const MisDirecciones = (props) => {
           </HStack>
         </Center>
         <Center>
-          <Divider thickness={1} w="70%" mt={4} bg="#236DB7" />
+          <Divider thickness={1} w="70%" mt={4} style={styles.Color} />
         </Center>
          */}
         
@@ -224,7 +224,7 @@ const MisDirecciones = (props) => {
 
 
         <Center>
-          <Divider thickness={1} w="70%" mt={4} bg="#236DB7" />
+          <Divider thickness={1} w="70%" mt={4} style={styles.Color} />
         </Center>
         
 
