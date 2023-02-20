@@ -9,6 +9,7 @@ import config from "../private/api/config";
 import fetchPost from "../private/api/fetchPost";
 import styles from '../styles/styles';
 import { TouchableOpacity, Alert } from 'react-native';
+import baseColor from '../private/api/baseColor';
 
 
 const DetalleServicio = (props) => {
@@ -110,7 +111,7 @@ const DetalleServicio = (props) => {
 
   return (
     <NativeBaseProvider config={config}>
-      <Box h="91%"  bg="#fff" w="100%">
+      <Box h="91%"  bg={baseColor.bg} w="100%">
 
     
           <ScrollView >
@@ -129,8 +130,8 @@ const DetalleServicio = (props) => {
           <Center ml={"2%"} >
                 <HStack w="98%">
                   <Text fontSize={16} style={styles.Texts} >{servicio.nombreS}</Text>
-                  <Text fontSize={16}  ml={"30%"} style={{fontFamily: "CircularApp"}}> Precio: </Text>
-                  <Text fontSize={16} style={styles.Texts} color={"#236DB7"}>${servicio.PrecioS}</Text>
+                  <Text fontSize={16}  ml={"20%"} style={{fontFamily: "CircularApp"}}> Precio: </Text>
+                  <Text fontSize={16} style={styles.textColor} >${servicio.PrecioS}</Text>
                 </HStack>
 
             </Center>
@@ -146,16 +147,16 @@ const DetalleServicio = (props) => {
               </Center>
             
               <Button onPress={incrementCount} style={styles.Color} borderRadius={100} py={1} px={1}>
-                <Entypo name="plus" size={12} color="white"  />
+                <Entypo name="plus" size={12} color={baseColor.colorFont2}  />
               </Button>
             </HStack>
           
 
-          <Text ml={"10%"} style={styles.Texts} my={3} underline color="#236DB7" fontSize={12} >Descripción</Text>
+          <Text ml={"10%"} style={styles.textColor} my={3} underline  fontSize={12} >Descripción</Text>
           {/**DESCRIPCION DE SERVICIO */}
           <Center borderColor={"#555555"} borderWidth={1} mx={"10%"} h="20%" borderRadius={10}>
             <ScrollView>
-              <Text  fontSize={12} mx={3} px={3} py={2} textAlign="justify" color={"#888888"} style={{fontFamily: "CircularApp"}}> {servicio.desS}</Text>
+              <Text  fontSize={12} mx={3} px={3} py={2} textAlign="justify" color={"#888888"} style={styles.Texts}> {servicio.desS}</Text>
             </ScrollView>
             
           </Center>
@@ -167,10 +168,10 @@ const DetalleServicio = (props) => {
                     <Center py={2} px={2}>
                       <HStack>
                         <Center>
-                        <AntDesign name="shoppingcart" size={16} color="white" />
+                        <AntDesign name="shoppingcart" size={16} color={baseColor.colorFont2} />
                         </Center>
                         <Center>
-                          <Text color="#fff"  fontSize={"sm"} mx={2} maxW={150} lineHeight={20} style={{fontFamily: "CircularApp"}}> Añadir a Carrito</Text>
+                          <Text  fontSize={"sm"} mx={2} maxW={150} lineHeight={20} style={styles.textColor2}> Añadir a Carrito</Text>
                         </Center>
                       </HStack>
                     </Center>
@@ -185,7 +186,7 @@ const DetalleServicio = (props) => {
                     <Center py={2} px={2}>
                       <HStack>
                         <Center>
-                          <Text color="#fff"   fontSize={"sm"} mx={2} maxW={150} lineHeight={20} style={{fontFamily: "CircularApp"}}> Contratación</Text>
+                          <Text fontSize={"sm"} mx={2} maxW={150} lineHeight={20} style={styles.textColor2}> Contratación</Text>
                         </Center>
                       </HStack>
                     </Center>

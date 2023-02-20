@@ -11,6 +11,7 @@ import Carrusel from '../components/Carrusel';
 import URL from '../private/api/URL';
 import SkeletonServicio from '../components/SkeletonServicio';
 import styles from '../styles/styles';
+import baseColor from '../private/api/baseColor';
 
 const Servicios = (props) => {
 
@@ -47,7 +48,7 @@ const Servicios = (props) => {
   return (
     <NativeBaseProvider config={config} >
 
-      <Box h="91%" w="100%" bg="#ffffff"  >
+      <Box h="91%" w="100%" bg={baseColor.bg}  >
         <Gradiente/>
         <Center mx={3}>
         <Carrusel/>
@@ -61,12 +62,12 @@ const Servicios = (props) => {
           (loading===true) ?
           (<SkeletonServicio/>) :
           (
-            <ScrollView  bg="white" >
+            <ScrollView  bg={baseColor.bg} >
               <View mb={2}>
 
                   {servicios.map( (servicio, index) => {
                       return(
-                      <Box key={index} backgroundColor={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
+                      <Box key={index}  rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
                           <TouchableOpacity
                             key={index} onPress={() => detalleServicio(servicio.idS)}>
                               <HStack>
@@ -75,7 +76,7 @@ const Servicios = (props) => {
                                       uri: servicio.image_url
                                       }}alt="Imagen" size="md" roundedLeft={"lg"} resizeMode="contain" />
                                   <Box w="60%" mt={5} ml={4}>
-                                      <Text style={styles.Texts} fontSize={20} color="#236DB7" >
+                                      <Text style={styles.textColor} fontSize={20}  >
                                         {servicio.nombreS}
                                       </Text>
                                       <Text color="#4d4d4d" style={styles.Texts}>

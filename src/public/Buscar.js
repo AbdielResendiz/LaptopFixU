@@ -4,6 +4,7 @@ import { NativeBaseProvider, Input, Box, Text, FlatList , HStack, Image, Center,
 import Footer from '../components/Footer';
 import { FontAwesome } from '@expo/vector-icons'; 
 import styles from '../styles/styles';
+import baseColor from '../private/api/baseColor';
 const Buscar = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
@@ -26,8 +27,9 @@ const Buscar = (props) => {
 
   return (
     <NativeBaseProvider>
-        <Box bg="white" w="100%" h="91%">
+        <Box bg={baseColor.bg} w="100%" h="91%">
         <Input variant="rounded" placeholder="Buscar" my={4} mx={7}
+        bg="#fff"
          value={searchTerm}
          onChangeText={setSearchTerm}
          onSubmitEditing={handleSearch} 
@@ -37,7 +39,7 @@ const Buscar = (props) => {
         <FlatList
             data={results}
             keyExtractor={(item) => item.idS}
-            bg="#ffffff"
+            bg={baseColor.bg}
             renderItem={({ item }) => (
             
                 <Box bg={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
@@ -50,7 +52,7 @@ const Buscar = (props) => {
                             }}alt="Alternate Text" size="lg" roundedLeft={"lg"}  />
                         <Box w="60%" mt={5} ml={4}>
                             <Text style={styles.Texts} fontSize={20} color="#236DB7" >{item.nombreS}</Text>
-                            <Text style={styles.Texts} >{item.desS}</Text>
+                            
                         </Box>
                         <Center >
                         <FontAwesome name="angle-right" size={24} color="black" />

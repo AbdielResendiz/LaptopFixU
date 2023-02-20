@@ -2,6 +2,7 @@ import React from 'react';
 import {  View } from 'react-native';
 import { Button, NativeBaseProvider, Text, Skeleton, Center, HStack, VStack } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import baseColor from '../private/api/baseColor';
 
 const SkeletonServicio = () => {
   const navigation =useNavigation();
@@ -15,7 +16,7 @@ const SkeletonServicio = () => {
             }} p="4" mt={4}>
             <Skeleton w={90} h={90} rounded={100} startColor="coolGray.400" />
             <VStack flex="3" space="4">
-            <Skeleton startColor="blue.300"  rounded={20}/>
+            <Skeleton startColor={baseColor.color}  rounded={20}/>
             <Skeleton h={4} rounded={20}/>
             <HStack space="2" alignItems="center">
                 <Skeleton size="5" rounded="full" />
@@ -32,7 +33,7 @@ const SkeletonServicio = () => {
             }} p="4" mt={4}>
             <Skeleton w={90} h={90} rounded={100} startColor="coolGray.400" />
             <VStack flex="3" space="4">
-            <Skeleton startColor="blue.300"  rounded={20}/>
+            <Skeleton startColor={baseColor.color}  rounded={20}/>
             <Skeleton h={4} rounded={20}/>
             <HStack space="2" alignItems="center">
                 <Skeleton size="5" rounded="full" />
@@ -49,7 +50,7 @@ const SkeletonServicio = () => {
             }} p="4" mt={4}>
             <Skeleton w={90} h={90} rounded={100} startColor="coolGray.400" />
             <VStack flex="3" space="4">
-            <Skeleton startColor="blue.300"  rounded={20}/>
+            <Skeleton startColor={baseColor.color}  rounded={20}/>
             <Skeleton h={4} rounded={20}/>
             <HStack space="2" alignItems="center">
                 <Skeleton size="5" rounded="full" />
@@ -66,7 +67,7 @@ const SkeletonServicio = () => {
             }} p="4" mt={4}>
             <Skeleton w={90} h={90} rounded={100} startColor="coolGray.400" />
             <VStack flex="3" space="4">
-            <Skeleton startColor="blue.300"  rounded={20}/>
+            <Skeleton startColor={baseColor.color}  rounded={20}/>
             <Skeleton h={4} rounded={20}/>
             <HStack space="2" alignItems="center">
                 <Skeleton size="5" rounded="full" />

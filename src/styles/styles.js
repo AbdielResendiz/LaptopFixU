@@ -6,6 +6,7 @@ export default StyleSheet.create({
 
     Texts: {
         fontFamily: "CircularApp",
+        color: "#000000"
       },
     
     Color: {
@@ -15,9 +16,16 @@ export default StyleSheet.create({
 
     textColor: {
       fontFamily: "CircularApp",
-      color: "#236DB7"
-    }
+      color: baseColor.colorFont
+    },
 
+    bg:{
+      backgroundColor: baseColor.bg
+    },
+    textColor2: {
+      fontFamily: "CircularApp",
+      color: baseColor.colorFont2
+    },
         
 
     

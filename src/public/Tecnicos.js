@@ -12,6 +12,7 @@ import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import SkeletonServicio from '../components/SkeletonServicio';
 import styles from '../styles/styles';
+import { AntDesign } from '@expo/vector-icons'; 
 
 const Tecnicos = (props) => {
     const BASE_URL = URL.BASE_URL;
@@ -45,7 +46,7 @@ const Tecnicos = (props) => {
 
   return (
     <NativeBaseProvider config={config} >
-      <Box h="91%" bg="white">
+      <Box h="91%" style={styles.bg}>
         <Gradiente/>
         <Center mx={3} >
          <Carrusel/>
@@ -58,15 +59,22 @@ const Tecnicos = (props) => {
           <ScrollView >
                 {tecnicos.map( (tecnico, index) => {
                     return(
-                    <Box key={index} backgroundColor={"white"} rounded="lg" ml={4} mr={5} mt={2}>
+                    <Box key={index}  rounded="lg" ml={4} mr={5} mt={2}>
                         <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
                             <HStack>
                                     <Image source={{uri:tecnico.image_url} } 
                                       alt={tecnico.nombreU} size="lg" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
                                 <Box w="60%" mt={5} ml={4}>
-                                    <Text style={styles.Texts} fontSize={20}  color="#236DB7">
+                                    <Text style={styles.textColor} fontSize={20} >
                                       {tecnico.nombreU + " " + tecnico.apellidos}
                                     </Text>
+                                    <HStack>
+                                      <AntDesign name="star" size={24} color="#ffcd3c" />
+                                      <AntDesign name="star" size={24} color="#ffcd3c" />
+                                      <AntDesign name="star" size={24} color="#ffcd3c" />
+                                      <AntDesign name="star" size={24} color="#ffcd3c" />
+                                      <AntDesign name="star" size={24} color="#9e9e9e" />
+                                    </HStack>
                                     <Text style={styles.Texts}>
                                       Técnico
                                     </Text>

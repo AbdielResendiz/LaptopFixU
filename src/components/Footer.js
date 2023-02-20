@@ -1,6 +1,7 @@
 import React from 'react';
 import { NativeBaseProvider, Box, HStack, Center, Pressable, Image, Divider } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
+import baseColor from '../private/api/baseColor';
 
 
     const Footer = () => {
@@ -22,7 +23,7 @@ import { useNavigation } from '@react-navigation/native';
                 
             <Box  bg="black" safeAreaTop width="100%"  alignSelf="center">
         
-              <HStack bg="#ffffff" alignItems="center" safeAreaBottom shadow={6}>
+              <HStack bg={baseColor.footerColor} alignItems="center" safeAreaBottom shadow={6}>
                 <Pressable cursor="pointer"  py="1" flex={1} 
                   onPress={() => { IrInicio();}}>
                   <Center>

@@ -12,6 +12,7 @@ import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import Skeletor from '../components/Skeletor';
 import styles from '../styles/styles';
+import baseColor from '../private/api/baseColor';
 
 const Home = (props) => {
 
@@ -131,7 +132,7 @@ const Home = (props) => {
   return (
     <NativeBaseProvider config={config} >
       {/**Box que contiene toda la vista */}
-      <Box  bg="white" h="91%">
+      <Box  bg={baseColor.bg} h="91%">
         {/**Fondo gradiante */}
       <Gradiente/>
       {/**Row stack de bienvenida */}
@@ -139,15 +140,18 @@ const Home = (props) => {
         <HStack  >
             <VStack h="100%" w="95%">
               <Center     >
-                <Text  fontSize={24} color="#FFFFFF" style={styles.Texts} >Bienvenido </Text>
+                <Text  fontSize={24} style={styles.textColor2} >Bienvenido </Text>
               </Center>
-              <TouchableOpacity onPress={() => {
+              {/**BOTON TESTING */}
+                <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Test");
                   }}>
                 <Text borderWidth={1} mx={3} px={2} w={60} bg="#ffffff">TEST</Text>
               </TouchableOpacity>
+               
+              
               <Center   >
-                <Text  fontSize={18} mx={1} my={1} color="#FFFFFF" lineHeight={20} style={styles.Texts}>
+                <Text  fontSize={18} mx={1} my={1} style={styles.textColor2} lineHeight={20} >
                   {nombre!==null  ? (nombre+" "+apellidos): "Invitado"}
                 </Text>
               </Center>
@@ -164,7 +168,7 @@ const Home = (props) => {
                 {/**BOTON SERVICIOS Y VER TODOS */} 
             <HStack  mt={3}>
               <Center h="10" w="30%"     rounded={10} ml={3}>
-                <Text  fontSize={"md"} letterSpacing={0.8} color="#236DB7" style={styles.Texts}>
+                <Text  fontSize={"md"} letterSpacing={0.8}  style={styles.textColor}>
                   SERVICIOS
                 </Text>
               </Center>
@@ -172,9 +176,8 @@ const Home = (props) => {
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Servicios");
                   }}>
-                <Text color= "#ffffff"
-                style={styles.Texts}
-                fontSize= "lg">Ver todos 
+                <Text style={styles.textColor2} fontSize= "lg">
+                  Ver todos 
                 </Text>
                 </TouchableOpacity>
               </Center>
@@ -208,8 +211,8 @@ const Home = (props) => {
 
             {/**botones TECNICOS Y VER TODOS */}
             <HStack  my={3}>
-              <Center h="10" w="30%" bg="#ffffff"  rounded={10} ml={3} >
-                <Text  style={styles.Texts} fontSize="md" letterSpacing={0.8} color="#236DB7">
+              <Center h="10" w="30%"   rounded={10} ml={3} >
+                <Text  style={styles.textColor} fontSize="md" letterSpacing={0.8} >
                   TÉCNICOS
                 </Text>
               </Center>
@@ -217,7 +220,7 @@ const Home = (props) => {
                 <TouchableOpacity onPress={() => {
                     props.navigation.navigate("Tecnicos");
                   }}>
-                <Text color= "#ffffff" fontSize= "lg" style={styles.Texts}>
+                <Text  fontSize= "lg" style={styles.textColor2}>
                   Ver todos 
                 </Text>
                 </TouchableOpacity>

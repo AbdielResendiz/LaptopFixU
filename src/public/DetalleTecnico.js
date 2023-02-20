@@ -12,6 +12,8 @@ import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from '../styles/styles';
+import { AntDesign } from '@expo/vector-icons'; 
+import baseColor from '../private/api/baseColor';
 
 const DetalleTecnico = (props) => {
   const navigation =useNavigation();
@@ -72,7 +74,7 @@ useEffect(() => {
   
   return (
     <NativeBaseProvider config={config}>
-      <Box bg="#FFFFFF" h="91%" >
+      <Box bg={baseColor.bg} h="91%" >
         <ZStack mb={10}>
           <Gradiente/>
 
@@ -109,12 +111,22 @@ useEffect(() => {
             (loading===true) ?
             (<Skeleton h={9} w="75%" rounded={10}/>) :
             (
-              <Text style={styles.Texts} color="#236DB7" fontSize={26}>
+              <Text style={styles.Texts} color={baseColor.colorFont} fontSize={26}>
                 {tecnico.nombreU + " " + tecnico.apellidos}
               </Text>
             )
           }
           
+        </Center>
+        {/**ESTRELLAS */}
+        <Center>
+          <HStack>
+            <AntDesign name="star" size={24} color="#ffcd3c" />
+            <AntDesign name="star" size={24} color="#ffcd3c" />
+            <AntDesign name="star" size={24} color="#ffcd3c" />
+            <AntDesign name="star" size={24} color="#ffcd3c" />
+            <AntDesign name="star" size={24} color="#9e9e9e" />
+          </HStack>
         </Center>
         <Center>
           <Text fontSize={20} style={styles.Texts}>Técnico</Text>
@@ -131,7 +143,7 @@ useEffect(() => {
               <VStack >
                 <Center>
                   <Image source={require("../img/detalleTecnico/info.png")
-                      }   alt="Alternate Text"  size="lg" resizeMode='contain' />
+                      }   alt="Alternate Text"  size="md" resizeMode='contain' />
                 </Center>
                 <Center>
                   <Text style={styles.Texts}>Información Personal</Text>
@@ -143,7 +155,7 @@ useEffect(() => {
               <VStack >
                 <Center>
                   <Image source={require("../img/detalleTecnico/contacto.png")
-                      } alt="Alternate Text"  size="lg" resizeMode='contain'/>
+                      } alt="Alternate Text"  size="md" resizeMode='contain'/>
                 </Center>
                 <Center>
                   <Text style={styles.Texts}>Contactame</Text>
@@ -161,7 +173,7 @@ useEffect(() => {
               <VStack >
                 <Center>
                   <Image  source={require("../img/detalleTecnico/costos.png")
-                      } alt="Alternate Text"  size="lg" resizeMode='contain'  />
+                      } alt="Alternate Text"  size="md" resizeMode='contain'  />
                 </Center> 
                 <Center>
                   <Text style={styles.Texts}>Costos de Servicios</Text>
@@ -174,7 +186,7 @@ useEffect(() => {
               <VStack >
                 <Center>
                   <Image  source={require("../img/detalleTecnico/credenciales.png")
-                      } alt="Alternate Text"  size="lg" resizeMode='contain'/>
+                      } alt="Alternate Text"  size="md" resizeMode='contain'/>
                 </Center>
                 <Center>
                   <Text style={styles.Texts}>Credenciales</Text>

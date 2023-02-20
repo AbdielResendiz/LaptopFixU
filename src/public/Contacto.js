@@ -3,11 +3,13 @@ import {  TouchableOpacity, Linking } from 'react-native';
 import styles from '../styles/styles';
 import { Box, NativeBaseProvider, Center, HStack, VStack, Text, Divider, ScrollView, Image} from 'native-base';
 import Footer from '../components/Footer';
+import baseColor from '../private/api/baseColor';
+
 
 const Contacto = () => {
   return (
     <NativeBaseProvider>
-      <ScrollView w="100%" h="82%" bg="white">
+      <ScrollView w="100%" h="82%" bg={baseColor.bg}>
         {/**UBICACIÓN */}
         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://goo.gl/maps/DjsMWzsKZ7CcTE1o6')}} >
           <Box ml={7} mt={2}>

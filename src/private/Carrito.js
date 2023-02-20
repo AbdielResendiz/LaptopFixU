@@ -10,6 +10,7 @@ import URL from './api/URL';
 import { Feather } from '@expo/vector-icons'; 
 import SkeletonServicio from '../components/SkeletonServicio';
 import styles from '../styles/styles';
+import baseColor from './api/baseColor';
       
 
 const Carrito = () => {
@@ -139,7 +140,7 @@ const Carrito = () => {
 
   return (
     <NativeBaseProvider  >
-        <View  h="91%" >
+        <View  h="91%" bg={baseColor.bg2} >
             <Center bg="#FFFFFF" mx={4} mt={5} mb={3} p={2} h={255} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
                 <ScrollView style={{paddingHorizontal:10}}  horizontal={false} w="100%" persistentScrollbar={true} >
                     {/**Item carrito ejemplo */}
@@ -234,8 +235,8 @@ const Carrito = () => {
 
             
           <Center>
-            <Button m={5} w="50%" onPress={ ()=> navigation.navigate("CheckAdress")} shadow={5} borderRadius={10}>
-                    <Text color={"#FFFFFF"} fontSize="lg" style={styles.Texts}
+            <Button m={5} w="50%" onPress={ ()=> navigation.navigate("CheckAdress")} shadow={5} borderRadius={10} bg={baseColor.color}> 
+                    <Text color={baseColor.colorFont2} fontSize="lg" style={styles.Texts}
                       letterSpacing={0.8}>
                       PAGAR
                     </Text>

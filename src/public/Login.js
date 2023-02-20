@@ -129,11 +129,11 @@ const Login = (props) => {
               <Box  h="75%" w="80%" mx="10%" mt="30%" rounded={10} opacity={0.7} bg="black"></Box>
               
               <Center  h="100%" w="80%" mx="10%" >
-                <Text style={styles.Texts} color="#bfbfbf" fontSize={25} mx={6}>SERVICIO TÉCNICO </Text>
-                <Text style={styles.Texts}color="#bfbfbf" fontSize={25} mx={6}>Y</Text>
-                <Text style={styles.Texts} color="#bfbfbf" fontSize={25} mx={6}>MANTENIMIENTO</Text>
-                <Text style={styles.Texts} color="#bfbfbf" fontSize={15} letterSpacing={0.9}>DE COMPUTADORAS A</Text>
-                <Text style={styles.Texts} color="#bfbfbf" fontSize={15} letterSpacing={0.9}>DOMICILIO</Text>
+                <Text style={styles.textColor2}  fontSize={25} mx={6}>SERVICIO TÉCNICO </Text>
+                <Text style={styles.textColor2} fontSize={25} mx={6}>Y</Text>
+                <Text style={styles.textColor2}  fontSize={25} mx={6}>MANTENIMIENTO</Text>
+                <Text style={styles.textColor2}  fontSize={15} letterSpacing={0.9}>DE COMPUTADORAS A</Text>
+                <Text style={styles.textColor2}  fontSize={15} letterSpacing={0.9}>DOMICILIO</Text>
                 <Image 
                   source={require( "../img/Logo1Run.png")
                   } alt="Alternate Text" size="lg" my={4} />
@@ -144,6 +144,7 @@ const Login = (props) => {
                         
                         <Input placeholder='CORREO ELECTRÓNICO'
                         keyboardType='email-address'
+                        borderRadius={100}
                         onChangeText={(val) => setCorreo(val)}
                         autoCapitalize='none'
                         value={correo}
@@ -161,9 +162,9 @@ const Login = (props) => {
                       {/**Botón INICIAR SESIÓN */}
                       <Center>
                         <TouchableOpacity onPress={Login2}>
-                          <Box mt="2" bg="#236DB7" w="60%" rounded={10} p={3} shadow={7}>
+                          <Box mt="2" style={styles.Color} w="60%" rounded={10} p={3} shadow={7}>
                             { loading==false ? (
-                              <Text color="white" fontSize={18} letterSpacing={0.9} style={styles.Texts}> Iniciar Sesión </Text>
+                              <Text color="white" fontSize={18} letterSpacing={0.9} style={styles.textColor2}> Iniciar Sesión </Text>
                             ) :
                             (<Spinner size={"lg"} color="white"/>)
                             }
@@ -176,13 +177,13 @@ const Login = (props) => {
 
 
                       <HStack mt="3" justifyContent="center">
-                        <Text fontSize="lg" color="white"  style={styles.Texts} >
+                        <Text fontSize="lg"   style={styles.textColor2} >
                           ¿Nuevo usuario?{" "}
                         </Text>
                         <TouchableOpacity onPress={() => {
                               navigation.navigate("SignUp");
                             }}>
-                        <Text color= "white" style={styles.Texts}
+                        <Text  style={styles.textColor2}
                         fontSize= "lg" underline
                       >
                           Registrarse

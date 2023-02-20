@@ -7,6 +7,7 @@ import URL from '../private/api/URL';
 import Footer from '../components/Footer';
 import fetchPost from '../private/api/fetchPost';
 import styles from '../styles/styles';
+import baseColor from '../private/api/baseColor';
 
 const SobreNosotros = (props) => {
   const BASE_URL = URL.BASE_URL;
@@ -157,7 +158,7 @@ console.log("ID SOBRE NOS : ", id)
   return (
     <NativeBaseProvider>
       {/**Saludo inicial con nombre */}
-      <Box bg="white"  w="100%" h="91%">
+      <Box bg={baseColor.bg}  w="100%" h="91%">
         <Center>
         <Image source={require("../img/SobreNos/user.png")
                       } alt="Alternate Text"  size="lg" />
@@ -273,7 +274,7 @@ console.log("ID SOBRE NOS : ", id)
             </Center>
           </VStack>
         </TouchableOpacity>) :
-          ( <Divider bg="#fff"/> )
+          ( null )
           }
           
         </Center>
