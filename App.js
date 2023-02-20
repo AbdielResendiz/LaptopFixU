@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer, useNavigationContainerRef} from '@react-navigation/native';
 import {Image, NativeBaseProvider} from 'native-base';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { View, TouchableOpacity} from 'react-native';
+import { View, TouchableOpacity, StyleSheet} from 'react-native';
 import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
 
 import Home from "./src/public/Home";
@@ -48,10 +48,20 @@ import * as Font from 'expo-font';
 import  { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import baseColor from './src/private/api/baseColor';
+
 //font
 
 
-
+const styles = StyleSheet.create({
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    width: '100%',
+  
+  },
+});
 
 
 
@@ -59,6 +69,7 @@ const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+ 
   
   const navigationRef = useNavigationContainerRef();
   //variable para cambiar COLOR
@@ -84,8 +95,8 @@ export default function App() {
 
   return (
     
-    <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator>
+    <NavigationContainer ref={navigationRef} >
+      <Stack.Navigator style={{height:"91%"}} >
       <Stack.Screen
             name="Home"
             component={Home}
@@ -535,7 +546,7 @@ export default function App() {
           }}
           />
 
-<Stack.Screen name="Test" component={Test}
+      <Stack.Screen name="Test" component={Test}
         options={{title: 'skeleton perfil',
         headerTintColor:baseColor.colorFont2,
         headerStyle: {
@@ -544,8 +555,14 @@ export default function App() {
         }}/> 
 
 
-      </Stack.Navigator>
+      </Stack.Navigator >
+      <View style={{height:"9%"}}>
+        <Footer />
+      </View>
+      
+
     </NavigationContainer>
+    
   );
 }
 

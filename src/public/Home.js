@@ -132,7 +132,7 @@ const Home = (props) => {
   return (
     <NativeBaseProvider config={config} >
       {/**Box que contiene toda la vista */}
-      <Box  bg={baseColor.bg} h="91%">
+      <Box  bg={baseColor.bg} h="100%">
         {/**Fondo gradiante */}
       <Gradiente/>
       {/**Row stack de bienvenida */}
@@ -253,7 +253,7 @@ const Home = (props) => {
               }
           </ScrollView>
         </Box>
-      <Footer />
+
     </NativeBaseProvider>
   )
 }

@@ -144,7 +144,6 @@ const Login = (props) => {
                         
                         <Input placeholder='CORREO ELECTRÓNICO'
                         keyboardType='email-address'
-                        borderRadius={100}
                         onChangeText={(val) => setCorreo(val)}
                         autoCapitalize='none'
                         value={correo}

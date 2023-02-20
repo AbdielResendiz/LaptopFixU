@@ -21,6 +21,8 @@ const baseColor ={
   //color de barra de navegacion inferior
    footerColor: "#FFffff",
    headerColor: "#FFffff",
+   footerIcon: "#5A5A5A",
+   footerIconBg: "#C8C8C8"
 
 }
 

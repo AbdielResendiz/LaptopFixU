@@ -1,89 +1,90 @@
-import React from 'react';
-import { NativeBaseProvider, Box, HStack, Center, Pressable, Image, Divider } from 'native-base';
+import React, {useState} from 'react';
+import { NativeBaseProvider, Box, HStack, Center, Pressable, Icon, Text } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import baseColor from '../private/api/baseColor';
+import { MaterialCommunityIcons, MaterialIcons, Ionicons, AntDesign } from '@expo/vector-icons';
 
 
     const Footer = () => {
       
+      
         const navigation =useNavigation();
         const IrInicio = () => {
-          
+          setSelected(0)
           navigation.navigate('Home');
         };
+
+        const IrServicios = () => {
+          setSelected(1)
+          navigation.navigate('Servicios');
+        };
+        const IrBuscar = () => {
+          setSelected(2)
+          navigation.navigate('Buscar');
+        };
+
+        const IrAsesoria = () => {
+          setSelected(3)
+          navigation.navigate('Soporte');
+        };
+        
         const IrCuenta = () => {
-          
+          setSelected(4)
           navigation.navigate('Login');
         };
+
+        const [selected, setSelected] = useState(0);
+
         return (
             
-
-            
-            <NativeBaseProvider style={{justifyContent: "flex-end"}}>
-                
-            <Box  bg="black" safeAreaTop width="100%"  alignSelf="center">
-        
-              <HStack bg={baseColor.footerColor} alignItems="center" safeAreaBottom shadow={6}>
-                <Pressable cursor="pointer"  py="1" flex={1} 
-                  onPress={() => { IrInicio();}}>
-                  <Center>
-                    <Image 
-                                source={require( "../img/footer/home.png")
-                                } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                  
-                  </Center>
-                </Pressable>
-                
-                  <Divider orientation='vertical' h={7} my={1} thickness={2} bg="black"/>
-               
-                
+         <NativeBaseProvider>
+            <Box flex={1} safeAreaTop width="100%" h="11%" alignSelf="center"  >
               
-                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => { navigation.navigate('Servicios')}}>
-                  <Center>
-                  <Image 
-                                source={require( "../img/footer/servicios.png")
-                                } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                  
+              <HStack bg={baseColor.bg}  alignItems="center" safeAreaBottom shadow={6} borderTopRadius={35} >
+                <Pressable cursor="pointer" opacity={selected === 0 ? 1 : 0.5} py="3" flex={1} 
+                  onPress={() => {IrInicio()}}>
+                  <Center >
+                    <Center  borderRadius={100} p={3} bg={baseColor.footerIconBg}>
+                      <Icon mb="1" as={<Ionicons name={selected === 0 ? 'home' : 'home-outline'} />} color={baseColor.footerIcon} size="lg" />
+                      
+                    </Center>
                   </Center>
                 </Pressable>
-                <Divider orientation='vertical'h={7} my={1} thickness={2} bg="black"/>
-
-                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => { navigation.navigate('Buscar')}} >
+                <Pressable cursor="pointer" opacity={selected === 1 ? 1 : 0.5} py="2" flex={1} onPress={() => {IrServicios()}}>
                   <Center>
-                    <Image 
-                                source={require( "../img/footer/buscar.png")
-                                } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                    
+                    <Center borderRadius={100} p={3} bg={baseColor.footerIconBg}>
+                      <Icon mb="1" as={<MaterialCommunityIcons name={selected === 1 ? 'percent' : 'percent-outline'} />} color={baseColor.footerIcon} size="lg" />
+                      
+                    </Center>
                   </Center>
                 </Pressable>
-                <Divider orientation='vertical' h={7} my={1} thickness={2} bg="black"/>
-
-                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => {navigation.navigate('Soporte')}}>
+                <Pressable cursor="pointer" opacity={selected === 2 ? 1 : 0.6} py="2" flex={1} onPress={() => {IrBuscar()} }>
                   <Center>
-                    <Image 
-                                source={require( "../img/footer/tecnico.png")
-                                } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                    
+                    <Center borderRadius={100} p={3} bg={baseColor.footerIconBg}> 
+                      <Icon mb="1" as={<Ionicons name={selected ===2 ? "ios-search" : "ios-search-outline"}/>} color={baseColor.footerIcon} size="lg" />
+                     
+                    </Center>
                   </Center>
                 </Pressable>
-                <Divider orientation='vertical' h={7} my={1} thickness={2} bg="black"/>
-
-                <Pressable cursor="pointer"  py="2" flex={1} onPress={() => { IrCuenta();}}>
+                <Pressable cursor="pointer" opacity={selected === 3 ? 1 : 0.5} py="2" flex={1} onPress={() => {IrAsesoria()} }>
                   <Center>
-                    <Image 
-                                source={require( "../img/footer/perfil.png")
-                                } alt="Alternate Text" 
-                                size="12" rounded={"lg"}  />
-                   
+                    <Center borderRadius={100} p={3} bg={baseColor.footerIconBg}> 
+                      <Icon mb="1" as={<AntDesign name="customerservice"  />} color={baseColor.footerIcon} size="lg" />
+                      
+                    </Center>
+                  </Center>
+                </Pressable>
+                <Pressable cursor="pointer" opacity={selected === 4 ? 1 : 0.5} py="2" flex={1} onPress={() => {IrCuenta()} }>
+                  <Center>
+                    <Center borderRadius={100} p={3} bg={baseColor.footerIconBg}> 
+                      <Icon mb="1" as={<MaterialCommunityIcons name={selected === 4 ? 'account' : 'account-outline'} />} color={baseColor.footerIcon} size="lg" />
+                      
+                    </Center>
                   </Center>
                 </Pressable>
               </HStack>
             </Box>
-          </NativeBaseProvider>
+        </NativeBaseProvider>
 
 
         );
