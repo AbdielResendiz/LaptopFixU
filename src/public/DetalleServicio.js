@@ -111,7 +111,7 @@ const DetalleServicio = (props) => {
 
   return (
     <NativeBaseProvider config={config}>
-      <Box h="91%"  bg={baseColor.bg} w="100%">
+      <Box h="100%"  bg={baseColor.bg} w="100%">
 
     
           <ScrollView >
@@ -200,7 +200,7 @@ const DetalleServicio = (props) => {
        
       </Box>
 
-      <Footer/>
+  
     </NativeBaseProvider>
   )
 }

@@ -232,7 +232,7 @@ useEffect(() => {
             
         </ScrollView>
 
-        <Footer h="11%"/>
+     
             
         </Box> )
 

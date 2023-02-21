@@ -6,7 +6,7 @@ import styles from '../styles/styles';
 const AgregarTarjeta = () => {
   return (
     <NativeBaseProvider>
-        <Box h="91%" w="100%" bg="#FFFFFF" >
+        <Box h="100%" w="100%" bg="#FFFFFF" >
                 {/**TITULO */}
             <Text fontSize={28} mx={6} my={4} style={styles.Texts}>
                 Agregar tarjeta
@@ -81,7 +81,7 @@ const AgregarTarjeta = () => {
             
 
         </Box>
-        <Footer/>
+  
 
     </NativeBaseProvider>
   )

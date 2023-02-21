@@ -27,7 +27,7 @@ const Buscar = (props) => {
 
   return (
     <NativeBaseProvider>
-        <Box bg={baseColor.bg} w="100%" h="91%">
+        <Box bg={baseColor.bg} w="100%" h="100%">
         <Input variant="rounded" placeholder="Buscar" my={4} mx={7}
         bg="#fff"
          value={searchTerm}
@@ -67,7 +67,7 @@ const Buscar = (props) => {
             )}
         />
         </Box>
-        <Footer/>
+       
 
 
 

@@ -287,7 +287,7 @@ const editAddress = async() => {
 
 
       </View>
-      <Footer/>
+   
     </NativeBaseProvider>
   )
 }

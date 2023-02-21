@@ -158,7 +158,7 @@ console.log("ID SOBRE NOS : ", id)
   return (
     <NativeBaseProvider>
       {/**Saludo inicial con nombre */}
-      <Box bg={baseColor.bg}  w="100%" h="91%">
+      <Box bg={baseColor.bg}  w="100%" h="100%">
         <Center>
         <Image source={require("../img/SobreNos/user.png")
                       } alt="Alternate Text"  size="lg" />
@@ -284,7 +284,7 @@ console.log("ID SOBRE NOS : ", id)
       
       
       </Box>
-      <Footer/>
+  
       
     </NativeBaseProvider>
   )

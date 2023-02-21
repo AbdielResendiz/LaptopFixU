@@ -31,7 +31,7 @@ console.log("Seleccionado", select);
 
   return (
    <NativeBaseProvider>
-    <View  h="91%" w="100%">
+    <View  h="100%" w="100%">
     
 
     
@@ -147,7 +147,7 @@ console.log("Seleccionado", select);
 
       </View>
 
-      <Footer/>
+
     
       
     

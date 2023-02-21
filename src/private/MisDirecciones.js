@@ -126,7 +126,7 @@ const MisDirecciones = (props) => {
 
   return (
     <NativeBaseProvider>
-      <View w="100%" h="91%" bg="white">
+      <View w="100%" h="100%" bg="white">
         <Center>
           {/**TITULO  */}
           <Text style={styles.Texts} fontSize={30} mt={2}>
@@ -232,7 +232,7 @@ const MisDirecciones = (props) => {
 
 
       </View>
-      <Footer/>
+
     </NativeBaseProvider>
   )
 }

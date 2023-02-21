@@ -48,7 +48,7 @@ const Servicios = (props) => {
   return (
     <NativeBaseProvider config={config} >
 
-      <Box h="91%" w="100%" bg={baseColor.bg}  >
+      <Box h="100%" w="100%" bg={baseColor.bg}  >
         <Gradiente/>
         <Center mx={3}>
         <Carrusel/>
@@ -108,7 +108,7 @@ const Servicios = (props) => {
       
       
       
-      <Footer />
+   
     </NativeBaseProvider>
     
   )

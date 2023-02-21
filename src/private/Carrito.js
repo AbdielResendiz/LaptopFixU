@@ -140,7 +140,7 @@ const Carrito = () => {
 
   return (
     <NativeBaseProvider  >
-        <View  h="91%" bg={baseColor.bg2} >
+        <View  h="100%" bg={baseColor.bg2} >
             <Center bg="#FFFFFF" mx={4} mt={5} mb={3} p={2} h={255} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
                 <ScrollView style={{paddingHorizontal:10}}  horizontal={false} w="100%" persistentScrollbar={true} >
                     {/**Item carrito ejemplo */}
@@ -246,7 +246,7 @@ const Carrito = () => {
           </Center>
 
         </View>
-        <Footer />
+     
         
     </NativeBaseProvider>
   )

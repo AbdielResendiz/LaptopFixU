@@ -74,7 +74,7 @@ useEffect(() => {
   
   return (
     <NativeBaseProvider config={config}>
-      <Box bg={baseColor.bg} h="91%" >
+      <Box bg={baseColor.bg} h="100%" >
         <ZStack mb={10}>
           <Gradiente/>
 
@@ -209,7 +209,7 @@ useEffect(() => {
       </Box>
       
 
-      <Footer/>
+      
     </NativeBaseProvider>
   )
 }

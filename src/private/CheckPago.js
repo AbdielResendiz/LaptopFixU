@@ -11,7 +11,7 @@ const CheckPago = () => {
   const navigation =useNavigation();
   return (
     <NativeBaseProvider>
-      <Box bg={"white"} h="91%" w="100%">
+      <Box bg={"white"} h="100%" w="100%">
 
         
           <Text  fontSize={38}  m={6} style={styles.Texts}>
@@ -89,7 +89,7 @@ const CheckPago = () => {
         </Button>
 
       </Box>
-      <Footer/>
+
         
       
     </NativeBaseProvider>

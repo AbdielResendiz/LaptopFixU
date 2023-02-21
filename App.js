@@ -69,6 +69,8 @@ const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+    const [showFooter, setShowFooter] = useState(true);
+
  
   
   const navigationRef = useNavigationContainerRef();
@@ -91,11 +93,21 @@ export default function App() {
     return null;
   }
 
+  function shouldShowFooter(route) {
+    if (route.name === "Login") {
+      return false; // No mostrar Footer en la ruta "NoFooter"
+    } else if (route.name === "SignUp") {
+      return false; // No mostrar Footer en la ruta "NoFooter2"
+    } else {
+      return true; // Mostrar Footer en todas las demás rutas
+    }
+  }
+
 
 
   return (
     
-    <NavigationContainer ref={navigationRef} >
+    <NavigationContainer ref={navigationRef}  onStateChange={(state) => setShowFooter(shouldShowFooter(state.routes[state.index]))}>
       <Stack.Navigator style={{height:"91%"}} >
       <Stack.Screen
             name="Home"
@@ -556,9 +568,12 @@ export default function App() {
 
 
       </Stack.Navigator >
-      <View style={{height:"9%"}}>
-        <Footer />
-      </View>
+      
+       {showFooter ? (
+        <View style={{height:"9%"}}>
+          <Footer />
+        </View>
+      ) : null}
       
 
     </NavigationContainer>

@@ -71,7 +71,7 @@ const AgregarDireccion = (props) => {
 
   return (
     <NativeBaseProvider>
-      <View w="100%" h="91%" bg="white">
+      <View w="100%" h="100%" bg="white">
         <HStack>
             <Center>
             <Image 
@@ -205,7 +205,7 @@ const AgregarDireccion = (props) => {
 
 
       </View>
-      <Footer/>
+
     </NativeBaseProvider>
   )
 }

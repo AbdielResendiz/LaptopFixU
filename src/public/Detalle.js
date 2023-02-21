@@ -10,7 +10,7 @@ import Footer from "../components/Footer"
 const Detalle = () => {
   return (
     <NativeBaseProvider>
-      <ScrollView backgroundColor={"#BDC5C8"} h={"83%"}>
+      <ScrollView backgroundColor={"#BDC5C8"} h={"100%"}>
         <ScrollView horizontal={true} margin={3}  >
           <Image 
             source={require( "../img/descarga.png")
@@ -115,7 +115,7 @@ const Detalle = () => {
 
       </ScrollView>
 
-      <Footer/>
+   
     </NativeBaseProvider>
   )
 }

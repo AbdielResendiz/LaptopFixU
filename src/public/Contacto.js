@@ -9,7 +9,7 @@ import baseColor from '../private/api/baseColor';
 const Contacto = () => {
   return (
     <NativeBaseProvider>
-      <ScrollView w="100%" h="82%" bg={baseColor.bg}>
+      <ScrollView w="100%" h="100%" bg={baseColor.bg}>
         {/**UBICACIÓN */}
         <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://goo.gl/maps/DjsMWzsKZ7CcTE1o6')}} >
           <Box ml={7} mt={2}>
@@ -144,7 +144,7 @@ const Contacto = () => {
 
       </ScrollView>
 
-       <Footer/>
+   
 
     </NativeBaseProvider>
   )
