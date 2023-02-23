@@ -1,10 +1,9 @@
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import { Box, Image } from 'native-base';
 import { Dimensions } from 'react-native';
-import URL from '../private/api/URL';
 
 const Carrusel = ()=> {
-    const img = ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', ];
+    const colors = ['tomato', 'thistle', 'skyblue', '#00ff00'];
     return(
         <SwiperFlatList
               autoplay
@@ -13,10 +12,10 @@ const Carrusel = ()=> {
               index={2}
               showPagination
 
-              data={img}
+              data={colors}
               renderItem={({ item }) => (
-                <Box  w={Dimensions.get('window').width} > 
-                   <Image  source={{uri: `${URL.BASE_URL}/public/${item}`}}  
+                <Box bg={item} w={Dimensions.get('window').width} > 
+                   <Image source={require("../img/banner1.png")} 
                      alt={item}  w={(Dimensions.get('window').width)} resizeMode="stretch" />
                 </Box>
               )}
