@@ -11,7 +11,7 @@ const Gradiente = () => {
 
     return(
         <ZStack>
-        <Box h="150"  w="100%" bg={{
+        <Box h="250"  w="100%" bg={{
           linearGradient: {
             colors: [ Color, Color, Color2],
             start: [0, 0],

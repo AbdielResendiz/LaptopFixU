@@ -1,13 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { NativeBaseProvider, Box, HStack, Center, Pressable, Icon, Text } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import baseColor from '../private/api/baseColor';
-import { MaterialCommunityIcons, MaterialIcons, Ionicons, AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons, AntDesign } from '@expo/vector-icons';
 
 
-    const Footer = () => {
+    const Footer = (props) => {
       
-      
+       
+       const [selected, setSelected] = useState(props.selected2);
+       
+       
+
         const navigation =useNavigation();
         const IrInicio = () => {
           setSelected(0)
@@ -33,7 +37,7 @@ import { MaterialCommunityIcons, MaterialIcons, Ionicons, AntDesign } from '@exp
           navigation.navigate('Login');
         };
 
-        const [selected, setSelected] = useState(0);
+        
 
         return (
             
@@ -41,11 +45,11 @@ import { MaterialCommunityIcons, MaterialIcons, Ionicons, AntDesign } from '@exp
             <Box flex={1} safeAreaTop width="100%" h="11%" alignSelf="center"  >
               
               <HStack bg={baseColor.bg}  alignItems="center" safeAreaBottom shadow={6} borderTopRadius={35} >
-                <Pressable cursor="pointer" opacity={selected === 0 ? 1 : 0.5} py="3" flex={1} 
+                <Pressable cursor="pointer" opacity={selected === 0 ? 1 : 0.5}  flex={1} 
                   onPress={() => {IrInicio()}}>
                   <Center >
                     <Center  borderRadius={100} p={3} bg={baseColor.footerIconBg}>
-                      <Icon mb="1" as={<Ionicons name={selected === 0 ? 'home' : 'home-outline'} />} color={baseColor.footerIcon} size="lg" />
+                      <Icon  as={<Ionicons name={selected === 0 ? 'home' : 'home-outline'} />} color={baseColor.footerIcon} size="lg" />
                       
                     </Center>
                   </Center>

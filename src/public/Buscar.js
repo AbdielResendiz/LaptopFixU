@@ -46,13 +46,13 @@ const Buscar = (props) => {
                 <TouchableOpacity
                   onPress={() => detalleServicio(item.idS)}>
                     <HStack>
-                        <Image 
-                            source={{
-                            uri: item.image_url
-                            }}alt="Alternate Text" size="lg" roundedLeft={"lg"}  />
-                        <Box w="60%" mt={5} ml={4}>
-                            <Text style={styles.Texts} fontSize={20} color="#236DB7" >{item.nombreS}</Text>
-                            
+                    <Image 
+                                source={{
+                                uri: item.image_url
+                                }}alt="Alternate Text" size="lg" resizeMode='contain' />
+                            <Box w="60%" mt={5} ml={4}>
+                                <Text style={styles.Texts} fontSize={20} color="#236DB7" >{item.nombreS}</Text>
+                                <Text><Text bold>Precio: </Text>${item.precioS}</Text>
                         </Box>
                         <Center >
                         <FontAwesome name="angle-right" size={24} color="black" />

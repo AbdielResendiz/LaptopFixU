@@ -27,7 +27,9 @@ export default StyleSheet.create({
       color: baseColor.colorFont2
     },
         
-
+    texto:{
+      fontFamily: "CircularApp",
+    }
     
 
  })

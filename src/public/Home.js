@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {  TouchableOpacity} from 'react-native';
-import { NativeBaseProvider, HStack, Center, Box, 
-  ScrollView  , Image, Text, VStack} from 'native-base';
+import { NativeBaseProvider, HStack, Center, Box, Input, Icon,
+  ScrollView  , Image, Text, VStack, FlatList, Divider, Spinner} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 /**componentes */
 import config from '../private/api/config';
-import Footer from "../components/Footer";
+import { FontAwesome, AntDesign } from '@expo/vector-icons'; 
 import fetchPost from '../private/api/fetchPost';
 import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
@@ -13,10 +13,11 @@ import URL from '../private/api/URL';
 import Skeletor from '../components/Skeletor';
 import styles from '../styles/styles';
 import baseColor from '../private/api/baseColor';
+import SwiperList from '../components/SwiperList';
 
 const Home = (props) => {
 
-
+  const test = false;
  
 
   const [ nombre, setNombre ] = useState(null);
@@ -128,7 +129,51 @@ const Home = (props) => {
     getDatos();
     getDatos1();
   }, [])
+//BUSCAR
+  //BUSCAR
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState([]);
+  console.log("resultados busqueda", results);
+  const [cargando, setCargando] = useState(true);
 
+  const handleSearch = async () => {
+
+   
+    try {
+      const response = await fetch(`https://laptopfix.com.mx/laptopfixrun/api/servicios/buscar?q=${searchTerm}`);
+      const data = await response.json();
+      setResults(data);
+      
+    } catch (error) {
+      console.error(error);
+    }
+   
+  
+  };
+ 
+  
+
+  const borrarResultados = async() =>{
+    setResults([]);
+    setSearchTerm("");
+  }
+
+  const Testing = () =>{
+    return(
+     
+      <TouchableOpacity onPress={() => {
+          props.navigation.navigate("Test");
+        }}>
+      <Text borderWidth={1} mx={1} px={2} w={16} bg="#ffffff">TEST</Text>
+    </TouchableOpacity>
+     
+    
+    );
+  };
+
+
+  //fin buscar
+//Fin Buscar
   return (
     <NativeBaseProvider config={config} >
       {/**Box que contiene toda la vista */}
@@ -136,34 +181,42 @@ const Home = (props) => {
         {/**Fondo gradiante */}
       <Gradiente/>
       {/**Row stack de bienvenida */}
-      <Center h="12%">
+      <Center h={16}>
         <HStack  >
             <VStack h="100%" w="95%">
-              <Center     >
-                <Text  fontSize={24} style={styles.textColor2} >Bienvenido </Text>
-              </Center>
-              {/**BOTON TESTING */}
-                <TouchableOpacity onPress={() => {
-                    props.navigation.navigate("Test");
-                  }}>
-                <Text borderWidth={1} mx={3} px={2} w={60} bg="#ffffff">TEST</Text>
-              </TouchableOpacity>
-               
-              
-              <Center   >
-                <Text  fontSize={18} mx={1} my={1} style={styles.textColor2} lineHeight={20} >
-                  {nombre!==null  ? (nombre+" "+apellidos): "Invitado"}
-                </Text>
-              </Center>
+              <HStack w="100%"> 
+              <Center w="15%">
+              {/**boton de regresar, testing y busqueda */}
+                { (results.length===0) ? (test===true ? <Testing/> : null) : (
+                  <Center mx={3} >
+                  <TouchableOpacity onPress={()=>borrarResultados()}>
+                  <Icon as={<AntDesign name="arrowleft" />} size={8}  color="muted.100" />
+                  </TouchableOpacity>
+                </Center>
+                ) }
+                </Center>
+                <Center w="80%"  >
+                  <Box bg="#ffffff" borderRadius={25}>
+                    <Input variant="rounded" placeholder="Buscar"  
+                      bg="#fff" w={"100%"}
+                      value={searchTerm}
+                      onChangeText={setSearchTerm}
+                      onSubmitEditing={handleSearch} 
+                      InputLeftElement={<Icon as={<FontAwesome name="search" />} size={5} ml="2" color="muted.400" />}/>
+                  </Box>
+                </Center>
+              </HStack>
+             {/**FIN busqueda */}
             </VStack>
         </HStack>
       </Center>
-        
-        {/** scrool vertical para contenido*/}
-          <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" >
+              { (results.length === 0)
+               ? (
+                <ScrollView style={{paddingHorizontal:10}} horizontal={false} h="68%" >
             {/**SCROOL HORIZONTAL PROMOCIONES */}
             <Box w="100%"  bg="white" mt={1}>
-            <Carrusel/>
+              {/**CARRUSEL */}
+            <SwiperList/>
             </Box>
                 {/**BOTON SERVICIOS Y VER TODOS */} 
             <HStack  mt={3}>
@@ -200,6 +253,7 @@ const Home = (props) => {
                           <Text  fontSize={12} maxW={97} lineHeight={18} style={styles.Texts}>
                             {servicio.nombreS}
                           </Text>
+                          
                           
                       </Center>
                     </Box>
@@ -252,6 +306,44 @@ const Home = (props) => {
                 )
               }
           </ScrollView>
+               )
+               : (
+
+                
+                    <FlatList data={results} keyExtractor={(item) => item.idS}
+                bg={baseColor.bg} renderItem={({ item }) => (
+                    <Box bg={"white"} rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
+                    <TouchableOpacity
+                      onPress={() => detalleServicio(item.idS)}>
+                        <HStack>
+                            <Image 
+                                source={{
+                                uri: item.image_url
+                                }}alt="Alternate Text" size="lg" resizeMode='contain' />
+                            <Box w="60%" mt={5} ml={4}>
+                                <Text style={styles.Texts} fontSize={20} color="#236DB7" >{item.nombreS}</Text>
+                                <Text><Text bold>Precio: </Text>${item.precioS}</Text>
+                            </Box>
+                            <Center >
+                            <FontAwesome name="angle-right" size={24} color="black" />
+                            </Center>
+                        </HStack>
+                    </TouchableOpacity>
+                    <Center>
+                      <Divider mt={1} w="20%" mx="10%" thickness={2} bg="black"/>
+    
+                    </Center>
+                </Box>
+                )}
+                />
+                  
+                
+                
+               ) }
+
+        
+        {/** scrool vertical para contenido*/}
+        
         </Box>
 
     </NativeBaseProvider>

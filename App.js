@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {NavigationContainer, useNavigationContainerRef} from '@react-navigation/native';
-import {Image, NativeBaseProvider} from 'native-base';
+import {Image, NativeBaseProvider, Box, HStack, Center, Pressable, Icon, Text} from 'native-base';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { View, TouchableOpacity, StyleSheet} from 'react-native';
-import { FontAwesome,  AntDesign } from '@expo/vector-icons'; 
+import { FontAwesome,  AntDesign , MaterialCommunityIcons, Ionicons} from '@expo/vector-icons'; 
 
 import Home from "./src/public/Home";
 import Login from "./src/public/Login";
@@ -42,26 +42,12 @@ import SkeletonPerfil from './src/components/SkeletonPerfil';
 import AgregarDireccion from './src/private/AgregarDireccion';
 import EditarDireccion from './src/private/EditarDireccion';
 import Test from './src/public/Test'
-
-
+import URL from './src/private/api/URL';
+import styles from './src/styles/styles';
 import * as Font from 'expo-font';
 import  { useState, useEffect } from 'react';
-import { Text } from 'react-native';
 import baseColor from './src/private/api/baseColor';
 
-//font
-
-
-const styles = StyleSheet.create({
-  footer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    width: '100%',
-  
-  },
-});
 
 
 
@@ -69,6 +55,7 @@ const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+    const [selected, setSelected] = useState(6);
     const [showFooter, setShowFooter] = useState(true);
 
  
@@ -98,24 +85,78 @@ export default function App() {
       return false; // No mostrar Footer en la ruta "NoFooter"
     } else if (route.name === "SignUp") {
       return false; // No mostrar Footer en la ruta "NoFooter2"
-    } else {
+    }else if (route.name === "Home"){
+      setSelected(0)
+      return true
+    } else if (route.name === "Servicios"){
+      setSelected(1)
+      return true
+    }else if (route.name === "Buscar"){
+      setSelected(2)
+      return true
+    }else if (route.name === "Soporte"){
+      setSelected(3)
+      return true
+    }else if (route.name === "Servicios"){
+      setSelected(1)
+      return true
+    }else if (route.name === "DetalleServicio"){
+      setSelected(1)
+      return true
+    }else if (route.name === "Tecnicos"){
+      setSelected(3)
+      return true
+    }else if (route.name === "DetalleTecnico"){
+      setSelected(3)
+      return true
+    }else if (route.name === "Carrito"){
+      setSelected(4)
+      return true
+    }else {
       return true; // Mostrar Footer en todas las demás rutas
     }
+   
   }
+
+  const IrInicio = () => {
+    setSelected(0)
+    navigationRef.navigate('Home');
+  };
+
+  const IrServicios = () => {
+    setSelected(1)
+    navigationRef.navigate('Servicios');
+  };
+  const IrBuscar = () => {
+    setSelected(2)
+    navigationRef.navigate('Buscar');
+  };
+
+  const IrAsesoria = () => {
+    setSelected(3)
+    navigationRef.navigate('Soporte');
+  };
+  
+  const IrCuenta = () => {
+    setSelected(4)
+    navigationRef.navigate('Login');
+  };
+  
+
 
 
 
   return (
     
     <NavigationContainer ref={navigationRef}  onStateChange={(state) => setShowFooter(shouldShowFooter(state.routes[state.index]))}>
-      <Stack.Navigator style={{height:"91%"}} >
+      <Stack.Navigator style={{flex:1}} >
       <Stack.Screen
             name="Home"
             component={Home}
             options={{title: '',
               headerTintColor:baseColor.colorFont2,
               headerStyle: {
-                backgroundColor: color,
+                backgroundColor: baseColor.color,
               },
               headerShadowVisible: false,
               headerRight: () => (
@@ -131,8 +172,8 @@ export default function App() {
               ),
               headerLeft: ()=>(
                 <NativeBaseProvider>
-                 <Image source={require("./assets/icon.png")} 
-                     alt={"logo"}  size={"sm"}  />
+                  <Image source={{uri: `${URL.BASE_URL}/public/logo.png`}} 
+                  alt="Alternate Text" size="sm" rounded={100} />
 
                   
                 </NativeBaseProvider>
@@ -570,8 +611,47 @@ export default function App() {
       </Stack.Navigator >
       
        {showFooter ? (
-        <View style={{height:"9%"}}>
-          <Footer />
+        <View style={{height:70}} >
+           <NativeBaseProvider>
+            <Box flex={1} safeAreaTop width="100%"  alignSelf="center" shadow={6}  >
+              
+              <HStack bg={baseColor.bg}  alignItems="center" safeAreaBottom shadow={6} borderRadius={35} >
+                <Pressable cursor="pointer" opacity={selected === 0 ? 1 : 0.5} py="3" flex={1} 
+                  onPress={() => {IrInicio()}}>
+                  <Center >
+                      <Icon  as={<Ionicons name={selected === 0 ? 'home' : 'home-outline'} />} color={ selected === 0 ? baseColor.footerIconSelect : baseColor.footerIcon} size="lg" />
+                      <Text   style={styles.texto} color={ selected === 0 ? baseColor.footerIconSelect : baseColor.footerIcon}>Inicio</Text>
+                  </Center>
+                </Pressable>
+                <Pressable cursor="pointer" opacity={selected === 1 ? 1 : 0.5} py="2" flex={1} onPress={() => {IrServicios()}}>
+                  <Center>
+                      <Icon  as={<MaterialCommunityIcons name={selected === 1 ? 'percent' : 'percent-outline'} />} color={ selected === 1 ? baseColor.footerIconSelect : baseColor.footerIcon} size="lg" />
+                      <Text   style={styles.texto} color={ selected === 1 ? baseColor.footerIconSelect : baseColor.footerIcon}>Servicios</Text>
+                  </Center>
+                </Pressable>
+                <Pressable cursor="pointer" opacity={selected === 2 ? 1 : 0.6} py="2" flex={1} onPress={() => {IrBuscar()} }>
+                  <Center>
+                      <Icon  as={<Ionicons name={selected ===2 ? "ios-search" : "ios-search-outline"}/>} 
+                      color={ selected === 2 ? baseColor.footerIconSelect : baseColor.footerIcon} size="lg" />
+                      <Text   style={styles.texto} color={ selected === 2 ? baseColor.footerIconSelect : baseColor.footerIcon}>Buscar</Text>
+                  </Center>
+                </Pressable>
+                <Pressable cursor="pointer" opacity={selected === 3 ? 1 : 0.5} py="2" flex={1} onPress={() => {IrAsesoria()} }>
+                  <Center>
+                      <Icon  as={<AntDesign name="customerservice"  />} color={ selected === 3 ? baseColor.footerIconSelect : baseColor.footerIcon} size="lg" />
+                      <Text  style={styles.texto} color={ selected === 3 ? baseColor.footerIconSelect : baseColor.footerIcon}>Soporte</Text>
+                  </Center>
+                </Pressable>
+                <Pressable cursor="pointer" opacity={selected === 4 ? 1 : 0.5} py="2" flex={1} onPress={() => {IrCuenta()} }>
+                  <Center>
+                      <Icon  as={<MaterialCommunityIcons name={selected === 4 ? 'account' : 'account-outline'} />} 
+                      color={ selected === 4 ? baseColor.footerIconSelect : baseColor.footerIcon} size="lg" />
+                      <Text  style={styles.texto} color={ selected === 4 ? baseColor.footerIconSelect : baseColor.footerIcon}>Perfil</Text>
+                  </Center>
+                </Pressable>
+              </HStack>
+            </Box>
+        </NativeBaseProvider>
         </View>
       ) : null}
       
