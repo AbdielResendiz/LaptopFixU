@@ -194,7 +194,7 @@ const MisDirecciones = (props) => {
         :
         ( 
         <ScrollView>
-        {direcciones.map( ( direccion, index ) =>{
+        {direcciones===null ? null : direcciones.map( ( direccion, index ) =>{
           return(
             <Center key={index} mt={6}>
                 <HStack w="80%" >

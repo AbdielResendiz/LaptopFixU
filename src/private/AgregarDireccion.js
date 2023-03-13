@@ -1,10 +1,9 @@
-import { Center, FormControl, HStack, Input, NativeBaseProvider, Image,  ScrollView, Text, View, VStack, Box, Divider } from 'native-base';
+import { Center, FormControl, HStack, Input, NativeBaseProvider, Image,  ScrollView, Text, View, Box, Divider } from 'native-base';
 import React , {useState, useEffect} from 'react';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { TouchableOpacity, TextInput, Alert } from 'react-native';
 import URL from './api/URL';
 import { useNavigation } from '@react-navigation/native';
-import Footer from '../components/Footer';
 import fetchPost from './api/fetchPost';
 import styles from '../styles/styles';
 const AgregarDireccion = (props) => {
@@ -15,7 +14,7 @@ const AgregarDireccion = (props) => {
   //obtenemos ID de usuario
   const id = props.route.params.idU;
   const idU = parseInt(id);
-  console.log("idU usuario: ", id);
+  //console.log("idU usuario: ", id);
 
   const [calle, setCalle] = useState("");
   const [colonia, setColonia] = useState("");
@@ -94,7 +93,7 @@ const AgregarDireccion = (props) => {
                     <Center w="20%"  >
                         <FormControl.Label mr={3} >Calle:</FormControl.Label>
                     </Center>
-                <Input w="70%" placeholder='Colonia' variant="rounded"
+                <Input w="70%" placeholder='Calle' variant="rounded"
                 onChangeText={(val) => setCalle(val)}
                 isRequired="true"
                 autoCapitalize='none'
