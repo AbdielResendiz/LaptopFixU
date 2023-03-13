@@ -11,6 +11,7 @@ import { Feather } from '@expo/vector-icons';
 import SkeletonServicio from '../components/SkeletonServicio';
 import styles from '../styles/styles';
 import baseColor from './api/baseColor';
+import LoadSpinner from '../components/LoadSpinner';
       
 
 const Carrito = () => {
@@ -158,6 +159,8 @@ const Carrito = () => {
 
   return (
     <NativeBaseProvider  >
+
+      {loading===true ? <LoadSpinner/> :
         <View  h="100%" bg={baseColor.bg2} >
             <Center bg="#FFFFFF" mx={4} mt={5} mb={3} p={2} h={255} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
                 <ScrollView style={{paddingHorizontal:10}}  horizontal={false} w="100%" persistentScrollbar={true} >
@@ -244,7 +247,7 @@ const Carrito = () => {
           </Center>
 
         </View>
-     
+         }
         
     </NativeBaseProvider>
   )

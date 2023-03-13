@@ -142,7 +142,7 @@ const [ loading, setLoading] = useState(true)
 
        {loading===true ?  <LoadSpinner/> : 
       <Box h="100%"  bg={baseColor.bg} w="100%">
-        <ScrollView >
+        
         {/**IMAGEN DE SERVICIO */}
         <Center horizontal={true} margin={3}   >
           <Image 
@@ -217,7 +217,7 @@ const [ loading, setLoading] = useState(true)
                   </Box>
                 </Center>
 
-        </ScrollView>
+        
         
         
        

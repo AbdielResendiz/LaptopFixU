@@ -24,6 +24,7 @@ const MiPerfil = (props) => {
  const [apellidos, setApellidos] = useState("");
  const [telefono, setTelefono] = useState("");
 
+ console.log("selectedc", selected)
 
  const id = props.route.params.idU;
  const idU = parseInt(id);
@@ -44,8 +45,8 @@ const MiPerfil = (props) => {
     setNombreU(res.data.nombreU);
     setCorreo(res.data.correo);
     setTelefono(res.data.telefono);
-    setSelected( parseInt(res.data.sexo));
-    console.log("res", res.data.sexo);
+   // setSelected( res.data.sexo);
+    //console.log("res", res.data.sexo);
     setLoading(false);
 }
 
@@ -197,7 +198,7 @@ useEffect(() => {
                         
                             <Center  w="50%" roundedLeft={10} p={2} bg={selected===0 ? '#132039' : '#efefef'} >
                                 <TouchableOpacity onPress={()=>{setSelected(0)}}>
-                                    <Text fontSize={18}style={styles.Texts}  color={selected === 0 ? "white" : "black"}> Hombre </Text>  
+                                    <Text fontSize={18}style={styles.texto}  color={selected === 0 ? "white" : "black"}> Hombre </Text>  
                                 </TouchableOpacity>
                             </Center>
                         
@@ -205,7 +206,7 @@ useEffect(() => {
                         
                             <Center  w="50%"  roundedRight={10} p={2} bg={selected===1 ? '#132039' : '#efefef'}>
                                 <TouchableOpacity onPress={()=>{setSelected(1)}}>
-                                    <Text fontSize={18} style={styles.Texts} color={selected === 1 ? "white" : "black"} > Mujer </Text> 
+                                    <Text fontSize={18} style={styles.texto} color={selected === 1 ? "white" : "black"} > Mujer </Text> 
                                 </TouchableOpacity>
                             </Center>
                        
@@ -220,7 +221,7 @@ useEffect(() => {
 
                                 }
                             
-                            <Text bold color="white" ml={3} fontSize="lg" style={styles.Texts}>Guardar</Text> 
+                            <Text bold color="white" ml={3} fontSize="lg" style={styles.texto}>Guardar</Text> 
 
                             </HStack>
                         </Center>
