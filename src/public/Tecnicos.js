@@ -8,6 +8,7 @@ import Footer from "../components/Footer"
 import fetchPost from '../private/api/fetchPost';
 import config from '../private/api/config';
 import Carrusel from '../components/Carrusel';
+import SwiperList from "../components/SwiperList";
 import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import SkeletonServicio from '../components/SkeletonServicio';
@@ -46,11 +47,12 @@ const Tecnicos = (props) => {
 
   return (
     <NativeBaseProvider config={config} >
-      <Box h="91%" style={styles.bg}>
+      <Box flex={1} style={styles.bg}>
         <Gradiente/>
-        <Center mx={3} >
-         <Carrusel/>
-        </Center>
+        <Box w="96%" h={150}  bg="white" my={2} mx="2%">
+              {/**CARRUSEL */}
+            <SwiperList/>
+            </Box>
 
         {
           (loading===true) ?

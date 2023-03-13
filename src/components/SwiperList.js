@@ -4,7 +4,7 @@ import { Image, Box } from 'native-base';
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import URL from '../private/api/URL';
 
-const App = () => (
+const SwiperList = () => (
   <View style={styles.container}>
     <SwiperFlatList autoplay autoplayDelay={2} autoplayLoop index={2} //showPagination 
     >
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   text: { fontSize: width * 0.5, textAlign: 'center' },
 });
 
-export default App;
+export default SwiperList;

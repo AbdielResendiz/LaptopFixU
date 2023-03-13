@@ -12,7 +12,7 @@ import URL from '../private/api/URL';
 import SkeletonServicio from '../components/SkeletonServicio';
 import styles from '../styles/styles';
 import baseColor from '../private/api/baseColor';
-
+import SwiperList from '../components/SwiperList';
 const Servicios = (props) => {
 
     const [ servicios, setServicios ] = useState([]);
@@ -50,10 +50,10 @@ const Servicios = (props) => {
 
       <Box h="100%" w="100%" bg={baseColor.bg}  >
         <Gradiente/>
-        <Center mx={3}>
-        <Carrusel/>
-
-        </Center>
+        <Box w="96%" h={150}  bg="white" my={2} mx="2%">
+              {/**CARRUSEL */}
+            <SwiperList/>
+            </Box>
         
 
 

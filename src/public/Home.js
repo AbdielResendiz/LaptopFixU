@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {  TouchableOpacity} from 'react-native';
 import { NativeBaseProvider, HStack, Center, Box, Input, Icon,
-  ScrollView  , Image, Text, VStack, FlatList, Divider, Spinner} from 'native-base';
+  ScrollView  , Image, Text, VStack, FlatList, Divider} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 /**componentes */
 import config from '../private/api/config';
 import { FontAwesome, AntDesign } from '@expo/vector-icons'; 
 import fetchPost from '../private/api/fetchPost';
-import Carrusel from '../components/Carrusel';
 import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import Skeletor from '../components/Skeletor';
