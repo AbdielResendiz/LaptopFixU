@@ -84,12 +84,12 @@ const SignUp = () => {
 
       <Box  h="78%" w="80%" mx="10%" mt="30%" rounded={10} 
       opacity={0.7} bg="black"></Box>
-
+    
       {/**INICIA LOGIN */}
-      <Center w="100%" mt={10}>
-        <Image 
+      <Center w="100%" mt={32}>
+        {/* <Image 
           source={require( "../img/Logo1Run.png")
-          } alt="Alternate Text" size="md" mt={20} />
+          } alt="Alternate Text" size="md" mt={20} /> */}
         <Box  p="2" w="90%" maxW="290" py="2" >
         <Center>
           <Heading size="md"   style={styles.textColor2}>
@@ -134,8 +134,10 @@ const SignUp = () => {
         </FormControl>
 
         <FormControl bg="white">
-          <Input type="phone-pad" 
+          <Input 
                   placeholder='Teléfono'
+                  maxLength={10}
+                  keyboardType="phone-pad"
                   onChangeText={(val) => setTelefono(val)}
                   value={telefono}/>
         </FormControl>

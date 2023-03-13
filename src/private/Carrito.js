@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {  Alert } from 'react-native';
 import { NativeBaseProvider, VStack, Center, Box, 
-    ScrollView ,  Image, Divider, Text, Button, HStack, View, Stack} from 'native-base';
+    ScrollView ,  Image, Divider, Text, Button, HStack, View} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
-import Footer from '../components/Footer';
+
 import fetchPost from './api/fetchPost';
 import URL from './api/URL';
 import { Feather } from '@expo/vector-icons'; 
@@ -19,7 +19,9 @@ const Carrito = () => {
   const [ IdU, setIdU ] = useState(null);
   const [ IdC, setIdC ] = useState(null);
   const [ carrito, setCarrito ] = useState([]);
+  const [ total, setTotal ] = useState()
  
+  const [ loading, setLoading ] = useState(true)
 
   const BASE_URL = URL.BASE_URL;
   
@@ -37,8 +39,8 @@ const Carrito = () => {
     
   }
   
-  //console.log("IdU", IdU);
-  //console.log("IdCarrito", IdC)
+ // console.log("IdU", IdU);
+// console.log("IdCarrito", IdC)
 
   //OBTIENE DATOS DE LA BD. el nombre y apellido
   const getCarrito = async() => {
@@ -50,11 +52,15 @@ const Carrito = () => {
       body: dataC
     };
     const res = await fetchPost(url, options);
-     console.log("response fetch get carrito:", res.data);
+    // console.log("response fetch get carrito:", res.data);
      if (res.data != null){
        
       try{
         setCarrito(res.data);
+        //console.log("res", res.total[0].TOTAL);
+        setTotal(parseFloat(res.total[0].TOTAL))
+        //console.log("total",total)
+        setLoading(false);
         
        
        }catch(e){
@@ -78,6 +84,18 @@ const Carrito = () => {
   
   }, [IdC]);
 
+// const [total, setTotal ] = useState(0);
+//   useEffect( () => {
+//     const totalEf = carrito.reduce((acumulado, servicio) => {
+//       const precio = parseFloat(servicio.precioS); // convertimos el valor de precioS a número
+//       setTotal( acumulado + precio * servicio.cantidad);
+//       console.log("totaaal", total);
+//     }, 0);
+    
+//     // El segundo parámetro de reduce es el valor inicial del acumulador, que en este caso es cero.
+    
+//     console.log("Total:",totalEf);
+//   }, [])
 
  const borrarBtn = (id, carrito, nombre)=>{
     
@@ -135,7 +153,7 @@ const Carrito = () => {
     
     getCarrito();
  
- }, []);
+ }, [carrito]);
 
 
   return (
@@ -144,10 +162,7 @@ const Carrito = () => {
             <Center bg="#FFFFFF" mx={4} mt={5} mb={3} p={2} h={255} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
                 <ScrollView style={{paddingHorizontal:10}}  horizontal={false} w="100%" persistentScrollbar={true} >
                     {/**Item carrito ejemplo */}
-                    {
-                        (carrito===[]) ? 
-                        (<SkeletonServicio/>) :
-                        (
+                    
                             <Box>
                         {carrito.map( (item, index) =>{
                             return(
@@ -168,6 +183,7 @@ const Carrito = () => {
                                                 <VStack w="65%">
                                                     <Text style={styles.Texts} >{"Precio: $"+item.precioS}</Text>
                                                     <Text style={styles.Texts} >{"Cantidad: "+item.cantidad}</Text>
+                                                    <Text style={styles.Texts} >{"Subtotal: "+item.subtotal}</Text>
                                                 </VStack>
                                                 <Button onPress={()=>borrarBtn(item.id, IdC, item.nombreS)}
                                                  p={2} borderRadius={10} m={2}  justifyContent={"flex-end"} bg="#dc3545">
@@ -183,8 +199,7 @@ const Carrito = () => {
                         }
                     )}
                             </Box>
-                        )
-                    }
+                       
                      {/** fin Item carrito ejemplo */}
                     
                 </ScrollView>
@@ -195,40 +210,23 @@ const Carrito = () => {
                 </Text>
 
             </Center>
-            <HStack   ml={10}>
-              <VStack>
-                <Text    fontSize="md" style={styles.Texts}>
-                  SubTotal de ordenes
-                </Text>
-                <Divider/>
-                <Text  fontSize="md" style={styles.Texts}>
-                  Envío
-                </Text>
-                <Divider/>
-                <Text  fontSize="md" style={styles.Texts}>
-                      Total a pagar
-                </Text>
-                <Divider/>
-
-              </VStack>
-
-              <VStack>
-                <Text  fontSize="md"  ml={20} style={styles.Texts} >
-                  $9999.00
-                </Text>
-                <Divider/>
-                <Text  fontSize="md"   ml={20}style={styles.Texts}>
-                  $0.00
-                </Text>
-                <Divider/>
-                <Text  ml={20} fontSize="md" style={styles.Texts}>
-                  $9999.00
-                </Text>
-                <Divider/>
-               
-
-              </VStack>
-            </HStack>
+            <VStack mx={9} space={1}>
+              <HStack justifyContent="space-between" >
+                <Text fontSize={16}> Envío </Text>
+                <Text fontSize={16}> $300 </Text>
+              </HStack>
+              <Divider/>
+              <HStack justifyContent="space-between">
+                <Text fontSize={16}> Subtotal </Text>
+                <Text fontSize={16}> ${total} </Text>
+              </HStack>
+              <Divider/>
+              <HStack justifyContent="space-between">
+                <Text bold fontSize={16}> Total </Text>
+                <Text fontSize={16} bold> ${parseFloat(total) + 300}</Text>
+              </HStack>
+            
+            </VStack>
 
             
            
@@ -236,7 +234,7 @@ const Carrito = () => {
             
           <Center>
             <Button m={5} w="50%" onPress={ ()=> navigation.navigate("CheckAdress")} shadow={5} borderRadius={10} bg={baseColor.color}> 
-                    <Text color={baseColor.colorFont2} fontSize="lg" style={styles.Texts}
+                    <Text color={baseColor.colorFont2} fontSize="lg" style={styles.textColor2}
                       letterSpacing={0.8}>
                       PAGAR
                     </Text>
