@@ -10,13 +10,13 @@ import fetchPost from "../private/api/fetchPost";
 import styles from '../styles/styles';
 import { TouchableOpacity, Alert, Pressable } from 'react-native';
 import baseColor from '../private/api/baseColor';
-
+import checkFav from '../helper/favoritos/checkFav';
 import LoadSpinner from "../components/LoadSpinner"
+import eliminarFav from '../helper/favoritos/eliminarFav';
+import agregarFav from '../helper/favoritos/agregarFav';
 
 
 const DetalleServicio = (props) => {
-
-
 
 const [ loading, setLoading] = useState(true)
 
@@ -71,8 +71,8 @@ const [ loading, setLoading] = useState(true)
  
    useEffect(() => {
        getDatos();
-       console.log("id Servicio UWU: ", idServicio);
-       console.log("idUser detalle", idUser);
+       //console.log("id Servicio UWU: ", idServicio);
+       //console.log("idUser detalle", idUser);
      }, [servicio]);
 
      const onClickAddCart = async() =>{
@@ -109,14 +109,41 @@ const [ loading, setLoading] = useState(true)
 
     const [ selected, setSelected] = useState(false);
 
-    const handleIconPress = (idAS, idU) => {
-      if (selected===true){
-         // eliminarFav(idU, idAS);
+    const checked = async()=>{
+      // console.log("idAS check", idAS);
+      // console.log("idU check", idU);
+       let state = await checkFav(idUser, idServicio);
+       //console.log("state", state)
+       setSelected(state);
+   }
+ 
+    useEffect( ()=>{
+       
+       checked();
+    },[selected]);
 
-          setSelected(false);
+    const handleIconPress = (idS, idU) => {
+
+      if (isNaN(idCarrito)){
+              Alert.alert('Favor de iniciar sesión', `Para agregar a tus favoritos, primero inicia sesión`, [
+                { 
+                  text: 'Cancelar',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                  cancelable: true
+                },
+                {text: 'Iniciar Sesión', onPress: () =>props.navigation.navigate("Login")},
+              ]);
       }else{
-        // agregarFav(idU, idAS);
-          setSelected(true);}
+            if (selected===true){
+              eliminarFav(idU, idS);
+
+              setSelected(false);
+          }else{
+            agregarFav(idU, idS);
+              setSelected(true);
+            }
+      }
     };
 
 
@@ -150,9 +177,6 @@ const [ loading, setLoading] = useState(true)
      }
 
   return (
-
-
-   
     <NativeBaseProvider config={config}>
 
        {loading===true ?  <LoadSpinner/> : 
@@ -190,7 +214,7 @@ const [ loading, setLoading] = useState(true)
                   </Button>
                 </HStack>
                   {/**BOTON FAVORITOS */}
-                <Pressable onPress={()=>handleIconPress()}>
+                <Pressable onPress={()=>handleIconPress(idServicio, idUser)}>
                  <Center mr={20} mt={3}>
                   <AntDesign name={ selected ? "heart" :  "hearto"} size={32} color={baseColor.colorFont} />
                  </Center>
