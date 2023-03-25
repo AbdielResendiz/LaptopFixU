@@ -94,9 +94,8 @@ useEffect(() => {
             (<Skeleton  mt={20} w={150} h={150} mx="10%" rounded={100}/>) :
             (
               <Box w={151} h={151}  rounded={100} mt={20} >
-              <Image source={{
-               uri: tecnico.image_url
-                }} alt="Alternate Text" w={150} h={150}  rounded={100} resizeMode="contain" />
+              <Image source={{uri:`${BASE_URL}${tecnico.avatar_usuario}`} } 
+                alt="Alternate Text" w={150} h={150}  rounded={100} resizeMode="contain" />
               </Box>
               
     
@@ -125,7 +124,7 @@ useEffect(() => {
             <AntDesign name="star" size={24} color="#ffcd3c" />
             <AntDesign name="star" size={24} color="#ffcd3c" />
             <AntDesign name="star" size={24} color="#ffcd3c" />
-            <AntDesign name="star" size={24} color="#9e9e9e" />
+            <AntDesign name="star" size={24} color="#ffcd3c" />
           </HStack>
         </Center>
         <Center>

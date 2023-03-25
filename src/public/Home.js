@@ -59,34 +59,8 @@ const Home = (props) => {
   console.log("idUser", id);
   console.log("idCarrito", idC)
 
-  //OBTIENE DATOS DE LA BD. el nombre y apellido
-    const getNombre = async() => {
-      const dataUser = new FormData();
-      dataUser.append("idU",id)
-      const url = `${BASE_URL}api/login/get_info`
-      const options = {
-        method:'POST',
-        body: dataUser
-      };
-      const res = await fetchPost(url, options);
-       console.log("response fetch get nombre:", res.data);
-       if (res.data != null){
-         
-        try{
-          setApellidos(res.data.apellidos);
-          setNombre(res.data.nombreU);
-         
-         }catch(e){
-          console.log("error getNombre", e);
-         }
-        
-       }else{
-        
-        console.log("No se ha iniciado sesión", res.data)
-       }
+
     
-    }
-    getNombre();
 
   //INICIA Ver TECNICOS
   const [ servicios, setServicios ] = useState([]);
@@ -127,6 +101,7 @@ const Home = (props) => {
   useEffect( () =>{
     getDatos();
     getDatos1();
+
   }, [])
 //BUSCAR
   //BUSCAR
@@ -176,7 +151,7 @@ const Home = (props) => {
   return (
     <NativeBaseProvider config={config} >
       {/**Box que contiene toda la vista */}
-      <Box  bg={baseColor.bg} h="100%">
+      <Box  bg={baseColor.bg} flex={1}>
         {/**Fondo gradiante */}
       <Gradiente/>
       {/**Row stack de bienvenida */}
@@ -184,16 +159,16 @@ const Home = (props) => {
         <HStack  >
             <VStack h="100%" w="95%">
               <HStack w="100%"> 
-              <Center w="15%">
-              {/**boton de regresar, testing y busqueda */}
-                { (results.length===0) ? (test===true ? <Testing/> : null) : (
-                  <Center mx={3} >
-                  <TouchableOpacity onPress={()=>borrarResultados()}>
-                  <Icon as={<AntDesign name="arrowleft" />} size={8}  color="muted.100" />
-                  </TouchableOpacity>
-                </Center>
-                ) }
-                </Center>
+                <Center w="15%">
+                {/**boton de regresar, testing y busqueda */}
+                  { (results.length===0) ? (test===true ? <Testing/> : null) : (
+                    <Center mx={3} >
+                    <TouchableOpacity onPress={()=>borrarResultados()}>
+                    <Icon as={<AntDesign name="arrowleft" />} size={8}  color="muted.100" />
+                    </TouchableOpacity>
+                  </Center>
+                  ) }
+                  </Center>
                 <Center w="80%"  >
                   <Box bg="#ffffff" borderRadius={25}>
                     <Input variant="rounded" placeholder="Buscar"  
@@ -290,7 +265,7 @@ const Home = (props) => {
                         <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
                           <Box >
                           <Center>
-                            <Image source={{uri:tecnico.image_url} } 
+                            <Image source={{uri:`${BASE_URL}${tecnico.avatar_usuario}`} } 
                               alt="image" size="md" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
                           </Center>
                             <Center>

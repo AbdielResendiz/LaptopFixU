@@ -64,7 +64,7 @@ const Tecnicos = (props) => {
                     <Box key={index}  rounded="lg" ml={4} mr={5} mt={2}>
                         <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
                             <HStack>
-                                    <Image source={{uri:tecnico.image_url} } 
+                                <Image source={{uri:`${BASE_URL}${tecnico.avatar_usuario}`} } 
                                       alt={tecnico.nombreU} size="lg" borderColor="black" borderWidth={3} rounded={100} mx={1.5}/>
                                 <Box w="60%" mt={5} ml={4}>
                                     <Text style={styles.textColor} fontSize={20} >
@@ -75,7 +75,7 @@ const Tecnicos = (props) => {
                                       <AntDesign name="star" size={24} color="#ffcd3c" />
                                       <AntDesign name="star" size={24} color="#ffcd3c" />
                                       <AntDesign name="star" size={24} color="#ffcd3c" />
-                                      <AntDesign name="star" size={24} color="#9e9e9e" />
+                                      <AntDesign name="star" size={24} color="#ffcd3c" />
                                     </HStack>
                                     <Text style={styles.Texts}>
                                       Técnico

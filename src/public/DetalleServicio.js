@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 //import {  View } from 'react-native';
-import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Button} from "native-base";
+import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Button, VStack, Stack} from "native-base";
 import { Entypo, AntDesign } from '@expo/vector-icons'; 
   //componentes y config
 import Footer from "../components/Footer";
@@ -8,7 +8,7 @@ import URL from "../private/api/URL";
 import config from "../private/api/config";
 import fetchPost from "../private/api/fetchPost";
 import styles from '../styles/styles';
-import { TouchableOpacity, Alert } from 'react-native';
+import { TouchableOpacity, Alert, Pressable } from 'react-native';
 import baseColor from '../private/api/baseColor';
 
 import LoadSpinner from "../components/LoadSpinner"
@@ -22,10 +22,9 @@ const [ loading, setLoading] = useState(true)
 
 
   const idServicio = props.route.params.idServicio;
-  console.log("id Servicio UWU: ", idServicio);
   const idCarrito = props.route.params.idC;
   const idUser = props.route.params.idUser;
-  //console.log("idUser detalle", idUser);
+  
   //console.log("idServicio detalle", idServicio);
   //console.log("idCarrito detalle", idCarrito);
 
@@ -72,6 +71,8 @@ const [ loading, setLoading] = useState(true)
  
    useEffect(() => {
        getDatos();
+       console.log("id Servicio UWU: ", idServicio);
+       console.log("idUser detalle", idUser);
      }, [servicio]);
 
      const onClickAddCart = async() =>{
@@ -104,6 +105,20 @@ const [ loading, setLoading] = useState(true)
       ]);
       }
     }
+
+
+    const [ selected, setSelected] = useState(false);
+
+    const handleIconPress = (idAS, idU) => {
+      if (selected===true){
+         // eliminarFav(idU, idAS);
+
+          setSelected(false);
+      }else{
+        // agregarFav(idU, idAS);
+          setSelected(true);}
+    };
+
 
      const botonCarrito = () =>{
       if (isNaN(idCarrito)){
@@ -151,9 +166,9 @@ const [ loading, setLoading] = useState(true)
             size={40}  resizeMode="contain" marginRight={3}/>
         </Center>
           {/**DETALLE DE SERVICIO */}
-            <Box  mx={3}  pl={5} mt={8}>
+            <VStack  mx={3}  pl={5} mt={4}>
               
-            <Center ml={"2%"} >
+              <Center ml={"2%"} >
                   <HStack w="98%">
                     <Text fontSize={16} w="40%" style={styles.Texts} >{servicio.nombreS}</Text>
                     <Text fontSize={16}  ml={"20%"} style={{fontFamily: "CircularApp"}}> Precio: </Text>
@@ -161,20 +176,34 @@ const [ loading, setLoading] = useState(true)
                   </HStack>
 
               </Center>
-            </Box>
+              <Stack direction={"row"}  justifyContent={"space-between"}>
+                <HStack ml={"1%"} my={5}>
+                  <Button onPress={decrementCount} bg="#E6E6E6" borderRadius={100} py={1} px={1}>
+                    <Entypo name="minus" size={12} color="#B4B4B4" />
+                  </Button>
+                  <Center>
+                    <Text fontSize={12} mx={3} bold>{count}</Text>
+                  </Center>
+                
+                  <Button onPress={incrementCount} style={styles.Color} borderRadius={100} py={1} px={1}>
+                    <Entypo name="plus" size={12} color={baseColor.colorFont2}  />
+                  </Button>
+                </HStack>
+                  {/**BOTON FAVORITOS */}
+                <Pressable onPress={()=>handleIconPress()}>
+                 <Center mr={20} mt={3}>
+                  <AntDesign name={ selected ? "heart" :  "hearto"} size={32} color={baseColor.colorFont} />
+                 </Center>
+                </Pressable>
+
+              </Stack>
+
+              
+
+
+            </VStack>
             {/**Cantidad para carrito */}
-            <HStack ml={"10%"} my={5}>
-              <Button onPress={decrementCount} bg="#E6E6E6" borderRadius={100} py={1} px={1}>
-                <Entypo name="minus" size={12} color="#B4B4B4" />
-              </Button>
-              <Center>
-                <Text fontSize={12} mx={3} bold>{count}</Text>
-              </Center>
-            
-              <Button onPress={incrementCount} style={styles.Color} borderRadius={100} py={1} px={1}>
-                <Entypo name="plus" size={12} color={baseColor.colorFont2}  />
-              </Button>
-            </HStack>
+           
             <Text ml={"10%"} style={styles.textColor} my={3} underline  fontSize={12} >Descripción</Text>
             {/**DESCRIPCION DE SERVICIO */}
             <Center borderColor={"#555555"} borderWidth={1} mx={"10%"} h="20%" borderRadius={10}>

@@ -23,6 +23,7 @@ import CheckPago from "./src/private/CheckPago";
 import CheckCard from "./src/private/CheckCard";
 import Carrito from "./src/private/Carrito";
 import Footer from "./src/components/Footer";
+import Favoritos from './src/private/Favoritos';
 
 import SobreNosotros from './src/public/SobreNosotros';
 import AcercaID from './src/public/AcercaID';
@@ -143,6 +144,25 @@ export default function App() {
   };
   
 
+  const HeaderRightCustom = ()=>{
+
+    return(
+      <View style={{flexDirection: 'row', }}>
+        <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20, paddingTop:3}}>
+          <AntDesign name="shoppingcart" size={32} color={baseColor.colorFont2} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>navigationRef.navigate("Favoritos")} style={{marginRight:20, paddingTop:4}}>
+          <AntDesign name="hearto" size={32} color={baseColor.colorFont2} />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+          <FontAwesome name="gears" size={32} color={baseColor.colorFont2} />
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
 
 
 
@@ -160,15 +180,7 @@ export default function App() {
               },
               headerShadowVisible: false,
               headerRight: () => (
-                <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-                  <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-                  <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-                </TouchableOpacity>
-              </View>
+                <HeaderRightCustom/>
               ),
               headerLeft: ()=>(
                 <NativeBaseProvider>
@@ -197,15 +209,7 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         />
@@ -233,15 +237,7 @@ export default function App() {
         },
         headerShadowVisible: false,
         headerRight: () => (
-          <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-            <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-            <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-          </TouchableOpacity>
-        </View>
+          <HeaderRightCustom/>
         ),
       }}
       />
@@ -255,25 +251,10 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         />
-     
-        
-        
-
-      
-        
-        
         
         <Stack.Screen name="Promociones" component={Promociones}/>
         <Stack.Screen name="Paquetes" component={Paquetes}/>
@@ -319,11 +300,7 @@ export default function App() {
          },
          headerShadowVisible: false,
          headerRight: () => (
-           <View style={{flexDirection: 'row'}}>
-           <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-             <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-           </TouchableOpacity>
-         </View>
+          <HeaderRightCustom/>
          ),
        }}
        />
@@ -343,11 +320,7 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         />
@@ -359,15 +332,7 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         />
@@ -380,15 +345,7 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         />
@@ -409,15 +366,7 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         />   
@@ -430,15 +379,7 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         />
@@ -451,15 +392,7 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         /> 
@@ -472,57 +405,33 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
           ),
         }}
         />
 
         <Stack.Screen name="DetalleServicio" component={DetalleServicio}
-        options={{title: 'Detalle del servicio',
+        options={{title: 'Servicio',
           headerTintColor:baseColor.colorFont2,
           headerStyle: {
             backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
             ),
           }}
           />
 
         <Stack.Screen name="DetalleTecnico" component={DetalleTecnico}
-        options={{title: 'Detalle del técnico',
+        options={{title: 'Técnico',
           headerTintColor:baseColor.colorFont2,
           headerStyle: {
             backgroundColor: color,
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
             ),
           }}
           />
@@ -565,15 +474,7 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+            <HeaderRightCustom/>
             ),
           }}
           />
@@ -586,15 +487,20 @@ export default function App() {
           },
           headerShadowVisible: false,
           headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={()=>navigationRef.navigate("Carrito")} style={{marginRight:20}}>
-              <AntDesign name="shoppingcart" size={34} color={baseColor.colorFont2} />
-            </TouchableOpacity>
+            <HeaderRightCustom/>
+            ),
+          }}
+          />
 
-            <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
-              <FontAwesome name="gears" size={24} color={baseColor.colorFont2} />
-            </TouchableOpacity>
-          </View>
+        <Stack.Screen name="Favoritos" component={Favoritos}
+        options={{title: 'Favoritos',
+          headerTintColor:baseColor.colorFont2,
+          headerStyle: {
+            backgroundColor: color,
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <HeaderRightCustom/>
             ),
           }}
           />
