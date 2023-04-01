@@ -14,6 +14,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from '../styles/styles';
 import { AntDesign } from '@expo/vector-icons'; 
 import baseColor from '../private/api/baseColor';
+import eliminarFavT from '../helper/favoritos/eliminarFavT';
+import checkFavT from '../helper/favoritos/checkFavT';
+import agregarFavT from '../helper/favoritos/agregarFavT';
 
 const DetalleTecnico = (props) => {
   const navigation =useNavigation();
@@ -21,9 +24,12 @@ const DetalleTecnico = (props) => {
 
   const [ tecnico, setTecnico ] = useState([]);
   const [ loading, setLoading ] = useState(true);
-  const [ idUser, setIdUser ] = useState(null)
+  const [ idUser, setIdUser ] = useState(null);
 
   const idTecnico = props.route.params.idTecnico;
+  const idCarrito = props.route.params.idC;
+  const idU = props.route.params.idUser;
+
   console.log("id Tecnico UWU: ", idTecnico);
   const dataTecnico = new FormData();
         dataTecnico.append("idU", idTecnico);
@@ -70,6 +76,47 @@ useEffect(() => {
   }
   fetchData();
   console.log("idUser", idUser);
+
+
+
+  const [ selected, setSelected] = useState(false);
+
+  const checked = async()=>{
+    // console.log("idAS check", idAS);
+    // console.log("idU check", idU);
+     let state = await checkFavT(idUser, idTecnico);
+     //console.log("state", state)
+     setSelected(state);
+ }
+
+  useEffect( ()=>{
+     
+     checked();
+  },[selected]);
+
+  const handleIconPress = (idT, idU) => {
+
+    if ((idUser===null)){
+            Alert.alert('Favor de iniciar sesión', `Para agregar a tus favoritos, primero inicia sesión`, [
+              { 
+                text: 'Cancelar',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+                cancelable: true
+              },
+              {text: 'Iniciar Sesión', onPress: () =>props.navigation.navigate("Login")},
+            ]);
+    }else{
+          if (selected===true){
+            eliminarFavT(idU, idT);
+
+            setSelected(false);
+        }else{
+          agregarFavT(idU, idT);
+            setSelected(true);
+          }
+    }
+  };
   
   
   return (
@@ -167,15 +214,17 @@ useEffect(() => {
           {/**FIN COLUMNA IZQUIERDA */}
           {/**COLUMNA DERECHA */}
           <VStack >
+
+
             {/**ACERCA DE*/}
-            <TouchableOpacity onPress={()=>onClickAddTec(tecnico.idU)}>
+            <TouchableOpacity onPress={()=>handleIconPress(tecnico.idU, idUser)}>
               <VStack >
                 <Center>
                   <Image  source={require("../img/detalleTecnico/costos.png")
                       } alt="Alternate Text"  size="md" resizeMode='contain'  />
                 </Center> 
                 <Center>
-                  <Text style={styles.Texts}>Costos de Servicios</Text>
+                  <Text style={styles.Texts}>{selected ? "Eliminar de favoritos": "Agregar a favoritos"}</Text>
                 </Center>
                 
               </VStack>

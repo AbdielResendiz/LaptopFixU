@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import URL from "./api/URL";
 import fetchPost from "./api/fetchPost";
 import FavoritoComponent from "../components/FavoritoComponent";
+import FavoritoTecnicoComponent from "../components/FavoritoTecnicoComponent";
 
 const Favoritos = (props)=>{
 
@@ -13,6 +14,7 @@ const Favoritos = (props)=>{
     const [ idU, setIdU ] = useState(null);
     const [ idC, setIdC ] = useState(null);
     const [ favoritos, setFavoritos ] = useState([]);
+    const [ tecnicos, setTecnicos ] = useState([]);
 
     async function fetchData() {
         try {
@@ -42,6 +44,22 @@ const Favoritos = (props)=>{
           setFavoritos([]);
         }
     }
+
+    const getTecnicos = async() => {
+        const dataTecnico = new FormData();
+        dataTecnico.append("idU", idU);
+        const urlt = `${BASE_URL}api/favoritos/get_tecnicos`
+        const options = {
+          method:'POST',
+          body: dataTecnico
+        };
+        const responseFavTecnico = await fetchPost(urlt, options);
+        if (responseFavTecnico !== null){
+          setTecnicos(responseFavTecnico.data);
+        }else{
+          setTecnicos([]);
+        }
+    }
   
 
 
@@ -51,6 +69,8 @@ const Favoritos = (props)=>{
        // console.log("id carrito Favorito: ", idC);
        // console.log("idUser fav: ", idU);
         getServicios();
+        getTecnicos();
+       // console.log("fav tec:", tecnicos)
         //console.log("favoritos", favoritos)
       }, [idU, idC, favoritos]);
 
@@ -61,8 +81,10 @@ const Favoritos = (props)=>{
     <NativeBaseProvider>
         <View flex={1} bg={baseColor.bg}>
             <Text bold  style={styles.texto} textAlign="center"  fontSize={24} py={3}>Favoritos</Text>
+
+            { favoritos.length > 0 || tecnicos.length > 0 ? 
             <ScrollView mx={6} my={4} borderWidth={1} borderRadius={10} shadow={6} bg={"white"} borderColor={"#fcfcfc"}>
-                <Text bold textAlign={"center"} fontSize={16} mt={20}>Por el momento no tienes favoritos</Text>
+                
 
                 { favoritos.map( (impreso, index)=>{
             return(
@@ -77,7 +99,25 @@ const Favoritos = (props)=>{
           } )
 
           }
+
+
+            { tecnicos.map( (tecnico, index)=>{
+                return(
+                <FavoritoTecnicoComponent
+                key={index} nombre={tecnico.nombreU + " " + tecnico.apellidos} 
+                image_url={tecnico.image_url}
+                idT={tecnico.idT}
+                idU={idU}
+                idC={idC}/>
+                ) 
+            } )
+
+            }
             </ScrollView>
+
+            :
+            <Text bold textAlign={"center"} fontSize={16} mt={20}>Por el momento no tienes favoritos</Text>
+             }
         </View>
 
     </NativeBaseProvider>
