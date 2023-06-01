@@ -54,7 +54,7 @@ const Home = (props) => {
     }
     
   }
-  fetchData();
+ 
   
   console.log("idUser", id);
   console.log("idCarrito", idC)
@@ -101,7 +101,7 @@ const Home = (props) => {
   useEffect( () =>{
     getDatos();
     getDatos1();
-
+    fetchData();
   }, [])
 //BUSCAR
   //BUSCAR

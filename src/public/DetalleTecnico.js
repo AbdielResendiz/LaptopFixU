@@ -5,7 +5,6 @@ import { Box,  VStack,  HStack, Center, Text, NativeBaseProvider,
 
   import { useNavigation } from '@react-navigation/native';
 //import de componentes y  configuraciones
-import Footer from "../components/Footer"
 import fetchPost from '../private/api/fetchPost';
 import config from '../private/api/config';
 import Gradiente from '../components/Gradiente';
@@ -121,7 +120,7 @@ useEffect(() => {
   
   return (
     <NativeBaseProvider config={config}>
-      <Box bg={baseColor.bg} h="100%" >
+      <ScrollView bg={baseColor.bg} flex={1}>
         <ZStack mb={10}>
           <Gradiente/>
 
@@ -178,7 +177,7 @@ useEffect(() => {
           <Text fontSize={20} style={styles.Texts}>Técnico</Text>
         </Center>
        
-       <ScrollView  >
+    
         {/**inicia MENU CON 4 OPCIONES */}
       <Center>
         <HStack mx={4}    >
@@ -254,7 +253,7 @@ useEffect(() => {
 
        </ScrollView>
 
-      </Box>
+     
       
 
       

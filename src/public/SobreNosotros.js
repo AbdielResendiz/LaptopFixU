@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Center, Divider, HStack, NativeBaseProvider, Text, VStack, Image, Box, ScrollView} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import URL from '../private/api/URL';
-import Footer from '../components/Footer';
 import fetchPost from '../private/api/fetchPost';
 import styles from '../styles/styles';
 import baseColor from '../private/api/baseColor';
@@ -154,6 +153,64 @@ console.log("ID SOBRE NOS : ", id)
     }
 
 
+    const borrarAviso = () =>{
+      
+      Alert.alert(
+        '¿Seguro que deseas borrar tu cuenta?',
+        "Esta acción no se puede deshacer",
+        
+        [
+          {
+            text: 'Volver',
+        onPress: () => console.log('Cancel Pressed'),
+          },
+
+          { text: 'Eliminar cuenta',  onPress: () => {borrarCuenta()},
+            },
+        ],
+        { cancelable: false },
+      );
+    }
+
+    const borrarCuenta = async()=>{
+      const dataUser= new FormData();
+      console.log("id USUARIO" , id) ;
+
+      
+      dataUser.append("idU", id);
+      const url = `${BASE_URL}api/login/delete_usuario`
+      const options = {
+        method:'POST',
+        body: dataUser
+      };
+      const res = await fetchPost(url, options);
+      console.log("RESPONSE: ", res);
+     
+      
+      
+      if (res != true){
+        alert("Error al borrar cuenta, intentelo más tarde.")
+         
+        }else{
+          
+          Alert.alert(
+            'Se eliminó tu cuenta.',
+            "Esperamos verte pronto",
+            
+            [
+    
+              { text: 'Volver',  onPress: () => { console.log("se borró");
+              },
+                },
+            ],
+            { cancelable: false },
+          );
+        }
+      
+      
+    }
+
+
 
   return (
     <NativeBaseProvider>
@@ -265,16 +322,28 @@ console.log("ID SOBRE NOS : ", id)
           {/**Cerrar */}
 
           { 
-          (id!==null) ?
-          (<TouchableOpacity onPress={()=>{salirAviso()}}>
-          <VStack >
-            <Center>
-              <Image source={require("../img/Salir.png")
-                  } alt="Alternate Text" mt={-5} size="xl" shadow={7}/>
-            </Center>
-          </VStack>
-        </TouchableOpacity>) :
-          ( null )
+          id!==null ?
+          (
+          <HStack>
+            <TouchableOpacity onPress={()=>{salirAviso()}}>
+            <VStack >
+              <Center>
+                <Image source={require("../img/Salir.png")
+                    } alt="Alternate Text" mt={-5} size="xl" shadow={7}/>
+              </Center>
+            </VStack>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={()=>{borrarAviso()}}>
+            <VStack >
+              <Center>
+                <Image source={require("../img/borrarCuenta.png")
+                    } alt="Alternate Text" mt={-5} size="xl" shadow={7}/>
+              </Center>
+            </VStack>
+          </TouchableOpacity>
+        </HStack>) :
+           null 
           }
           
         </Center>

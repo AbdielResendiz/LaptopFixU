@@ -56,7 +56,7 @@ const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-    const [selected, setSelected] = useState(6);
+    const [selected, setSelected] = useState(0);
     const [showFooter, setShowFooter] = useState(true);
 
  
@@ -140,7 +140,7 @@ export default function App() {
   
   const IrCuenta = () => {
     setSelected(4)
-    navigationRef.navigate('Login');
+    navigationRef.navigate('SobreNosotros');
   };
   
 
@@ -156,9 +156,9 @@ export default function App() {
           <AntDesign name="hearto" size={32} color={baseColor.colorFont2} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
+        {/* <TouchableOpacity onPress={()=>navigationRef.navigate("SobreNosotros")} style={{marginRight:10, marginTop:5}}>
           <FontAwesome name="gears" size={32} color={baseColor.colorFont2} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     )
   }
@@ -225,7 +225,8 @@ export default function App() {
         options={{headerShown:true,
           headerTransparent:true, 
           headerTintColor:baseColor.colorFont2,
-          title:"Registro"
+          title:"Registro",
+         
         
         }}/>
         
@@ -385,7 +386,7 @@ export default function App() {
         />
 
         <Stack.Screen name="MiPerfil" component={MiPerfil}
-        options={{title: 'Mi Perfil',
+        options={{title: 'Mis datos',
           headerTintColor:baseColor.colorFont2,
           headerStyle: {
             backgroundColor: color,

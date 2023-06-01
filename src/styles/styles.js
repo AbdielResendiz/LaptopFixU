@@ -8,6 +8,10 @@ export default StyleSheet.create({
         fontFamily: "CircularApp",
         color: "#000000"
       },
+      TextsW: {
+        fontFamily: "CircularApp",
+        color: "#ffffff"
+      },
     
     Color: {
       //backgroundColor: "#236DB7",

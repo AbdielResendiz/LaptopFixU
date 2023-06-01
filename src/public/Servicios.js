@@ -48,7 +48,7 @@ const Servicios = (props) => {
   return (
     <NativeBaseProvider config={config} >
 
-      <Box h="100%" w="100%" bg={baseColor.bg}  >
+      <ScrollView flex={1} bg={baseColor.bg}  >
         <Gradiente/>
         <Box w="96%" h={150}  bg="white" my={2} mx="2%">
               {/**CARRUSEL */}
@@ -62,7 +62,7 @@ const Servicios = (props) => {
           (loading===true) ?
           (<SkeletonServicio/>) :
           (
-            <ScrollView  bg={baseColor.bg} >
+            
               <View mb={2}>
 
                   {servicios.map( (servicio, index) => {
@@ -98,13 +98,13 @@ const Servicios = (props) => {
                 {/**Box de producto */}
 
               </View>
-            </ScrollView>
+           
           )
         }
 
         
 
-      </Box>
+      </ScrollView>
       
       
       

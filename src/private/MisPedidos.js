@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {  TouchableOpacity, Alert} from 'react-native';
-import { NativeBaseProvider, ScrollView, Text, Box, HStack, Center, VStack, View, Image, Divider} from 'native-base';
+import { NativeBaseProvider, ScrollView, Text, Box, HStack, Center, VStack, View, Image, Divider, Pressable} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
 import styles from '../styles/styles';
+import baseColor from './api/baseColor';
 
 const MisPedidos = () => {
   const navigation =useNavigation();
@@ -31,43 +32,40 @@ console.log("Seleccionado", select);
 
   return (
    <NativeBaseProvider>
-    <View  h="100%" w="100%">
+    <View  flex={1}>
     
 
-    
-    {/**Menu de categorias pedidos */}
-    <HStack  bg={"#FFFFFF"}  w="100%">
-      <TouchableOpacity onPress={()=>setSelect(0)}>
-        <Center  style={styles.Color}  py={3}  mr={1}  px={2}>
-          <Text fontSize={14} color="#FFFFFF" style={styles.Texts} letterSpacing={0.5}>TODOS</Text>
-          
-        </Center>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={()=>setSelect(1)}>
-        <Center bg="#00AF63"   mr={1}  py={3} px={2}>
-          <Text fontSize={14} color="#FFFFFF" style={styles.Texts} letterSpacing={0.5}>COMPLETOS</Text>
-          
-        </Center>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={()=>setSelect(2)}>
-        <Center bg="#FFAA32"    py={3}  mr={1} px={2}>
-          <Text fontSize={14} color="#ffffff" style={styles.Texts}>EN PROCESO</Text>
-            
-        </Center>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={()=>setSelect(3)}>
-        <Center bg="#FF2832" py={3}  px={2}>
-          <Text fontSize={14} color="#ffffff" style={styles.Texts}>CANCELADOS</Text>
-          
-        </Center>
-      </TouchableOpacity>
       
-      </HStack>
+      {/**Menu de categorias pedidos */}
+      <ScrollView horizontal={true} bg={"#FFFFFF:alpha10"}  alwaysBounceHorizontal={true}  mb={1}>
+        <Pressable bg={"#79E0EE"} p={2} my={2} mx={1} h={9} borderWidth={2} borderColor={"white"} borderRadius={15} 
+        onPress={()=>setSelect(0)}>
+          
+            <Text fontSize={14} style={styles.Texts}    letterSpacing={0.5}>TODOS</Text>
+            
+          
+        </Pressable>
+
+        <Pressable bg="#7DE761"  p={2} my={2} mr={1} h={9} borderWidth={1} borderColor={"white"} borderRadius={15} 
+        onPress={()=>setSelect(1)}>
+            <Text fontSize={14}  style={styles.Texts} letterSpacing={0.5}>COMPLETOS</Text>
+        </Pressable>
+
+        <Pressable bg="#FEC260" p={2} my={2}  borderColor={"white"} mr={1} h={9} borderWidth={1} borderRadius={15} 
+          onPress={()=>setSelect(2)}>
+            <Text fontSize={14}  style={styles.Texts}>EN PROCESO</Text>
+        </Pressable>
+
+        <Pressable bg="#E76161"  p={2} my={2} mr={1} h={9} borderWidth={1} borderColor={"white"} borderRadius={15}  
+        onPress={()=>setSelect(3)}>
+            <Text fontSize={14} style={styles.Texts}>CANCELADOS</Text>
+        </Pressable>
+        
+      </ScrollView>
+
+
       {/**DIVISOR COLOR RESPONSIVO */}
-      <Divider thickness={10} bg={(select==0) ? "#236DB7" : 
+      <Divider thickness={8} bg={(select==0) ? "#236DB7" : 
       ((select==1) ? "#00AF63" 
       : (select==2) ? "#FFAA32" : "#FF2832")
       }/>
@@ -92,6 +90,7 @@ console.log("Seleccionado", select);
             </HStack>
           </Box>
         </TouchableOpacity>
+
         {/**DIVISOR */}
         <Center>
           <Divider thickness={2} bg={"#236DB7"} w="80%"/>

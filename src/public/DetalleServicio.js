@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 //import {  View } from 'react-native';
-import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Button, VStack, Stack} from "native-base";
+import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, Image, Button, Pressable, Stack} from "native-base";
 import { Entypo, AntDesign } from '@expo/vector-icons'; 
   //componentes y config
 import Footer from "../components/Footer";
@@ -8,25 +8,52 @@ import URL from "../private/api/URL";
 import config from "../private/api/config";
 import fetchPost from "../private/api/fetchPost";
 import styles from '../styles/styles';
-import { TouchableOpacity, Alert, Pressable } from 'react-native';
+import { TouchableOpacity, Alert  } from 'react-native';
 import baseColor from '../private/api/baseColor';
 import checkFav from '../helper/favoritos/checkFav';
 import LoadSpinner from "../components/LoadSpinner"
 import eliminarFav from '../helper/favoritos/eliminarFav';
 import agregarFav from '../helper/favoritos/agregarFav';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const DetalleServicio = (props) => {
 
 const [ loading, setLoading] = useState(true)
 
+  const [idCarrito, setIdCarrito] =useState();
+  const [idUser, setIdUser] =useState();
 
   const idServicio = props.route.params.idServicio;
-  const idCarrito = props.route.params.idC;
-  const idUser = props.route.params.idUser;
+  const idC = props.route.params.idC;
+  const idU = props.route.params.idUser;
   
-  //console.log("idServicio detalle", idServicio);
-  //console.log("idCarrito detalle", idCarrito);
+  useEffect(() => {
+    fetchData();
+    console.log("idU detalle", idUser);
+  console.log("idCarrito detalle", idCarrito);
+  }, []);
+  
+
+  async function fetchData() {
+    if (idU === undefined && idC === undefined){
+      try {
+      
+        await AsyncStorage.getItem("idUser").then(async (value) => {
+          setIdUser(parseInt(value)); })
+        await AsyncStorage.getItem("idCarrito").then(async (value) => {
+            setIdCarrito(parseInt(value)); })
+      } catch (error) {
+        console.log(error);
+      }
+    }else{
+      setIdUser(parseInt(idU));
+      setIdCarrito( parseInt(idC) )
+    }
+
+   
+    
+  }
 
 //inicia funciones para contar
   const [ count, setCount ] = useState(1);
@@ -180,7 +207,7 @@ const [ loading, setLoading] = useState(true)
     <NativeBaseProvider config={config}>
 
        {loading===true ?  <LoadSpinner/> : 
-      <Box h="100%"  bg={baseColor.bg} w="100%">
+      <ScrollView flex={1}  bg={baseColor.bg} >
         
         {/**IMAGEN DE SERVICIO */}
         <Center horizontal={true} margin={3}   >
@@ -190,17 +217,19 @@ const [ loading, setLoading] = useState(true)
             size={40}  resizeMode="contain" marginRight={3}/>
         </Center>
           {/**DETALLE DE SERVICIO */}
-            <VStack  mx={3}  pl={5} mt={4}>
+           
+          <Text fontSize={16}  style={styles.Texts}  alignSelf={"center"}>{servicio.nombreS}</Text>
               
-              <Center ml={"2%"} >
-                  <HStack w="98%">
-                    <Text fontSize={16} w="40%" style={styles.Texts} >{servicio.nombreS}</Text>
-                    <Text fontSize={16}  ml={"20%"} style={{fontFamily: "CircularApp"}}> Precio: </Text>
-                    <Text fontSize={16} style={styles.textColor} >${servicio.PrecioS}</Text>
+                  <HStack alignSelf={"center"} >
+                    
+                   
+                      <Text fontSize={16}  style={{fontFamily: "CircularApp"}}> Precio: </Text>
+                      <Text fontSize={16} style={styles.textColor} >${servicio.PrecioS}</Text>
+                    
                   </HStack>
 
-              </Center>
-              <Stack direction={"row"}  justifyContent={"space-between"}>
+              
+              <Stack direction={"row"}  justifyContent={"space-between"} w="80%" mx={"10%"} >
                 <HStack ml={"1%"} my={5}>
                   <Button onPress={decrementCount} bg="#E6E6E6" borderRadius={100} py={1} px={1}>
                     <Entypo name="minus" size={12} color="#B4B4B4" />
@@ -214,10 +243,19 @@ const [ loading, setLoading] = useState(true)
                   </Button>
                 </HStack>
                   {/**BOTON FAVORITOS */}
-                <Pressable onPress={()=>handleIconPress(idServicio, idUser)}>
-                 <Center mr={20} mt={3}>
-                  <AntDesign name={ selected ? "heart" :  "hearto"} size={32} color={baseColor.colorFont} />
-                 </Center>
+                <Pressable onPress={()=>handleIconPress(idServicio, idUser)} minH={26} mt={5}
+                 borderWidth={1} borderRadius={10} borderColor={baseColor.color} shadow={4} bg={baseColor.color}>
+                  <HStack alignContent={"center"} mt={2} mx={2} >
+                    <Center >
+                      <Text color={"white"}>Agregar a favoritos    </Text>
+                  
+                    </Center>
+                    <Center>
+                      <AntDesign name={ selected ? "heart" :  "hearto"} size={20} color={ selected ? "#FF1E1E" : "#ffffff"}  />
+                    </Center>
+                    
+                  </HStack>
+                
                 </Pressable>
 
               </Stack>
@@ -225,17 +263,18 @@ const [ loading, setLoading] = useState(true)
               
 
 
-            </VStack>
+          
             {/**Cantidad para carrito */}
            
             <Text ml={"10%"} style={styles.textColor} my={3} underline  fontSize={12} >Descripción</Text>
             {/**DESCRIPCION DE SERVICIO */}
-            <Center borderColor={"#555555"} borderWidth={1} mx={"10%"} h="20%" borderRadius={10}>
-              <ScrollView>
-                <Text  fontSize={12} mx={3} px={3} py={2} textAlign="justify" color={"#888888"} style={styles.Texts}> {servicio.desS}</Text>
-              </ScrollView>
+            
+                <Text  fontSize={14} mx={3} px={3} py={2} borderWidth={1} bg={"#F6F1F1"} shadow="9" borderRadius={10}
+                 textAlign="justify"  style={styles.Texts}> 
+                {servicio.desS}
+                </Text>
               
-            </Center>
+            
           
                   {/**BOTON CARRITO */}
                   <Center mx={10} mt={3} >
@@ -274,7 +313,7 @@ const [ loading, setLoading] = useState(true)
         
         
        
-      </Box> 
+      </ScrollView> 
       }
 
   

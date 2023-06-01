@@ -161,15 +161,15 @@ const Carrito = () => {
     <NativeBaseProvider  >
 
       {loading===true ? <LoadSpinner/> :
-        <View  h="100%" bg={baseColor.bg2} >
-            <Center bg="#FFFFFF" mx={4} mt={5} mb={3} p={2} h={255} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
-                <ScrollView style={{paddingHorizontal:10}}  horizontal={false} w="100%" persistentScrollbar={true} >
+        <ScrollView  flex={1} bg={baseColor.bg2} >
+            <Center bg="#FFFFFF" mx={4} mt={5} mb={3} p={2} flex={1} rounded={10} borderWidth={2} borderColor={"#BDC5C8"}>
+                {/* <ScrollView style={{paddingHorizontal:10}}   flex={1} horizontal={false} w="100%" persistentScrollbar={true} > */}
                     {/**Item carrito ejemplo */}
                     
                             <Box>
                         {carrito.map( (item, index) =>{
                             return(
-                                <Center key={index} h={100} marginBottom={1} bg="white" >
+                                <Center key={index}  marginBottom={1} bg="white" >
                                     <HStack>
                                         <Center w="40%">
                                         <Image 
@@ -189,7 +189,7 @@ const Carrito = () => {
                                                     <Text style={styles.Texts} >{"Subtotal: "+item.subtotal}</Text>
                                                 </VStack>
                                                 <Button onPress={()=>borrarBtn(item.id, IdC, item.nombreS)}
-                                                 p={2} borderRadius={10} m={2}  justifyContent={"flex-end"} bg="#dc3545">
+                                                 px={2} borderRadius={10} m={2} h={12} justifyContent={"flex-end"} bg="#dc3545">
                                                     <Feather name="trash-2" size={20} color="white" />
                                                 </Button>
                                             </HStack>
@@ -205,7 +205,7 @@ const Carrito = () => {
                        
                      {/** fin Item carrito ejemplo */}
                     
-                </ScrollView>
+                {/* </ScrollView> */}
             </Center>
             <Center>
                 <Text fontSize="28" style={styles.Texts} mb={2} >
@@ -246,7 +246,7 @@ const Carrito = () => {
 
           </Center>
 
-        </View>
+        </ScrollView>
          }
         
     </NativeBaseProvider>

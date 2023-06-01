@@ -1,6 +1,6 @@
 import React from 'react';
 import {  TouchableOpacity, Linking } from 'react-native';
-import { NativeBaseProvider, Image, Center, Box, VStack, Text, HStack, Divider } from 'native-base';
+import { NativeBaseProvider, Image, Center, Box, VStack, Text, HStack, Divider , ScrollView} from 'native-base';
 import styles from '../styles/styles';
 import baseColor from '../private/api/baseColor';
 
@@ -8,7 +8,7 @@ const AcercaID = () => {
   return (
     <NativeBaseProvider>
 
-        <Box bg={baseColor.bg} flex={1}>
+        <ScrollView bg={baseColor.bg} flex={1}>
             <VStack>
                 {/**LOGO ID */}
                 <TouchableOpacity onPress={ ()=>{ Linking.openURL('https://impactosdigitales.com/')}}>
@@ -143,7 +143,7 @@ const AcercaID = () => {
                 </HStack>
                 
             </VStack>
-        </Box>
+        </ScrollView>
 
     </NativeBaseProvider>
   )

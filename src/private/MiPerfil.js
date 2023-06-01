@@ -153,7 +153,7 @@ useEffect(() => {
             
         <Box h="100%">
         <Center h="8%" >
-            <Text fontSize={18} fontWeight={500} letterSpacing={0.7}>Actualiza tus datos personales.{id}</Text>
+            <Text fontSize={18} fontWeight={500} letterSpacing={0.7}>Actualiza tus datos personales.</Text>
         </Center>
         
         <ScrollView h="74%" bg={"#FFFFFF"} mx={4} mb={3} p={3} rounded={20} shadow={7}>

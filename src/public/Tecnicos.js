@@ -47,7 +47,7 @@ const Tecnicos = (props) => {
 
   return (
     <NativeBaseProvider config={config} >
-      <Box flex={1} style={styles.bg}>
+      <ScrollView flex={1} style={styles.bg}>
         <Gradiente/>
         <Box w="96%" h={150}  bg="white" my={2} mx="2%">
               {/**CARRUSEL */}
@@ -58,8 +58,8 @@ const Tecnicos = (props) => {
           (loading===true) ?
           (<SkeletonServicio/>) :
           (
-          <ScrollView >
-                {tecnicos.map( (tecnico, index) => {
+          
+                tecnicos.map( (tecnico, index) => {
                     return(
                     <Box key={index}  rounded="lg" ml={4} mr={5} mt={2}>
                         <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
@@ -91,13 +91,13 @@ const Tecnicos = (props) => {
                         </Center>
                     </Box>
                     );
-                } )}
-          </ScrollView>
+                } )
+         
           )
         }
 
         
-      </Box>
+      </ScrollView>
       
     </NativeBaseProvider>
   )
