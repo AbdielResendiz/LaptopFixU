@@ -380,8 +380,12 @@ export default function App() {
             backgroundColor: color,
           },
           headerShadowVisible: false,
+          
           headerRight: () => (
             <HeaderRightCustom/>
+          ),
+          headerLeft: () => (
+            null
           ),
         }}
         />
