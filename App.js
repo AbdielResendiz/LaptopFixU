@@ -170,6 +170,8 @@ export default function App() {
   return (
     
     <NavigationContainer ref={navigationRef}  onStateChange={(state) => setShowFooter(shouldShowFooter(state.routes[state.index]))}>
+     
+      {/* Stacks de navegacion */}
       <Stack.Navigator style={{flex:1}} >
       <Stack.Screen
             name="Home"
@@ -522,6 +524,7 @@ export default function App() {
 
       </Stack.Navigator >
       
+      {/* Footer */}
        {showFooter ? (
         <View style={{height:70}} >
            <NativeBaseProvider>
