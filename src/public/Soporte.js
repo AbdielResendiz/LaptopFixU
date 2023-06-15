@@ -77,52 +77,136 @@ const Soporte = (props) => {
   const renderizarTexto = () => {
     switch (itemRender) {
       case 1:
-        return (
-          <>
-            <Text>Verifica si los cables de alimentación están
-              correctamente conectados y si el tomacorriente funciona
-            </Text>
+            return (
+            <>
+                <Text>Verifica si los cables de alimentación están
+                correctamente conectados y si el tomacorriente funciona
+                </Text>
 
-            <BotonxD text="boton 1" idRender={30}/> 
-            <BotonxD text="boton 2" idRender={1.1}/>
-            <BotonxD text="boton 3" idRender={30}/>
-            <BotonxD text="boton 4" idRender={30}/>
-          </>
-          
-          );
+                <BotonxD text="Funciono" idRender={1}/> 
+                <BotonxD text="No funciono" idRender={1.1}/> 
+                
+            
+            </> );
+
+        case 1.1:
+            return (
+              <>
+                <Text>Puede haber un problema con la fuente de alimentación, 
+                el interruptor de encendido o la placa base. 
+                Sería recomendable revisar los o reemplazarlos si es necesario.
+                </Text>
+  
+                <BotonServicio  text={"Cargador o fuenta de alimentación"} imagen={"https://laptopfix.com.mx/runner/images/9.png"} idServicio={"10"} />
+             
+              </>);
+
+
       case 2:
-        return (
-          <>
-               <BotonxD text="boton2" idRender="valor1"/>
-               <BotonxD text="boton2" idRender="valor1"/>
-               <BotonxD text="boton2" idRender="valor1"/>
-               <BotonxD text="boton2" idRender="valor1"/>
-          </>
-        );
+            return (
+                <>
+
+                    <Text>Verifica si los ventiladores están funcionando correctamente y 
+                    si hay suficiente ventilación alrededor de la computadora
+                    </Text>
+                
+                    <BotonxD text="Funciono" idRender={2}/> 
+                    <BotonxD text="No funciono" idRender={2.1}/> 
+                </>
+                );
+
+        case 2.1:
+                return (
+                 <>
+                    <Text>Podría ser un problema de sobrecalentamiento a
+                    causa dea cumulación depolvo, 
+                    seríarecomendable realizar una limpieza.
+                    </Text>
+
+                    <Text>También puede haber un problema con la fuente de alimentación
+                         o con los componentes de hardware, 
+                        como la memoria RAM o el disco duro.
+                    </Text>
+          
+                    <BotonServicio  text={"Limpieza fisica"} imagen={"https://laptopfix.com.mx/runner/images/2.png"} idServicio={"2"} />
+                    <BotonServicio  text={"Disco duro o memoria de RAM"} imagen={"https://laptopfix.com.mx/runner/images/6.png"} idServicio={"6"} />
+                     
+                 </> );
       case 3:
         return  (
-          <>
-            <Text>Verifica si los cables de alimentación están
-              correctamente conectados y si el tomacorriente funciona
-            </Text>
+           <>
+                    <Text>Verifica si hay actualizaciones de controladores disponibles y
+                     si el sistema operativo y el software están actualizados
+                    </Text>
 
-            <BotonxD text="boton 1" idRender={30}/> 
-            <BotonxD text="boton 2" idRender={1.1}/>
-            <BotonxD text="boton 3" idRender={30}/>
-            <BotonxD text="boton 4" idRender={30}/>
-          </>
-          
-          );
+                    <BotonxD text="Funciono" idRender={3}/> 
+                    <BotonxD text="No funciono" idRender={3.1}/>
+            
+          </>);
+          case 3.1:
+            return  (
+                <>
+                    <Text> Puede haber un problema con los controladores 
+                           de dispositivo, la incompatibilidad de software o una 
+                           sobrecarga del sistema. 
 
-        case 4:
-        return <Text>Texto para valor 4</Text>;
+                           Hay que restaurar el SO y (ó)recuperar datos.
+                    </Text>
+      
+                    <BotonServicio  text={"Restauración de SO"} imagen={"https://laptopfix.com.mx/runner/images/4.png"} idServicio={"4"} />
+                   </>
+                       );
 
+      case 4:
+            return  (
+                <>
+                    <Text>Verifica si hay actualizaciones
+                    disponibles para el sistema operativo y el software.
+                    </Text>
+                    <BotonxD text="Funciono" idRender={4}/> 
+                    <BotonxD text="No funciono" idRender={4.1}/>
+               </>
+                );
+
+            case 4.1:
+                return(
+                    <>
+                         <Text>Puede haber un problema con el sistema operativo, archivos de sistema corruptos.
+                            Puede que haya que restaurar el sistema operativo.
+                         </Text>
+
+                         <Text>Realiza un escaneo antivirus para detectar una posible infección de malware o virus.
+                         </Text>
+                         <BotonServicio  text={"Restauración de SO"} imagen={"https://laptopfix.com.mx/runner/images/4.png"} idServicio={"4"} />
+                         <BotonServicio  text={"Recuperación de datos"} imagen={"https://laptopfix.com.mx/runner/images/5.png"} idServicio={"5"} />
+                   </>
+                       );
       case 5:
-          return <Text>Texto para valor hola</Text>;
+                return  (
+                    <>
+                    <Text>Verifica si hay suficiente espacio en el disco y realiza una desfragmentación si esnecesario.
+                    </Text>
+        
+                    <BotonxD text="Funciono" idRender={5}/> 
+                    <BotonxD text="No funciono" idRender={5.1}/>
 
-      case 1.1:
-          return <Text>Texto para valor uwu</Text>;
+                    </>
+                    
+                    );
 
+        case 5.1:   return(
+                     <>
+                        <Text>Puede haber problemas dee spacio end isco,fragmentación del 
+                            disco duro o que haya que reemplazarlo. </Text>
+
+                        <Text>Realiza un escaneo antivirus para detectar una posible infección de malware o virus. </Text>
+                        
+                        <BotonServicio  text={"Recuperación de datos"} imagen={"https://laptopfix.com.mx/runner/images/5.png"} idServicio={"5"} />
+                        <BotonServicio  text={"Disco duro o memoria de RAM"} imagen={"https://laptopfix.com.mx/runner/images/6.png"} idServicio={"6"} />
+                    </>
+                    );
+
+      
 
       default:
         return (
@@ -132,7 +216,7 @@ const Soporte = (props) => {
           <BotonxD text="La computadora se apaga repentinamente" idRender={2}/>
           <BotonxD text="La computadora se congela o se bloquea" idRender={3}/>
           <BotonxD text="La computadora muestra errores o mensajes de error" idRender={4}/>
-          <BotonxD text="La computadora funciona lentamente" idRender={1.1}/>
+          <BotonxD text="La computadora funciona lentamente" idRender={5}/>
           </>
         );
     }
@@ -154,7 +238,6 @@ const Soporte = (props) => {
 
             <Divider mb={5}/>
 
-            <BotonServicio  text={"Servicio"} imagen={"https://wallpaperaccess.com/full/317501.jpg"} idServicio={"1"} />
             <BotonxD text="Ir al inicio del cuestionario" idRender={0} />
 
         </ScrollView>
