@@ -175,8 +175,8 @@ const Soporte = (props) => {
                             Puede que haya que restaurar el sistema operativo.
                          </Text>
 
-                         <Text>Realiza un escaneo antivirus para detectar una posible infección de malware o virus.
-                         </Text>
+                         <Text>Realiza un escaneo antivirus para detectar una posible infección de malware o virus. </Text>
+                         
                          <BotonServicio  text={"Restauración de SO"} imagen={"https://laptopfix.com.mx/runner/images/4.png"} idServicio={"4"} />
                          <BotonServicio  text={"Recuperación de datos"} imagen={"https://laptopfix.com.mx/runner/images/5.png"} idServicio={"5"} />
                    </>
@@ -200,6 +200,7 @@ const Soporte = (props) => {
                             disco duro o que haya que reemplazarlo. </Text>
 
                         <Text>Realiza un escaneo antivirus para detectar una posible infección de malware o virus. </Text>
+
                         
                         <BotonServicio  text={"Recuperación de datos"} imagen={"https://laptopfix.com.mx/runner/images/5.png"} idServicio={"5"} />
                         <BotonServicio  text={"Disco duro o memoria de RAM"} imagen={"https://laptopfix.com.mx/runner/images/6.png"} idServicio={"6"} />
