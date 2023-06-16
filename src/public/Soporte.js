@@ -154,7 +154,7 @@ const Soporte = (props) => {
 
             <Divider mb={5}/>
 
-            <BotonServicio  text={"Servicio"} imagen={"https://wallpaperaccess.com/full/317501.jpg"} idServicio={"1"} />
+            <BotonServicio  text={"Software"} imagen={"https://laptopfix.com.mx/runner/images/1.png"} idServicio={"1"} />
             <BotonxD text="Ir al inicio del cuestionario" idRender={0} />
 
         </ScrollView>
