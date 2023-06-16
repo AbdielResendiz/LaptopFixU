@@ -24,6 +24,8 @@ const baseColor ={
    footerIcon: "#5A5A5A",
    footerIconBg: "#C8C8C8",
    footerIconSelect: "#236DB7",
+   uwu: "#ff0000",
+
 
 }
 
