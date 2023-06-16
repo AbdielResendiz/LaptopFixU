@@ -21,6 +21,8 @@ const SignUp = () => {
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
 
+  
+
 
   const Registro = async() => {
     setLoading(true);
