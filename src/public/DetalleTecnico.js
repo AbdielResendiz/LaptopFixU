@@ -95,7 +95,7 @@ useEffect(() => {
 
   const handleIconPress = (idT, idU) => {
 
-    if ((idUser===null)){
+    if (isNaN(idUser)){
             Alert.alert('Favor de iniciar sesión', `Para agregar a tus favoritos, primero inicia sesión`, [
               { 
                 text: 'Cancelar',

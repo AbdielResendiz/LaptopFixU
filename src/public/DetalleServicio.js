@@ -149,7 +149,7 @@ const [ loading, setLoading] = useState(true)
        checked();
     },[selected]);
 
-    const handleIconPress = (idS, idU) => {
+    const handleIconPress = (idS, idU) => { 
 
       if (isNaN(idCarrito)){
               Alert.alert('Favor de iniciar sesión', `Para agregar a tus favoritos, primero inicia sesión`, [

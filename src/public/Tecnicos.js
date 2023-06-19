@@ -56,7 +56,7 @@ const Tecnicos = (props) => {
 
         {
           (loading===true) ?
-          (<SkeletonServicio/>) :
+          (<SkeletonServicio/>) : 
           (
           
                 tecnicos.map( (tecnico, index) => {

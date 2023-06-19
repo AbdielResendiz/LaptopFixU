@@ -110,7 +110,7 @@ const Carrito = () => {
           {text: 'Eliminar', onPress: () =>borrarConfirm(id)},
         ]);
       
-    
+     
  }
 
  const borrarConfirm= async(id)=>{
