@@ -17,7 +17,7 @@ const FavoritoComponent = (props)=>{
 
     const detalleServicio= (idU, idC, idS) => {
         navigation.navigate("DetalleServicio", {
-        idServicio: idS,
+        idServicio: idS, 
         idC: idC,
         idUser: idU
           
@@ -25,9 +25,7 @@ const FavoritoComponent = (props)=>{
         }); 
       };
 
-
-
-
+ 
 
      const eliminarFavorito = ()=>{
         Alert.alert('Borrar Favorito', `¿Deseas borrar ${nombre} de favoritos?`, [
@@ -53,7 +51,7 @@ const FavoritoComponent = (props)=>{
                 
                 <Image source={{
                 uri: `${image_url}`
-                }} alt="Alternate Text" size="lg" mt={4} mx={3} resizeMode="contain" />
+                }} alt="Alternate Text" size="lg" mt={4} mx={3} resizeMode="contain"/>
                 <Stack direction={"column"}   flex={1} mt={2}>
                     <Text  pt={1}> {nombre}</Text>
                     <Text bold fontSize={"lg"}>${precio}</Text>

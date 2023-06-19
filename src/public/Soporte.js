@@ -98,46 +98,50 @@ const Soporte = (props) => {
                     <Text color={"white"} alignSelf={"center"} textAlign={"center"}>Funcionó</Text>
                 </Button>
 
-                <BotonxD text="No funciono" idRender={1.1}/> 
+                <BotonxD text="No funcionó" idRender={1.1}/> 
                 
             
             </Box> );
 
         case 1.1:
             return (
-              <>
-                <Text>Puede haber un problema con la fuente de alimentación, 
+              <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+        
+                <Text alignSelf={"center"} mb={5}>Puede haber un problema con la fuente de alimentación, 
                 el interruptor de encendido o la placa base. 
                 Sería recomendable revisar los o reemplazarlos si es necesario.
                 </Text>
   
                 <BotonServicio  text={"Cargador o fuenta de alimentación"} imagen={"https://laptopfix.com.mx/runner/images/9.png"} idServicio={"10"} />
              
-              </>);
+              </Box>);
 
 
       case 2:
             return (
-                <>
-
-                    <Text>Verifica si los ventiladores están funcionando correctamente y 
+              <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+                    <Text bold fontSize={16} mb={2}>Sigue las siguientes indicaciones:</Text>
+                    <Text alignSelf={"center"} mb={5}>Verifica si los ventiladores están funcionando correctamente y 
                     si hay suficiente ventilación alrededor de la computadora
                     </Text>
                 
-                    <BotonxD text="Funciono" idRender={2}/> 
-                    <BotonxD text="No funciono" idRender={2.1}/> 
-                </>
+                    <Button bg={baseColor.color} mx={4} my={1} py={1} onPress={()=>Alerta()} >
+                        <Text color={"white"} alignSelf={"center"} textAlign={"center"}>Funcionó</Text>
+                    </Button>
+                    <BotonxD text="No funcionó" idRender={2.1}/> 
+                </Box>
                 );
 
         case 2.1:
                 return (
-                 <>
-                    <Text>Podría ser un problema de sobrecalentamiento a
+                  <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+                    
+                    <Text alignSelf={"center"} mb={5}>Podría ser un problema de sobrecalentamiento a
                     causa dea cumulación depolvo, 
                     seríarecomendable realizar una limpieza.
                     </Text>
 
-                    <Text>También puede haber un problema con la fuente de alimentación
+                    <Text alignSelf={"center"} mb={5}>También puede haber un problema con la fuente de alimentación
                          o con los componentes de hardware, 
                         como la memoria RAM o el disco duro.
                     </Text>
@@ -145,22 +149,26 @@ const Soporte = (props) => {
                     <BotonServicio  text={"Limpieza fisica"} imagen={"https://laptopfix.com.mx/runner/images/2.png"} idServicio={"2"} />
                     <BotonServicio  text={"Disco duro o memoria de RAM"} imagen={"https://laptopfix.com.mx/runner/images/6.png"} idServicio={"6"} />
                      
-                 </> );
+                 </Box> );
       case 3:
         return  (
-           <>
-                    <Text>Verifica si hay actualizaciones de controladores disponibles y
+          <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+                    <Text bold fontSize={16} mb={2}>Sigue las siguientes indicaciones:</Text>
+                    <Text alignSelf={"center"} mb={5}>Verifica si hay actualizaciones de controladores disponibles y
                      si el sistema operativo y el software están actualizados
                     </Text>
 
-                    <BotonxD text="Funciono" idRender={3}/> 
-                    <BotonxD text="No funciono" idRender={3.1}/>
+                    <Button bg={baseColor.color} mx={4} my={1} py={1} onPress={()=>Alerta()} >
+                        <Text color={"white"} alignSelf={"center"} textAlign={"center"}>Funcionó</Text>
+                    </Button>
+                    <BotonxD text="No funcionó" idRender={3.1}/>
             
-          </>);
+          </Box>);
           case 3.1:
             return  (
-                <>
-                    <Text> Puede haber un problema con los controladores 
+              <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+
+                    <Text alignSelf={"center"} mb={5}> Puede haber un problema con los controladores 
                            de dispositivo, la incompatibilidad de software o una 
                            sobrecarga del sistema. 
 
@@ -168,49 +176,54 @@ const Soporte = (props) => {
                     </Text>
       
                     <BotonServicio  text={"Restauración de SO"} imagen={"https://laptopfix.com.mx/runner/images/4.png"} idServicio={"4"} />
-                   </>
-                       );
+                   </Box>);
 
       case 4:
             return  (
-                <>
-                    <Text>Verifica si hay actualizaciones
+              <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+                    <Text bold fontSize={16} mb={2}>Sigue las siguientes indicaciones:</Text>
+                    <Text alignSelf={"center"} mb={5}>Verifica si hay actualizaciones
                     disponibles para el sistema operativo y el software.
                     </Text>
-                    <BotonxD text="Funciono" idRender={4}/> 
-                    <BotonxD text="No funciono" idRender={4.1}/>
-               </>
+                    <Button bg={baseColor.color} mx={4} my={1} py={1} onPress={()=>Alerta()} >
+                        <Text color={"white"} alignSelf={"center"} textAlign={"center"}>Funcionó</Text>
+                    </Button>
+                    <BotonxD text="No funcionó" idRender={4.1}/>
+               </Box>
                 );
 
             case 4.1:
                 return(
-                    <>
-                         <Text>Puede haber un problema con el sistema operativo, archivos de sistema corruptos.
+                  <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+                         <Text alignSelf={"center"} mb={5}>Puede haber un problema con el sistema operativo, archivos de sistema corruptos.
                             Puede que haya que restaurar el sistema operativo.
                          </Text>
 
-                         <Text>Realiza un escaneo antivirus para detectar una posible infección de malware o virus. </Text>
+                         <Text alignSelf={"center"} mb={5}>Realiza un escaneo antivirus para detectar una posible infección de malware o virus. </Text>
                          
                          <BotonServicio  text={"Restauración de SO"} imagen={"https://laptopfix.com.mx/runner/images/4.png"} idServicio={"4"} />
                          <BotonServicio  text={"Recuperación de datos"} imagen={"https://laptopfix.com.mx/runner/images/5.png"} idServicio={"5"} />
-                   </>
+                   </Box>
                        );
       case 5:
                 return  (
-                    <>
-                    <Text>Verifica si hay suficiente espacio en el disco y realiza una desfragmentación si esnecesario.
+                  <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+                    <Text bold fontSize={16} mb={2}>Sigue las siguientes indicaciones:</Text>
+                    <Text alignSelf={"center"} mb={5}>Verifica si hay suficiente espacio en el disco y realiza una desfragmentación si esnecesario.
                     </Text>
         
-                    <BotonxD text="Funciono" idRender={5}/> 
-                    <BotonxD text="No funciono" idRender={5.1}/>
+                    <Button bg={baseColor.color} mx={4} my={1} py={1} onPress={()=>Alerta()} >
+                        <Text color={"white"} alignSelf={"center"} textAlign={"center"}>Funcionó</Text>
+                    </Button>
+                    <BotonxD text="No funcionó" idRender={5.1}/>
 
-                    </>
+                    </Box>
                     
                     );
 
         case 5.1:   return(
-                     <>
-                        <Text>Puede haber problemas dee spacio end isco,fragmentación del 
+          <Box mx={5} px={3} py={3} mb={4} borderRadius={15} bg={"#dddddd"} shadow={7}>
+                        <Text alignSelf={"center"} mb={5}>Puede haber problemas dee spacio end isco,fragmentación del 
                             disco duro o que haya que reemplazarlo. </Text>
 
                         <Text>Realiza un escaneo antivirus para detectar una posible infección de malware o virus. </Text>
@@ -218,10 +231,9 @@ const Soporte = (props) => {
                         
                         <BotonServicio  text={"Recuperación de datos"} imagen={"https://laptopfix.com.mx/runner/images/5.png"} idServicio={"5"} />
                         <BotonServicio  text={"Disco duro o memoria de RAM"} imagen={"https://laptopfix.com.mx/runner/images/6.png"} idServicio={"6"} />
-                    </>
+                    </Box>
                     );
 
-      
 
       default:
         return (
