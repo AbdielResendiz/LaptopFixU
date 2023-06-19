@@ -17,6 +17,6 @@ const agregarFav = async(idU, idS)=>{
     return res;
    // 
     
-    
+     
   }
   export default agregarFav;
