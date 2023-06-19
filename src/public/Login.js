@@ -17,8 +17,8 @@ const Login = (props) => {
 
     //datos usuario
 
-    const [correo, setCorreo] = useState("");
-    const [contrasenia, setContrasenia] = useState("");
+    const [correo, setCorreo] = useState("test@test.com");
+    const [contrasenia, setContrasenia] = useState("qwerty/");
     const [show, setShow] = React.useState(false);
     const [loading, setLoading] = useState(false);
   
