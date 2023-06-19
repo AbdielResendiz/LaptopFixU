@@ -151,7 +151,7 @@ const [ loading, setLoading] = useState(true)
 
     const handleIconPress = (idS, idU) => { 
 
-      if (isNaN(idCarrito)){
+      if (idUser(idCarrito)){
               Alert.alert('Favor de iniciar sesión', `Para agregar a tus favoritos, primero inicia sesión`, [
                 { 
                   text: 'Cancelar',

@@ -13,7 +13,7 @@ import Gradiente from '../components/Gradiente';
 import URL from '../private/api/URL';
 import SkeletonServicio from '../components/SkeletonServicio';
 import styles from '../styles/styles';
-import { AntDesign } from '@expo/vector-icons'; 
+
 
 const Tecnicos = (props) => {
     const BASE_URL = URL.BASE_URL;
@@ -43,6 +43,90 @@ const Tecnicos = (props) => {
         });
       };
 
+      const estrellasRender = (calificacion)=>{
+        switch (true) {
+          case calificacion == null:
+            return(
+            <HStack>
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+            </HStack>
+            )
+            break;
+          case  calificacion<1.5:
+            return(
+            <HStack>
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+            </HStack>)
+            
+            break;
+
+          case calificacion>= 1.5 && calificacion<2.5:
+            return(
+            <HStack>
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+            </HStack>)
+            
+            break;
+
+          case calificacion>= 2.5 && calificacion<3.5:
+            return(
+            <HStack>
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+            </HStack>)
+            break;
+
+          case calificacion>= 3.5 && calificacion<4.5:
+            return(
+            <HStack>
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+            </HStack>)
+            break;
+
+          case calificacion> 4.5:
+            return(
+            <HStack>
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+            </HStack>
+            )
+            break;
+
+
+          default:
+            return(
+            <HStack>
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star" size={24} color="#ffcd3c" />
+              <FontAwesome name="star-o" size={24} color="#ffcd3c" />
+            </HStack>)
+            break;
+        }
+      }
 
 
   return (
@@ -70,15 +154,9 @@ const Tecnicos = (props) => {
                                     <Text style={styles.textColor} fontSize={20} >
                                       {tecnico.nombreU + " " + tecnico.apellidos}
                                     </Text>
-                                    <HStack>
-                                      <AntDesign name="star" size={24} color="#ffcd3c" />
-                                      <AntDesign name="star" size={24} color="#ffcd3c" />
-                                      <AntDesign name="star" size={24} color="#ffcd3c" />
-                                      <AntDesign name="star" size={24} color="#ffcd3c" />
-                                      <AntDesign name="star" size={24} color="#ffcd3c" />
-                                    </HStack>
+                                    {estrellasRender(tecnico.promedio_calif)}
                                     <Text style={styles.Texts}>
-                                      Técnico
+                                      Técnico ({tecnico.promedio_calif})
                                     </Text>
                                 </Box>
                                 <Center >
