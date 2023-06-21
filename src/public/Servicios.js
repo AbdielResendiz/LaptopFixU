@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, Divider } from "native-base";
-import { TouchableOpacity } from 'react-native';
+import { Box, HStack, Center, Text, NativeBaseProvider, ScrollView, View, Image, Pressable } from "native-base";
 import { FontAwesome } from '@expo/vector-icons'; 
 /**Componentes */
-import Footer from "../components/Footer"
 import fetchPost from '../private/api/fetchPost';
 import config from '../private/api/config';
 import Gradiente from '../components/Gradiente';
-import Carrusel from '../components/Carrusel';
 import URL from '../private/api/URL';
 import SkeletonServicio from '../components/SkeletonServicio';
 import styles from '../styles/styles';
@@ -67,9 +64,10 @@ const Servicios = (props) => {
 
                   {servicios.map( (servicio, index) => {
                       return(
-                      <Box key={index}  rounded="lg" marginLeft={5} marginRight={5} marginTop={2}>
-                          <TouchableOpacity
-                            key={index} onPress={() => detalleServicio(servicio.idS)}>
+                      
+                          <Pressable
+                            key={index} onPress={() => detalleServicio(servicio.idS)}
+                            mx={4} my={1} borderRadius={10} p={3} bg={"white"} shadow={7}>
                               <HStack>
                                   <Image 
                                       source={{
@@ -87,12 +85,8 @@ const Servicios = (props) => {
                                   <FontAwesome name="angle-right" size={28} color="black" />
                                   </Center>
                               </HStack>
-                          </TouchableOpacity>
-                          <Center>
-                            <Divider mt={1} w="20%" mx="10%" thickness={2} bg="black"/>
-
-                          </Center>
-                      </Box>
+                          </Pressable>
+                      
                       );
                   } )}
                 {/**Box de producto */}

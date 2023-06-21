@@ -16,6 +16,7 @@ import baseColor from '../private/api/baseColor';
 import eliminarFavT from '../helper/favoritos/eliminarFavT';
 import checkFavT from '../helper/favoritos/checkFavT';
 import agregarFavT from '../helper/favoritos/agregarFavT';
+import renderEstrellas from '../helper/renderEstrellas';
 
 const DetalleTecnico = (props) => {
   const navigation =useNavigation();
@@ -26,6 +27,7 @@ const DetalleTecnico = (props) => {
   const [ idUser, setIdUser ] = useState(null);
 
   const idTecnico = props.route.params.idTecnico;
+  const calificacion = props.route.params.calificacion;
   const idCarrito = props.route.params.idC;
   const idU = props.route.params.idUser;
 
@@ -165,13 +167,7 @@ useEffect(() => {
         </Center>
         {/**ESTRELLAS */}
         <Center>
-          <HStack>
-            <AntDesign name="star" size={24} color="#ffcd3c" />
-            <AntDesign name="star" size={24} color="#ffcd3c" />
-            <AntDesign name="star" size={24} color="#ffcd3c" />
-            <AntDesign name="star" size={24} color="#ffcd3c" />
-            <AntDesign name="star" size={24} color="#ffcd3c" />
-          </HStack>
+          {renderEstrellas(calificacion)}
         </Center>
         <Center>
           <Text fontSize={20} style={styles.Texts}>Técnico</Text>

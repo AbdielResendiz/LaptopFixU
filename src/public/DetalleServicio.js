@@ -295,7 +295,7 @@ const [ loading, setLoading] = useState(true)
                 </Center>
 
                   {/**BOTON contratacion */}
-                  <Center mx={10} mt={1} >
+                  {/* <Center mx={10} mt={1} >
                   <Box  bg="#000" rounded={10} shadow={4} w={210}>
                     <TouchableOpacity onPress={()=>botonCarrito()}>
                       <Center py={2} px={2}>
@@ -307,7 +307,7 @@ const [ loading, setLoading] = useState(true)
                       </Center>
                     </TouchableOpacity>
                   </Box>
-                </Center>
+                </Center> */}
 
         
         

@@ -36,9 +36,10 @@ const Home = (props) => {
     });
   };
 
-  const detalleTecnico= (item) => {
+  const detalleTecnico= (item, calif) => {
     props.navigation.navigate("DetalleTecnico", {
       idTecnico: item,
+      calificacion: calif
     });
   };
  
@@ -262,7 +263,7 @@ const Home = (props) => {
                   <ScrollView horizontal={true}>
                     {tecnicos.map( (tecnico, index) => {
                       return(
-                        <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU)}>
+                        <TouchableOpacity key={index} onPress={() => detalleTecnico(tecnico.idU, tecnico.promedio_calif)}>
                           <Box >
                           <Center>
                             <Image source={{uri:`${BASE_URL}${tecnico.avatar_usuario}`} } 
