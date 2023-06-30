@@ -49,7 +49,8 @@ import * as Font from 'expo-font';
 import  { useState, useEffect } from 'react';
 import baseColor from './src/private/api/baseColor';
 
-
+//Vistas Kevin
+import ElegirTecnico from './src/public/ElegirTecnico';
 
 
 const Stack = createNativeStackNavigator();
@@ -105,6 +106,9 @@ export default function App() {
       setSelected(1)
       return true
     }else if (route.name === "Tecnicos"){
+      setSelected(3)
+      return true
+    }else if (route.name === "ElegirTecnico"){
       setSelected(3)
       return true
     }else if (route.name === "DetalleTecnico"){
@@ -399,6 +403,19 @@ export default function App() {
         /> 
 
         <Stack.Screen name="Tecnicos" component={Tecnicos}
+        options={{title: 'Técnicos',
+          headerTintColor:baseColor.colorFont2,
+          headerStyle: {
+            backgroundColor: color,
+          },
+          headerShadowVisible: false,
+          headerRight: () => (
+            <HeaderRightCustom/>
+          ),
+        }}
+        />
+
+        <Stack.Screen name="ElegirTecnico" component={ElegirTecnico}
         options={{title: 'Técnicos',
           headerTintColor:baseColor.colorFont2,
           headerStyle: {
